@@ -1,4 +1,4 @@
-Django==3.1.5
+Django==2.1.*
 asgiref
 autopep8
 pycodestyle
