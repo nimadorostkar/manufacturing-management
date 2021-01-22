@@ -5,6 +5,7 @@ from django.urls import reverse
 
 
 
+
 class Product(models.Model):
     id=models.AutoField(primary_key=True,verbose_name = "شناسه")
     pid=models.CharField(max_length=100,verbose_name = "زیر شاخه")
