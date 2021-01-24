@@ -16,7 +16,11 @@
               <div class="col-sm-6 text-left">
                 <h5 class="card-category">Total Shipments</h5>
                 <br><br><hr>
-                <p> test </p>
+
+                {% for product in products %}
+                  <p> {{ product.name }} </p>
+               {% endfor %}
+
               </div>
             </div>
           </div>
