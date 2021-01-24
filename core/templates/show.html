@@ -18,7 +18,10 @@
                 <br><br><hr>
 
                 {% for product in products %}
+                  <p> {{ product.id }} </p>
+                  <p> {{ product.pid }} </p>
                   <p> {{ product.name }} </p>
+                  <p> ------------------ </p>
                {% endfor %}
 
               </div>
