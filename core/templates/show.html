@@ -17,6 +17,15 @@
                 <br><br><br><br><br><br>
 
 
+                <script>
+                    {% for product in products %}
+                       var a = "{{ product.id }}";
+                       var b = "{{ product.pid }}";
+                       var c = "{{ product.name }}";
+                    {% endfor %}
+                </script>
+
+
 
         </div>
       </div>
@@ -31,9 +40,6 @@
 {% block javascripts %}
 
   <script>
-
-
-
 
 
 
