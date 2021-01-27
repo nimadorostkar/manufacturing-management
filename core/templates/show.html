@@ -17,13 +17,6 @@
                 <br><br><br><br><br><br>
 
 
-                {% for product in products %}
-                  <p> {{ product.id }} </p>
-                  <p> {{ product.pid }} </p>
-                  <p> {{ product.name }} </p>
-                  <p> ------------------ </p>
-               {% endfor %}
-
 
         </div>
       </div>
@@ -38,6 +31,18 @@
 {% block javascripts %}
 
   <script>
+
+    {% for product in products %}
+      <p> {{ product.id }} </p>
+      <p> {{ product.pid }} </p>
+      <p> {{ product.name }} </p>
+    {% endfor %}
+
+
+     var a = "{{someDjangoVariable}}";
+     var b = "{{someDjangoVariable}}";
+     var c = "{{someDjangoVariable}}";
+
 
 
 
