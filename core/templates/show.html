@@ -13,19 +13,76 @@
         <div class="card card-chart">
           <div class="row">
 
-            <ul>
+              <figure>
 
-               {% for Product in products %}
-                <li> <h3> {{ Product.name }} </h3> </li>
-                <li> <p> {{ Product.id }} </p> </li>
-                <li> <p> {{ Product.pid }} </p> </li>
-                <li> <p> {{ Product.title }} </p> </li>
-                <li> <p> {{ Product.content }} </p> </li>
-                <li> <p> {{ Product.tag }} </p> </li>
-                <br><hr>
-               {% endfor %}
+                  <figcaption> First version of Tree view  </figcaption>
 
-            </ul>
+                      <ul class="tree">
+                        <li><code>html</code>
+                          <ul>
+                            <li><code>head</code>
+                              <ul>
+                                <li><code>title</code></li>
+                              </ul>
+                            </li>
+                            <li><code>body body</code>
+                              <ul>
+                                <li><code>header</code>
+                                  <ul>
+                                    <li><code>h1</code></li>
+                                    <li><code>p</code></li>
+                                  </ul>
+                                </li>
+                                <li><code>nav</code>
+                                  <ul>
+                                    <li><code>a</code></li>
+                                    <li><code>a</code></li>
+                                    <li><code>a</code></li>
+                                    <li><code>a</code></li>
+                                  </ul>
+                                </li>
+                                <li><code>main</code>
+                                  <ul>
+                                    <li><code>h1</code></li>
+                                    <li><code>article</code>
+                                      <ul>
+                                        <li><code>h2</code></li>
+                                        <li><code>p</code></li>
+                                        <li><code>p</code></li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li><code>aside</code>
+                                  <ul>
+                                    <li><code>h2</code></li>
+                                    <li><code>p</code></li>
+                                    <li><code>p</code>
+                                      <ul>
+                                        <li><code>a</code></li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li><code>footer</code>
+                                  <ul>
+                                    <li><code>nav</code>
+                                      <ul>
+                                        <li><code>a</code></li>
+                                        <li><code>a</code></li>
+                                        <li><code>a</code></li>
+                                        <li><code>a</code></li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+
+                </figure>
 
           </div>
         </div>
