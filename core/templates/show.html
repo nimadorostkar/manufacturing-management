@@ -7,67 +7,29 @@
 
 {% block content %}
 
+
     <div class="row">
       <div class="col-12">
         <div class="card card-chart">
+          <div class="row">
 
-             <script type="text/javascript">
+            <ul>
 
-              window.onload = function () {
-                  OrgChart.templates.ana.plus = '<circle cx="15" cy="15" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>'
-                      + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
+               {% for Product in products %}
+                <li> <h3> {{ Product.name }} </h3> </li>
+                <li> <p> {{ Product.id }} </p> </li>
+                <li> <p> {{ Product.pid }} </p> </li>
+                <li> <p> {{ Product.title }} </p> </li>
+                <li> <p> {{ Product.content }} </p> </li>
+                <li> <p> {{ Product.tag }} </p> </li>
+                <br><hr>
+               {% endfor %}
 
-                  var chart = new OrgChart(document.getElementById("tree"), {
-                      template: "ana",
-                      enableDragDrop: true,
-                      assistantSeparation: 170,
-                      align: OrgChart.ORIENTATION,
-                      toolbar: {
-                          fullScreen: true,
-                          zoom: true,
-                          fit: true,
-                          expandAll: true
-                      },
-                      tags: {
-                              "محصول نهایی": {
-                                  template: "rony"
-                              },
-                              "----": {
-                                  template: "polina"
-                              },
-                              "قطعه خریداری شده": {
-                                  template: "ula"
-                              },
-                              "---": {
-                                  template: "ana"
-                              },
-                              "نیرو خانگی": {
-                                  template: "belinda"
-                              }
-                          },
-                      nodeBinding: {
-                          field_0: "name",
-                          field_1: "title",
-                          field_2: "content",
-                          img_0: "img"
-                      },
-                  });
+            </ul>
 
-                  chart.load([
-                     {% for product in products %}
-                        { id: {{ product.id }}, pid: {{ product.pid }}, name: {{ product.name }}, title: "محصول نهایی", content:"تست تست تست ۳۳۳ تست", img: "img/sooket_halooj.jpg", tags: ["محصول نهایی"] }
-                     {% endfor %}
-                  ]);
-              };
-             </script>
-
-
-
-          <div id="tree"> <div>
-
+          </div>
         </div>
       </div>
-
     </div>
 
 
