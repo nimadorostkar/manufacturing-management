@@ -13,77 +13,13 @@
         <div class="card card-chart">
           <div class="row">
 
-              <figure>
+                <p> &nbsp; &nbsp; test chart </p>
 
-                  <br>
-                     <p> &nbsp; &nbsp; &nbsp; First version of Tree view  </p>
 
-                      <ul class="tree">
-                        <li><code>html</code>
-                          <ul>
-                            <li><code>head</code>
-                              <ul>
-                                <li><code>title</code></li>
-                              </ul>
-                            </li>
-                            <li><code>body body</code>
-                              <ul>
-                                <li><code>header</code>
-                                  <ul>
-                                    <li><code>h1</code></li>
-                                    <li><code>p</code></li>
-                                  </ul>
-                                </li>
-                                <li><code>nav</code>
-                                  <ul>
-                                    <li><code>a</code></li>
-                                    <li><code>a</code></li>
-                                    <li><code>a</code></li>
-                                    <li><code>a</code></li>
-                                  </ul>
-                                </li>
-                                <li><code>main</code>
-                                  <ul>
-                                    <li><code>h1</code></li>
-                                    <li><code>article</code>
-                                      <ul>
-                                        <li><code>h2</code></li>
-                                        <li><code>p</code></li>
-                                        <li><code>p</code></li>
-                                      </ul>
-                                    </li>
-                                  </ul>
-                                </li>
-                                <li><code>aside</code>
-                                  <ul>
-                                    <li><code>h2</code></li>
-                                    <li><code>p</code></li>
-                                    <li><code>p</code>
-                                      <ul>
-                                        <li><code>a</code></li>
-                                      </ul>
-                                    </li>
-                                  </ul>
-                                </li>
-                                <li><code>footer</code>
-                                  <ul>
-                                    <li><code>nav</code>
-                                      <ul>
-                                        <li><code>a</code></li>
-                                        <li><code>a</code></li>
-                                        <li><code>a</code></li>
-                                        <li><code>a</code></li>
-                                      </ul>
-                                    </li>
-                                  </ul>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
+                {% for product in product_list %}
+                 <p>{{ product.name }}</p>
+                {% endfor %}
 
-                </figure>
 
           </div>
         </div>

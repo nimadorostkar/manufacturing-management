@@ -5,6 +5,8 @@ from django.urls import reverse
 
 
 
+
+
 #------------------------------------------------------------------------------
 class Material(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
