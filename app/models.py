@@ -22,6 +22,8 @@ class Station(models.Model):
 class Material(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    input=models.ManyToManyField("self")
+    input2=models.ManyToManyField(Station)
 
     class Meta:
         verbose_name = "قطعه"
