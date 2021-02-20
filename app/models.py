@@ -9,8 +9,8 @@ from django.urls import reverse
 class Material(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    material_input=models.ManyToManyField("self",null=True,blank=True,verbose_name = " قطعه ورودی")
-    station_input=models.ManyToManyField("Station",null=True,blank=True,verbose_name = " ایستگاه ورودی ")
+    material_input=models.ManyToManyField("self",blank=True,verbose_name = " قطعه ورودی")
+    station_input=models.ManyToManyField("Station",blank=True,verbose_name = " ایستگاه ورودی ")
 
     class Meta:
         verbose_name = "قطعه"
@@ -24,8 +24,8 @@ class Material(models.Model):
 class Station(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    material_input=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " قطعه ورودی")
-    station_input=models.ManyToManyField("self",null=True,blank=True,verbose_name = " ایستگاه ورودی ")
+    material_input=models.ManyToManyField(Material,blank=True,verbose_name = " قطعه ورودی")
+    station_input=models.ManyToManyField("self",blank=True,verbose_name = " ایستگاه ورودی ")
 
     class Meta:
         verbose_name = "ایستگاه"
@@ -40,8 +40,8 @@ class Station(models.Model):
 class Product(models.Model):
     name=models.CharField(max_length=200,verbose_name = "نام")
     description=models.TextField(max_length=800,null=True,blank=True,verbose_name = "توضیحات")
-    material_input=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " قطعه ورودی")
-    station_input=models.ManyToManyField(Station,null=True,blank=True,verbose_name = " ایستگاه ورودی ")
+    material_input=models.ManyToManyField(Material,blank=True,verbose_name = " قطعه ورودی")
+    station_input=models.ManyToManyField(Station,blank=True,verbose_name = " ایستگاه ورودی ")
 
     class Meta:
         verbose_name = " محصول "
