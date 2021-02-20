@@ -37,21 +37,6 @@ class Station(models.Model):
 
 
 #------------------------------------------------------------------------------
-class Relation(models.Model):
-    name=models.CharField(max_length=400,verbose_name = "نام")
-    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    input=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " قطعه ورودی ")
-    output=models.ManyToManyField(Station,null=True,blank=True,verbose_name = " قطعه خروجی ")
-
-    class Meta:
-        verbose_name = "ارتبات"
-        verbose_name_plural = "ارتباتاط"
-
-    def __str__(self):
-        return self.name
-
-
-#------------------------------------------------------------------------------
 class Product(models.Model):
     name=models.CharField(max_length=200,verbose_name = "نام")
     description=models.TextField(max_length=800,null=True,blank=True,verbose_name = "توضیحات")
