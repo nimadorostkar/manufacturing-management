@@ -13,12 +13,33 @@
         <div class="card card-chart">
           <div class="row">
 
-                <p> &nbsp; &nbsp; test chart </p>
+                <p> &nbsp;&nbsp;&nbsp; test chart </p>
 
+                <figure>
+                  <br>
+                    {% for Product in products %} <hr>
 
-                {% for product in product_list %}
-                 <p>{{ product.name }}</p>
-                {% endfor %}
+                        <ul class="tree">
+                          <li> {{ Product.name }}
+                            <ul>
+
+                              <li>
+                                {% for material_input in Product.material_input.all %} {{ material_input }}&nbsp;&nbsp;{% endfor %}
+                              </li>
+
+                              <li>
+                                {% for station_input in Product.station_input.all %} {{ station_input }}&nbsp;&nbsp;{% endfor %}
+                                <ul>
+                                  <li> fff </li>
+                                </ul>
+                              </li>
+
+                            </ul>
+                          </li>
+                        </ul>
+
+                    {% endfor %}
+                  </figure>
 
 
           </div>
