@@ -6,6 +6,21 @@ from django.urls import reverse
 
 
 #------------------------------------------------------------------------------
+class Material(models.Model):
+    name=models.CharField(max_length=400,verbose_name = "نام")
+    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    material_input=models.ManyToManyField("self",null=True,blank=True,verbose_name = " قطعه ورودی")
+    station_input=models.ManyToManyField("Station",null=True,blank=True,verbose_name = " ایستگاه ورودی ")
+
+    class Meta:
+        verbose_name = "قطعه"
+        verbose_name_plural = "قطعات"
+
+    def __str__(self):
+        return self.name
+
+
+#------------------------------------------------------------------------------
 class Station(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
@@ -15,21 +30,6 @@ class Station(models.Model):
     class Meta:
         verbose_name = "ایستگاه"
         verbose_name_plural = "ایستگاه ها"
-
-    def __str__(self):
-        return self.name
-
-
-#------------------------------------------------------------------------------
-class Material(models.Model):
-    name=models.CharField(max_length=400,verbose_name = "نام")
-    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    material_input=models.ManyToManyField("self",null=True,blank=True,verbose_name = " قطعه ورودی")
-    station_input=models.ManyToManyField(Station,null=True,blank=True,verbose_name = " ایستگاه ورودی ")
-
-    class Meta:
-        verbose_name = "قطعه"
-        verbose_name_plural = "قطعات"
 
     def __str__(self):
         return self.name
