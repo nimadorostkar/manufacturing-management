@@ -37,7 +37,7 @@ class Relation(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     input=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " قطعه ورودی ")
-    output=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " قطعه خروجی ")
+    output=models.ManyToManyField(Station,null=True,blank=True,verbose_name = " قطعه خروجی ")
 
     class Meta:
         verbose_name = "ارتبات"
