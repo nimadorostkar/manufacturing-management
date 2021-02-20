@@ -10,6 +10,8 @@ from django.urls import reverse
 class Material(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    materialInput=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " قطعه ")
+    stationInput=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " ایستگاه ")
 
     class Meta:
         verbose_name = "قطعه"
@@ -37,7 +39,8 @@ class Station(models.Model):
 class Product(models.Model):
     name=models.CharField(max_length=200,verbose_name = "نام")
     description=models.TextField(max_length=800,null=True,blank=True,verbose_name = "توضیحات")
-    input=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " قطعه ")
+    materialInput=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " قطعه ")
+    stationInput=models.ManyToManyField(Material,null=True,blank=True,verbose_name = " ایستگاه ")
 
     class Meta:
         verbose_name = " محصول "
