@@ -9,8 +9,6 @@ admin.site.site_title= "Tavankar"
 
 
 
-
-
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('name','description')
 class MaterialAdmin(admin.ModelAdmin):
