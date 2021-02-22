@@ -20,27 +20,10 @@
                     {% for Product in products %} <hr>
 
                         <ul class="tree">
-                          <li> {{ Product.name }}
+                          <li> {{ Product.name }} - [ {{ Product.id }} ]
                             <ul>
-
-                              <li>
-                                {% for material_input in Product.material_input.all %} {{ material_input }}&nbsp;&nbsp;{% endfor %}
-                              </li>
-
-                              <li>
-                                {% for station_input in Product.station_input.all %} {{ station_input }}&nbsp;&nbsp;{% endfor %}
-                                    {% for Station in stations %}
-                                        <ul>
-                                          <li>
-                                            {% for material_input in Station.material_input.all %} {{ material_input }}&nbsp;&nbsp;{% endfor %}
-                                          </li>
-                                          <li>
-                                            {% for station_input in Station.station_input.all %} {{ station_input }}&nbsp;&nbsp;{% endfor %}
-                                          </li>
-                                        </ul>
-                                    {% endfor %}
-                              </li>
-
+                              <li> {% for m_sub in Product.m_sub.all %} {{ m_sub }}  - [ {{ m_sub.id }} ] {% endfor %} </li>
+                              <li> {% for s_sub in Product.s_sub.all %} {{ s_sub }}  - [ {{ s_sub.id }} ] {% endfor %} </li>
                             </ul>
                           </li>
                         </ul>
