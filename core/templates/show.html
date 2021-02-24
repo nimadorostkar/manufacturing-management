@@ -13,24 +13,6 @@
         <div class="card card-chart">
           <div class="row">
 
-                <p> &nbsp;&nbsp;&nbsp; test chart </p>
-
-                <figure>
-                  <br>
-                    {% for Product in products %} <hr>
-
-                        <ul class="tree">
-                          <li> {{ Product.name }} - [ {{ Product.id }} ]
-                            <ul>
-                              <li> {% for m_sub in Product.m_sub.all %} {{ m_sub }}  - [ {{ m_sub.id }} ] {% endfor %} </li>
-                              <li> {% for s_sub in Product.s_sub.all %} {{ s_sub }}  - [ {{ s_sub.id }} ] {% endfor %} </li>
-                            </ul>
-                          </li>
-                        </ul>
-
-                    {% endfor %}
-                  </figure>
-
 
           </div>
         </div>
