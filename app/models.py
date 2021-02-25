@@ -8,7 +8,7 @@ from django.urls import reverse
 
 #------------------------------------------------------------------------------
 class Material(models.Model):
-    id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
+    #id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     material_input=models.ForeignKey('Material',on_delete=models.CASCADE,blank=True,verbose_name = " قطعه ورودی")
@@ -24,7 +24,7 @@ class Material(models.Model):
 
 #------------------------------------------------------------------------------
 class Station(models.Model):
-    id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
+    #id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     material_input=models.ForeignKey(Material,on_delete=models.CASCADE,blank=True,verbose_name = " قطعه ورودی")
@@ -41,7 +41,7 @@ class Station(models.Model):
 
 #------------------------------------------------------------------------------
 class Product(models.Model):
-    id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
+    #id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
     name=models.CharField(max_length=200,verbose_name = "نام")
     description=models.TextField(max_length=800,null=True,blank=True,verbose_name = "توضیحات")
     material_input=models.ForeignKey(Material,on_delete=models.CASCADE,blank=True,verbose_name = " قطعه ورودی")
