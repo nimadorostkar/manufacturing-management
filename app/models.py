@@ -42,8 +42,8 @@ class Relation(models.Model):
     #id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    material_input=models.ManyToManyField(Material,blank=True,null=True,verbose_name =" قطعه ورودی")
-    station_input=models.ManyToManyField(Material,blank=True,null=True,verbose_name = " ایستگاه ورودی ")
+    material_input=models.ManyToManyField(Material,blank=True,verbose_name =" قطعه ورودی")
+    station_input=models.ManyToManyField(Material,blank=True,verbose_name = " ایستگاه ورودی ")
 
     class Meta:
         verbose_name = "قطعه"
