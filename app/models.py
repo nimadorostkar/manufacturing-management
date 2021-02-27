@@ -6,17 +6,17 @@ from django.urls import reverse
 
 
 
-class Position(models.Model):
+class Place(models.Model):
     POSI = ( ('M','Material'), ('S','Station') )
     position=models.CharField(max_length=1, choices=POSI,verbose_name = "موقعیت")
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     location=models.CharField(max_length=400,verbose_name = "location")
-    input=models.ForeignKey('Position',on_delete=models.CASCADE,null=True,blank=True,verbose_name = "ورودی")
+    input=models.ForeignKey('Place',on_delete=models.CASCADE,null=True,blank=True,verbose_name = "ورودی")
 
     class Meta:
-        verbose_name = "موقعیت"
-        verbose_name_plural = " موقعیت ها"
+        verbose_name = "جایگاه"
+        verbose_name_plural = " جایگاه ها"
 
     def __str__(self):
         return self.name
