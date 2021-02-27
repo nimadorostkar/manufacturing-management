@@ -47,6 +47,5 @@ def pages(request):
 
 @login_required(login_url="/login/")
 def show(request):
-    #products=models.Product.objects.all()
-    products='none'
-    return render(request, 'show.html', {'products': products})
+    places=models.Place.objects.all()
+    return render(request, 'show.html', {'places': places})
