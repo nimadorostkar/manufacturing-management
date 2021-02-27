@@ -9,6 +9,26 @@ admin.site.site_title= "Tavankar"
 
 
 
+
+
+class PlaceAdmin(admin.ModelAdmin):
+	list_display = ('name','description')
+
+
+admin.site.register(models.Place,PlaceAdmin)
+
+
+
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------
+
+
 #class ProductAdmin(admin.ModelAdmin):
 #	list_display = ('name','description')
 #class MaterialAdmin(admin.ModelAdmin):
