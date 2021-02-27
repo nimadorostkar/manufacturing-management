@@ -12,7 +12,7 @@ class Place(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     location=models.CharField(max_length=400,verbose_name = "location")
-    input=models.ForeignKey('Place',on_delete=models.CASCADE,null=True,blank=True,verbose_name = "ورودی")
+    input=models.ManyToManyField('Place',blank=True,verbose_name = "ورودی")
 
     class Meta:
         verbose_name = "جایگاه"
