@@ -46,8 +46,8 @@ class Relation(models.Model):
     station_input=models.ManyToManyField(Station,blank=True,verbose_name = " ایستگاه ورودی ")
 
     class Meta:
-        verbose_name = "قطعه"
-        verbose_name_plural = "قطعات"
+        verbose_name = "رابطه"
+        verbose_name_plural = "روابط"
 
     def __str__(self):
         return self.name
