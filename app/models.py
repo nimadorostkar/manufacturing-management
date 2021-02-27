@@ -5,7 +5,6 @@ from django.urls import reverse
 
 
 
-
 #------------------------------------------------------------------------------
 class Material(models.Model):
     #id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
