@@ -43,7 +43,7 @@ class Relation(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     material_input=models.ManyToManyField(Material,blank=True,verbose_name =" قطعه ورودی")
-    station_input=models.ManyToManyField(Material,blank=True,verbose_name = " ایستگاه ورودی ")
+    station_input=models.ManyToManyField(Station,blank=True,verbose_name = " ایستگاه ورودی ")
 
     class Meta:
         verbose_name = "قطعه"
