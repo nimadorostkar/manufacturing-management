@@ -10,8 +10,8 @@ class Material(models.Model):
     #id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    material_input=models.ForeignKey('Material',null=True,blank=True,verbose_name = " قطعه ورودی")
-    station_input=models.ForeignKey('Station',null=True,blank=True,verbose_name = " ایستگاه ورودی ")
+    #material_input=models.ForeignKey('Material',on_delete=models.CASCADE,null=True,blank=True,verbose_name = " قطعه ورودی")
+    #station_input=models.ForeignKey('Station',on_delete=models.CASCADE,null=True,blank=True,verbose_name = " ایستگاه ورودی ")
 
     class Meta:
         verbose_name = "قطعه"
@@ -26,8 +26,8 @@ class Station(models.Model):
     #id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    material_input=models.ForeignKey(Material,null=True,blank=True,verbose_name = " قطعه ورودی")
-    station_input=models.ForeignKey('Station',null=True,blank=True,verbose_name = " ایستگاه ورودی ")
+    #material_input=models.ForeignKey(Material,on_delete=models.CASCADE,null=True,blank=True,verbose_name = " قطعه ورودی")
+    #station_input=models.ForeignKey('Station',on_delete=models.CASCADE,null=True,blank=True,verbose_name = " ایستگاه ورودی ")
 
     class Meta:
         verbose_name = "ایستگاه"
@@ -35,6 +35,23 @@ class Station(models.Model):
 
     def __str__(self):
         return self.name
+
+
+#------------------------------------------------------------------------------
+class Relation(models.Model):
+    #id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
+    name=models.CharField(max_length=400,verbose_name = "نام")
+    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    material_input=models.ManyToManyField(Material,blank=True,null=True,verbose_name =" قطعه ورودی")
+    station_input=models.ManyToManyField(Material,blank=True,null=True,verbose_name = " ایستگاه ورودی "))
+
+    class Meta:
+        verbose_name = "قطعه"
+        verbose_name_plural = "قطعات"
+
+    def __str__(self):
+        return self.name
+
 
 
 
