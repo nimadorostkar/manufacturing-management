@@ -6,8 +6,6 @@ from django.urls import reverse
 
 
 
-
-#------------------------------------------------------------------------------
 class Position(models.Model):
     POSI = ( ('M','Material'), ('S','Station') )
     position=models.CharField(max_length=1, choices=POSI,verbose_name = "موقعیت")
@@ -15,7 +13,6 @@ class Position(models.Model):
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     location=models.CharField(max_length=400,verbose_name = "location")
     input=models.ForeignKey('Position',on_delete=models.CASCADE,null=True,blank=True,verbose_name = "ورودی")
-
 
     class Meta:
         verbose_name = "موقعیت"
