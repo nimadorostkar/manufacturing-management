@@ -16,24 +16,51 @@
 
 
                   <figure>
-
-                   <br>
-                      <p> &nbsp; &nbsp; &nbsp; First version of Tree view  </p>
-                      {% for Place in places %}
-
-                       <ul class="tree">
-                         <li><code> {{ Place.name }} </code>
+                    {% for Place in places %}
+                     <ul class="tree">
+                       <li> {{ Place.name }}
+                       <ul>
+                           {% for input in Place.input.all %}
+                           <li>{{ input.name }}
                            <ul>
-                             <li><code> {{ Place.position }} </code></li>
-                             <li><code> {% for input in Place.input.all %}{{ input }}{% endfor %}</code></li>
+                             {% for input in input.input.all %}
+                              <li>{{ input.name }}</li>
+                              <ul>
+                                {% for input in input.input.all %}
+                                 <li>{{ input.name }}</li>
+                                 <ul>
+                                   {% for input in input.input.all %}
+                                    <li>{{ input.name }}</li>
+                                    <ul>
+                                      {% for input in input.input.all %}
+                                       <li>{{ input.name }}</li>
+                                       <ul>
+                                         {% for input in input.input.all %}
+                                          <li>{{ input.name }}</li>
+                                          <ul>
+                                            {% for input in input.input.all %}
+                                             <li>{{ input.name }}</li>
+
+                                            {% endfor %}
+                                          </ul>
+                                         {% endfor %}
+                                       </ul>
+                                      {% endfor %}
+                                    </ul>
+                                   {% endfor %}
+                                 </ul>
+                                {% endfor %}
+                              </ul>
+                             {% endfor %}
                            </ul>
-                         </li>
+                           </li>
+                           {% endfor %}
                        </ul>
-                       <hr><br>
-
-                      {% endfor %}
+                       </li>
+                     </ul>
+                     <br><hr>
+                    {% endfor %}
                  </figure>
-
 
 
           </div>
