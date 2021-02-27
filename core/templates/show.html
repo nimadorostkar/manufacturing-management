@@ -15,9 +15,24 @@
 
 
 
-                {% for Place in places %}
-                  <p>{{ Place.name }}</p>
-                {% endfor %}
+                  <figure>
+
+                   <br>
+                      <p> &nbsp; &nbsp; &nbsp; First version of Tree view  </p>
+                      {% for Place in places %}
+
+                       <ul class="tree">
+                         <li><code> {{ Place.name }} </code>
+                           <ul>
+                             <li><code> {{ Place.position }} </code></li>
+                             <li><code> {% for input in Place.input.all %}{{ input }}{% endfor %}</code></li>
+                           </ul>
+                         </li>
+                       </ul>
+                       <hr><br>
+
+                      {% endfor %}
+                 </figure>
 
 
 
