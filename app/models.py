@@ -6,6 +6,40 @@ from django.urls import reverse
 
 
 
+
+#------------------------------------------------------------------------------
+class Position(models.Model):
+    POSI = ( ('M','Material'), ('S','Station') )
+    position=models.CharField(max_length=1, choices=POSI,verbose_name = "موقعیت")
+    name=models.CharField(max_length=400,verbose_name = "نام")
+    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    location=models.CharField(max_length=400,verbose_name = "location")
+    input=models.ForeignKey('Position',on_delete=models.CASCADE,null=True,blank=True,verbose_name = "ورودی")
+
+
+    class Meta:
+        verbose_name = "موقعیت"
+        verbose_name_plural = " موقعیت ها"
+
+    def __str__(self):
+        return self.name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #------------------------------------------------------------------------------
 #class Material(models.Model):
     #id = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
