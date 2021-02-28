@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',  # Enable the inner app
-    'treenode'
+    'treenode'  #https://pypi.org/project/django-treenode/#description
 
 ]
 

@@ -48,5 +48,5 @@ def pages(request):
 
 @login_required(login_url="/login/")
 def show(request):
-    cat=TreeNodeModel.Category.object.get_ancestors_queryset().all()
+    cat = models.Category.objects.get_ancestors()
     return render(request, 'show.html', {'cat': cat})
