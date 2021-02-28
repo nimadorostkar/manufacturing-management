@@ -47,5 +47,5 @@ def pages(request):
 
 @login_required(login_url="/login/")
 def show(request):
-    places=nimaaaa
+    cat=models.Category.objects.get_ancestors()
     return render(request, 'show.html', {'places': places,'child': child})

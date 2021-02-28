@@ -13,29 +13,9 @@
         <div class="card card-chart">
           <div class="row">
 
-
-
-                  <figure>
                     {% for Place in places %}
-                     <ul class="tree">
-                       <li> {{ Place.name }}
-                       <ul>
-                           {% for input in Place.input.all %}
-                           <li>{{ input.name }}
-                           <ul>
-                             {% for input in input.input.all %}
-                              <li>{{ input.name }}</li>
-                             {% endfor %}
-                           </ul>
-                           </li>
-                           {% endfor %}
-                       </ul>
-                       </li>
-                     </ul>
-                     <br><hr>
+                      {{ Cat }}
                     {% endfor %}
-                 </figure>
-
 
           </div>
         </div>
