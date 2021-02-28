@@ -10,6 +10,7 @@ from treenode.models import TreeNodeModel
 
 
 
+
 class Category(TreeNodeModel):
 
     # the field used to display the model instance
