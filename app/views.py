@@ -4,6 +4,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django import template
 from . import models
+from treenode.models import TreeNodeModel
 
 
 
@@ -47,5 +48,5 @@ def pages(request):
 
 @login_required(login_url="/login/")
 def show(request):
-    cat=models.Category.objects.get_ancestors()
-    return render(request, 'show.html', {'places': places,'child': child})
+    cat=TreeNodeModel.Category.object.get_ancestors_queryset().all()
+    return render(request, 'show.html', {'cat': cat})
