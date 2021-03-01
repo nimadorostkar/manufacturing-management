@@ -20,5 +20,5 @@ class ProductAdmin(TreeNodeModelAdmin):
     form = TreeNodeForm
 
 
-admin.site.register(models.Station,PlaceAdmin)
+admin.site.register(models.Station,StationAdmin)
 admin.site.register(Product, ProductAdmin)
