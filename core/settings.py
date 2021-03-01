@@ -25,9 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',  # Enable the inner app
-    'treenode'  #https://pypi.org/project/django-treenode/#description
-
+    'app',        # Enable the inner app
+    'treenode'    #https://pypi.org/project/django-treenode/#description
 ]
 
 MIDDLEWARE = [
