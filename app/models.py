@@ -30,7 +30,7 @@ class Station(models.Model):
 class Product(TreeNodeModel):
     # the field used to display the model instance
     # default value 'pk'
-    treenode_display_field = 'name'
+    treenode_display_field = 'station'
 
     station = models.ForeignKey(Station,on_delete=models.CASCADE,verbose_name = "ایستگاه")
 
