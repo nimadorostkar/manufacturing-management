@@ -7,7 +7,6 @@ from . import models
 
 
 
-
 @login_required(login_url="/login/")
 def index(request):
 
