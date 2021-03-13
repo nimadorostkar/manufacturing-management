@@ -1,8 +1,8 @@
 from django.contrib import admin
 from . import models
 from django.contrib.admin.models import LogEntry
-from treenode.admin import TreeNodeModelAdmin
-from treenode.forms import TreeNodeForm
+
+
 from .models import Product
 
 
@@ -13,12 +13,12 @@ admin.site.site_title= "Tavankar"
 
 
 
-class StationAdmin(admin.ModelAdmin):
-	list_display = ('name','description')
-class ProductAdmin(TreeNodeModelAdmin):
-    treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_ACCORDION
-    form = TreeNodeForm
+#class StationAdmin(admin.ModelAdmin):
+#	list_display = ('name','description')
+#class ProductAdmin(TreeNodeModelAdmin):
+#    treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_ACCORDION
+#    form = TreeNodeForm
 
 
-admin.site.register(models.Station,StationAdmin)
-admin.site.register(Product, ProductAdmin)
+#admin.site.register(models.Station,StationAdmin)
+#admin.site.register(Product, ProductAdmin)
