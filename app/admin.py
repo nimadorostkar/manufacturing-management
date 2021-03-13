@@ -1,14 +1,35 @@
 from django.contrib import admin
 from . import models
 from django.contrib.admin.models import LogEntry
+from .models import MyNode
 
 
-from .models import Product
+from treebeard.admin import TreeAdmin
+from treebeard.forms import movenodeform_factory
+
+
+
 
 
 admin.site.register(LogEntry)
 admin.site.site_header= "  پنل مدیریت  "
 admin.site.site_title= "Tavankar"
+
+
+
+
+
+
+
+class MyAdmin(TreeAdmin):
+    form = movenodeform_factory(MyNode)
+
+admin.site.register(MyNode, MyAdmin)
+
+
+
+
+
 
 
 

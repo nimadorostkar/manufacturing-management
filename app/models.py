@@ -3,6 +3,21 @@ from django.contrib.auth.models import User
 from django.utils.html import format_html
 from django.urls import reverse
 
+from treebeard.mp_tree import MP_Node
+
+
+
+
+
+
+class MyNode(MP_Node):
+    name = models.CharField(max_length=30)
+
+    node_order_by = ['name']
+
+    def __str__(self):
+        return 'Category: {}'.format(self.name)
+
 
 
 
