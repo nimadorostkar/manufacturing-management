@@ -14,6 +14,20 @@
           <div class="row">
 
 
+            {% for item, info in annotated_list %}
+             {% if info.open %}
+                 <ul><li>
+             {% else %}
+                 </li><li>
+             {% endif %}
+
+             {{ item }}
+
+             {% for close in info.close %}
+                 </li></ul>
+             {% endfor %}
+            {% endfor %}
+
 
           </div>
         </div>
