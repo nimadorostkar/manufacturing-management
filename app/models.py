@@ -24,7 +24,6 @@ class Station(models.Model):
 
 
 
-
 #------------------------------------------------------------------------------
 class MyNode(MP_Node):
     place = models.OneToOneField(Station,on_delete=models.CASCADE,primary_key=True,verbose_name = "مشخصات")
