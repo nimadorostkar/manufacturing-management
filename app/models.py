@@ -25,9 +25,11 @@ class Station(models.Model):
 
 
 #------------------------------------------------------------------------------
-class MyNode(MP_Node):
-    place = models.ForeignKey(Station,on_delete=models.CASCADE,verbose_name = "Station")
-    node_order_by = ['place']
+
+class Category(MP_Node):
+    name = models.CharField(max_length=30)
+
+    node_order_by = ['name']
 
     def __str__(self):
-        return self.place
+        return 'Category: {}'.format(self.name)
