@@ -13,7 +13,7 @@ class Station(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     location=models.CharField(max_length=400,verbose_name = "location")
-    input=models.ForeignKey('self',on_delete=models.CASCADE,null=True,blank=True,verbose_name = "ورودی")
+    input=models.ManyToManyField('self',blank=True,verbose_name = "ورودی")
 
     class Meta:
         verbose_name = "ایستگاه"
@@ -26,8 +26,8 @@ class Station(models.Model):
 
 #------------------------------------------------------------------------------
 class MyNode(MP_Node):
-    place = models.OneToOneField(Station,on_delete=models.CASCADE,primary_key=True,verbose_name = "place")
+    place = models.ManyToManyField(Station,verbose_name = "place")
     node_order_by = ['place']
 
     def __str__(self):
-        return self.place
+        return self.place.name
