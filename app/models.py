@@ -25,7 +25,6 @@ class Station(models.Model):
 #------------------------------------------------------------------------------
 class Product(MP_Node):
     name = models.CharField(max_length=30)
-    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
 
     node_order_by = ['name']
 
