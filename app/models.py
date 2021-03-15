@@ -26,7 +26,7 @@ class Station(models.Model):
 
 #------------------------------------------------------------------------------
 class MyNode(MP_Node):
-    place = models.OneToOneField(Station,on_delete=models.CASCADE,primary_key=True,verbose_name = "مشخصات")
+    place = models.OneToOneField(Station,on_delete=models.CASCADE,primary_key=True,verbose_name = "place")
     node_order_by = ['place']
 
     def __str__(self):
