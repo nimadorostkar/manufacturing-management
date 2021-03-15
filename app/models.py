@@ -5,7 +5,6 @@ from django.urls import reverse
 from treebeard.mp_tree import MP_Node
 
 
-
 #------------------------------------------------------------------------------
 class Station(models.Model):
     CHOICES = ( ('M','Material'), ('S','Station'), ('P','Product') )
@@ -23,9 +22,7 @@ class Station(models.Model):
         return self.name
 
 
-
 #------------------------------------------------------------------------------
-
 class Product(MP_Node):
     name = models.CharField(max_length=30)
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
