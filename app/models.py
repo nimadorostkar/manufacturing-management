@@ -26,8 +26,9 @@ class Station(models.Model):
 
 #------------------------------------------------------------------------------
 class MyNode(MP_Node):
-    place = models.ManyToManyField(Station,verbose_name = "place")
+    name=models.CharField(max_length=400,verbose_name = "نام")
+    place = models.ManyToManyField(Station,verbose_name = "Station")
     node_order_by = ['place']
 
     def __str__(self):
-        return self.place.name
+        return self.name
