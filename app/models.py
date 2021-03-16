@@ -43,4 +43,4 @@ class Node(MPTTModel):
         verbose_name_plural = "محصولات"
 
     def __str__(self):
-        return self.name
+        return str(self.name)
