@@ -8,6 +8,8 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 
+
+
 #------------------------------------------------------------------------------
 class Station(models.Model):
     CHOICES = ( ('M','Material'), ('S','Station'), ('P','Product') )
@@ -27,9 +29,11 @@ class Station(models.Model):
 
 #------------------------------------------------------------------------------
 class Node(MPTTModel):
-    name = models.CharField(max_length=50, unique=True,verbose_name = "نام")
+    name = models.ForeignKey(Station, on_delete=models.CASCADE,verbose_name = "نام")
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
-    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    #escription=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    #q = models.CharField(max_length=25)
+
 
     class MPTTMeta:
         order_insertion_by = ['name']
