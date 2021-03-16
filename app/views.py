@@ -44,5 +44,5 @@ def pages(request):
 
 @login_required(login_url="/login/")
 def show(request):
-    annotated_list = 123
-    return render(request, 'show.html', {'annotated_list': annotated_list})
+    nodes= models.Node.objects.all()
+    return render(request, 'show.html', {'nodes': nodes})

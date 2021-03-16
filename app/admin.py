@@ -26,6 +26,7 @@ admin.site.register(models.Station,StationAdmin)
 
 
 #------------------------------------------------------------------------------
+ #https://django-mptt.readthedocs.io/en/latest/admin.html#mptt-admin-draggablempttadmin
 class CustomMPTTModelAdmin(MPTTModelAdmin):
     mptt_level_indent = 20   # specify pixel amount for this ModelAdmin only
     #mptt_indent_field = "some_node_field"

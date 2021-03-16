@@ -13,7 +13,19 @@
         <div class="card card-chart">
           <div class="row">
 
-
+            {% load mptt_tags %}
+              <ul>
+                  {% recursetree nodes %}
+                      <li>
+                          {{ node.name }}
+                          {% if not node.is_leaf_node %}
+                              <ul class="children">
+                                  {{ children }}
+                              </ul>
+                          {% endif %}
+                      </li>
+                  {% endrecursetree %}
+              </ul>
 
 
           </div>
