@@ -2,10 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.html import format_html
 from django.urls import reverse
-
-from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
-
 
 
 
