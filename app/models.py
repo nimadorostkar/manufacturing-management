@@ -35,3 +35,10 @@ class Node(MPTTModel):
 
     class MPTTMeta:
         order_insertion_by = ['name']
+
+    class Meta:
+        verbose_name = "محصول"
+        verbose_name_plural = "محصولات"
+
+    def __str__(self):
+        return self.name
