@@ -4,7 +4,7 @@ from django.contrib.admin.models import LogEntry
 
 from django.contrib import admin
 from mptt.admin import MPTTModelAdmin
-from myproject.myapp.models import Node
+from app.models import Node
 
 
 
