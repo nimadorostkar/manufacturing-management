@@ -27,8 +27,9 @@ class Station(models.Model):
 
 #------------------------------------------------------------------------------
 class Node(MPTTModel):
-    name = models.CharField(max_length=50, unique=True)
-    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+    name = models.CharField(max_length=50, unique=True,verbose_name = "نام")
+    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
+    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
 
     class MPTTMeta:
         order_insertion_by = ['name']
