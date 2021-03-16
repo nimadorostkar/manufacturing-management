@@ -3,7 +3,7 @@ from . import models
 from django.contrib.admin.models import LogEntry
 from mptt.admin import MPTTModelAdmin
 from mptt.admin import DraggableMPTTAdmin
-from app.models import Node
+from app.models import Product
 
 
 admin.site.register(LogEntry)
