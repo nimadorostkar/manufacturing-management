@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.html import format_html
 from django.urls import reverse
-from treebeard.mp_tree import MP_Node
+
 
 
 #------------------------------------------------------------------------------
@@ -23,14 +23,3 @@ class Station(models.Model):
 
 
 #------------------------------------------------------------------------------
-class Product(MP_Node):
-    name = models.CharField(max_length=30)
-
-    node_order_by = ['name']
-
-    class Meta:
-        verbose_name = "محصول"
-        verbose_name_plural = "محصولات"
-
-    def __str__(self):
-        return self.name
