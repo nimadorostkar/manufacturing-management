@@ -8,8 +8,6 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 
-
-
 #------------------------------------------------------------------------------
 class Station(models.Model):
     CHOICES = ( ('M','Material'), ('S','Station'), ('P','Product') )
