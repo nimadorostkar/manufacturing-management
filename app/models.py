@@ -24,6 +24,7 @@ class Station(models.Model):
 
 
 #------------------------------------------------------------------------------
+# MPTT Model -->  https://django-mptt.readthedocs.io/en/latest/index.html
 class Product(MPTTModel):
     name = models.ForeignKey(Station, on_delete=models.CASCADE,verbose_name = "نام")
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
