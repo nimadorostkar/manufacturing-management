@@ -5,7 +5,6 @@ from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
 
 
-
 #------------------------------------------------------------------------------
 class Station(models.Model):
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station') )
@@ -30,7 +29,6 @@ class Product(MPTTModel):
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     quantity = models.IntegerField(verbose_name = "تعداد")
-
 
     class MPTTMeta:
         order_insertion_by = ['name']
