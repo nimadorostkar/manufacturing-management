@@ -17,7 +17,7 @@ class Station(models.Model):
     location=models.CharField(max_length=400,verbose_name = "location")
     input=models.ManyToManyField('Station',blank=True,verbose_name = "ورودی")
 
-    
+
     class Meta:
         verbose_name = "ایستگاه"
         verbose_name_plural = " ایستگاه ها"
@@ -26,7 +26,7 @@ class Station(models.Model):
         return self.name
 
 
-    
+
 
 #------------------------------------------------------------------------------
 class Product(TreeNodeModel):
@@ -39,5 +39,3 @@ class Product(TreeNodeModel):
     class Meta(TreeNodeModel.Meta):
         verbose_name = 'محصول'
         verbose_name_plural = 'محصول ها'
-
-
