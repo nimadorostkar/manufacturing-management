@@ -47,5 +47,3 @@ class Product(MPTTModel):
     class Meta(TreeNodeModel.Meta):
         verbose_name = 'محصول'
         verbose_name_plural = 'محصول ها'
-
-        
