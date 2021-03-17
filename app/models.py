@@ -24,7 +24,6 @@ class Station(models.Model):
         return self.name
 
 
-
 #------------------------------------------------------------------------------
 # MPTT Model -->  https://django-mptt.readthedocs.io/en/latest/index.html
 class Product(MPTTModel):
