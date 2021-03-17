@@ -1,9 +1,9 @@
 from django.contrib import admin
 from . import models
 from django.contrib.admin.models import LogEntry
-from treenode.admin import TreeNodeModelAdmin
-from treenode.forms import TreeNodeForm
-from .models import Product
+from mptt.admin import MPTTModelAdmin
+from mptt.admin import DraggableMPTTAdmin
+from app.models import Product
 
 
 admin.site.register(LogEntry)
@@ -13,12 +13,23 @@ admin.site.site_title= "Tavankar"
 
 
 
+
+#------------------------------------------------------------------------------
 class StationAdmin(admin.ModelAdmin):
 	list_display = ('name','description')
-class ProductAdmin(TreeNodeModelAdmin):
-    treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_ACCORDION
-    form = TreeNodeForm
-
 
 admin.site.register(models.Station,StationAdmin)
-admin.site.register(Product, ProductAdmin)
+
+
+
+
+#------------------------------------------------------------------------------
+ #https://django-mptt.readthedocs.io/en/latest/admin.html#mptt-admin-draggablempttadmin
+class CustomMPTTModelAdmin(MPTTModelAdmin):
+    mptt_level_indent = 20   # specify pixel amount for this ModelAdmin only
+    #mptt_indent_field = "some_node_field"
+
+admin.site.register(Product,DraggableMPTTAdmin,
+    list_display=('tree_actions','indented_title',),
+    list_display_links=('indented_title',),
+	)
