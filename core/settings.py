@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',     # Enable the inner app
     'mptt',    # https://django-mptt.readthedocs.io/en/latest/index.html
-    'location_field.apps.DefaultConfig'  #https://django-location-field.readthedocs.io/en/latest/install.html
+    'mapbox_location_field'  #
 
 ]
 
@@ -80,15 +80,7 @@ DATABASES = {
 
 ######################## location ##########################
 
-LOCATION_FIELD = {
-    'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
-    'provider.google.api_key': 'AIzaSyAqaVwnnUeLUNgvMjCG27Ba9Ma0yNo37tM',
-    'provider.google.api_libraries': '',
-    'provider.google.map.type': 'ROADMAP',
-}
-
-
-
+MAPBOX_KEY = "pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbWZjenNyMjA5MGYybnMwNjRrd3BlbG8ifQ.Ytgsb2uv9XqoLK52HQ_pEw"
 
 
 

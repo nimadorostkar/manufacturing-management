@@ -3,7 +3,9 @@ from django.contrib.auth.models import User
 from django.utils.html import format_html
 from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
-from location_field.models.plain import PlainLocationField
+from mapbox_location_field.models import LocationField
+
+
 
 #------------------------------------------------------------------------------
 class Station(models.Model):
@@ -11,10 +13,9 @@ class Station(models.Model):
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    location=models.CharField(max_length=400,verbose_name = "location")
     input=models.ManyToManyField('self',blank=True,verbose_name = "ورودی")
-    city = models.CharField(max_length=255)
-    location = PlainLocationField(based_fields=['city'], zoom=7)
+    city=models.CharField(max_length=70)
+    location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"})
 
 
     class Meta:
