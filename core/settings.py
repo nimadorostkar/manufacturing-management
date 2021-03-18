@@ -26,8 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',    # Enable the inner app
-    'mptt'    # https://django-mptt.readthedocs.io/en/latest/index.html
+    'app',     # Enable the inner app
+    'mptt',    # https://django-mptt.readthedocs.io/en/latest/index.html
+    'location_field.apps.DefaultConfig'  #https://django-location-field.readthedocs.io/en/latest/install.html
 
 ]
 

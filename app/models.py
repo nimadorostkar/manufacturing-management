@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.html import format_html
 from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
-
+from location_field.models.plain import PlainLocationField
 
 #------------------------------------------------------------------------------
 class Station(models.Model):
@@ -13,6 +13,8 @@ class Station(models.Model):
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     location=models.CharField(max_length=400,verbose_name = "location")
     input=models.ManyToManyField('self',blank=True,verbose_name = "ورودی")
+    city = models.CharField(max_length=255)
+    location = PlainLocationField(based_fields=['city'], zoom=7)
 
     class Meta:
         verbose_name = "ایستگاه"
