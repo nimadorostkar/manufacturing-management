@@ -10,7 +10,6 @@ from mapbox_location_field.models import LocationField
 
 
 
-
 #------------------------------------------------------------------------------
 class Station(models.Model):
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station') )
@@ -21,13 +20,13 @@ class Station(models.Model):
     city=models.CharField(max_length=70)
     location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"})
 
-
     class Meta:
         verbose_name = "ایستگاه"
         verbose_name_plural = " ایستگاه ها"
 
     def __str__(self):
         return self.name
+
 
 
 #------------------------------------------------------------------------------
