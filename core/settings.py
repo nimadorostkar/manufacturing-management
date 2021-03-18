@@ -78,7 +78,7 @@ DATABASES = {
 
 
 
-######### location ################
+######################## location ##########################
 
 LOCATION_FIELD = {
     'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
