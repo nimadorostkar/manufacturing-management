@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',     # Enable the inner app
     'mptt',    # https://django-mptt.readthedocs.io/en/latest/index.html
-    'mapbox_location_field'  #
+    'mapbox_location_field'  # https://github.com/simon-the-shark/django-mapbox-location-field
 
 ]
 
@@ -79,8 +79,10 @@ DATABASES = {
 
 
 ######################## location ##########################
-
+#  https://account.mapbox.com/
 MAPBOX_KEY = "pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbWZjenNyMjA5MGYybnMwNjRrd3BlbG8ifQ.Ytgsb2uv9XqoLK52HQ_pEw"
+
+
 
 
 

@@ -7,6 +7,10 @@ from mapbox_location_field.models import LocationField
 
 
 
+
+
+
+
 #------------------------------------------------------------------------------
 class Station(models.Model):
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station') )
