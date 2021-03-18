@@ -4,6 +4,12 @@ from django.contrib.admin.models import LogEntry
 from mptt.admin import MPTTModelAdmin
 from mptt.admin import DraggableMPTTAdmin
 from app.models import Product
+from app.models import Station
+from mapbox_location_field.admin import MapAdmin
+
+
+
+
 
 
 admin.site.register(LogEntry)
@@ -17,7 +23,7 @@ admin.site.site_title= "Tavankar"
 class StationAdmin(admin.ModelAdmin):
 	list_display = ('name','description')
 
-admin.site.register(models.Station,StationAdmin)
+admin.site.register(Station,MapAdmin)
 
 
 
