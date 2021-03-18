@@ -78,6 +78,18 @@ DATABASES = {
 
 
 
+######### location ################
+
+LOCATION_FIELD = {
+    'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
+    'provider.google.api_key': 'AIzaSyAykd5c1krwGFhbUClYke902IJAweh5YXQ',
+    'provider.google.api_libraries': '',
+    'provider.google.map.type': 'ROADMAP',
+}
+
+
+
+
 
 
 # Password validation

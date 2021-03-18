@@ -13,6 +13,8 @@ class Station(models.Model):
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     location=models.CharField(max_length=400,verbose_name = "location")
     input=models.ManyToManyField('self',blank=True,verbose_name = "ورودی")
+    city = models.CharField(max_length=255)
+    location = PlainLocationField(based_fields=['city'], zoom=7)
 
 
     class Meta:
