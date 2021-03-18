@@ -11,4 +11,3 @@ gunicorn
 whitenoise
 Pillow
 django-mptt
-django-location-field
