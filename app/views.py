@@ -6,6 +6,9 @@ from django import template
 from . import models
 
 
+
+
+
 @login_required(login_url="/login/")
 def index(request):
 
@@ -14,6 +17,7 @@ def index(request):
 
     html_template = loader.get_template( 'index.html' )
     return HttpResponse(html_template.render(context, request))
+
 
 
 
@@ -42,7 +46,10 @@ def pages(request):
 
 
 
+
 @login_required(login_url="/login/")
 def show(request):
     nodes= models.Product.objects.all()
+    #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
+    #nodes= models.Product.objects.filter(quantity=2)
     return render(request, 'show.html', {'nodes': nodes})
