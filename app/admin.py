@@ -26,6 +26,14 @@ class StationAdmin(admin.ModelAdmin):
 admin.site.register(Station,MapAdmin)
 
 
+#------------------------------------------------------------------------------
+class ProductAdmin(admin.ModelAdmin):
+	list_display = ('name','description')
+
+admin.site.register(Product,MapAdmin)
+
+
+
 
 #------------------------------------------------------------------------------
  #https://django-mptt.readthedocs.io/en/latest/admin.html#mptt-admin-draggablempttadmin
