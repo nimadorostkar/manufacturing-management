@@ -16,7 +16,7 @@ class Station(models.Model):
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
     name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    input=models.ForeignKey('self',on_delete=models.CASCADE,verbose_name = "ورودی")
+    input=models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True,verbose_name = "ورودی")
     city=models.CharField(max_length=70)
     location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"})
 

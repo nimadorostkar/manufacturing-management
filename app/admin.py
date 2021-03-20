@@ -30,7 +30,8 @@ admin.site.register(Station,MapAdmin)
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('name','description')
 
-admin.site.register(Product,MapAdmin)
+admin.site.register(models.Product,ProductAdmin)
+
 
 
 
