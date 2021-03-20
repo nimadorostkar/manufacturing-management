@@ -49,7 +49,7 @@ def pages(request):
 
 @login_required(login_url="/login/")
 def show(request):
-    nodes= models.Product.objects.all()
+    nodes= models.Tree.objects.all()
     #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
     #nodes= models.Product.objects.filter(quantity=2)
     return render(request, 'show.html', {'nodes': nodes})
