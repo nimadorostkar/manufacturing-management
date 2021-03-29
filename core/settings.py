@@ -42,11 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'app',     # Enable the inner app
-    'mptt',    # https://django-mptt.readthedocs.io/en/latest/index.html
+    'app',        # Enable the inner app
+    'mptt',       # https://django-mptt.readthedocs.io/en/latest/index.html
     'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field
-    # Third Party - 1) All Auth
-    'allauth',
+    'allauth',    # Third Party - 1) All Auth
     'allauth.account',
     'allauth.socialaccount','allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
@@ -188,7 +187,19 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
+#########################################################
 
+LEAFLET_CONFIG = {
+
+"DEFAULT_CENTER" : (40.5, -0.09),
+"DEFAULT_ZOOM" : 1,
+"MAX_ZOOM" : 20,
+"MIN_ZOOM" : 3,
+#"SCALE" : 'both’,
+'DEFAULT_PRECISION': 6,
+"ATTRIBUTION_PREFIX" : "My Custome Leaflet map"
+
+}
 
 
 # Internationalization
