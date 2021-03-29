@@ -21,7 +21,7 @@ admin.site.site_title= "Tavankar"
 
 #------------------------------------------------------------------------------
 class StationAdmin(admin.ModelAdmin):
-	list_display = ('name','description')
+	list_display = ('name','description', 'inputs')
 
 admin.site.register(Station,MapAdmin)
 
