@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'app',     # Enable the inner app
     'mptt',    # https://django-mptt.readthedocs.io/en/latest/index.html
     'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field
