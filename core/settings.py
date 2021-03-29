@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     # Third Party - 1) All Auth
     'allauth',
     'allauth.account',
-    'allauth.socialaccount'
-
+    'allauth.socialaccount','allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -64,8 +66,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
-LOGIN_REDIRECT_URL = "home"   # Route defined in app/urls.py
-LOGOUT_REDIRECT_URL = "home"  # Route defined in app/urls.py
+#LOGIN_REDIRECT_URL = "home"   # Route defined in app/urls.py
+#LOGOUT_REDIRECT_URL = "home"  # Route defined in app/urls.py
 TEMPLATE_DIR = os.path.join(BASE_DIR, "core/templates")  # ROOT dir for templates
 
 TEMPLATES = [
@@ -123,6 +125,67 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+
+
+
+
+ACCOUNT_AUTHENTICATION_METHOD = ("username")
+#ACCOUNT_EMAIL_VERIFICATION = ("none")
+ACCOUNT_EMAIL_VERIFICATION = ('mandatory')
+ACCOUNT_SIGNUP_PASSWORD_VERIFICATION  = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = True
+EMAIL_CONFIRMATION_SIGNUP = True
+ACCOUNT_EMAIL_REQUIRED =True
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET =False
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+SOCIALACCOUNT_QUERY_EMAIL = (ACCOUNT_EMAIL_REQUIRED)
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_AVATAR_SUPPORT = ( 'avatar' in INSTALLED_APPS)
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = SERVER_EMAIL = 'nimadorostkar97@gmail.com'
+EMAIL_HOST_PASSWORD = 'uwiuhrmphbdhysyn'
+EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
+
+
+
+# Required for all-auth
+SITE_ID = 1
+
+
+# Provider specific settings for all-auth apps
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'APP': {
+            'client_id': str(os.getenv('FACEBOOK_CLIENT_ID')),
+            'secret': str(os.getenv('FACEBOOK_SECRET_KEY')),
+            'key': ''
+        }
+    },
+    'google': {
+        'APP': {
+            'client_id': '1001926169320-i749100fk3578u1opss736rbt1nghnik.apps.googleusercontent.com',
+            'secret': 'mKqAB7SKk4C-ck8FIIuQlE3l',
+            'key': ''
+        }
+    },
+    'twitter': {
+        'APP': {
+            'client_id': str(os.getenv('TWITTER_CLIENT_ID')),
+            'secret': str(os.getenv('TWITTER_SECRET_KEY')),
+            'key': ''
+        }
+    }
+}
 
 
 
