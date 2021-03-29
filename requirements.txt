@@ -13,3 +13,4 @@ Pillow
 django-mptt
 django-mapbox-location-field
 django-grappelli
+django-allauth
