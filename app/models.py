@@ -12,14 +12,18 @@ from mapbox_location_field.models import LocationField
 
 
 #------------------------------------------------------------------------------
-class Station(models.Model):
+class Station(MPTTModel):
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station') )
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
     name=models.CharField(max_length=400,verbose_name = "نام")
+    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    input=models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True,verbose_name = "ورودی")
-    city=models.CharField(max_length=70)
-    location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"})
+    #input=models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True,verbose_name = "ورودی")
+    #city=models.CharField(max_length=70)
+    #location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"})
+
+    class MPTTMeta:
+        order_insertion_by = ['name']
 
     class Meta:
         verbose_name = "ایستگاه"
