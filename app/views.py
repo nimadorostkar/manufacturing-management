@@ -9,7 +9,7 @@ from . import models
 
 
 
-@login_required(login_url="/login/")
+@login_required()
 def index(request):
 
     context = {}
@@ -21,7 +21,7 @@ def index(request):
 
 
 
-@login_required(login_url="/login/")
+@login_required()
 def pages(request):
     context = {}
     # All resource paths end in .html.
@@ -47,7 +47,7 @@ def pages(request):
 
 
 
-@login_required(login_url="/login/")
+@login_required()
 def show(request):
     nodes= models.Tree.objects.all()
     #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
