@@ -32,13 +32,11 @@ admin.site.register(Station,DraggableMPTTAdmin,
 
 
 
-
 #------------------------------------------------------------------------------
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('name','description')
 
 admin.site.register(models.Product,ProductAdmin)
-
 
 
 
