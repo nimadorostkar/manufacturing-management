@@ -12,17 +12,18 @@ from mapbox_location_field.models import LocationField
 
 
 #------------------------------------------------------------------------------
-class Station(models.Model):
+class Station(MPTTModel):
+    name=models.CharField(max_length=400,verbose_name = "نام")
+    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station') )
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
-    name=models.CharField(max_length=400,verbose_name = "نام")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-    input=models.ManyToManyField('self', blank=True, verbose_name = "ورودی")
     #city=models.CharField(max_length=70)
     #location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"})
 
-    def inputs(self):
-          return str(self.input for self in objects.all())
+    class MPTTMeta:
+        level_attr = 'mptt_level'
+        order_insertion_by=['name']
 
     class Meta:
         verbose_name = "ایستگاه"
@@ -55,10 +56,11 @@ class Product(models.Model):
 class Tree(MPTTModel):
     name = models.ForeignKey(Station, on_delete=models.CASCADE,verbose_name = "نام")
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
-    relatedProduct=models.OneToOneField(Product,on_delete=models.CASCADE,primary_key=True,verbose_name = "محصول مرتبط")
+    relatedProduct=models.ManyToManyField(Product,verbose_name = "محصول مرتبط")
     quantity = models.IntegerField(verbose_name = "ضریب مصرف")
 
     class MPTTMeta:
+        level_attr = 'mptt_level'
         order_insertion_by = ['name']
 
     class Meta:

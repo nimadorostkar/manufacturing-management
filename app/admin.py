@@ -20,10 +20,17 @@ admin.site.site_title= "Tavankar"
 
 
 #------------------------------------------------------------------------------
-class StationAdmin(admin.ModelAdmin):
-	list_display = ('name','description', 'inputs')
+ #https://django-mptt.readthedocs.io/en/latest/admin.html#mptt-admin-draggablempttadmin
+class StationMPTTModelAdmin(MPTTModelAdmin):
+    mptt_level_indent = 20   # specify pixel amount for this ModelAdmin only
+    #mptt_indent_field = "some_node_field"
 
-admin.site.register(Station,MapAdmin)
+admin.site.register(Station,DraggableMPTTAdmin,
+    list_display=('tree_actions','indented_title',),
+    list_display_links=('indented_title',),
+	)
+
+
 
 
 #------------------------------------------------------------------------------
@@ -38,7 +45,7 @@ admin.site.register(models.Product,ProductAdmin)
 
 #------------------------------------------------------------------------------
  #https://django-mptt.readthedocs.io/en/latest/admin.html#mptt-admin-draggablempttadmin
-class CustomMPTTModelAdmin(MPTTModelAdmin):
+class TreeMPTTModelAdmin(MPTTModelAdmin):
     mptt_level_indent = 20   # specify pixel amount for this ModelAdmin only
     #mptt_indent_field = "some_node_field"
 
