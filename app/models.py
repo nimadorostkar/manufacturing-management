@@ -10,7 +10,6 @@ from mapbox_location_field.models import LocationField
 
 
 
-
 #------------------------------------------------------------------------------
 class Station(MPTTModel):
     name=models.CharField(max_length=400,verbose_name = "نام")
@@ -31,7 +30,6 @@ class Station(MPTTModel):
 
     def __str__(self):
         return self.name
-
 
 
 
