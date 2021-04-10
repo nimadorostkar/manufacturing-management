@@ -16,8 +16,8 @@ class Station(models.Model):
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
     inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
-    city=models.CharField(max_length=70)
-    location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"})
+    #city=models.CharField(max_length=70)
+    #location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"})
 
     class MPTTMeta:
         level_attr = 'mptt_level'
