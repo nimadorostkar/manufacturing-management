@@ -11,7 +11,6 @@ from mapbox_location_field.admin import MapAdmin
 
 
 
-
 admin.site.register(LogEntry)
 admin.site.site_header= "  پنل مدیریت  "
 admin.site.site_title= "Tavankar"
@@ -20,15 +19,10 @@ admin.site.site_title= "Tavankar"
 
 
 #------------------------------------------------------------------------------
- #https://django-mptt.readthedocs.io/en/latest/admin.html#mptt-admin-draggablempttadmin
-class StationMPTTModelAdmin(MPTTModelAdmin):
-    mptt_level_indent = 20   # specify pixel amount for this ModelAdmin only
-    #mptt_indent_field = "some_node_field"
+class StationAdmin(admin.ModelAdmin):
+    list_display = ('name','description')
 
-admin.site.register(Station,DraggableMPTTAdmin,
-    list_display=('tree_actions','indented_title',),
-    list_display_links=('indented_title',),
-	)
+admin.site.register(models.Station,StationAdmin)
 
 
 

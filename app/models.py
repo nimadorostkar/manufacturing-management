@@ -4,15 +4,14 @@ from django.utils.html import format_html
 from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
 from mapbox_location_field.models import LocationField
-
+from sortedone2many.fields import SortedOneToManyField
 
 
 
 
 #------------------------------------------------------------------------------
-class Station(MPTTModel):
+class Station(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
-    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station') )
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
