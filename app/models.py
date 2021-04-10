@@ -15,6 +15,7 @@ class Station(models.Model):
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station') )
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    #capacity = models.IntegerField(blank=True, verbose_name = " ظرفیت ")
     inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
     #city=models.CharField(max_length=70)
     #location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"})
@@ -55,7 +56,7 @@ class Tree(MPTTModel):
     name = models.ForeignKey(Station, on_delete=models.CASCADE,verbose_name = "نام")
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
     relatedProduct=models.ManyToManyField(Product,verbose_name = "محصول مرتبط")
-    quantity = models.IntegerField(verbose_name = "ضریب مصرف")
+    quantity = models.IntegerField(default='1',verbose_name = "تعداد در یک محصول")
 
     class MPTTMeta:
         level_attr = 'mptt_level'
