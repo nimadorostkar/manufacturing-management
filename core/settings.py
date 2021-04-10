@@ -45,11 +45,10 @@ INSTALLED_APPS = [
     'app',        # Enable the inner app
     'mptt',       # https://django-mptt.readthedocs.io/en/latest/index.html
     'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field
+    'sortedm2m',  # https://pypi.org/project/django-sortedone2many/
     'allauth',    # Third Party - 1) All Auth
     'allauth.account',
-    'allauth.socialaccount','allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.twitter'
+    'allauth.socialaccount'
 ]
 
 
