@@ -6,6 +6,7 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
+{% load mptt_tags %}
 
 
     <div class="row">
@@ -14,11 +15,12 @@
 
             <div class="tree">
 
-              {% load mptt_tags %}
+
 
                 <ul>
                     {% recursetree nodes %}
                         <li>
+                          {{ node.name__position }}
                           <a href="#"> {{ node.name }} </a>
                             {% if not node.is_leaf_node %}
                                 <ul class="children">
@@ -29,7 +31,10 @@
                     {% endrecursetree %}
                 </ul>
 
-
+           <hr>
+              {% for Tree in nodes %}
+                {{ Tree.name }}
+              {% endfor %}
 
           </div>
         </div>
