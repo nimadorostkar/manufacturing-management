@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
 from mapbox_location_field.models import LocationField
-from sortedone2many.fields import SortedOneToManyField
+
 
 
 
