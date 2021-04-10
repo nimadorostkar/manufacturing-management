@@ -20,7 +20,10 @@
                 <ul>
                     {% recursetree nodes %}
                         <li>
-                          {{ node.name__position }}
+                          {% if node.name.position == "M" %}📦{% endif %}
+                          {% if node.name.position == "R" %}🛖{% endif %}
+                          {% if node.name.position == "T" %}🚛{% endif %}
+                          {% if node.name.position == "S" %}🏭{% endif %}
                           <a href="#"> {{ node.name }} </a>
                             {% if not node.is_leaf_node %}
                                 <ul class="children">
@@ -31,10 +34,6 @@
                     {% endrecursetree %}
                 </ul>
 
-           <hr>
-              {% for Tree in nodes %}
-                {{ Tree.name }}
-              {% endfor %}
 
           </div>
         </div>

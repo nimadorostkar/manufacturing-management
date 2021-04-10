@@ -68,3 +68,6 @@ class Tree(MPTTModel):
 
     def __str__(self):
         return str(self.name)
+
+    def position(self):
+        return  self.name.position
