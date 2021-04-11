@@ -13,28 +13,90 @@
       <div class="col-12">
         <div class="card card-chart">
 
-            <div class="tree">
 
 
-                <ul>
-                    {% recursetree nodes %}
-                        <li>
-                          {% if node.name.position == "M" %}📦{% endif %}
-                          {% if node.name.position == "R" %}🛖{% endif %}
-                          {% if node.name.position == "T" %}🚛{% endif %}
-                          {% if node.name.position == "S" %}🏭{% endif %}
-                          <a href="#"> {{ node.name }} </a>
-                            {% if not node.is_leaf_node %}
-                                <ul class="children">
-                                    {{ children }}
-                                </ul>
-                            {% endif %}
-                        </li>
-                    {% endrecursetree %}
-                </ul>
+            <button onclick="sampleDiv.style.zoom='20%'"> Zoom 20% </button>
+            <button onclick="sampleDiv.style.zoom='30%'">  Zoom 30%  </button>
+            <button onclick="sampleDiv.style.zoom='40%'"> Zoom 40% </button>
 
 
-          </div>
+
+            <div id="sampleDiv" style="width: 3000px; height:1000px; ">
+            <!-- partial:index.partial.html -->
+            <div class="pg-orgchart">
+             <div class="org-chart">
+               <ul>
+                 <li>
+                   <div class="user">
+                     <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                     <div class="name">Luann Brannick</div>
+                     <div class="role">System Architect</div>
+                     <a class="manager" href="#">Mike Dinardo</a>
+                   </div>
+                   <ul>
+                     <li>
+                       <div class="user">
+                         <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                         <div class="name">Lynn Maynard</div>
+                         <div class="role">System Architect</div>
+                         <a class="manager" href="#">Luann Brannick</a>
+                       </div>
+                       <ul>
+                         <li>
+                           <div class="user">
+                             <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                             <div class="name">Fleta Odriscoll</div>
+                             <div class="role">System Architect</div>
+                             <a class="manager" href="#">Lynn Maynard</a>
+                           </div>
+                         </li>
+                         <li>
+                           <div class="user">
+                             <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                             <div class="name">Fleta Odriscoll</div>
+                             <div class="role">System Architect</div>
+                             <a class="manager" href="#">Lynn Maynard</a>
+                           </div>
+                         </li>
+                       </ul>
+                     </li>
+                     <li>
+                       <div class="user">
+                         <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                         <div class="name">Jahn Philson Doe</div>
+                         <div class="role">System Architect</div>
+                         <a class="manager" href="#">Luann Brannick</a>
+                       </div>
+                       <ul>
+                         <li>
+                           <div class="user">
+                             <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                             <div class="name">Roy Lemarie</div>
+                             <div class="role">System Architect</div>
+                             <a class="manager" href="#">Jahn Philson Doe</a>
+                           </div>
+                         </li>
+                         <li>
+                           <div class="user">
+                             <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                             <div class="name">Eloisa Stubbolo</div>
+                             <div class="role">System Architect</div>
+                             <a class="manager" href="#">Jahn Philson Doe</a>
+                           </div>
+                         </li>
+                       </ul>
+                     </li>
+                   </ul>
+                 </li>
+               </ul>
+             </div>
+            </div>
+            <!-- partial -->
+
+            </div>
+
+
+
         </div>
       </div>
     </div>

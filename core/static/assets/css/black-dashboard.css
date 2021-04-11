@@ -20456,89 +20456,112 @@ Copyright (c) 2015 Daniel Eden
 
 /* ------------  tree css --------------   */
 
-.tree ul {
-  position: relative;
-  padding: 1em 0;
-  white-space: nowrap;
-  margin: 0 auto;
-  text-align: center;
-}
-.tree ul::after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
-.tree li {
-  display: inline-block;
-  vertical-align: top;
-  text-align: center;
-  list-style-type: none;
+.org-chart {
+  display: flex;
+  justify-content: center;
+}
+.org-chart ul {
+  padding-top: 20px;
   position: relative;
-  padding: 1em 0.5em 0 0.5em;
+  transition: all 0.5s;
 }
-.tree li::before, .tree li::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 50%;
-  border-top: 1px solid #ccc;
-  width: 50%;
-  height: 1em;
-}
-.tree li::after {
-  right: auto;
-  left: 50%;
-  border-left: 1px solid #ccc;
-}
-.tree li:only-child::after, .tree li:only-child::before {
-  display: none;
-}
-.tree li:only-child {
-  padding-top: 0;
-}
-.tree li:first-child::before, .tree li:last-child::after {
-  border: 0 none;
-}
-.tree li:last-child::before {
-  border-right: 1px solid #ccc;
-  border-radius: 0 5px 0 0;
-}
-.tree li:first-child::after {
-  border-radius: 5px 0 0 0;
-}
-
-.tree ul ul::before {
+.org-chart ul ul::before {
   content: "";
   position: absolute;
   top: 0;
   left: 50%;
   border-left: 1px solid #ccc;
   width: 0;
-  height: 1em;
 }
-
-.tree li a {
-  border: 1px solid #ccc;
-  padding: 0.5em 0.75em;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 5px;
-  color: #b260ef;
+.org-chart li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
   position: relative;
-  top: 1px;
+  padding: 20px 10px;
+  transition: all 0.5s;
 }
-
-.tree li a:hover,
-.tree li a:hover + ul li a {
-  background: #e9453f;
-  color: #fff;
-  border: 1px solid #e9453f;
+.org-chart li::before, .org-chart li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #ccc;
+  width: 50%;
+  height: 20px;
 }
-
-.tree li a:hover + ul li::after,
-.tree li a:hover + ul li::before,
-.tree li a:hover + ul::before,
-.tree li a:hover + ul ul::before {
-  border-color: #e9453f;
+.org-chart li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+.org-chart li:only-child::after, .org-chart li:only-child::before {
+  display: none;
+}
+.org-chart li:only-child {
+  padding-top: 0;
+}
+.org-chart li:first-child::before, .org-chart li:last-child::after {
+  border: 0 none;
+}
+.org-chart li:last-child::before {
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+}
+.org-chart li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+.org-chart li .user {
+  text-decoration: none;
+  color: #666;
+  display: inline-block;
+  padding: 20px 10px;
+  transition: all 0.5s;
+  background: #fff;
+  min-width: 180px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.org-chart li .user:hover, .org-chart li .user:hover + ul li .user {
+  background: #b5d5ef;
+  color: #002A50;
+  transition: all 0.15s;
+  transform: translateY(-5px);
+  box-shadow: inset 0 0 0 3px #76b1e1, 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.org-chart li .user:hover img, .org-chart li .user:hover + ul li .user img {
+  box-shadow: 0 0 0 5px #4c99d8;
+}
+.org-chart li .user:hover + ul li::after,
+.org-chart li .user:hover + ul li::before,
+.org-chart li .user:hover + ul::before,
+.org-chart li .user:hover + ul ul::before {
+  border-color: #94a0b4;
+}
+.org-chart li .user > div, .org-chart li .user > a {
+  font-size: 12px;
+}
+.org-chart li .user img {
+  margin: 0 auto;
+  max-width: 60px;
+  max-width: 60px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #aaa;
+}
+.org-chart li .user .name {
+  font-size: 16px;
+  margin: 15px 0 0;
+  font-weight: 300;
+}
+.org-chart li .user .role {
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+.org-chart li .user .manager {
+  font-size: 12px;
+  color: #b21e04;
 }
