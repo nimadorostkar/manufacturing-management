@@ -49,7 +49,6 @@ class Profile(models.Model):
 
 
 
-
 #------------------------------------------------------------------------------
 class Station(models.Model):
     name = models.CharField(max_length=400,verbose_name = "نام")
@@ -59,7 +58,6 @@ class Station(models.Model):
     capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "مسئول")
     inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
-    #city=models.CharField(max_length=70)
     location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"}, verbose_name = "لوکیشن")
 
     class MPTTMeta:
