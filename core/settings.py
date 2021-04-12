@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'app',        # Enable the inner app
     'mptt',       # https://django-mptt.readthedocs.io/en/latest/index.html
-    'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field
+    'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field         https://account.mapbox.com/
     'allauth',    # Third Party - 1) All Auth
     'allauth.account',
     'allauth.socialaccount'
