@@ -15,12 +15,14 @@
       </div>
       <div class="card-body">
 
-        <div id='map'></div>
+        <div id='map' width="100%" style='height:400px'></div>
         <script>
           mapboxgl.accessToken = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA';
           var map = new mapboxgl.Map({
           container: 'map',
-          style: 'mapbox://styles/mapbox/streets-v11'
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: [-77.03, 38.91],
+          zoom: 9
           });
         </script>
 
@@ -39,7 +41,7 @@
 <script>
   $(document).ready(function() {
     // Javascript method's body can be found in assets/js/demos.js
-    demo.initGoogleMaps();
+    // demo.initGoogleMaps();
   });
 </script>
 
