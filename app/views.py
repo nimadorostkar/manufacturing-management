@@ -20,7 +20,6 @@ def index(request):
 
 
 
-
 @login_required()
 def pages(request):
     context = {}
@@ -53,3 +52,15 @@ def show(request):
     #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
     #nodes= models.Product.objects.filter(quantity=2)
     return render(request, 'show.html', {'nodes': nodes})
+
+
+
+
+
+
+@login_required()
+def maps(request):
+    maps= models.Station.objects.all()
+    #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
+    #nodes= models.Product.objects.filter(quantity=2)
+    return render(request, 'ui-maps.html', {'maps': maps})

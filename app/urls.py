@@ -9,5 +9,5 @@ urlpatterns = [
     # The home page
     path('', views.index, name='home'),
     path('show', views.show, name='show'),
+    path('maps', views.maps, name='maps'),
 ]
-
