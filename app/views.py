@@ -57,10 +57,22 @@ def show(request):
 
 
 
-
 @login_required()
 def maps(request):
     maps= models.Station.objects.all()
-    #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
-    #nodes= models.Product.objects.filter(quantity=2)
     return render(request, 'ui-maps.html', {'maps': maps})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#########################################################################
