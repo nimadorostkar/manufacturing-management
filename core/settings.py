@@ -97,7 +97,7 @@ DATABASES = {
 
 ######################## location ##########################
 #  https://account.mapbox.com/
-MAPBOX_KEY = "pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbWZjenNyMjA5MGYybnMwNjRrd3BlbG8ifQ.Ytgsb2uv9XqoLK52HQ_pEw"
+MAPBOX_KEY = "pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA"
 
 
 

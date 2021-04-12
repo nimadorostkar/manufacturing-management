@@ -11,14 +11,25 @@
   <div class="col-md-12">
     <div class="card card-plain">
       <div class="card-header">
-        Google Mapssssss
+         Mapssssss
       </div>
       <div class="card-body">
-        <div id="map" class="map"></div>
+
+        <div id='map'></div>
+        <script>
+          mapboxgl.accessToken = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA';
+          var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11'
+          });
+        </script>
+
       </div>
     </div>
   </div>
 </div>
+
+
 
 {% endblock content %}
 
