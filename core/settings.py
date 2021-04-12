@@ -23,11 +23,9 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', config('SERVER', default='127.0.0.1')
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-
 
 
 
@@ -103,8 +101,6 @@ MAPBOX_KEY = "pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbWZjenNyMjA5MGYybnMwNjRrd3BlbG8
 
 
 
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -125,7 +121,27 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
+###############################################################
+###############################################################
 
+
+
+# Required for all-auth
+SITE_ID = 1
+
+
+
+ACCOUNT_FORMS = {
+    'login': 'allauth.account.forms.LoginForm',
+    'signup': 'allauth.account.forms.SignupForm',
+    #'signup': 'dashboard.forms.ProfileForm',            # custom signup form -- https://github.com/pennersr/django-allauth/blob/master/allauth/templates/account/signup.html
+    'add_email': 'allauth.account.forms.AddEmailForm',
+    'change_password': 'allauth.account.forms.ChangePasswordForm',
+    'set_password': 'allauth.account.forms.SetPasswordForm',
+    'reset_password': 'allauth.account.forms.ResetPasswordForm',
+    'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+}
 
 
 ACCOUNT_AUTHENTICATION_METHOD = ("username")
@@ -145,8 +161,8 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_AVATAR_SUPPORT = ( 'avatar' in INSTALLED_APPS)
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = SERVER_EMAIL = 'nimadorostkar97@gmail.com'
-EMAIL_HOST_PASSWORD = 'uwiuhrmphbdhysyn'
+EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = SERVER_EMAIL = '--email--'
+EMAIL_HOST_PASSWORD = '--pass--'
 EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -155,51 +171,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 
-# Required for all-auth
-SITE_ID = 1
-
-
-# Provider specific settings for all-auth apps
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'APP': {
-            'client_id': str(os.getenv('FACEBOOK_CLIENT_ID')),
-            'secret': str(os.getenv('FACEBOOK_SECRET_KEY')),
-            'key': ''
-        }
-    },
-    'google': {
-        'APP': {
-            'client_id': '1001926169320-i749100fk3578u1opss736rbt1nghnik.apps.googleusercontent.com',
-            'secret': 'mKqAB7SKk4C-ck8FIIuQlE3l',
-            'key': ''
-        }
-    },
-    'twitter': {
-        'APP': {
-            'client_id': str(os.getenv('TWITTER_CLIENT_ID')),
-            'secret': str(os.getenv('TWITTER_SECRET_KEY')),
-            'key': ''
-        }
-    }
-}
-
-
-#########################################################
-
-LEAFLET_CONFIG = {
-
-"DEFAULT_CENTER" : (40.5, -0.09),
-"DEFAULT_ZOOM" : 1,
-"MAX_ZOOM" : 20,
-"MIN_ZOOM" : 3,
-#"SCALE" : 'both’,
-'DEFAULT_PRECISION': 6,
-"ATTRIBUTION_PREFIX" : "My Custome Leaflet map"
-
-}
-
-
+###############################################################
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
