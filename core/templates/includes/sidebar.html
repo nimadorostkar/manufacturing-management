@@ -26,6 +26,12 @@
               <p>Maps</p>
             </a>
           </li>
+          <li class="{% if 'maps' in segment %} active {% endif %}">
+            <a href="{% url 'show' %}">
+              <i class="tim-icons icon-pin"></i>
+              <p>show</p>
+            </a>
+          </li>
           <li class="{% if 'notifications' in segment %} active {% endif %}">
             <a href="/ui-notifications.html">
               <i class="tim-icons icon-bell-55"></i>
