@@ -7,8 +7,6 @@ from . import models
 
 
 
-
-
 @login_required()
 def index(request):
 
@@ -69,9 +67,7 @@ def products(request):
 
 @login_required()
 def products_detail(request):
-    nodes= models.Tree.objects.all()
-    #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
-    #nodes= models.Product.objects.filter(quantity=2)
+    nodes = get_object_or_404(models.Tree, id=id)
     return render(request, 'products_detail.html', {'nodes': nodes})
 
 
