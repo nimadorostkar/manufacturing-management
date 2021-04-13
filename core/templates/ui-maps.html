@@ -17,67 +17,30 @@
 
       <hr><br> map 3
 
-      <div class="col-12  col-xl-12 pr-0 pr-md-4 ">
-         {{  profile.location2 }}
-        <div class="border" id="map" width="100%" style='height:400px'></div>
-      </div>
-          <script>
-              mapboxgl.accessToken = {{ mapbox_access_token }};
-              var map = new mapboxgl.Map({
-              container: 'map',
-              style: 'mapbox://styles/mapbox/streets-v10',
-              center: [35.69439, 51.42151],
-              zoom: 9,
-              // bearing: 180
-              });
-          </script>
+      {% load mapbox_location_field_tags %}
+      {% location_field_includes %}
+      {% include_jquery %}
 
-
-
-      <hr><br> map 2
-
-      {% for Station in maps %}
-
-
-       {% load mapbox_location_field_tags %}
-       {% location_field_includes %}
-       {% include_jquery %}
-        <script>
-         var lngLatWithFilter = {{object.location | tuple_to_array }};
-         var lngLatWithTag = {% tuple_to_array object.location %};
-
-        // These are just two ways, which give the same result
-        // Now you can use one of this variables as an array
-        </script>
-
+        {% for Station in maps %}
+          <div id='map' width="100%" style='height:400px'></div>
+             {{  Station.location }}
+            <div class="border" id="map" width="100%" style='height:400px'></div>
+          </div>
         {% endfor %}
+        
+              <script>
+                  mapboxgl.accessToken = {{ mapbox_access_token }};
+                  var map = new mapboxgl.Map({
+                  container: 'map',
+                  style: 'mapbox://styles/mapbox/streets-v11',
+                  center: [35.69439, 51.42151],
+                  zoom: 9,
+                  // bearing: 180
+                  });
+              </script>
 
 
 
-
-
-    <hr><br> map 1
-
-
-
-
-      <div class="card-body">
-
-        <div id='map' width="100%" style='height:400px'></div>
-        <script>
-          mapboxgl.accessToken = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA';
-          var map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/streets-v11',
-          center: [-77.03, 38.91],
-          zoom: 9
-          });
-        </script>
-
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
