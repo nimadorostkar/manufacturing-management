@@ -46,13 +46,6 @@ def pages(request):
 
 
 
-@login_required()
-def show(request):
-    nodes= models.Tree.objects.all()
-    #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
-    #nodes= models.Product.objects.filter(quantity=2)
-    return render(request, 'show.html', {'nodes': nodes})
-
 
 
 
@@ -71,6 +64,15 @@ def products(request):
     products= models.Product.objects.all()
     return render(request, 'products.html', {'products': products})
 
+
+
+
+@login_required()
+def product_detail(request):
+    nodes= models.Tree.objects.all()
+    #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
+    #nodes= models.Product.objects.filter(quantity=2)
+    return render(request, 'show.html', {'nodes': nodes})
 
 
 

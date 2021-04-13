@@ -77,6 +77,7 @@ class Station(models.Model):
 #------------------------------------------------------------------------------
 class Product(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
+    code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
 
 
@@ -86,6 +87,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('app:products',args=[self.id])
 
 
 

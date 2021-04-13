@@ -8,7 +8,8 @@ urlpatterns = [
     re_path(r'^.*\.html', views.pages, name='pages'),
     # The home page
     path('', views.index, name='home'),
-    path('show', views.show, name='show'),
     path('maps', views.maps, name='maps'),
+
     path('products', views.products, name='products'),
+    path('products_detail/<int:id>/',views.products_detail,name='products_detail'),
 ]
