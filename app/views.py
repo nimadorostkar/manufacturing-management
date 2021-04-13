@@ -66,7 +66,7 @@ def products(request):
 
 
 @login_required()
-def products_detail(request):
+def products_detail(request, id):
     nodes = get_object_or_404(models.Tree, id=id)
     return render(request, 'products_detail.html', {'nodes': nodes})
 
