@@ -9,40 +9,116 @@
 {% load mptt_tags %}
 
 
+
+<div class="col-md-12">
+  <div class="card  card-plain" align="right" dir="rtl">
+    <div class="card-header">
+      <h4 class="card-title"> محصول {{ product.name }} </h4>
+      <br>
+      <p class="category"> {{ product.description }} </p>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table tablesorter " id="">
+          <thead class=" text-primary">
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Country
+              </th>
+              <th>
+                City
+              </th>
+              <th class="text-center">
+                Salary
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Dakota Rice
+              </td>
+              <td>
+                Niger
+              </td>
+              <td>
+                Oud-Turnhout
+              </td>
+              <td class="text-center">
+                $36,738
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Minerva Hooper
+              </td>
+              <td>
+                Curaçao
+              </td>
+              <td>
+                Sinaai-Waas
+              </td>
+              <td class="text-center">
+                $23,789
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Doris Greene
+              </td>
+              <td>
+                Malawi
+              </td>
+              <td>
+                Feldkirchen in Kärnten
+              </td>
+              <td class="text-center">
+                $63,542
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
     <div class="row">
       <div class="col-12">
         <div class="card card-chart">
-
-
 
             <button onclick="sampleDiv.style.zoom='20%'"> Zoom 20% </button>
             <button onclick="sampleDiv.style.zoom='30%'">  Zoom 30%  </button>
             <button onclick="sampleDiv.style.zoom='40%'"> Zoom 40% </button>
 
-
             <div id="sampleDiv">
            <div class="pg-orgchart">
             <div class="org-chart">
-              <ul>
-                {% recursetree nodes %}
-                    <li>
-                      <div class="user">
-                        <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
-                        <div class="name"> {{ node.name }} </div>
-                        <div class="role">
-                          {% if node.name.position == "M" %}📦{% endif %}
-                          {% if node.name.position == "R" %}🛖{% endif %}
-                          {% if node.name.position == "T" %}🚛{% endif %}
-                          {% if node.name.position == "S" %}🏭{% endif %}
+                <ul>
+                  {% recursetree nodes %}
+                      <li>
+                        <div class="user">
+                          <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                          <div class="name"> {{ node.name }} </div>
+                          <div class="role">
+                            {% if node.name.position == "M" %}📦{% endif %}
+                            {% if node.name.position == "R" %}🛖{% endif %}
+                            {% if node.name.position == "T" %}🚛{% endif %}
+                            {% if node.name.position == "S" %}🏭{% endif %}
+                          </div>
+                          <a class="manager" href="#"> {{ node.name }} </a>
                         </div>
-                        <a class="manager" href="#"> {{ node.name }} </a>
-                      </div>
-                       {% if not node.is_leaf_node %}
-                        <ul> {{ children }} </ul>
-                       {% endif %}
-                    </li>
-                {% endrecursetree %}
-              </ul>
+                         {% if not node.is_leaf_node %}
+                          <ul> {{ children }} </ul>
+                         {% endif %}
+                      </li>
+                  {% endrecursetree %}
+                </ul>
            </div>
          </div>
        </div>

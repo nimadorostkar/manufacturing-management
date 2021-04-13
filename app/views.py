@@ -71,8 +71,13 @@ def products(request):
 @login_required()
 def products_detail(request, id):
     product = get_object_or_404(models.Product, id=id)
-    return render(request, 'products_detail.html', {'product': product})
+    nodes = models.Tree.objects.filter(relatedProduct=product)
+    return render(request, 'products_detail.html', {'product': product,'nodes': nodes})
 
+
+
+    #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
+    #nodes= models.Product.objects.filter(quantity=2)
 
 
 
