@@ -72,7 +72,7 @@ def products_detail(request):
     nodes= models.Tree.objects.all()
     #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
     #nodes= models.Product.objects.filter(quantity=2)
-    return render(request, 'show.html', {'nodes': nodes})
+    return render(request, 'products_detail.html', {'nodes': nodes})
 
 
 
