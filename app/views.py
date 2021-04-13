@@ -61,7 +61,7 @@ def maps(request):
 
 
 @login_required()
-def products(request):
+def product(request):
     products= models.Product.objects.all()
     return render(request, 'products.html', {'products': products})
 
@@ -70,8 +70,8 @@ def products(request):
 
 @login_required()
 def products_detail(request, id):
-    nodes = get_object_or_404(models.Tree, id=id)
-    return render(request, 'products_detail.html', {'nodes': nodes})
+    product = get_object_or_404(models.Product, id=id)
+    return render(request, 'products_detail.html', {'product': product})
 
 
 
