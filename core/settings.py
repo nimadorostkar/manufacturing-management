@@ -116,6 +116,27 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 ###############################################################
+
+
+MAPBOX_KEY = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA'
+
+default_map_attrs = {
+ "style": "mapbox://styles/mapbox/streets-v11",
+ "zoom": 13,
+ "center": [17.031645, 51.106715],
+ "cursor_style": 'pointer',
+ "marker_color": "red",
+ "rotate": False,
+ "geocoder": True,
+ "fullscreen_button": True,
+ "navigation_buttons": True,
+ "track_location_button": True,
+ "readonly": True,
+ "placeholder": "Pick a location on map below", }
+
+
+
+
 ###############################################################
 
 

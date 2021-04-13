@@ -13,6 +13,32 @@
       <div class="card-header">
          Mapssssss
       </div>
+
+      {% for Station in maps %}
+
+    
+       {% load mapbox_location_field_tags %}
+       {% location_field_includes %}
+       {% include_jquery %}
+        <script>
+         var lngLatWithFilter = {{object.location | tuple_to_array }};
+         var lngLatWithTag = {% tuple_to_array object.location %};
+
+        // These are just two ways, which give the same result
+        // Now you can use one of this variables as an array
+        </script>
+
+        {% endfor %}
+
+
+
+
+
+    <hr><br> map 2
+
+
+
+
       <div class="card-body">
 
         <div id='map' width="100%" style='height:400px'></div>

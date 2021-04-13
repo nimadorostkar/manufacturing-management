@@ -58,7 +58,7 @@ class Station(models.Model):
     capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "مسئول")
     inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
-    location = LocationField(map_attrs={"center": [0,0], "marker_color": "blue"}, verbose_name = "لوکیشن")
+    location = LocationField()
 
     class MPTTMeta:
         level_attr = 'mptt_level'

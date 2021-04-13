@@ -21,7 +21,7 @@ admin.site.register(LogEntry)
 class StationAdmin(admin.ModelAdmin):
     list_display = ('name','description')
 
-admin.site.register(models.Station,StationAdmin)
+admin.site.register(models.Station, MapAdmin)
 
 
 
