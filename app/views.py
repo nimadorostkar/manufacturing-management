@@ -68,7 +68,7 @@ def products(request):
 
 
 @login_required()
-def product_detail(request):
+def products_detail(request):
     nodes= models.Tree.objects.all()
     #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
     #nodes= models.Product.objects.filter(quantity=2)
