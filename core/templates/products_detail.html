@@ -20,7 +20,34 @@
             <button onclick="sampleDiv.style.zoom='40%'"> Zoom 40% </button>
 
 
-          <h1>nimaaaaa</h1>
+            <div id="sampleDiv">
+           <div class="pg-orgchart">
+            <div class="org-chart">
+              <ul>
+                {% recursetree nodes %}
+                    <li>
+                      <div class="user">
+                        <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                        <div class="name"> {{ node.name }} </div>
+                        <div class="role">
+                          {% if node.name.position == "M" %}📦{% endif %}
+                          {% if node.name.position == "R" %}🛖{% endif %}
+                          {% if node.name.position == "T" %}🚛{% endif %}
+                          {% if node.name.position == "S" %}🏭{% endif %}
+                        </div>
+                        <a class="manager" href="#"> {{ node.name }} </a>
+                      </div>
+                       {% if not node.is_leaf_node %}
+                        <ul> {{ children }} </ul>
+                       {% endif %}
+                    </li>
+                {% endrecursetree %}
+              </ul>
+           </div>
+         </div>
+       </div>
+
+
 
         </div>
       </div>
