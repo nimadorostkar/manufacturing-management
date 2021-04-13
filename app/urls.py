@@ -10,4 +10,5 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('show', views.show, name='show'),
     path('maps', views.maps, name='maps'),
+    path('products', views.products, name='products'),
 ]
