@@ -79,7 +79,7 @@ class Product(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
     description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
-
+    image=models.ImageField(upload_to='img/media/product', default='img/media/Default.png' ,null=True, blank=True,verbose_name = "تصویر")
 
     class Meta:
         verbose_name = "محصول"
@@ -90,6 +90,9 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('app:products_detail',args=[self.id])
+
+    def image_tag(self):
+        return format_html("<img width=50 src='{}'>".format(self.image.url))
 
 
 
