@@ -15,32 +15,34 @@
       </div>
 
 
-      <hr><br> map 3
+      
 
       {% load mapbox_location_field_tags %}
       {% location_field_includes %}
       {% include_jquery %}
 
-        {% for Station in maps %}
-          <div id='map' width="100%" style='height:400px'></div>
-             {{  Station.location }}
-            <div class="border" id="map" width="100%" style='height:400px'></div>
-          </div>
-        {% endfor %}
-        
-              <script>
-                  mapboxgl.accessToken = {{ mapbox_access_token }};
-                  var map = new mapboxgl.Map({
-                  container: 'map',
-                  style: 'mapbox://styles/mapbox/streets-v11',
-                  center: [35.69439, 51.42151],
-                  zoom: 9,
-                  // bearing: 180
-                  });
-              </script>
+      {% for Station in maps %}
+        <div class="col-12  col-xl-12 pr-0 pr-md-4 ">
+           {{  Station.location }}
+          <div class="border" id="map" width="100%" style='height:400px'></div>
+        </div>
+      {% endfor %}
+            <script>
+                mapboxgl.accessToken = {{ mapbox_access_token }};
+                var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [35.69439, 51.42151],
+                zoom: 9,
+                // bearing: 180
+                });
+            </script>
 
 
 
+    </div>
+  </div>
+</div>
 
 
 
