@@ -61,7 +61,7 @@ def maps(request):
 
 
 @login_required()
-def product(request):
+def products(request):
     products= models.Product.objects.all()
     return render(request, 'products.html', {'products': products})
 
