@@ -16,9 +16,7 @@
       <div class="card-body">
          <form method="post" enctype="multipart/form-data">
            {% csrf_token %}
-           {{ user_form.as_p }}
-           {{ profile_form.as_p }}
-        <!--  <div class="row">
+          <div class="row">
             <div class="col-md-3 pr-md-1">
               <div class="form-group">
                 <label> شناسه کاربری </label>
@@ -93,7 +91,7 @@
                 <input id="about_Me" rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="{{ request.user.profile.about_me }}">
               </div>
             </div>
-          </div> -->
+          </div>
           <div class="card-footer">
             <button type="submit" class="btn btn-fill btn-primary"> ذخیره </button>
           </div>
