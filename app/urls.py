@@ -15,5 +15,5 @@ urlpatterns = [
     path('products', views.products, name='products'),
     path('products_detail/<int:id>/',views.products_detail,name='products_detail'),
     path('stations', views.stations, name='stations'),
-    path('products_detail/<int:id>/',views.products_detail,name='products_detail'),
+    path('stations_detail/<int:id>/',views.stations_detail,name='stations_detail'),
 ]
