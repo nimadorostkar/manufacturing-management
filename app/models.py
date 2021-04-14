@@ -11,6 +11,7 @@ from django.db.models.signals import post_save
 
 
 
+
 #------------------------------------------------------------------------------
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE,unique=True,related_name='profile',verbose_name = "کاربر")
