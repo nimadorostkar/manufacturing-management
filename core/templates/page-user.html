@@ -26,13 +26,13 @@
             <div class="col-md-4 px-md-1">
               <div class="form-group">
                 <label> نام کاربری </label>
-                <input type="text" class="form-control" value="{{ request.user.username }}">
+                <input id="username" type="text" class="form-control" value="{{ request.user.username }}">
               </div>
             </div>
             <div class="col-md-5 pl-md-1">
               <div class="form-group">
                 <label for="exampleInputEmail1"> آدرس ایمیل </label>
-                <input type="email" class="form-control" value="{{ request.user.email }}">
+                <input id="email" type="email" class="form-control" value="{{ request.user.email }}">
               </div>
             </div>
           </div>
@@ -40,13 +40,13 @@
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label> نام </label>
-                <input type="text" class="form-control">
+                <input id="first_name" type="text" class="form-control">
               </div>
             </div>
             <div class="col-md-6 pl-md-1">
               <div class="form-group">
                 <label> نام خانوادگی </label>
-                <input type="text" class="form-control">
+                <input id="last_name" type="text" class="form-control">
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label> آدرس </label>
-                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                <input id="address" type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
               </div>
             </div>
           </div>
@@ -62,13 +62,13 @@
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label> شماره تماس </label>
-                <input type="text" class="form-control" placeholder="City" value="Mike">
+                <input id="phone" type="text" class="form-control" placeholder="City" value="Mike">
               </div>
             </div>
             <div class="col-md-6 px-md-1">
               <div class="form-group">
                 <label> تصویر کاربری </label>
-                <input type="text" class="form-control">
+                <input id="user_photo" type="text" class="form-control">
               </div>
             </div>
           </div>
@@ -76,13 +76,13 @@
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label> رمز عبور </label>
-                <input type="text" class="form-control" value="۲۲۲۲">
+                <input id="password1" type="text" class="form-control" value="۲۲۲۲">
               </div>
             </div>
             <div class="col-md-6 px-md-1">
               <div class="form-group">
                 <label> تکرار رمز عبور </label>
-                <input type="text" class="form-control" value="۲۲۲۲">
+                <input id="password2" type="text" class="form-control" value="۲۲۲۲">
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@
             <div class="col-md-8">
               <div class="form-group">
                 <label> درباره من </label>
-                <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                <textarea id="about_Me" rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
               </div>
             </div>
           </div>

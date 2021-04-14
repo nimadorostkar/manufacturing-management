@@ -106,6 +106,17 @@ def profile(request):
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
+            username = user_form.cleaned_data['username']
+            first_name = user_form.cleaned_data['first_name']
+            last_name = user_form.cleaned_data['last_name']
+            email = user_form.cleaned_data['email']
+            password1 = user_form.cleaned_data['password1']
+            password2 = user_form.cleaned_data['password2']
+            phone = profile_form.cleaned_data['phone']
+            address = profile_form.cleaned_data['address']
+            user_photo = profile_form.cleaned_data['user_photo']
+            about_Me = profile_form.cleaned_data['about_Me']
+            #reserve = MangReserve(name=name, phone=phone, email=email, occasion=occasion, month=month, day=day, week=week, time=time, message=message)
             user_form.save()
             profile_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
@@ -122,6 +133,7 @@ def profile(request):
   'user_form': user_form,
   'profile_form': profile_form }
   return render(request, 'page-user.html', context)
+
 
 
 
