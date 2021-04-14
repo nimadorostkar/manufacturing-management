@@ -29,7 +29,13 @@
           <li class="{% if 'products' in segment %} active {% endif %}">
             <a href="{% url 'app:products' %}">
               <i class="tim-icons icon-bullet-list-67"></i>
-              <p> درخت محصول </p>
+              <p> محصول </p>
+            </a>
+          </li>
+          <li class="{% if 'products' in segment %} active {% endif %}">
+            <a href="{% url 'app:products' %}">
+              <i class="tim-icons icon-components"></i>
+              <p> ایستگاه </p>
             </a>
           </li>
           <li class="{% if 'notifications' in segment %} active {% endif %}">
