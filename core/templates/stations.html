@@ -11,7 +11,7 @@
   <div class="col-md-12">
     <div class="card" align="right" dir="rtl">
       <div class="card-header">
-        <h4 class="card-title"> محصولات </h4>
+        <h4 class="card-title">  ایستگاه ها </h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -22,23 +22,23 @@
                   نام
                 </th>
                 <th>
-                  کد
+                  مسئول
                 </th>
                 <th>
                   مشخصات
                 </th>
                 <th class="text-center">
-                  Salary
+                  ایستگاه
                 </th>
               </tr>
             </thead>
             <tbody>
-            {% for Product in products %}
+            {% for Station in stations %}
               <tr>
-                <td><a href="{{ Product.get_absolute_url }}"> {{ Product.name }} </a></td>
-                <td> {{ Product.code }} </td>
+                <td><a href="{{ Station.get_absolute_url }}"> {{ Station.name }} </a></td>
+                <td> {{ Product.manager }} </td>
                 <td> {{ Product.description }} </td>
-                <td class="text-center"> $36,738 </td>
+                <td class="text-center"> {{ Product.position }} </td>
               </tr>
             {% endfor %}
             </tbody>
