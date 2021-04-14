@@ -14,4 +14,6 @@ urlpatterns = [
     path('maps', views.maps, name='maps'),
     path('products', views.products, name='products'),
     path('products_detail/<int:id>/',views.products_detail,name='products_detail'),
+    path('stations', views.stations, name='stations'),
+    path('products_detail/<int:id>/',views.products_detail,name='products_detail'),
 ]
