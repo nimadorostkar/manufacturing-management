@@ -106,18 +106,18 @@ def profile(request):
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
-            #username = user_form.cleaned_data['username']
-            #first_name = user_form.cleaned_data['first_name']
-            #last_name = user_form.cleaned_data['last_name']
-            #email = user_form.cleaned_data['email']
-            #password1 = user_form.cleaned_data['password1']
-            #password2 = user_form.cleaned_data['password2']
-            #phone = profile_form.cleaned_data['phone']
-            #address = profile_form.cleaned_data['address']
-            #user_photo = profile_form.cleaned_data['user_photo']
-            #about_me = profile_form.cleaned_data['about_me']
-            ##profile_form = ProfileForm(phone=phone, address=address, user_photo=user_photo, about_me=about_me)
-            ##user_form = UserForm(username=username, first_name=first_name, last_name=last_name, email=email, password1=password1, password2=password2)
+            username = user_form.cleaned_data['username']
+            first_name = user_form.cleaned_data['first_name']
+            last_name = user_form.cleaned_data['last_name']
+            email = user_form.cleaned_data['email']
+            password1 = user_form.cleaned_data['password1']
+            password2 = user_form.cleaned_data['password2']
+            phone = profile_form.cleaned_data['phone']
+            address = profile_form.cleaned_data['address']
+            user_photo = profile_form.cleaned_data['user_photo']
+            about_me = profile_form.cleaned_data['about_me']
+            profile_form = Profile(phone=phone, address=address, user_photo=user_photo, about_me=about_me)
+            user_form = User(username=username, first_name=first_name, last_name=last_name, email=email, password1=password1, password2=password2)
             #user = profile_form.created_by=request.user
             user_form.save()
             profile_form.save()
