@@ -10,6 +10,9 @@ from django.contrib.auth.models import User
 
 
 
+
+################################# index ######################################
+
 @login_required()
 def index(request):
 
@@ -20,6 +23,9 @@ def index(request):
     return HttpResponse(html_template.render(context, request))
 
 
+
+
+################################# pages ######################################
 
 @login_required()
 def pages(request):
@@ -47,9 +53,7 @@ def pages(request):
 
 
 
-
-
-
+################################## maps ######################################
 
 @login_required()
 def maps(request):
@@ -59,13 +63,12 @@ def maps(request):
 
 
 
+################################ products ####################################
 
 @login_required()
 def products(request):
     products= models.Product.objects.all()
     return render(request, 'products.html', {'products': products})
-
-
 
 
 @login_required()
@@ -76,14 +79,30 @@ def products_detail(request, id):
 
 
 
+
+################################ stations ####################################
+
+@login_required()
+def stations(request):
+    products= models.Product.objects.all()
+    return render(request, 'products.html', {'products': products})
+
+
+@login_required()
+def stations_detail(request, id):
+    product = get_object_or_404(models.Product, id=id)
+    nodes = models.Tree.objects.filter(relatedProduct=product)
+    return render(request, 'products_detail.html', {'product': product,'nodes': nodes})
+
+
+
+
+
+
+
+
     #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
     #nodes= models.Product.objects.filter(quantity=2)
 
 
-
-
-
-
-
-
-#########################################################################
+##############################################################################
