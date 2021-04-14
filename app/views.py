@@ -116,7 +116,8 @@ def profile(request):
             address = profile_form.cleaned_data['address']
             user_photo = profile_form.cleaned_data['user_photo']
             about_me = profile_form.cleaned_data['about_me']
-            #reserve = MangReserve(name=name, phone=phone, email=email, occasion=occasion, month=month, day=day, week=week, time=time, message=message)
+            profile_form = ProfileForm(phone=phone, address=address, user_photo=user_photo, about_me=about_me)
+            user_form = UserForm(username=username, first_name=first_name, last_name=last_name, email=email, password1=password1, password2=password2)
             user_form.save()
             profile_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
