@@ -9,7 +9,6 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 
-
 #------------------------------------------------------------------------------
 class ProfileForm(forms.ModelForm):
 	class Meta:

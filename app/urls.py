@@ -12,8 +12,11 @@ urlpatterns = [
     # The home page
     path('', views.index, name='home'),
     path('maps', views.maps, name='maps'),
+    path('profile', views.profile, name='profile'),
+    # products
     path('products', views.products, name='products'),
     path('products_detail/<int:id>/',views.products_detail,name='products_detail'),
+    # stations
     path('stations', views.stations, name='stations'),
     path('stations_detail/<int:id>/',views.stations_detail,name='stations_detail'),
 ]
