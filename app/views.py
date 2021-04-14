@@ -115,7 +115,7 @@ def profile(request):
             phone = profile_form.cleaned_data['phone']
             address = profile_form.cleaned_data['address']
             user_photo = profile_form.cleaned_data['user_photo']
-            about_Me = profile_form.cleaned_data['about_Me']
+            about_me = profile_form.cleaned_data['about_me']
             #reserve = MangReserve(name=name, phone=phone, email=email, occasion=occasion, month=month, day=day, week=week, time=time, message=message)
             user_form.save()
             profile_form.save()

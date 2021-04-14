@@ -13,7 +13,7 @@ from django.contrib.auth.forms import UserCreationForm
 class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = ['phone','address','user_photo','about_Me']
+		fields = ['phone','address','user_photo','about_me']
 
 
 
