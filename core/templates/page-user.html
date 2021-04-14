@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %} Page User {% endblock %} 
+{% block title %} Page User {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -9,7 +9,7 @@
 
 <div class="row">
   <div class="col-md-8">
-    <div class="card">
+    <div class="card"  align="right" dir="rtl">
       <div class="card-header">
         <h5 class="title">Edit Profile</h5>
       </div>
@@ -18,19 +18,19 @@
           <div class="row">
             <div class="col-md-5 pr-md-1">
               <div class="form-group">
-                <label>UserID (disabled)</label>
+                <label> شناسه کاربری </label>
                 <input type="text" class="form-control" disabled="" value="{{ request.user.id }}">
               </div>
             </div>
             <div class="col-md-3 px-md-1">
               <div class="form-group">
-                <label>Username</label>
+                <label> نام کاربری </label>
                 <input type="text" class="form-control" value="{{ request.user.username }}">
               </div>
             </div>
             <div class="col-md-4 pl-md-1">
               <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
+                <label for="exampleInputEmail1"> آدرس ایمیل </label>
                 <input type="email" class="form-control" value="{{ request.user.email }}">
               </div>
             </div>
@@ -38,13 +38,13 @@
           <div class="row">
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
-                <label>First Name</label>
+                <label> نام </label>
                 <input type="text" class="form-control">
               </div>
             </div>
             <div class="col-md-6 pl-md-1">
               <div class="form-group">
-                <label>Last Name</label>
+                <label> نام خانوادگی </label>
                 <input type="text" class="form-control">
               </div>
             </div>
@@ -52,7 +52,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label>Address</label>
+                <label> آدرس </label>
                 <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
               </div>
             </div>
