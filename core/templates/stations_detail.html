@@ -13,7 +13,7 @@
 <div class="col-md-12">
   <div class="card  card-plain" align="right" dir="rtl">
     <div class="card-header">
-      <h4 class="card-title"> محصول {{ product.name }} <small> ({{ product.code }}) </small> </h4>
+      <h4 class="card-title"> ایستگاه {{ station.name }} <small> ({{ station.position }}) </small> </h4>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -98,7 +98,7 @@
         </div>
       </p>
       <div align="center" dir="rtl" class="card-description">
-        <p class="category"> {{ product.description }} </p>
+        <p class="category"> {{ station.description }} </p>
       </div>
     </div>
   </div>
@@ -107,48 +107,7 @@
 
 
 
-    <div class="row">
-      <div class="col-12">
-        <div class="card card-chart">
-
-            <button onclick="sampleDiv.style.zoom='20%'"> Zoom 20% </button>
-            <button onclick="sampleDiv.style.zoom='30%'">  Zoom 30%  </button>
-            <button onclick="sampleDiv.style.zoom='40%'"> Zoom 40% </button>
-
-            <div id="sampleDiv">
-           <div class="pg-orgchart">
-            <div class="org-chart">
-                <ul>
-                  {% recursetree nodes %}
-                      <li>
-                        <div class="user">
-                          <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
-                          <div class="name"> {{ node.name }} </div>
-                          <div class="role">
-                            {% if node.name.position == "M" %}📦{% endif %}
-                            {% if node.name.position == "R" %}🛖{% endif %}
-                            {% if node.name.position == "T" %}🚛{% endif %}
-                            {% if node.name.position == "S" %}🏭{% endif %}
-                          </div>
-                          <a class="manager" href="#"> {{ node.name }} </a>
-                        </div>
-                         {% if not node.is_leaf_node %}
-                          <ul> {{ children }} </ul>
-                         {% endif %}
-                      </li>
-                  {% endrecursetree %}
-                </ul>
-           </div>
-         </div>
-       </div>
-
-
-
-        </div>
-      </div>
-    </div>
-
-
+    
 
 {% endblock content %}
 
