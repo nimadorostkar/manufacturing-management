@@ -36,9 +36,9 @@
             {% for Station in stations %}
               <tr>
                 <td><a href="{{ Station.get_absolute_url }}"> {{ Station.name }} </a></td>
-                <td> {{ Product.manager }} </td>
-                <td> {{ Product.description }} </td>
-                <td class="text-center"> {{ Product.position }} </td>
+                <td> {{ Station.manager }} </td>
+                <td> {{ Station.description }} </td>
+                <td class="text-center"> {{ Station.position }} </td>
               </tr>
             {% endfor %}
             </tbody>
