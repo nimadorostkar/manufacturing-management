@@ -84,8 +84,8 @@ def products_detail(request, id):
 
 @login_required()
 def stations(request):
-    products= models.Product.objects.all()
-    return render(request, 'products.html', {'products': products})
+    stations= models.Station.objects.all()
+    return render(request, 'stations.html', {'stations': stations})
 
 
 @login_required()
