@@ -14,7 +14,8 @@
         <h5 class="title"> پروفایل کاربری </h5>
       </div>
       <div class="card-body">
-        <form>
+         <form method="post" enctype="multipart/form-data">
+           {% csrf_token %}
           <div class="row">
             <div class="col-md-3 pr-md-1">
               <div class="form-group">
