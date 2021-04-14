@@ -18,6 +18,14 @@ admin.site.register(LogEntry)
 
 
 #------------------------------------------------------------------------------
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user_name','phone','address')
+
+admin.site.register(models.Station, MapAdmin)
+
+
+
+#------------------------------------------------------------------------------
 class StationAdmin(admin.ModelAdmin):
     list_display = ('name','description')
 

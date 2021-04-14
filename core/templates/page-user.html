@@ -40,13 +40,13 @@
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label> نام </label>
-                <input id="first_name" type="text" class="form-control">
+                <input id="first_name" type="text" class="form-control" value="{{ request.user.first_name }}">
               </div>
             </div>
             <div class="col-md-6 pl-md-1">
               <div class="form-group">
                 <label> نام خانوادگی </label>
-                <input id="last_name" type="text" class="form-control">
+                <input id="last_name" type="text" class="form-control" value="{{ request.user.last_name }}">
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label> آدرس </label>
-                <input id="address" type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                <input id="address" type="text" class="form-control" placeholder="Home Address" value="{{ request.user.address }}">
               </div>
             </div>
           </div>
@@ -74,13 +74,13 @@
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label> رمز عبور </label>
-                <input id="password1" type="text" class="form-control" value="۲۲۲۲">
+                <input id="password1" type="password" class="form-control" value="{{ request.user.password1 }}">
               </div>
             </div>
             <div class="col-md-6 px-md-1">
               <div class="form-group">
                 <label> تکرار رمز عبور </label>
-                <input id="password2" type="text" class="form-control" value="۲۲۲۲">
+                <input id="password2" type="password" class="form-control" value="{{ request.user.password2 }}">
               </div>
             </div>
           </div>
