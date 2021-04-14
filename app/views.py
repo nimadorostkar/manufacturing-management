@@ -91,7 +91,6 @@ def stations(request):
 @login_required()
 def stations_detail(request, id):
     station = get_object_or_404(models.Station, id=id)
-    nodes = models.Tree.objects.filter(relatedProduct=product)
     return render(request, 'stations_detail.html', {'station': station})
 
 
