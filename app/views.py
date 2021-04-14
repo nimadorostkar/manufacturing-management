@@ -97,14 +97,8 @@ def stations_detail(request, id):
 
 ############################# profile ########################################
 
-@login_required()
-def profile(request):
-    profile = get_object_or_404(models.Station, id=id)
-    return render(request, 'stations_detail.html', {'station': station})
-
-
 @login_required
-def dashboard(request):
+def profile(request):
   profile = models.Profile.objects.filter(user=request.user)
   if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
@@ -113,8 +107,8 @@ def dashboard(request):
             user_form.save()
             profile_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
-            context = {'profile': profile,'notices': notices,'payment': payment,'ticket': ticket ,'money_req': money_req,'submitted_files':submitted_files, 'user_form': user_form,'profile_form': profile_form }
-            return render(request, 'dashboard/dashboard.html', context)
+            context = {'profile': profile,'user_form': user_form,'profile_form': profile_form }
+            return render(request, 'page-user.html', context)
         else:
             messages.error(request, _('Please correct the error below.'))
   else:
@@ -125,7 +119,7 @@ def dashboard(request):
   'profile': profile,
   'user_form': user_form,
   'profile_form': profile_form }
-  return render(request, 'dashboard/dashboard.html', context)
+  return render(request, 'page-user.html', context)
 
 
 
