@@ -16,19 +16,19 @@
       <div class="card-body">
         <form>
           <div class="row">
-            <div class="col-md-5 pr-md-1">
+            <div class="col-md-3 pr-md-1">
               <div class="form-group">
                 <label> شناسه کاربری </label>
                 <input type="text" class="form-control" disabled="" value="{{ request.user.id }}">
               </div>
             </div>
-            <div class="col-md-3 px-md-1">
+            <div class="col-md-4 px-md-1">
               <div class="form-group">
                 <label> نام کاربری </label>
                 <input type="text" class="form-control" value="{{ request.user.username }}">
               </div>
             </div>
-            <div class="col-md-4 pl-md-1">
+            <div class="col-md-5 pl-md-1">
               <div class="form-group">
                 <label for="exampleInputEmail1"> آدرس ایمیل </label>
                 <input type="email" class="form-control" value="{{ request.user.email }}">
@@ -58,29 +58,23 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4 pr-md-1">
+            <div class="col-md-6 pr-md-1">
               <div class="form-group">
-                <label>City</label>
+                <label> شماره تماس </label>
                 <input type="text" class="form-control" placeholder="City" value="Mike">
               </div>
             </div>
-            <div class="col-md-4 px-md-1">
+            <div class="col-md-6 px-md-1">
               <div class="form-group">
-                <label>Country</label>
-                <input type="text" class="form-control" placeholder="Country" value="Andrew">
-              </div>
-            </div>
-            <div class="col-md-4 pl-md-1">
-              <div class="form-group">
-                <label>Postal Code</label>
-                <input type="number" class="form-control" placeholder="ZIP Code">
+                <label> تصویر کاربری </label>
+                <input type="text" class="form-control">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-8">
               <div class="form-group">
-                <label>About Me</label>
+                <label> درباره من </label>
                 <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
               </div>
             </div>
@@ -88,7 +82,7 @@
         </form>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn-fill btn-primary">Save</button>
+        <button type="submit" class="btn btn-fill btn-primary"> ذخیره </button>
       </div>
     </div>
   </div>
@@ -118,15 +112,7 @@
       </div>
       <div class="card-footer">
         <div class="button-container">
-          <button href="javascript:void(0)" class="btn btn-icon btn-round btn-facebook">
-            <i class="fab fa-facebook"></i>
-          </button>
-          <button href="javascript:void(0)" class="btn btn-icon btn-round btn-twitter">
-            <i class="fab fa-twitter"></i>
-          </button>
-          <button href="javascript:void(0)" class="btn btn-icon btn-round btn-google">
-            <i class="fab fa-google-plus"></i>
-          </button>
+          <a href="https://www.ksegroup.co">ksegroup.co</a>
         </div>
       </div>
     </div>
