@@ -21,7 +21,7 @@ admin.site.register(LogEntry)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user_name','phone','address')
 
-admin.site.register(models.Station, MapAdmin)
+admin.site.register(models.Profile, ProfileAdmin)
 
 
 
