@@ -106,12 +106,15 @@
                 {{ request.user.username }}
               </h5>
             </a>
-            <br>  
+            <br>
             <h6 class="title">
+                <i class="tim-icons icon-single-02"></i><hr>
               {{ request.user.last_name }} {{ request.user.first_name }}
-            </h6>
-            <p class="description"> {{ request.user.profile.phone }} </p>
-            <p class="description"> {{ request.user.email }} </p>
+            </h6><br>
+            <i class="tim-icons icon-mobile"></i><hr>
+            <p class="description"> {{ request.user.profile.phone }} </p><br>
+            <i class="tim-icons icon-email-85"></i><hr>
+            <p class="description"> {{ request.user.email }} </p><br>
           </div>
         </p>
         <div class="card-description">
