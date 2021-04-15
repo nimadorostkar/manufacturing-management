@@ -24,11 +24,8 @@
                 <th>
                   کد
                 </th>
-                <th>
-                  مشخصات
-                </th>
                 <th class="text-center">
-                  Salary
+                  تصویر
                 </th>
               </tr>
             </thead>
@@ -37,7 +34,6 @@
               <tr>
                 <td><a href="{{ Product.get_absolute_url }}"> {{ Product.name }} </a></td>
                 <td> {{ Product.code }} </td>
-                <td> {{ Product.description }} </td>
                 <td class="text-center"> $36,738 </td>
               </tr>
             {% endfor %}
