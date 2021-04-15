@@ -84,14 +84,6 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label> درباره من </label>
-                <input name="about_Me" rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="{{ request.user.profile.about_me }}">
-              </div>
-            </div>
-          </div>
           <div class="card-footer">
             <button type="submit" class="btn btn-fill btn-primary"> ذخیره </button>
           </div>
@@ -119,7 +111,7 @@
           </div>
         </p>
         <div class="card-description">
-            {{ request.user.profile.about_me }}
+            {{ request.user.profile.email }}
         </div>
       </div>
       <div class="card-footer">

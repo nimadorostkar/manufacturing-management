@@ -115,10 +115,6 @@ def profile(request):
             phone = profile_form.cleaned_data['phone']
             address = profile_form.cleaned_data['address']
             user_photo = profile_form.cleaned_data['user_photo']
-            about_me = profile_form.cleaned_data['about_me']
-            #profile_form = Profile(phone=phone, address=address, user_photo=user_photo, about_me=about_me)
-            #user_form = User(username=username, first_name=first_name, last_name=last_name, email=email, password1=password1, password2=password2)
-            #user = profile_form.created_by=request.user
             user_form.save()
             profile_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
