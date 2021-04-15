@@ -34,7 +34,11 @@
               <tr>
                 <td><a href="{{ Product.get_absolute_url }}"> {{ Product.name }} </a></td>
                 <td> {{ Product.code }} </td>
-                <td class="text-center"> $36,738 </td>
+                <td class="text-center">
+                  <div class="photo">
+                    <img src="{{ Product.image.url }}" alt="Profile Photo">
+                  </div>
+                </td>
               </tr>
             {% endfor %}
             </tbody>
