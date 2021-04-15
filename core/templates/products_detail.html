@@ -21,60 +21,28 @@
           <thead class=" text-primary">
             <tr>
               <th>
-                Name
+                نام
               </th>
               <th>
-                Country
+                کد
               </th>
               <th>
-                City
+                توضیحات
               </th>
               <th class="text-center">
-                Salary
+                تصویر
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>
-                Dakota Rice
-              </td>
-              <td>
-                Niger
-              </td>
-              <td>
-                Oud-Turnhout
-              </td>
+              <td><a href="{{ Product.get_absolute_url }}"> {{ product.name }} </a></td>
+              <td> {{ product.code }} </td>
+              <td> {{ product.description|slice:":50" }} </td>
               <td class="text-center">
-                $36,738
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Minerva Hooper
-              </td>
-              <td>
-                Curaçao
-              </td>
-              <td>
-                Sinaai-Waas
-              </td>
-              <td class="text-center">
-                $23,789
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Doris Greene
-              </td>
-              <td>
-                Malawi
-              </td>
-              <td>
-                 in Kärnten
-              </td>
-              <td class="text-center">
-                $63,542
+                <div class="photo">
+                  <img src="{{ product.image.url }}" alt="Profile Photo">
+                </div>
               </td>
             </tr>
           </tbody>
