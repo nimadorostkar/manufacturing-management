@@ -106,8 +106,11 @@
                 {{ request.user.username }}
               </h5>
             </a>
-            <p class="description"> {{ request.user.email }} </p>
+            <h6 class="title">
+              {{ request.user.last_name }} {{ request.user.first_name }}
+            </h6>
             <p class="description"> {{ request.user.profile.phone }} </p>
+            <p class="description"> {{ request.user.email }} </p>
           </div>
         </p>
         <div class="card-description">
