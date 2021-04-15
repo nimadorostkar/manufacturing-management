@@ -13,13 +13,15 @@
 <div class="col-md-12">
   <div class="card  card-plain" align="right" dir="rtl">
     <div class="card-header">
-        <h3 class="card-title"> {{ station.name }} </h3>
-      <h4 class="card-title">
+        <h3 align="center" class="card-title"> {{ station.name }} </h3>
+      <h5 class="card-category">
         وضعیت:
-        {% if station.position == "M" %}📦{% endif %}
-        {% if station.position == "R" %}🛖{% endif %}
-        {% if station.position == "T" %}🚛{% endif %}
-        {% if station.position == "S" %}🏭{% endif %}
+      </h5>
+      <h4 class="card-title">
+        {% if station.position == "M" %}<i class="tim-icons icon-app"></i>{% endif %}
+        {% if station.position == "R" %}<i class="tim-icons icon-basket-simple"></i>{% endif %}
+        {% if station.position == "T" %}<i class="tim-icons icon-delivery-fast"></i>{% endif %}
+        {% if station.position == "S" %} ایستگاه <i class="tim-icons icon-settings"></i> {% endif %}
       </h4>
     </div>
     <div class="card-body">
