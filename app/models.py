@@ -18,7 +18,7 @@ class Profile(models.Model):
   phone = models.CharField(max_length=50,null=True, blank=True,verbose_name = " شماره تماس  ")
   address = models.CharField(max_length=3000,null=True, blank=True,verbose_name = " آدرس  ")
   user_photo = models.ImageField(upload_to='user_uploads/user_photo',default='user_uploads/user_photo/default.png',null=True, blank=True,verbose_name = "تصویر کاربر")
-  
+
 
   @receiver(post_save, sender=User)
   def create_user_profile(sender, instance, created, **kwargs):
@@ -82,7 +82,7 @@ class Station(models.Model):
 class Product(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
-    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "توضیحات")
     image=models.ImageField(upload_to='media', default='media/Default.png' ,null=True, blank=True,verbose_name = "تصویر")
 
     class Meta:

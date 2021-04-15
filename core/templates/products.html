@@ -24,6 +24,9 @@
                 <th>
                   کد
                 </th>
+                <th>
+                  توضیحات
+                </th>
                 <th class="text-center">
                   تصویر
                 </th>
@@ -34,6 +37,7 @@
               <tr>
                 <td><a href="{{ Product.get_absolute_url }}"> {{ Product.name }} </a></td>
                 <td> {{ Product.code }} </td>
+                <td> {{ Product.description|slice:":50" }} </td>
                 <td class="text-center">
                   <div class="photo">
                     <img src="{{ Product.image.url }}" alt="Profile Photo">
