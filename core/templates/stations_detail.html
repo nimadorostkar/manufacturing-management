@@ -15,7 +15,11 @@
     <div class="card-header">
         <h3 class="card-title"> {{ station.name }} </h3>
       <h4 class="card-title">
-          {{ station.position }}
+        وضعیت:
+        {% if station.position == "M" %}📦{% endif %}
+        {% if station.position == "R" %}🛖{% endif %}
+        {% if station.position == "T" %}🚛{% endif %}
+        {% if station.position == "S" %}🏭{% endif %}
       </h4>
     </div>
     <div class="card-body">
