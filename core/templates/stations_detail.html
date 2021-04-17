@@ -50,14 +50,19 @@
               {% for inputs in station.inputs.all %}
               <tr>
                 <td>
-                  hh
+                  <p class="title"> <a href="{{ inputs.get_absolute_url }}"> {{ inputs.name }} </a> </p>
                 </td>
                 <td>
-                  <p class="title"> <a href="{{ inputs.get_absolute_url }}"> {{ inputs.name }} </a> </p>
-                  <p class="text-muted"> {{ inputs.capacity }} </p>
+                  <p class="text-muted"> {{ inputs.description|slice:":60" }}</p>
+                </td>
+                <td class="td-actions">
+                  {{ inputs.manager }}
+                </td>
+                <td class="td-actions">
+                  {{ inputs.capacity }}
                 </td>
                 <td class="td-actions text-right">
-                  ff
+                  {{ inputs.position }}
                 </td>
               </tr>
               {% endfor %}
