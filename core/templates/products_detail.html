@@ -103,8 +103,8 @@
                           <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
                           {% endif %}
                           <div class="name"> {{ node.name }} </div>
-                          <div class="role"> fff  </div>
-                          <a class="manager" href="#"> {{ node.name }} </a>
+                          <div class="role"> {{ node.name }} </div>
+                          <a class="manager" href="#"> {{ node.quantity }} </a>
                         </div>
                          {% if not node.is_leaf_node %}
                           <ul> {{ children }} </ul>
