@@ -17,7 +17,7 @@
     <div class="forny-inner">
       <div class="forny-form">
         <div class="mb-8 text-center forny-logo">
-          <img width=40% src="{% static 'account/img/logo.png' %}">
+          <img width=40% src="{% static 'assets/img/logo.png' %}">
           <!-- <h3>Logo Placeholder</h3> -->
         </div>
         <div class="text-center">
@@ -27,14 +27,14 @@
         <form method="POST" action="{% url 'account_logout' %}">
           {% csrf_token %}
           <div>
-            <button class="primaryAction btn btn-primary btn-block" type="submit">Yes, Sign Out</button>
+            <button class="primaryAction btn btn-primary btn-block" type="submit"> بله ، از سیستم خارج شوید </button>
           </div>
         </form>
         <div class="line mt-6 mb-6 text-center">
-          <span>or</span>
+          <span>یا </span>
         </div>
         <div class="text-center">
-          <p>Take me <a href="javascript:history.back()">Back</a></p>
+          <p> <a href="javascript:history.back()"> بازگشت </a></p>
         </div>
       </div>
     </div>
