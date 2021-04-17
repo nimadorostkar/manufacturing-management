@@ -32,22 +32,11 @@
   </div>
 </div>
 
-<hr>
 
-
-
-  {% for inputs in stations.inputs.all %}
-
-  {{ station }}
-  {{ Station }}
-  {{ stations }}
-  {{ station.inputs }}
-  {{ inputs }}
-
+  {% for inputs in station.inputs.all %}
+   {{ inputs }}
   {% endfor %}
 
-
-<hr>
 
 <div class="row">
   <div class="col-lg-12 col-md-12">
