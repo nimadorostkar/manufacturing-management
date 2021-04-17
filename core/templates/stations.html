@@ -37,7 +37,7 @@
               <tr>
                 <td><a href="{{ Station.get_absolute_url }}"> {{ Station.name }} </a></td>
                 <td> {{ Station.manager }} </td>
-                <td> {{ Station.description }} </td>
+                <td> {{ Station.description|slice:":50" }} </td>
                 <td class="text-center"> {{ Station.position }} </td>
               </tr>
             {% endfor %}
