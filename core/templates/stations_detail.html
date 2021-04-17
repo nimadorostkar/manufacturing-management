@@ -33,10 +33,6 @@
 </div>
 
 
-  {% for inputs in station.inputs.all %}
-   {{ inputs }}
-  {% endfor %}
-
 
 <div class="row">
   <div class="col-lg-12 col-md-12">
@@ -51,30 +47,20 @@
           <table class="table">
             <tbody>
 
+              {% for inputs in station.inputs.all %}
               <tr>
                 <td>
                   hh
                 </td>
                 <td>
-                  <p class="title">Update the Documentation</p>
-                  <p class="text-muted">Dwuamish Head, Seattle, WA 8:47 AM</p>
+                  <p class="title"> <a href="{{ inputs.get_absolute_url }}"> {{ inputs.name }} </a> </p>
+                  <p class="text-muted"> {{ inputs.capacity }} </p>
                 </td>
                 <td class="td-actions text-right">
                   ff
                 </td>
               </tr>
-              <tr>
-                <td>
-                  hh
-                </td>
-                <td>
-                  <p class="title">Update the Documentation</p>
-                  <p class="text-muted">Dwuamish Head, Seattle, WA 8:47 AM</p>
-                </td>
-                <td class="td-actions text-right">
-                  ff
-                </td>
-              </tr>
+              {% endfor %}
 
             </tbody>
           </table>
@@ -167,7 +153,8 @@
   </div>
 </div>
 
-<!--
+
+
 <div class="row">
   <div class="col-md-12">
     <div class="card card-plain">
@@ -199,7 +186,6 @@
   </div>
 </div>
 
--->
 
 
 
