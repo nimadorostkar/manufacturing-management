@@ -90,14 +90,20 @@
                   {% recursetree nodes %}
                       <li>
                         <div class="user">
+                          {% if node.name.position == "M" %}
                           <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "R" %}
+                          <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "T" %}
+                          <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "S" %}
+                          <img src="https://avatars.githubusercontent.com/u/54316106?v=4" class="img-responsive" />
+                          {% endif %}
                           <div class="name"> {{ node.name }} </div>
-                          <div class="role">
-                            {% if node.name.position == "M" %}📦{% endif %}
-                            {% if node.name.position == "R" %}🛖{% endif %}
-                            {% if node.name.position == "T" %}🚛{% endif %}
-                            {% if node.name.position == "S" %}🏭{% endif %}
-                          </div>
+                          <div class="role"> fff  </div>
                           <a class="manager" href="#"> {{ node.name }} </a>
                         </div>
                          {% if not node.is_leaf_node %}
