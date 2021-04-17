@@ -34,10 +34,16 @@
 
 <hr>
 
-{{ station.inputs }}
 
-  {% for Station in station.Station.all %}
+
+  {% for inputs in stations.inputs.all %}
+
   {{ station }}
+  {{ Station }}
+  {{ stations }}
+  {{ station.inputs }}
+  {{ inputs }}
+
   {% endfor %}
 
 
@@ -172,7 +178,7 @@
   </div>
 </div>
 
-
+<!--
 <div class="row">
   <div class="col-md-12">
     <div class="card card-plain">
@@ -204,7 +210,7 @@
   </div>
 </div>
 
-
+-->
 
 
 
