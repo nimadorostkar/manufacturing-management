@@ -61,30 +61,14 @@
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-<div class="col-md-12">
-  <div class="card card-user">
-    <div class="card-body">
-      <p class="card-text">
-        <div class="author">
-          <div class="block block-one"></div>
-          <div class="block block-two"></div>
-          <div class="block block-three"></div>
-          <div class="block block-four"></div>
-          <img width="20%" src="{{ product.image.url }}">
-        </div>
-      </p>
-      <div align="center" dir="rtl" class="card-description">
-        <p class="category"> {{ station.description }} </p>
+      <div align="right" dir="rtl" class="card-description">
+        <p class="category"> {{ station.description|linebreaks }} </p>
       </div>
     </div>
   </div>
 </div>
-</div>
+
+
 
 
 
