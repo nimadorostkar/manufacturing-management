@@ -55,9 +55,9 @@ class Station(models.Model):
     name = models.CharField(max_length=400,verbose_name = "نام")
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station') )
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
-    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "مشخصات")
+    description=models.TextField(max_length=1000,null=True, blank=True,verbose_name = "مشخصات")
     capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ")
-    manager = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "مسئول")
+    manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
     inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
     location = LocationField(null=True,blank=True)
 

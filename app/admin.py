@@ -27,7 +27,7 @@ admin.site.register(models.Profile, ProfileAdmin)
 
 #------------------------------------------------------------------------------
 class StationAdmin(admin.ModelAdmin):
-    list_display = ('name','description')
+    list_display = ('name','manager','description','capacity','position')
 
 admin.site.register(models.Station, MapAdmin)
 
@@ -35,7 +35,7 @@ admin.site.register(models.Station, MapAdmin)
 
 #------------------------------------------------------------------------------
 class ProductAdmin(admin.ModelAdmin):
-	list_display = ('name','description')
+	list_display = ('name','description','code','image_tag')
 
 admin.site.register(models.Product,ProductAdmin)
 
