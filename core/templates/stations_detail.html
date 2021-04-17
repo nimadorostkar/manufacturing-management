@@ -32,8 +32,16 @@
   </div>
 </div>
 
+<hr>
+
+{{ station.inputs }}
+
+  {% for Station in station.Station.all %}
+  {{ station }}
+  {% endfor %}
 
 
+<hr>
 
 <div class="row">
   <div class="col-lg-12 col-md-12">

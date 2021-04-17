@@ -95,7 +95,8 @@ def stations(request):
 @login_required()
 def stations_detail(request, id):
     station = get_object_or_404(models.Station, id=id)
-    return render(request, 'stations_detail.html', {'station': station})
+    stations= models.Station.objects.all()
+    return render(request, 'stations_detail.html', {'station': station,'stations': stations})
 
 
 
