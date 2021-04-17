@@ -82,7 +82,7 @@ class Station(models.Model):
 class Product(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
     code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
-    description=models.TextField(max_length=500,null=True, blank=True,verbose_name = "توضیحات")
+    description=models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
     image=models.ImageField(upload_to='media', default='media/Default.png' ,null=True, blank=True,verbose_name = "تصویر")
 
     class Meta:
