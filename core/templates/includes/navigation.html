@@ -28,13 +28,8 @@
 
             <ul class="navbar-nav ml-auto">
               <li class="search-bar input-group">
-                <button name="q" class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
-                  <span class="d-lg-none d-md-block">
-                    <form action="{% url 'app:search' %}" method="post">
-                      {% csrf_token %}
-                      <input name="q" type="search">
-                    </form>
-                  </span>
+                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
+                  <span class="d-lg-none d-md-block">SEARCH</span>
                 </button>
               </li>
               <li class="dropdown nav-item">
