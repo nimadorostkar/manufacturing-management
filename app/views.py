@@ -166,6 +166,7 @@ def profile(request):
 
 @login_required()
 def ticket(request):
+    ticket = models.Ticket.objects.filter(user=request.user)
     if request.method == 'POST':
         ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
         if ticket_form.is_valid():
@@ -181,7 +182,7 @@ def ticket(request):
             messages.error(request, _('Please correct the error below.'))
     else:
       ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
-      context = {'ticket_form': ticket_form }
+      context = {'ticket_form': ticket_form, 'ticket':ticket }
       return render(request, 'ticket.html', context)
 
 

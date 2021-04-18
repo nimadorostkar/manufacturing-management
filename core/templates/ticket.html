@@ -7,6 +7,68 @@
 
 {% block content %}
 
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card"  align="right" dir="rtl">
+      <div class="card-header">
+        <h5 class="title"> تیکت ها </h5>
+      </div>
+      <div class="card-body">
+         <form method="post" enctype="multipart/form-data">
+           {% csrf_token %}
+          <div class="row">
+            <div class="col-md-4 pr-md-1">
+              <div class="form-group">
+                <label> از طرف </label>
+                <input name="first_name" type="text" class="form-control" disabled="" placeholder="از طرف" value="{{ request.user.first_name }}">
+              </div>
+            </div>
+            <div class="col-md-4 pl-md-1">
+              <div class="form-group">
+                <label> ارسال به </label>
+                <input name="last_name" type="text" class="form-control" placeholder="ارسال به" value="{{ request.user.last_name }}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label> عنوان </label>
+                <input name="title" type="text" class="form-control" placeholder="عنوان">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label> متن پیام </label>
+                <input name="descriptions" type="text" class="form-control" placeholder="متن پیام">
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-fill btn-primary"> ارسال </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="row">
         <div class="col-md-12">
             <div class="card card-profile">
@@ -15,7 +77,25 @@
                     <h4 class="card-title">
                         Add your content
                     </h4>
-                    <a href="/" class="btn btn-primary btn-round">Home</a>
+
+                    {% for Ticket in ticket %}
+                     {{ Ticket.title }}
+                    {% endfor %}
+
+                    <hr>
+                    <br>
+
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ ticket_form.as_p }}
+                        <br>
+                        <button type="submit"> ارسال </button>
+                    </form>
+
+
+
+
+
                 </div>
             </div>
         </div>
