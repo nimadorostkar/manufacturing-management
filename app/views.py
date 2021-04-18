@@ -11,6 +11,7 @@ from .models import Profile, Ticket
 from django.utils.translation import ugettext_lazy as _
 from .forms import ProfileForm, UserForm, TicketForm
 from itertools import chain
+from django.contrib.auth import get_user_model
 
 
 ################################# index ######################################
@@ -169,6 +170,8 @@ def ticket(request):
     send_tickets = models.Ticket.objects.filter(user=request.user).order_by('-created_on')
     received_tickets = models.Ticket.objects.filter(to=request.user).order_by('-created_on')
     ticket = chain(send_tickets, received_tickets)
+    User = get_user_model()
+    users = User.objects.all()
     if request.method == 'POST':
         ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
         if ticket_form.is_valid():
@@ -184,7 +187,7 @@ def ticket(request):
             messages.error(request, _('Please correct the error below.'))
     else:
       ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
-      context = {'ticket_form': ticket_form, 'ticket':ticket }
+      context = {'ticket_form': ticket_form, 'ticket':ticket, 'users':users }
       return render(request, 'ticket.html', context)
 
 
