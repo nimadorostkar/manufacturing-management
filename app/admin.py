@@ -17,11 +17,13 @@ admin.site.site_title= "Tavankar"
 admin.site.register(LogEntry)
 
 
+
 #------------------------------------------------------------------------------
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('user','to','title','created_on')
 
-admin.site.register(models.Profile, TicketAdmin)
+admin.site.register(models.Ticket, TicketAdmin)
+
 
 
 #------------------------------------------------------------------------------

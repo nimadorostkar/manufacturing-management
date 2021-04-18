@@ -129,8 +129,8 @@ class Tree(MPTTModel):
 
 #------------------------------------------------------------------------------
 class Ticket(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
-    to = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
+    user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "از طرف")
+    to = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "ارسال به")
     ticket_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=300,null=True, blank=True,verbose_name = " عنوان ")
     descriptions = models.TextField(max_length=800,null=True, blank=True,verbose_name = "توضیحات")
