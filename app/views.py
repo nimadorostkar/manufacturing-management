@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from .models import Profile
 from django.utils.translation import ugettext_lazy as _
 from .forms import ProfileForm, UserForm
-
+from itertools import chain
 
 
 
@@ -76,8 +76,9 @@ def search(request):
     if request.method=="POST":
         search = request.POST['q']
         if search:
-            match = models.Station.objects.filter(Q(name__icontains=search) | Q(description__icontains=search))
-            #match_product = models.Product.objects.filter(Q(name__icontains=search) | Q(description__icontains=search | Q(code__icontains=search ))
+            station = models.Station.objects.filter(Q(name__icontains=search) | Q(description__icontains=search))
+            product = models.Product.objects.filter(Q(name__icontains=search) | Q(description__icontains=search))
+            match = chain(station, product)
             if match:
                 return render(request,'search.html', {'sr': match})
             else:
@@ -85,6 +86,8 @@ def search(request):
         else:
             return HttpResponseRedirect("{% url 'app:search' %}")
     return render(request, 'search.html', {})
+
+
 
 
 
