@@ -50,6 +50,12 @@
               <p> پروفایل </p>
             </a>
           </li>
+          <li class="{% if 'ticket' in segment %} active {% endif %}">
+            <a href="{% url 'app:ticket' %}">
+              <i class="tim-icons icon-single-02"></i>
+              <p> تیکت </p>
+            </a>
+          </li>
           <li class="{% if 'tables' in segment %} active {% endif %}">
             <a href="/ui-tables.html">
               <i class="tim-icons icon-single-copy-04"></i>

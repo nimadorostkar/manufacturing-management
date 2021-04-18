@@ -15,6 +15,7 @@ urlpatterns = [
     path('maps', views.maps, name='maps'),
     path('profile', views.profile, name='profile'),
     path('search',views.search,name='search'),
+    path('ticket',views.ticket,name='ticket'),
     # products
     path('products', views.products, name='products'),
     path('products_detail/<int:id>/',views.products_detail,name='products_detail'),
