@@ -82,7 +82,7 @@ def search(request):
             if match:
                 return render(request,'search.html', {'sr': match})
             else:
-                messages.error(request,  '   قطعه مورد نظر یافت نشد ، لطفا مجددا جستجو کنید  ' )
+                messages.error(request,  '   چیزی یافت نشد ، لطفا مجددا جستجو کنید ' )
         else:
             return HttpResponseRedirect("{% url 'app:search' %}")
     return render(request, 'search.html', {})
