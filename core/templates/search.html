@@ -24,11 +24,7 @@
 {% if sr %}
 
   {% for Station in sr %}
-        {{ Station.name }} <br>
-  {% endfor %}
-  <hr>
-  {% for Product in sr %}
-        {{ Product.name }} <br>
+   <a href="{{ Station.get_absolute_url}}">  {{ Station.name }} </a> <br>
   {% endfor %}
 
 
