@@ -7,9 +7,9 @@ from . import models
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Ticket
 from django.utils.translation import ugettext_lazy as _
-from .forms import ProfileForm, UserForm
+from .forms import ProfileForm, UserForm, TicketForm
 from itertools import chain
 
 
@@ -158,6 +158,16 @@ def profile(request):
   'user_form': user_form,
   'profile_form': profile_form }
   return render(request, 'page-user.html', context)
+
+
+
+
+################################ stations ####################################
+
+@login_required()
+def ticket(request):
+    stations= models.Station.objects.all()
+    return render(request, 'ticket.html', {'stations': stations})
 
 
 
