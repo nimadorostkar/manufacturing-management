@@ -4,7 +4,7 @@ from django.contrib.admin.models import LogEntry
 from mptt.admin import MPTTModelAdmin
 from mptt.admin import DraggableMPTTAdmin
 from mapbox_location_field.admin import MapAdmin
-from .models import Profile, Tree, Station
+from .models import Profile, Tree, Station, Ticket
 
 
 
@@ -15,6 +15,13 @@ admin.site.site_header= "  پنل مدیریت  "
 admin.site.site_title= "Tavankar"
 
 admin.site.register(LogEntry)
+
+
+#------------------------------------------------------------------------------
+class TicketAdmin(admin.ModelAdmin):
+    list_display = ('user','to','title','created_on')
+
+admin.site.register(models.Profile, TicketAdmin)
 
 
 #------------------------------------------------------------------------------
