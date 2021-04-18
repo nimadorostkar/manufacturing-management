@@ -162,12 +162,27 @@ def profile(request):
 
 
 
-################################ stations ####################################
+################################# ticket #####################################
 
 @login_required()
 def ticket(request):
-    stations= models.Station.objects.all()
-    return render(request, 'ticket.html', {'stations': stations})
+    if request.method == 'POST':
+        ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
+        if ticket_form.is_valid():
+            obj = Ticket() #gets new object
+            obj.title = ticket_form.cleaned_data['title']
+            obj.descriptions = ticket_form.cleaned_data['descriptions']
+            obj.to = ticket_form.cleaned_data['to']
+            obj.user = ticket_form.created_by=request.user
+            obj.save()
+            messages.success(request, _('done successfully !'))
+            return redirect('/ticket')
+        else:
+            messages.error(request, _('Please correct the error below.'))
+    else:
+      ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
+      context = {'ticket_form': ticket_form }
+      return render(request, 'ticket.html', context)
 
 
 
