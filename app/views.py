@@ -67,6 +67,28 @@ def maps(request):
 
 
 
+
+
+################################# search #####################################
+
+@login_required
+def search(request):
+    if request.method=="POST":
+        search = request.POST['q']
+        if search:
+            match = models.Station.objects.filter(Q(name__icontains=search) | Q(code__icontains=search))
+            if match:
+                return render(request,'search.html', {'sr': match})
+            else:
+                messages.error(request,  '   قطعه مورد نظر یافت نشد ، لطفا مجددا جستجو کنید  ' )
+        else:
+            return HttpResponseRedirect("{% url 'app:search' %}")
+    return render(request, 'search.html', {'search':search})
+
+
+
+
+
 ################################ products ####################################
 
 @login_required()
