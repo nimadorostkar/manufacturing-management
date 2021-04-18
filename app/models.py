@@ -122,3 +122,32 @@ class Tree(MPTTModel):
 
     def position(self):
         return  self.name.position
+
+
+
+
+#------------------------------------------------------------------------------
+class Ticket(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "کاربر")
+    ticket_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=300,null=True, blank=True,verbose_name = " عنوان ")
+    descriptions = models.TextField(max_length=800,null=True, blank=True,verbose_name = "توضیحات")
+    CHOICES1 = ( ('تیکت','تیکت'), ('پاسخ','پاسخ') )
+    status = models.CharField(max_length=20,choices=CHOICES1,default='تیکت',verbose_name = "وضعیت")
+    CHOICES2 = ( ('🔴New','🔴New'),('🟠checked','🟠checked'), ('Answered','Answered') )
+    case = models.CharField(max_length=20,choices=CHOICES2,default='🔴New',verbose_name = "حالت")
+    updated_on = models.DateTimeField(auto_now= True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def user_name(self):
+          return str(self.user)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    class Meta:
+        verbose_name = "Ticket"
+        verbose_name_plural = " Tickets "
+
+    def __str__(self):
+        return str(self.created_on)
