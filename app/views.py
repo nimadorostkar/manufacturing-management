@@ -166,7 +166,7 @@ def profile(request):
 
 @login_required()
 def ticket(request):
-    ticket = models.Ticket.objects.filter(user=request.user)
+    ticket = models.Ticket.objects.filter(user=request.user).order_by('-created_on')
     if request.method == 'POST':
         ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
         if ticket_form.is_valid():
