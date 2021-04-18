@@ -182,7 +182,8 @@ def ticket(request):
             obj.user = ticket_form.created_by=request.user
             obj.save()
             #messages.success(request, _('done successfully !'))
-            return redirect('/ticket')
+            context = {'ticket_form': ticket_form, 'ticket':ticket, 'users':users }
+            return render(request, 'ticket.html', context)
         #else:
             #messages.error(request, _('Please correct the error below.'))
     else:
