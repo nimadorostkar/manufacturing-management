@@ -19,13 +19,7 @@
          <form method="post" enctype="multipart/form-data">
            {% csrf_token %}
           <div class="row">
-            <div class="col-md-4 pr-md-1">
-              <div class="form-group">
-                <label> از طرف </label>
-                <input name="user" type="text" class="form-control" disabled="" placeholder="از طرف" value="{{ request.user.username }}">
-              </div>
-            </div>
-            <div class="col-md-4 pl-md-1">
+            <div class="col-md-4">
               <div class="form-group">
                 <label> ارسال به </label>
                 <input list="to" name="to" type="text" class="form-control" placeholder="ارسال به">
@@ -38,7 +32,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
               <div class="form-group">
                 <label> عنوان </label>
                 <input name="title" type="text" class="form-control" placeholder="عنوان">

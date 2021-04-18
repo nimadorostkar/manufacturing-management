@@ -181,10 +181,10 @@ def ticket(request):
             obj.to = ticket_form.cleaned_data['to']
             obj.user = ticket_form.created_by=request.user
             obj.save()
-            messages.success(request, _('done successfully !'))
+            #messages.success(request, _('done successfully !'))
             return redirect('/ticket')
-        else:
-            messages.error(request, _('Please correct the error below.'))
+        #else:
+            #messages.error(request, _('Please correct the error below.'))
     else:
       ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
       context = {'ticket_form': ticket_form, 'ticket':ticket, 'users':users }
