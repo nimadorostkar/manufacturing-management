@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django import template
 from . import models
 from django.db.models import Q
@@ -11,8 +11,6 @@ from .models import Profile
 from django.utils.translation import ugettext_lazy as _
 from .forms import ProfileForm, UserForm
 from itertools import chain
-
-
 
 
 ################################# index ######################################
@@ -84,7 +82,7 @@ def search(request):
             else:
                 messages.error(request,  '   چیزی یافت نشد ، لطفا مجددا جستجو کنید ' )
         else:
-            return HttpResponseRedirect("{% url 'app:search' %}")
+            return HttpResponseRedirect('/search')
     return render(request, 'search.html', {})
 
 
