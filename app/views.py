@@ -183,9 +183,9 @@ def ticket(request):
             obj.save()
             #messages.success(request, _('done successfully !'))
             context = {'ticket_form': ticket_form, 'ticket':ticket, 'users':users }
-            return render(request, 'ticket.html', context)
-        #else:
-            #messages.error(request, _('Please correct the error below.'))
+            return redirect(reverse('ticket'))
+        else:
+            return HttpResponse("Form Failed to Validate")
     else:
       ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
       context = {'ticket_form': ticket_form, 'ticket':ticket, 'users':users }
