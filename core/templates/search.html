@@ -10,6 +10,41 @@
 <h1> search...</h1>
 
 
+
+{% if messages %}
+{% for k in messages %}
+<br> <br>
+<h5 style="color:#ffc107;" dir="rtl" align="center"> {{k}} </h5>
+{% endfor %}
+{% endif %}
+
+
+
+
+{% if sr %}
+
+  {% for material in sr %}
+        <h2>search1</h2>
+  {% endfor %}
+
+
+
+
+
+
+
+
+
+
+{% endif %}
+
+
+
+
+
+
+
+
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
