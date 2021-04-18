@@ -67,8 +67,11 @@
             <div class="card card-profile">
                 <div class="card-body">
                     <h6 class="card-category text-gray">{{ Ticket.created_on }}</h6>
-                    <h4 class="card-title"> {{ Ticket.title }} </h4>
-
+                    <h3 class="card-title" align="right" dir="rtl" > {{ Ticket.title }} </h3>
+                    <p align="right" dir="rtl" > {{ Ticket.descriptions }} </p>
+                    <hr>
+                    <p class="card-category text-gray" align="right" dir="rtl" > ارسال شده از طرف {{ Ticket.user }} به {{ Ticket.to }}  </p>
+                    <p class="card-category text-gray"> ticket number: {{ Ticket.ticket_number }} </p>
                 </div>
             </div>
         </div>
