@@ -33,16 +33,12 @@
               </tr>
             </thead>
             <tbody>
-            {% for Product in products %}
+            {% for Manufacture in manufactures %}
               <tr>
-                <td><a href="{{ Product.get_absolute_url }}"> {{ Product.name }} </a></td>
-                <td> {{ Product.code }} </td>
-                <td> {{ Product.description|slice:":50" }}... </td>
-                <td class="text-center">
-                  <div class="photo">
-                    <img src="{{ Product.image.url }}" alt="Profile Photo">
-                  </div>
-                </td>
+                <td><a href="{{ Manufacture.get_absolute_url }}"> {{ Manufacture.product }} </a></td>
+                <td> {{ Manufacture.code }} </td>
+                <td> {{ Manufacture.description|slice:":60" }}... </td>
+                <td class="text-center"> {{ Manufacture.circulation }} </td>
               </tr>
             {% endfor %}
             </tbody>
