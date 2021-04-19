@@ -188,7 +188,7 @@ def ticket(request):
             obj.save()
             #messages.success(request, _('done successfully !'))
             context = {'ticket_form': ticket_form, 'ticket':ticket, 'users':users }
-            return redirect(reverse('ticket'))
+            return render(request, 'ticket.html', context)
         else:
             return HttpResponse("Form Failed to Validate")
     else:
