@@ -181,15 +181,13 @@ def ticket(request):
     if request.method == 'POST':
         ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
         if ticket_form.is_valid():
-            #obj = Ticket() #gets new object
+            obj = Ticket() #gets new object
             #obj = ticket_form.save(commit=False)
-            title = ticket_form.cleaned_data['title']
-            descriptions = ticket_form.cleaned_data['descriptions']
-            to = ticket_form.cleaned_data['to']
-            user = ticket_form.created_by=request.user
-            create_ticket(title, descriptions, to, user)
-            #obj.save()
-            ticket_form.save()
+            obj.title = ticket_form.cleaned_data['title']
+            obj.descriptions = ticket_form.cleaned_data['descriptions']
+            obj.to = ticket_form.cleaned_data['to']
+            obj.user = ticket_form.created_by=request.user
+            obj.save()
             #messages.success(request, _('done successfully !'))
             context = {'ticket_form': ticket_form, 'ticket':ticket, 'users':users }
             return render(request, 'ticket.html', context)

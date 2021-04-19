@@ -150,12 +150,12 @@ class Ticket(models.Model):
 
 
     @receiver(post_save, sender=User)
-    def create_ticket(sender, instance, created, **kwargs):
+    def create_user_ticket(sender, instance, created, **kwargs):
         if created:
             Ticket.objects.create(user=instance)
 
     @receiver(post_save, sender=User)
-    def save_ticket(sender, instance, **kwargs):
+    def save_user_ticket(sender, instance, **kwargs):
         instance.ticket.save()
 
 
