@@ -148,18 +148,30 @@ class Ticket(models.Model):
     def __str__(self):
         return str(self.created_on)
 
-'''
 
-    @receiver(post_save, sender=User)
-    def create_user_ticket(sender, instance, created, **kwargs):
-        if created:
-            Ticket.objects.create(user=instance)
 
-    @receiver(post_save, sender=User)
-    def save_user_ticket(sender, instance, **kwargs):
-        instance.ticket.save()
 
-'''
+
+
+#------------------------------------------------------------------------------
+class Manufacture(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
+    description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
+    circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
+
+    class Meta:
+        verbose_name = " تولید "
+        verbose_name_plural = "تولیدات"
+
+    def __str__(self):
+        return self.product
+
+    def get_absolute_url(self):
+        return reverse('app:products_detail',args=[self.id])
+
+
+
+
 
 
 
