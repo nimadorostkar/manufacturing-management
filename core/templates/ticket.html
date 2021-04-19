@@ -19,6 +19,7 @@
          <form action="/ticket" method="post" enctype="multipart/form-data">
            {% csrf_token %}
 
+
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
@@ -37,6 +38,18 @@
               <div class="form-group">
                 <label> عنوان </label>
                 <input name="title" type="text" class="form-control" placeholder="عنوان">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label> 22 </label>
+                <input name="ticket_number" type="text" class="form-control" >
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label> 33 </label>
+                <input name="created_on" type="text" class="form-control" >
               </div>
             </div>
           </div>

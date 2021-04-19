@@ -186,6 +186,8 @@ def ticket(request):
             obj.title = ticket_form.cleaned_data['title']
             obj.descriptions = ticket_form.cleaned_data['descriptions']
             obj.to = ticket_form.cleaned_data['to']
+            obj.ticket_number = ticket_form.cleaned_data['ticket_number']
+            obj.created_on = ticket_form.cleaned_data['created_on']
             obj.user = ticket_form.created_by=request.user
             obj.save()
             #messages.success(request, _('done successfully !'))
