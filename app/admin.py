@@ -4,7 +4,7 @@ from django.contrib.admin.models import LogEntry
 from mptt.admin import MPTTModelAdmin
 from mptt.admin import DraggableMPTTAdmin
 from mapbox_location_field.admin import MapAdmin
-from .models import Profile, Tree, Station, Ticket
+from .models import Profile, Tree, Station, Ticket, Manufacture
 
 
 
@@ -50,7 +50,6 @@ admin.site.register(models.Product,ProductAdmin)
 
 
 
-
 #------------------------------------------------------------------------------
  #https://django-mptt.readthedocs.io/en/latest/admin.html#mptt-admin-draggablempttadmin
 class TreeMPTTModelAdmin(MPTTModelAdmin):
@@ -59,5 +58,12 @@ class TreeMPTTModelAdmin(MPTTModelAdmin):
 
 admin.site.register(Tree,DraggableMPTTAdmin,
     list_display=('tree_actions','indented_title','position'),
-    list_display_links=('indented_title',),
-	)
+    list_display_links=('indented_title',),)
+
+
+
+#------------------------------------------------------------------------------
+class ManufactureAdmin(admin.ModelAdmin):
+    list_display = ('product','circulation','description')
+
+admin.site.register(models.Manufacture, ManufactureAdmin)
