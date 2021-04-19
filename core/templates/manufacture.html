@@ -1,5 +1,5 @@
 {% extends 'layouts/base.html' %}
-
+{% load static %}
 {% block title %} manufacture {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
@@ -7,19 +7,51 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card card-profile">
-                <div class="card-body">
-                    <h6 class="card-category text-gray"> manufacture </h6>
-                    <h4 class="card-title">
-                        Add your content
-                    </h4>
-                    <a href="/" class="btn btn-primary btn-round">Home</a>
-                </div>
-            </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" align="right" dir="rtl">
+      <div class="card-header">
+        <h4 class="card-title"> تولیدات </h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  نام
+                </th>
+                <th>
+                  کد
+                </th>
+                <th>
+                  توضیحات
+                </th>
+                <th class="text-center">
+                 تیراژ
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for Product in products %}
+              <tr>
+                <td><a href="{{ Product.get_absolute_url }}"> {{ Product.name }} </a></td>
+                <td> {{ Product.code }} </td>
+                <td> {{ Product.description|slice:":50" }}... </td>
+                <td class="text-center">
+                  <div class="photo">
+                    <img src="{{ Product.image.url }}" alt="Profile Photo">
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
+</div>
 
 {% endblock content %}
 

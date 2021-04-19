@@ -156,6 +156,7 @@ class Ticket(models.Model):
 #------------------------------------------------------------------------------
 class Manufacture(models.Model):
     product = models.OneToOneField(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
+    code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
     description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
     circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
 
