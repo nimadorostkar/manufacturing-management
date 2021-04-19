@@ -148,7 +148,7 @@ class Ticket(models.Model):
     def __str__(self):
         return str(self.created_on)
 
-'''
+
     @receiver(post_save, sender=User)
     def create_ticket(sender, instance, created, **kwargs):
         if created:
@@ -157,7 +157,7 @@ class Ticket(models.Model):
     @receiver(post_save, sender=User)
     def save_ticket(sender, instance, **kwargs):
         instance.ticket.save()
-'''
+
 
 
 

@@ -16,13 +16,14 @@
         <h5 class="title"> ارسال تیکت </h5>
       </div>
       <div class="card-body">
-         <form action="{% url 'app:ticket' %}" method="post" enctype="multipart/form-data">
+         <form action="/ticket" method="post" enctype="multipart/form-data">
            {% csrf_token %}
+
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
                 <label> ارسال به </label>
-                <input list="to" id='to' name="to" type="text" class="form-control" placeholder="ارسال به">
+                <input list="to" name="to" type="text" class="form-control" placeholder="ارسال به">
                 <datalist id="to">
                   {% for User in users %}
                     <option value= "{{ User.username }}" >
@@ -35,7 +36,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label> عنوان </label>
-                <input id='title' name="title" type="text" class="form-control" placeholder="عنوان">
+                <input name="title" type="text" class="form-control" placeholder="عنوان">
               </div>
             </div>
           </div>
@@ -43,7 +44,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label> متن پیام </label>
-                <input id='descriptions' name="descriptions" type="text" class="form-control" placeholder="متن پیام">
+                <input name="descriptions" type="text" class="form-control" placeholder="متن پیام">
               </div>
             </div>
           </div>
