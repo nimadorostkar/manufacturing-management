@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %} Page Blank {% endblock %}
+{% block title %} ticket {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -16,7 +16,7 @@
         <h5 class="title"> ارسال تیکت </h5>
       </div>
       <div class="card-body">
-         <form method="post" enctype="multipart/form-data">
+         <form action="{% url 'app:ticket' %}" method="post" enctype="multipart/form-data">
            {% csrf_token %}
           <div class="row">
             <div class="col-md-4">
