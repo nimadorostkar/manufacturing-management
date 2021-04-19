@@ -164,7 +164,7 @@ class Manufacture(models.Model):
         verbose_name_plural = "تولیدات"
 
     def __str__(self):
-        return self.product
+        return str(self.product)
 
     def get_absolute_url(self):
         return reverse('app:manufactures_detail',args=[self.id])
