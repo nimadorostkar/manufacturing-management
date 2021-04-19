@@ -218,7 +218,7 @@ def manufacture(request):
 def manufacture_detail(request, id):
     manufacture = get_object_or_404(models.Manufacture, id=id)
     manufactures = models.Manufacture.objects.all()
-    return render(request, 'stations_detail.html', {'manufactures': manufactures,'manufacture': manufacture})
+    return render(request, 'manufacture_detail.html', {'manufactures': manufactures,'manufacture': manufacture})
 
 
 
