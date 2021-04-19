@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 {% load static %}
-{% block title %} manufacture_detail  {% endblock %}
+{% block title %} manufactures detail  {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -27,16 +27,16 @@
                 کد
               </th>
               <th>
-              تیراژ
+                توضیحات
               </th>
               <th class="text-center">
-
+                تیراژ
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><a href="{{ Product.get_absolute_url }}"> {{ manufacture.product }} </a></td>
+              <td> {{ manufacture.product }} </td>
               <td> {{ manufacture.code }} </td>
               <td> {{ manufacture.description|slice:":50" }} </td>
               <td class="text-center"> {{ manufacture.circulation }}  </td>

@@ -161,6 +161,10 @@ class Manufacture(models.Model):
     description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
     circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
 
+    def get_absolute_url(self):
+        return reverse('app:manufactures_detail',args=[self.id])
+
+
     class Meta:
         verbose_name = " تولید "
         verbose_name_plural = "تولیدات"
@@ -168,8 +172,6 @@ class Manufacture(models.Model):
     def __str__(self):
         return str(self.product)
 
-    def get_absolute_url(self):
-        return reverse('app:manufacture_detail',args=[self.id])
 
 
 

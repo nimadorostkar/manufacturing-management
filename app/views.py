@@ -205,9 +205,9 @@ def ticket(request):
 ############################### manufacture ##################################
 
 @login_required()
-def manufacture(request):
+def manufactures(request):
     manufactures = models.Manufacture.objects.all()
-    return render(request, 'manufacture.html', {'manufactures': manufactures})
+    return render(request, 'manufactures.html', {'manufactures': manufactures})
 
 
 
@@ -215,10 +215,10 @@ def manufacture(request):
 ########################### manufacture_detail ###############################
 
 @login_required()
-def manufacture_detail(request, id):
+def manufactures_detail(request, id):
     manufacture = get_object_or_404(models.Manufacture, id=id)
     manufactures = models.Manufacture.objects.all()
-    return render(request, 'manufacture_detail.html', {'manufactures': manufactures,'manufacture': manufacture})
+    return render(request, 'manufactures_detail.html', {'manufactures': manufactures,'manufacture': manufacture})
 
 
 
