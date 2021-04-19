@@ -6,7 +6,7 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-
+{% load bootstrap %}
 
 
 <div class="row">
@@ -18,7 +18,7 @@
       <div class="card-body">
          <form action="/ticket" method="post" enctype="multipart/form-data">
            {% csrf_token %}
-           {{ ticket_form.as_p }}
+           {{ ticket_form|bootstrap }}
     <!--      <div class="row">
             <div class="col-md-4">
               <div class="form-group">
