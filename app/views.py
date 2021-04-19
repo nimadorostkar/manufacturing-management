@@ -206,7 +206,7 @@ def ticket(request):
 
 @login_required()
 def manufacture(request):
-    manufacture= models.manufacture.objects.all()
+    manufacture= models.Manufacture.objects.all()
     return render(request, 'manufacture.html', {'manufacture': manufacture})
 
 
@@ -216,8 +216,8 @@ def manufacture(request):
 
 @login_required()
 def manufacture_detail(request, id):
-    manufactures = get_object_or_404(models.manufacture, id=id)
-    manufacture= models.manufacture.objects.all()
+    manufactures = get_object_or_404(models.Manufacture, id=id)
+    manufacture= models.Manufacture.objects.all()
     return render(request, 'stations_detail.html', {'manufactures': manufactures,'manufacture': manufacture})
 
 
