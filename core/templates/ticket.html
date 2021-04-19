@@ -22,7 +22,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label> ارسال به </label>
-                <input list="to" name="to" type="text" class="form-control" placeholder="ارسال به">
+                <input list="to" id='to' name="to" type="text" class="form-control" placeholder="ارسال به">
                 <datalist id="to">
                   {% for User in users %}
                     <option value= "{{ User.username }}" >
@@ -35,7 +35,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label> عنوان </label>
-                <input name="title" type="text" class="form-control" placeholder="عنوان">
+                <input id='title' name="title" type="text" class="form-control" placeholder="عنوان">
               </div>
             </div>
           </div>
@@ -43,7 +43,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label> متن پیام </label>
-                <input name="descriptions" type="text" class="form-control" placeholder="متن پیام">
+                <input id='descriptions' name="descriptions" type="text" class="form-control" placeholder="متن پیام">
               </div>
             </div>
           </div>

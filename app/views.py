@@ -181,7 +181,7 @@ def ticket(request):
         ticket_form=TicketForm(request.POST, request.FILES, instance=request.user)
         if ticket_form.is_valid():
             obj = Ticket() #gets new object
-            obj = ticket_form.save(commit=False)
+            #obj = ticket_form.save(commit=False)
             obj.title = ticket_form.cleaned_data['title']
             obj.descriptions = ticket_form.cleaned_data['descriptions']
             obj.to = ticket_form.cleaned_data['to']
