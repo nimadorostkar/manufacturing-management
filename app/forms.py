@@ -26,7 +26,7 @@ class UserForm(UserCreationForm):
 
 #------------------------------------------------------------------------------
 class TicketForm(forms.ModelForm):
-	to = forms.CharField(error_messages={'required': 'd'})
+	to = forms.CharField(error_messages={'required': 'ضروری'})
 
 	class Meta:
 		model = Ticket
