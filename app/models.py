@@ -155,7 +155,7 @@ class Ticket(models.Model):
 
 #------------------------------------------------------------------------------
 class Manufacture(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
+    product = models.OneToOneField(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
     description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
     circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
 
