@@ -1,6 +1,7 @@
 from django import forms
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .models import Profile, Ticket
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
@@ -26,7 +27,7 @@ class UserForm(UserCreationForm):
 
 #------------------------------------------------------------------------------
 class TicketForm(forms.ModelForm):
-	to = forms.CharField(error_messages={'required': 'ضروری'})
+	to = forms.ChoiceField(choices=User, widget=forms.Select(), error_messages={'required': 'ضروری'})
 
 	class Meta:
 		model = Ticket
