@@ -1,27 +1,92 @@
-{% extends 'layouts/base.html' %}
-
-{% block title %} manufacture_detail {% endblock %}
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} manufacture_detail  {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
+{% load mptt_tags %}
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card card-profile">
-                <div class="card-body">
-                    <h6 class="card-category text-gray"> manufacture_detail </h6>
-                    <h4 class="card-title">
-                        Add your content
-                    </h4>
-                    <a href="/" class="btn btn-primary btn-round">Home</a>
-                </div>
-            </div>
-        </div>
+
+
+<div class="col-md-12">
+  <div class="card  card-plain" align="right" dir="rtl">
+    <div class="card-header">
+      <h4 class="card-title"> تولید {{ manufacture.product }} <small> ({{ manufacture.code }}) </small> </h4>
     </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table tablesorter " id="">
+          <thead class=" text-primary">
+            <tr>
+              <th>
+                نام
+              </th>
+              <th>
+                کد
+              </th>
+              <th>
+              تیراژ
+              </th>
+              <th class="text-center">
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="{{ Product.get_absolute_url }}"> {{ manufacture.product }} </a></td>
+              <td> {{ manufacture.code }} </td>
+              <td> {{ manufacture.description|slice:":50" }} </td>
+              <td class="text-center"> {{ manufacture.circulation }}  </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+  <div class="card card-user">
+    <div class="card-body">
+      <p class="card-text">
+        <div class="author">
+          <div class="block block-one"></div>
+          <div class="block block-two"></div>
+          <div class="block block-three"></div>
+          <div class="block block-four"></div>
+        </div>
+      </p>
+      <div align="right" dir="rtl" class="card-description">
+        <p class="category"> {{ manufacture.description }} </p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
 
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+
+  <script>
+
+
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+    });
+
+
+
+  </script>
+
+{% endblock javascripts %}
