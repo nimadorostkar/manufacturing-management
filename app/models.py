@@ -161,9 +161,9 @@ class Manufacture(models.Model):
     description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
     circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
 
-    def get_absolute_url(self):
-        return reverse('app:manufactures_detail',args=[self.id])
 
+    def get_absolute_url(self):
+        return reverse('app:manufactures_detail',args=[str(self.id)]) 
 
     class Meta:
         verbose_name = " تولید "
