@@ -12,6 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from .forms import ProfileForm, UserForm, TicketForm
 from itertools import chain
 from django.contrib.auth import get_user_model
+from django.db import transaction
 
 
 ################################# index ######################################
@@ -167,6 +168,7 @@ def profile(request):
 ################################# ticket #####################################
 
 @login_required()
+@transaction.atomic
 def ticket(request):
     send_tickets = models.Ticket.objects.filter(user=request.user).order_by('-created_on')
     received_tickets = models.Ticket.objects.filter(to=request.user).order_by('-created_on')
