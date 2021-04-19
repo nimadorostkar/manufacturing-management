@@ -135,14 +135,16 @@ class Ticket(models.Model):
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
 
+'''
     @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
+    def create_ticket(sender, instance, created, **kwargs):
         if created:
             Ticket.objects.create(user=instance)
 
     @receiver(post_save, sender=User)
-    def save_user_profile(sender, instance, **kwargs):
+    def save_ticket(sender, instance, **kwargs):
         instance.ticket.save()
+'''
 
     def user_name(self):
           return str(self.user)
