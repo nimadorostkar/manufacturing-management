@@ -27,7 +27,7 @@ class UserForm(UserCreationForm):
 
 #------------------------------------------------------------------------------
 class TicketForm(forms.ModelForm):
-	to = forms.ChoiceField(choices=User, widget=forms.Select(), error_messages={'required': 'ضروری'})
+	to = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.Select(), error_messages={'required': 'این فیلد ضروری است'})
 
 	class Meta:
 		model = Ticket
