@@ -77,6 +77,7 @@ class Station(models.Model):
 
 
 
+
 #------------------------------------------------------------------------------
 class Product(models.Model):
     name=models.CharField(max_length=400,verbose_name = "نام")
@@ -96,6 +97,31 @@ class Product(models.Model):
 
     def image_tag(self):
         return format_html("<img width=50 src='{}'>".format(self.image.url))
+
+
+
+
+
+
+#------------------------------------------------------------------------------
+class Manufacture(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
+    code = models.AutoField(primary_key=True, verbose_name = "کد ")
+    #code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
+    description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
+    circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
+
+
+    def get_absolute_url(self):
+        return reverse('app:manufactures_detail',args=[self.id])
+
+    class Meta:
+        verbose_name = " تولید "
+        verbose_name_plural = "تولیدات"
+
+    def __str__(self):
+        return str(self.product)
+
 
 
 
@@ -147,30 +173,6 @@ class Ticket(models.Model):
 
     def __str__(self):
         return str(self.created_on)
-
-
-
-
-
-
-#------------------------------------------------------------------------------
-class Manufacture(models.Model):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
-    code = models.AutoField(primary_key=True, verbose_name = "کد ")
-    #code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
-    description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
-    circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
-
-
-    def get_absolute_url(self):
-        return reverse('app:manufactures_detail',args=[str(self.id)]) 
-
-    class Meta:
-        verbose_name = " تولید "
-        verbose_name_plural = "تولیدات"
-
-    def __str__(self):
-        return str(self.product)
 
 
 

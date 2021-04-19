@@ -35,7 +35,7 @@
             <tbody>
             {% for Manufacture in manufactures %}
               <tr>
-                <td><a href="{{ Manufacture.get_absolute_url }}"> {{ Manufacture.product }} </a></td>
+                <td> <a href="{{ Manufacture.get_absolute_url }}"> {{ Manufacture.product }} </a> </td>
                 <td> {{ Manufacture.code }} </td>
                 <td> {{ Manufacture.description|slice:":60" }}... </td>
                 <td class="text-center"> {{ Manufacture.circulation }} </td>
