@@ -202,6 +202,32 @@ def ticket(request):
 
 
 
+############################### manufacture ##################################
+
+@login_required()
+def manufacture(request):
+    manufacture= models.manufacture.objects.all()
+    return render(request, 'manufacture.html', {'manufacture': manufacture})
+
+
+
+########################### manufacture_detail ###############################
+
+@login_required()
+def manufacture_detail(request, id):
+    manufactures = get_object_or_404(models.manufacture, id=id)
+    manufacture= models.manufacture.objects.all()
+    return render(request, 'stations_detail.html', {'manufactures': manufactures,'manufacture': manufacture})
+
+
+
+
+
+
+
+
+
+
 
     #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
     #nodes= models.Product.objects.filter(quantity=2)
