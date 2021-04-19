@@ -20,6 +20,12 @@
               <p> داشبورد </p>
             </a>
           </li>
+          <li class="{% if 'manufacture' in segment %} active {% endif %}">
+            <a href="{% url 'app:manufacture' %}">
+              <i class="tim-icons icon-square-pin"></i>
+              <p> تولید  </p>
+            </a>
+          </li>
           <li class="{% if 'maps' in segment %} active {% endif %}">
             <a href="{% url 'app:maps' %}">
               <i class="tim-icons icon-square-pin"></i>
