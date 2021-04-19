@@ -167,7 +167,7 @@ class Manufacture(models.Model):
         return self.product
 
     def get_absolute_url(self):
-        return reverse('app:products_detail',args=[self.id])
+        return reverse('app:manufactures_detail',args=[self.id])
 
 
 
