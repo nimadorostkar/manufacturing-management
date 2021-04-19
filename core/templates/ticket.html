@@ -18,9 +18,8 @@
       <div class="card-body">
          <form action="/ticket" method="post" enctype="multipart/form-data">
            {% csrf_token %}
-
-
-          <div class="row">
+           {{ ticket_form.as_p }}
+    <!--      <div class="row">
             <div class="col-md-4">
               <div class="form-group">
                 <label> ارسال به </label>
@@ -40,18 +39,6 @@
                 <input name="title" type="text" class="form-control" placeholder="عنوان">
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label> 22 </label>
-                <input name="ticket_number" type="text" class="form-control" >
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label> 33 </label>
-                <input name="created_on" type="text" class="form-control" >
-              </div>
-            </div>
           </div>
           <div class="row">
             <div class="col-md-12">
@@ -60,7 +47,7 @@
                 <input name="descriptions" type="text" class="form-control" placeholder="متن پیام">
               </div>
             </div>
-          </div>
+          </div>  -->
           <div class="card-footer">
             <button type="submit" class="btn btn-fill btn-primary"> ارسال </button>
           </div>

@@ -148,6 +148,7 @@ class Ticket(models.Model):
     def __str__(self):
         return str(self.created_on)
 
+'''
 
     @receiver(post_save, sender=User)
     def create_user_ticket(sender, instance, created, **kwargs):
@@ -158,7 +159,7 @@ class Ticket(models.Model):
     def save_user_ticket(sender, instance, **kwargs):
         instance.ticket.save()
 
-
+'''
 
 
 
