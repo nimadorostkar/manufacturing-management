@@ -7,7 +7,7 @@ from mapbox_location_field.models import LocationField
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 import uuid
-from django.template.defaultfilters import truncatechars 
+from django.template.defaultfilters import truncatechars
 
 
 
@@ -75,6 +75,10 @@ class Station(models.Model):
 
     def get_absolute_url(self):
         return reverse('app:stations_detail',args=[self.id])
+
+    @property
+    def short_description(self):
+        return truncatechars(self.description, 70)
 
 
 
