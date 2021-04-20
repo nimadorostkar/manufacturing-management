@@ -5,8 +5,8 @@ from mptt.admin import MPTTModelAdmin
 from mptt.admin import DraggableMPTTAdmin
 from mapbox_location_field.admin import MapAdmin
 from .models import Profile, Tree, Station, Ticket, Manufacture
-
-
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
 
 
@@ -19,7 +19,7 @@ admin.site.register(LogEntry)
 
 
 #------------------------------------------------------------------------------
-class TicketAdmin(admin.ModelAdmin):
+class TicketAdmin(ImportExportModelAdmin):
     list_display = ('user','to','title','created_on')
 
 admin.site.register(models.Ticket, TicketAdmin)
@@ -27,7 +27,7 @@ admin.site.register(models.Ticket, TicketAdmin)
 
 
 #------------------------------------------------------------------------------
-class ProfileAdmin(admin.ModelAdmin):
+class ProfileAdmin(ImportExportModelAdmin):
     list_display = ('user_name','phone','address')
 
 admin.site.register(models.Profile, ProfileAdmin)
@@ -35,19 +35,18 @@ admin.site.register(models.Profile, ProfileAdmin)
 
 
 #------------------------------------------------------------------------------
-class StationAdmin(admin.ModelAdmin):
+class StationAdmin(ImportExportModelAdmin):
     list_display = ('name','manager','description','capacity','position')
 
-admin.site.register(models.Station, MapAdmin)
+admin.site.register(models.Station, StationAdmin)
 
 
 
 #------------------------------------------------------------------------------
-class ProductAdmin(admin.ModelAdmin):
-	list_display = ('name','description','code','image_tag')
+class ProductAdmin(ImportExportModelAdmin):
+    list_display = ('name','description','code','image_tag')
 
-admin.site.register(models.Product,ProductAdmin)
-
+admin.site.register(models.Product, ProductAdmin)
 
 
 #------------------------------------------------------------------------------
@@ -63,7 +62,7 @@ admin.site.register(Tree,DraggableMPTTAdmin,
 
 
 #------------------------------------------------------------------------------
-class ManufactureAdmin(admin.ModelAdmin):
+class ManufactureAdmin(ImportExportModelAdmin):
     list_display = ('product','description')
 
 admin.site.register(models.Manufacture, ManufactureAdmin)
