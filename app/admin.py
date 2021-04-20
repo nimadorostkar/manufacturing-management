@@ -36,7 +36,7 @@ admin.site.register(models.Profile, ProfileAdmin)
 
 #------------------------------------------------------------------------------
 class StationAdmin(ImportExportModelAdmin):
-    list_display = ('name','manager','description','capacity','position')
+    list_display = ('name','manager','short_description','capacity','position')
     list_filter = ("manager", "position")
 
 admin.site.register(models.Station, StationAdmin)
