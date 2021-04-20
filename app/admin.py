@@ -64,6 +64,6 @@ admin.site.register(Tree,DraggableMPTTAdmin,
 
 #------------------------------------------------------------------------------
 class ManufactureAdmin(admin.ModelAdmin):
-    list_display = ('product','circulation','description')
+    list_display = ('product','description')
 
 admin.site.register(models.Manufacture, ManufactureAdmin)
