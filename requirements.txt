@@ -16,3 +16,4 @@ django-grappelli
 django-allauth
 django-bootstrap-form
 django-import-export
+django-extra-settings
