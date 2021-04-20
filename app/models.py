@@ -54,7 +54,7 @@ class Profile(models.Model):
 #------------------------------------------------------------------------------
 class Station(models.Model):
     name = models.CharField(max_length=400,verbose_name = "نام")
-    CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station') )
+    CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station'),('P','Product') )
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
     description=models.TextField(max_length=1000,null=True, blank=True,verbose_name = "مشخصات")
     capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ")
@@ -157,8 +157,6 @@ class Tree(MPTTModel):
 
     def position(self):
         return  self.name.position
-
-
 
 
 #------------------------------------------------------------------------------
