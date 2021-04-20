@@ -190,5 +190,4 @@ class Ticket(models.Model):
 
 
 
-
 #-------------------------------------------------------- by Nima Dorostkar ---
