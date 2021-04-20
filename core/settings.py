@@ -4,6 +4,7 @@ from unipath import Path
 import dj_database_url
 
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = Path(__file__).parent
@@ -32,7 +33,7 @@ AUTHENTICATION_BACKENDS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_shortcuts',
+    'admin_shortcuts',     # https://github.com/alesdotio/django-admin-shortcuts
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,15 +53,25 @@ INSTALLED_APPS = [
 ]
 
 
-
 ADMIN_SHORTCUTS = [
     {
-        'title': 'Authentication',
         'shortcuts': [
+            {
+                'url': '/',
+                'open_new_window': True,
+            },
+            {
+                'url_name': 'admin:logout',
+            },
+            {
+                'title': 'Users',
+                'url_name': 'admin:auth_user_changelist',
+                #'count': 'example.utils.count_users',
+            },
             {
                 'title': 'Groups',
                 'url_name': 'admin:auth_group_changelist',
-                'count': 'example.utils.count_groups',
+                #'count': 'example.utils.count_groups',
             },
             {
                 'title': 'Add user',
@@ -69,7 +80,41 @@ ADMIN_SHORTCUTS = [
             },
         ]
     },
+    {
+        'title': 'مدیریت تولید',
+        'shortcuts': [
+            {
+                'title': 'ایستگاه ها',
+                'url_name': 'admin:index',
+            },
+            {
+                'title': 'Files',
+                'url_name': 'admin:index',
+            },
+            {
+                'title': 'Contact forms',
+                'icon': 'columns',
+                'url_name': 'admin:index',
+                'count_new': '3',
+            },
+            {
+                'title': 'Products',
+                'url_name': 'admin:index',
+            },
+            {
+                'title': 'Orders',
+                'url_name': 'admin:index',
+                'count_new': '12',
+            },
+        ]
+    },
 ]
+ADMIN_SHORTCUTS_SETTINGS = {
+    'show_on_all_pages': True,
+    'hide_app_list': True,
+    'open_new_window': False,
+}
+
 
 
 
