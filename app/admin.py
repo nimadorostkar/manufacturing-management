@@ -46,7 +46,7 @@ admin.site.register(models.Station, StationAdmin)
 
 #------------------------------------------------------------------------------
 class ProductAdmin(ImportExportModelAdmin):
-    list_display = ('name','description','code','image_tag')
+    list_display = ('name','short_description','code','image_tag')
 
 admin.site.register(models.Product, ProductAdmin)
 

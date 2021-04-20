@@ -104,6 +104,10 @@ class Product(models.Model):
     def image_tag(self):
         return format_html("<img width=50 src='{}'>".format(self.image.url))
 
+    @property
+    def short_description(self):
+        return truncatechars(self.description, 70)
+
 
 
 
