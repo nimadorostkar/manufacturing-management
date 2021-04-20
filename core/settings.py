@@ -40,12 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'app',        # Enable the inner app
-    'import_export',
-    'mptt',       # https://django-mptt.readthedocs.io/en/latest/index.html
+    'app',            # Enable the inner app
+    'import_export',  # https://django-import-export.readthedocs.io/en/latest/index.html
+    'mptt',           # https://django-mptt.readthedocs.io/en/latest/index.html
     'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field         https://account.mapbox.com/
-    'bootstrapform',     # https://django-bootstrap-form.readthedocs.io/en/latest/
-    'allauth',    # Third Party - 1) All Auth
+    'bootstrapform',  # https://django-bootstrap-form.readthedocs.io/en/latest/
+    'allauth',        # Third Party - 1) All Auth
     'allauth.account',
     'allauth.socialaccount'
 ]
