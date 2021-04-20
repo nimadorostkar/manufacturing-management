@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'app',            # Enable the inner app
     'import_export',  # https://django-import-export.readthedocs.io/en/latest/index.html
+    'extra_settings', # https://github.com/fabiocaccamo/django-extra-settings
     'mptt',           # https://django-mptt.readthedocs.io/en/latest/index.html
     'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field         https://account.mapbox.com/
     'bootstrapform',  # https://django-bootstrap-form.readthedocs.io/en/latest/
