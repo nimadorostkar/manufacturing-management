@@ -22,13 +22,10 @@
                   نام
                 </th>
                 <th>
-                  کد
-                </th>
-                <th>
                   توضیحات
                 </th>
                 <th class="text-center">
-                 تیراژ
+                 کد
                 </th>
               </tr>
             </thead>
@@ -36,9 +33,8 @@
             {% for Manufacture in manufactures %}
               <tr>
                 <td> <a href="{{ Manufacture.get_absolute_url }}"> {{ Manufacture.product }} </a> </td>
-                <td> {{ Manufacture.code }} </td>
-                <td> {{ Manufacture.description|slice:":60" }}... </td>
-                <td class="text-center"> {{ Manufacture.circulation }} </td>
+                <td> {{ Manufacture.description|slice:":80" }}... </td>
+                <td class="text-center"> {{ Manufacture.code }} </td>
               </tr>
             {% endfor %}
             </tbody>

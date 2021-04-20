@@ -110,7 +110,7 @@ class Manufacture(models.Model):
     #code = models.AutoField(primary_key=True, verbose_name = "کد ")
     code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
     description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
-    circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
+    #circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
 
 
     def get_absolute_url(self):

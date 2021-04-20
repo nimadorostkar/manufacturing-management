@@ -24,22 +24,18 @@
                 نام
               </th>
               <th>
-                کد
-              </th>
-              <th>
                 توضیحات
               </th>
               <th class="text-center">
-                تیراژ
+                کد
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td> {{ manufacture.product }} </td>
-              <td> {{ manufacture.code }} </td>
-              <td> {{ manufacture.description|slice:":50" }} </td>
-              <td class="text-center"> {{ manufacture.circulation }}  </td>
+              <td> {{ manufacture.description|slice:":70" }} </td>
+              <td class="text-center"> {{ manufacture.code }}  </td>
             </tr>
           </tbody>
         </table>
