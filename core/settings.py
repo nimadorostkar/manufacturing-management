@@ -29,7 +29,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -193,7 +192,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-###############################################################
+#################
 
 
 MAPBOX_KEY = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA'
@@ -215,7 +214,7 @@ default_map_attrs = {
 
 
 
-###############################################################
+#################
 
 
 
