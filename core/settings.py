@@ -32,9 +32,7 @@ AUTHENTICATION_BACKENDS = [
 # Application definition
 
 INSTALLED_APPS = [
-    #'grappelli',
-    'admin_interface',
-    'colorfield',
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +50,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount'
 ]
-X_FRAME_OPTIONS='SAMEORIGIN' # only if django version >= 3.0
+
 
 
 MIDDLEWARE = [
