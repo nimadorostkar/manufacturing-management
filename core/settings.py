@@ -32,6 +32,7 @@ AUTHENTICATION_BACKENDS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_shortcuts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +49,26 @@ INSTALLED_APPS = [
     'allauth',        # Third Party - 1) All Auth
     'allauth.account',
     'allauth.socialaccount'
+]
+
+
+
+ADMIN_SHORTCUTS = [
+    {
+        'title': 'Authentication',
+        'shortcuts': [
+            {
+                'title': 'Groups',
+                'url_name': 'admin:auth_group_changelist',
+                'count': 'example.utils.count_groups',
+            },
+            {
+                'title': 'Add user',
+                'url_name': 'admin:auth_user_add',
+                'has_perms': 'example.utils.has_perms_to_users',
+            },
+        ]
+    },
 ]
 
 
