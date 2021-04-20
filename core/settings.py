@@ -118,16 +118,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-
-EXTRA_SETTINGS_FALLBACK_TO_CONF_SETTINGS = True
-
-
-
-
-
-
-
-
 ###############################################################
 
 
