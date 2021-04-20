@@ -112,7 +112,6 @@ class Product(models.Model):
 
 
 
-
 #------------------------------------------------------------------------------
 class Manufacture(models.Model):
     product = models.OneToOneField(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
