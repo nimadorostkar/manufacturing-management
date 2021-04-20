@@ -57,10 +57,12 @@ ADMIN_SHORTCUTS = [
     {
         'shortcuts': [
             {
+                'title': 'نمایش داشبورد',
                 'url': '/',
                 'open_new_window': True,
             },
             {
+                'title': 'خروج',
                 'url_name': 'admin:logout',
             },
             {
@@ -85,11 +87,27 @@ ADMIN_SHORTCUTS = [
         'shortcuts': [
             {
                 'title': 'ایستگاه ها',
-                'url_name': 'admin:index',
+                'url_name': 'admin:app_station_changelist',
             },
             {
-                'title': 'Files',
-                'url_name': 'admin:index',
+                'title': 'محصولات',
+                'url_name': 'admin:app_product_changelist',
+            },
+            {
+                'title': 'تیکت ها',
+                'url_name': 'admin:app_ticket_changelist',
+            },
+            {
+                'title': 'پروفایل',
+                'url_name': 'admin:app_profile_changelist',
+            },
+            {
+                'title': 'درخت محصول',
+                'url_name': 'admin:app_tree_changelist',
+            },
+            {
+                'title': 'تولیدات',
+                'url_name': 'admin:app_manufacture_changelist',
             },
             {
                 'title': 'Contact forms',
@@ -97,21 +115,12 @@ ADMIN_SHORTCUTS = [
                 'url_name': 'admin:index',
                 'count_new': '3',
             },
-            {
-                'title': 'Products',
-                'url_name': 'admin:index',
-            },
-            {
-                'title': 'Orders',
-                'url_name': 'admin:index',
-                'count_new': '12',
-            },
         ]
     },
 ]
 ADMIN_SHORTCUTS_SETTINGS = {
-    'show_on_all_pages': True,
-    'hide_app_list': True,
+    'show_on_all_pages': False,
+    'hide_app_list': False,
     'open_new_window': False,
 }
 

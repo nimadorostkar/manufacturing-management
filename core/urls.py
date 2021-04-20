@@ -7,7 +7,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     #path('grappelli/', include('grappelli.urls')), # grappelli URLS
-    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path("", include("app.urls"))  # add this
