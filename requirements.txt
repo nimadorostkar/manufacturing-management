@@ -15,3 +15,4 @@ django-mapbox-location-field
 django-grappelli
 django-allauth
 django-bootstrap-form
+django-import-export
