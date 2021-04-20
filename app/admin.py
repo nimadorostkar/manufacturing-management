@@ -21,6 +21,7 @@ admin.site.register(LogEntry)
 #------------------------------------------------------------------------------
 class TicketAdmin(ImportExportModelAdmin):
     list_display = ('user','to','title','created_on')
+    list_filter = ("user", "to", "created_on")
 
 admin.site.register(models.Ticket, TicketAdmin)
 
