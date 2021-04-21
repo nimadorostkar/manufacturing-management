@@ -79,11 +79,23 @@
       <div class="col-12">
         <div class="card card-chart">
 
-            <button onclick="sampleDiv.style.zoom='20%'"> Zoom 20% </button>
-            <button onclick="sampleDiv.style.zoom='30%'">  Zoom 30%  </button>
-            <button onclick="sampleDiv.style.zoom='40%'"> Zoom 40% </button>
+            <div class="row">
+              <div class="col-lg-8 ml-auto mr-auto">
+                <div class="row">
+                  <div class="col-md-4">
+                    <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='20%'"> Zoom 20% </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='40%'"> Zoom 40% </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='60%'"> Zoom 60% </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <div id="sampleDiv">
+            <div id="sampleDiv" style="zoom:40%;" >
            <div class="pg-orgchart">
             <div class="org-chart">
                 <ul>
