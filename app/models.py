@@ -115,10 +115,8 @@ class Product(models.Model):
 #------------------------------------------------------------------------------
 class Manufacture(models.Model):
     product = models.OneToOneField(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
-    #code = models.AutoField(primary_key=True, verbose_name = "کد ")
     code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
     description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
-    #circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
 
 
     def get_absolute_url(self):
@@ -130,6 +128,12 @@ class Manufacture(models.Model):
 
     def __str__(self):
         return str(self.product)
+
+    def image(self):
+        return  self.name.image
+
+    def image(self):
+        return  self.name.image
 
 
 
