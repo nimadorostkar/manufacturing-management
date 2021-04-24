@@ -157,6 +157,9 @@ class Tree(MPTTModel):
     def position(self):
         return  self.name.position
 
+    def station(self):
+        return  self.name.name
+
 
 #------------------------------------------------------------------------------
 class Ticket(models.Model):
