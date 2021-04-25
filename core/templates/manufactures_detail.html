@@ -50,10 +50,22 @@
       <p class="card-text"> jjj </p>
       <div class="card-description">
 
-        {% for Product in manu_product %}
-         <p class="category"> {{ Product.name }} </p>
-        {% endfor %}
-        
+
+
+            <ul>
+              {% recursetree nodes %}
+                  <li>
+                    <div class="user">
+                      <div class="name"> {{ node.name }} </div>
+                      <div class="role"> {{ node.quantity }} </div>
+                    </div>
+                     {% if not node.is_leaf_node %}
+                      <ul> {{ children }} </ul>
+                     {% endif %}
+                  </li>
+              {% endrecursetree %}
+            </ul>
+
 
       </div>
     </div>
