@@ -50,7 +50,10 @@
       <p class="card-text"> jjj </p>
       <div class="card-description">
 
-        <p class="category"> {{ manufacture.description }} </p>
+        {% for Product in manu_product %}
+         <p class="category"> {{ Product.name }} </p>
+        {% endfor %}
+        
 
       </div>
     </div>
