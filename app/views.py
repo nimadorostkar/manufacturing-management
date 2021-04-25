@@ -218,7 +218,15 @@ def manufactures(request):
 def manufactures_detail(request, id):
     manufacture = get_object_or_404(models.Manufacture, id=id)
     manufactures = models.Manufacture.objects.all()
-    return render(request, 'manufactures_detail.html', {'manufactures': manufactures,'manufacture': manufacture})
+    manu_product = models.Manufacture.objects.filter(product=manufacture.product)
+
+    #nodes = models.Tree.objects.filter(relatedProduct=product)
+
+    return render(request, 'manufactures_detail.html', {
+    'manufactures': manufactures,
+    'manufacture': manufacture,
+    'manu_product':manu_product
+    })
 
 
 
