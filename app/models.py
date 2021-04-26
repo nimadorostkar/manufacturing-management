@@ -49,8 +49,6 @@ class Profile(models.Model):
 
 
 
-
-
 #------------------------------------------------------------------------------
 class Station(models.Model):
     name = models.CharField(max_length=400,verbose_name = "نام")
