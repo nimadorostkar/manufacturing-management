@@ -13,21 +13,21 @@
 <div class="col-md-12">
   <div class="card  card-plain" align="right" dir="rtl">
     <div class="card-header">
-        <h3 align="center" class="card-title"> {{ station.name }} </h3>
+        <h3 align="center" class="card-title"> {{ process.name }} </h3>
       <h5 class="card-category">
         وضعیت:
       </h5>
       <h4 class="card-title">
-        {% if station.position == "M" %} قطعه <i class="tim-icons icon-app"></i>{% endif %}
-        {% if station.position == "R" %} انبار <i class="tim-icons icon-basket-simple"></i>{% endif %}
-        {% if station.position == "T" %} انتقال <i class="tim-icons icon-delivery-fast"></i>{% endif %}
-        {% if station.position == "S" %} ایستگاه <i class="tim-icons icon-settings"></i> {% endif %}
-        {% if station.position == "P" %}  محصول  <i class="tim-icons icon-bag-16"></i> {% endif %}
+        {% if process.position == "M" %} قطعه <i class="tim-icons icon-app"></i>{% endif %}
+        {% if process.position == "R" %} انبار <i class="tim-icons icon-basket-simple"></i>{% endif %}
+        {% if process.position == "T" %} انتقال <i class="tim-icons icon-delivery-fast"></i>{% endif %}
+        {% if process.position == "S" %} ایستگاه <i class="tim-icons icon-settings"></i> {% endif %}
+        {% if process.position == "P" %}  محصول  <i class="tim-icons icon-bag-16"></i> {% endif %}
       </h4>
     </div>
     <div class="card-body">
       <div align="right" dir="rtl" class="card-description">
-        <p class="category"> {{ station.description|linebreaks }} </p>
+        <p class="category"> {{ process.description|linebreaks }} </p>
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@
           <table class="table">
             <tbody>
 
-              {% for inputs in station.inputs.all %}
+              {% for inputs in process.inputs.all %}
               <tr>
                 <td>
                   <p class="title"> <a href="{{ inputs.get_absolute_url }}"> {{ inputs.name }} </a> </p>
@@ -84,7 +84,7 @@
     <div class="card card-chart">
       <div class="card-header">
         <h5 class="card-category"> ظرفیت ایستگاه </h5>
-        <h3 class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i> {{ station.capacity }} </h3>
+        <h3 class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i> {{ process.capacity }} </h3>
       </div>
       <div class="card-body">
         <div class="chart-area">
@@ -103,7 +103,7 @@
           chart.data = [
           {
           "a": "باقی مانده",
-          "b": {{ station.capacity }}//-10
+          "b": {{ process.capacity }}//-10
           },
           {
           "a": "مصرف شده",
@@ -137,7 +137,7 @@
     <div class="card card-user">
       <div class="card-header">
         <h5 class="card-category"> مسئول ایستگاه </h5>
-        <h3 class="card-title"><i class="tim-icons icon-single-02 text-primary"></i> {{ station.manager }} </h3>
+        <h3 class="card-title"><i class="tim-icons icon-single-02 text-primary"></i> {{ process.manager }} </h3>
       </div>
       <div class="card-body">
         <p class="card-text">
@@ -165,7 +165,7 @@
   <div class="col-md-12">
     <div class="card card-plain">
       <div class="card-header">
-         stations location
+         process location
       </div>
 
       {% load mapbox_location_field_tags %}
@@ -173,7 +173,7 @@
       {% include_jquery %}
 
         <div class="col-12  col-xl-12 pr-0 pr-md-4 ">
-           {{  Station.location }}
+           {{  Process.location }}
           <div class="border" id="map" width="100%" style='height:400px'></div>
         </div>
 
