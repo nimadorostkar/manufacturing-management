@@ -22,7 +22,7 @@ urlpatterns = [
     # stations
     path('stations', views.stations, name='stations'),
     path('stations_detail/<int:id>/',views.stations_detail,name='stations_detail'),
-    # manufactures
+    # orders
     path('order', views.order, name='order'),
     path('orders_detail/<int:id>/',views.orders_detail,name='orders_detail'),
 ]
