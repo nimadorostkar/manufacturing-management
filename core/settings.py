@@ -84,8 +84,8 @@ ADMIN_SHORTCUTS = [
         'title': 'مدیریت تولید',
         'shortcuts': [
             {
-                'title': 'ایستگاه ها',
-                'url_name': 'admin:app_station_changelist',
+                'title': 'فرآیند ها',
+                'url_name': 'admin:app_process_changelist',
             },
             {
                 'title': 'محصولات',
