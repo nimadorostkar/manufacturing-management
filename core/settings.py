@@ -104,8 +104,8 @@ ADMIN_SHORTCUTS = [
                 'url_name': 'admin:app_tree_changelist',
             },
             {
-                'title': 'تولیدات',
-                'url_name': 'admin:app_manufacture_changelist',
+                'title': 'سفارشات',
+                'url_name': 'admin:app_order_changelist',
             },
             {
                 'title': 'Contact forms',
