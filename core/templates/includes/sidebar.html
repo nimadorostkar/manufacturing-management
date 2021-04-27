@@ -20,7 +20,7 @@
               <p> داشبورد </p>
             </a>
           </li>
-          <li class="{% if 'manufacture' in segment %} active {% endif %}">
+          <li class="{% if 'order' in segment %} active {% endif %}">
             <a href="{% url 'app:order' %}">
               <i class="tim-icons icon-atom"></i>
               <p> سفارش  </p>
@@ -38,10 +38,10 @@
               <p> محصول </p>
             </a>
           </li>
-          <li class="{% if 'app:stations' in segment %} active {% endif %}">
-            <a href="{% url 'app:stations' %}">
+          <li class="{% if 'app:processes' in segment %} active {% endif %}">
+            <a href="{% url 'app:processes' %}">
               <i class="tim-icons icon-components"></i>
-              <p> ایستگاه </p>
+              <p> فرایندها </p>
             </a>
           </li>
           <li class="{% if 'notifications' in segment %} active {% endif %}">

@@ -50,10 +50,10 @@ class Profile(models.Model):
 
 
 #------------------------------------------------------------------------------
-class Station(models.Model):
+class Process(models.Model):
     name = models.CharField(max_length=400,verbose_name = "نام")
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station'),('P','Product') )
-    position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "ایستگاه")
+    position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "وضعیت")
     description=models.TextField(max_length=1000,null=True, blank=True,verbose_name = "مشخصات")
     capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
@@ -65,14 +65,14 @@ class Station(models.Model):
         order_insertion_by=['name']
 
     class Meta:
-        verbose_name = "ایستگاه"
-        verbose_name_plural = " ایستگاه ها"
+        verbose_name = "فرآیند"
+        verbose_name_plural = " فرآیند ها "
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('app:stations_detail',args=[self.id])
+        return reverse('app:processes_detail',args=[self.id])
 
     @property
     def short_description(self):
@@ -139,7 +139,7 @@ class Manufacture(models.Model):
 #------------------------------------------------------------------------------
 # MPTT Model -->  https://django-mptt.readthedocs.io/en/latest/index.html
 class Tree(MPTTModel):
-    name = models.ForeignKey(Station, on_delete=models.CASCADE,verbose_name = "نام")
+    name = models.ForeignKey(Process, on_delete=models.CASCADE,verbose_name = "نام")
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
     relatedProduct=models.ManyToManyField(Product,verbose_name = "محصول مرتبط")
     quantity = models.IntegerField(default='1',verbose_name = "تعداد در یک محصول")

@@ -20,8 +20,8 @@ urlpatterns = [
     path('products', views.products, name='products'),
     path('products_detail/<int:id>/',views.products_detail,name='products_detail'),
     # stations
-    path('stations', views.stations, name='stations'),
-    path('stations_detail/<int:id>/',views.stations_detail,name='stations_detail'),
+    path('processes', views.processes, name='processes'),
+    path('processes_detail/<int:id>/',views.processes_detail,name='processes_detail'),
     # orders
     path('order', views.order, name='order'),
     path('orders_detail/<int:id>/',views.orders_detail,name='orders_detail'),
