@@ -30,11 +30,11 @@
               </tr>
             </thead>
             <tbody>
-            {% for Manufacture in manufactures %}
+            {% for Order in orders %}
               <tr>
-                <td> <a href="{{ Manufacture.get_absolute_url }}"> {{ Manufacture.product }} </a> </td>
-                <td> {{ Manufacture.description|slice:":80" }}... </td>
-                <td class="text-center"> {{ Manufacture.code }} </td>
+                <td> <a href="{{ Order.get_absolute_url }}"> {{ Order.product }} </a> </td>
+                <td> {{ Order.description|slice:":80" }}... </td>
+                <td class="text-center"> {{ Order.code }} </td>
               </tr>
             {% endfor %}
             </tbody>

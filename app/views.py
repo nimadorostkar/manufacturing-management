@@ -206,8 +206,8 @@ def ticket(request):
 
 @login_required()
 def order(request):
-    manufactures = models.Manufacture.objects.all()
-    return render(request, 'order.html', {'manufactures': manufactures})
+    orders = models.Order.objects.all()
+    return render(request, 'order.html', {'orders': orders})
 
 
 
@@ -216,14 +216,14 @@ def order(request):
 
 @login_required()
 def orders_detail(request, id):
-    manufacture = get_object_or_404(models.Manufacture, id=id)
-    manufactures = models.Manufacture.objects.all()
+    order = get_object_or_404(models.Order, id=id)
+    orders = models.Order.objects.all()
     #manu_product = models.Product.objects.filter(name=manufacture.product.name)
-    nodes = models.Tree.objects.filter(relatedProduct=manufacture.product)
+    nodes = models.Tree.objects.filter(relatedProduct=order.product)
 
     return render(request, 'orders_detail.html', {
-    'manufactures': manufactures,
-    'manufacture': manufacture,
+    'orders': orders,
+    'order': order,
     #'manu_product':manu_product,
     'nodes':nodes
     })
