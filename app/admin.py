@@ -43,12 +43,13 @@ class ProcessAdmin(ImportExportModelAdmin):
 admin.site.register(models.Process, ProcessAdmin)
 
 
+'''
 #------------------------------------------------------------------------------
 class RateAdmin(ImportExportModelAdmin):
     list_display = ('quantity','time')
 
 admin.site.register(models.Rate, RateAdmin)
-
+'''
 
 
 

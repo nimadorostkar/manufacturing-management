@@ -49,21 +49,6 @@ class Profile(models.Model):
 
 
 
-#------------------------------------------------------------------------------
-class Rate(models.Model):
-    quantity=models.IntegerField(null=True, blank=True,verbose_name = " تعداد ")
-    time=models.IntegerField(null=True, blank=True,verbose_name = " زمان ")
-    process=models.ForeignKey('Process', on_delete=models.CASCADE,verbose_name = " فرآیند ")
-
-    def __str__(self):
-        return self.process.name + ' ' + self.quantity + ' ' + self.time
-
-    class Meta:
-        verbose_name = " مقدار در فرایند "
-        verbose_name = " مقدار در فرایندها "
-
-
-
 
 #------------------------------------------------------------------------------
 class Process(models.Model):
@@ -73,7 +58,7 @@ class Process(models.Model):
     description=models.TextField(max_length=1000,null=True, blank=True,verbose_name = "مشخصات")
     capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
-    inputs = models.ManyToManyField('Rate', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
+    inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
     location = LocationField(null=True,blank=True)
 
     class MPTTMeta:
@@ -95,6 +80,20 @@ class Process(models.Model):
         return truncatechars(self.description, 70)
 
 
+'''
+#------------------------------------------------------------------------------
+class Rate(models.Model):
+    quantity=models.IntegerField(null=True, blank=True,verbose_name = " تعداد ")
+    time=models.IntegerField(null=True, blank=True,verbose_name = " زمان ")
+    process=models.ForeignKey(Process, on_delete=models.CASCADE,verbose_name = " فرآیند ")
+
+    def __str__(self):
+        return self.process.name + ' ' + self.quantity
+
+    class Meta:
+        verbose_name = " مقدار در فرایند "
+        verbose_name_plural = " مقدار در فرایندها "
+'''
 
 
 #------------------------------------------------------------------------------
