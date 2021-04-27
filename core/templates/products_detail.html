@@ -116,7 +116,7 @@
                           {% endif %}
                           <div class="name"> <a class="manager" href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a> </div>
                           <div class="role"> {{ node.quantity }} </div>
-                          {{ node.name }} 
+                          {{ node.name.capacity }}
                         </div>
                          {% if not node.is_leaf_node %}
                           <ul> {{ children }} </ul>
