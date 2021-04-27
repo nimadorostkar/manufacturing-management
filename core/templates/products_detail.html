@@ -114,9 +114,9 @@
                           {% if node.name.position == "P" %}
                           <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
                           {% endif %}
-                          <div class="name"> {{ node.name }} </div>
+                          <div class="name"> <a class="manager" href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a> </div>
                           <div class="role"> {{ node.quantity }} </div>
-                          <a class="manager" href="{{ node.name.get_absolute_url }}"> {{ node.name.name }} </a>
+                          {{ node.name }} 
                         </div>
                          {% if not node.is_leaf_node %}
                           <ul> {{ children }} </ul>
