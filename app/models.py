@@ -51,15 +51,12 @@ class Profile(models.Model):
 
 #------------------------------------------------------------------------------
 class Rate(models.Model):
-    rate=models.IntegerField(null=True, blank=True,verbose_name = " تعداد ")
-    rate=models.IntegerField(null=True, blank=True,verbose_name = " زمان ")
-    product=models.ForeignKey('Process', on_delete=models.CASCADE,verbose_name = " فرآیند ")
+    quantity=models.IntegerField(null=True, blank=True,verbose_name = " تعداد ")
+    time=models.IntegerField(null=True, blank=True,verbose_name = " زمان ")
+    process=models.ForeignKey('Process', on_delete=models.CASCADE,verbose_name = " فرآیند ")
 
     def __str__(self):
-        return self.product.name + ' ' + self.rate
-
-    def get_absolute_url(self):
-        return reverse('App:material_detail',args=[self.id])
+        return self.process.name + ' ' + self.quantity + ' ' + self.time
 
     class Meta:
         verbose_name = " مقدار در فرایند "

@@ -43,6 +43,15 @@ class ProcessAdmin(ImportExportModelAdmin):
 admin.site.register(models.Process, ProcessAdmin)
 
 
+#------------------------------------------------------------------------------
+class RateAdmin(ImportExportModelAdmin):
+    list_display = ('name','manager','short_description')
+    list_filter = ("manager", "position")
+
+admin.site.register(models.Rate, RateAdmin)
+
+
+
 
 #------------------------------------------------------------------------------
 class ProductAdmin(ImportExportModelAdmin):
