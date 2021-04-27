@@ -108,7 +108,7 @@ class Product(models.Model):
 
 
 
-
+'''
 #------------------------------------------------------------------------------
 class Manufacture(models.Model):
     product = models.OneToOneField(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
@@ -131,7 +131,7 @@ class Manufacture(models.Model):
 
     def image(self):
         return  self.name.image
-
+'''
 
 
 
@@ -184,6 +184,33 @@ class Ticket(models.Model):
 
     def __str__(self):
         return str(self.created_on)
+
+
+
+
+
+
+#------------------------------------------------------------------------------
+class Order(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
+    code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
+    description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
+    circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
+    start_time = models.DateTimeField()
+
+    def get_absolute_url(self):
+        return reverse('app:orders_detail',args=[self.id])
+
+    class Meta:
+        verbose_name = " سفارش "
+        verbose_name_plural = "سفارشات"
+
+    def __str__(self):
+        return str(self.product)
+
+    def image(self):
+        return  self.product.image
+
 
 
 

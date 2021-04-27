@@ -7,7 +7,7 @@ from . import models
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Profile, Ticket, Manufacture
+from .models import Profile, Ticket, Order
 from django.utils.translation import ugettext_lazy as _
 from .forms import ProfileForm, UserForm, TicketForm
 from itertools import chain
@@ -205,9 +205,9 @@ def ticket(request):
 ############################### manufacture ##################################
 
 @login_required()
-def manufactures(request):
+def order(request):
     manufactures = models.Manufacture.objects.all()
-    return render(request, 'manufactures.html', {'manufactures': manufactures})
+    return render(request, 'orders.html', {'manufactures': manufactures})
 
 
 
@@ -215,13 +215,13 @@ def manufactures(request):
 ########################### manufacture_detail ###############################
 
 @login_required()
-def manufactures_detail(request, id):
+def orders_detail(request, id):
     manufacture = get_object_or_404(models.Manufacture, id=id)
     manufactures = models.Manufacture.objects.all()
     #manu_product = models.Product.objects.filter(name=manufacture.product.name)
     nodes = models.Tree.objects.filter(relatedProduct=manufacture.product)
 
-    return render(request, 'manufactures_detail.html', {
+    return render(request, 'orders_detail.html', {
     'manufactures': manufactures,
     'manufacture': manufacture,
     #'manu_product':manu_product,
