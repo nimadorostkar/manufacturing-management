@@ -50,6 +50,25 @@ class Profile(models.Model):
 
 
 #------------------------------------------------------------------------------
+class Rate(models.Model):
+    rate=models.IntegerField(null=True, blank=True,verbose_name = " تعداد ")
+    rate=models.IntegerField(null=True, blank=True,verbose_name = " زمان ")
+    product=models.ForeignKey('Process', on_delete=models.CASCADE,verbose_name = " فرآیند ")
+
+    def __str__(self):
+        return self.product.name + ' ' + self.rate
+
+    def get_absolute_url(self):
+        return reverse('App:material_detail',args=[self.id])
+
+    class Meta:
+        verbose_name = " مقدار در فرایند "
+        verbose_name = " مقدار در فرایندها "
+
+
+
+
+#------------------------------------------------------------------------------
 class Process(models.Model):
     name = models.CharField(max_length=400,verbose_name = "نام")
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station'),('P','Product') )
@@ -57,7 +76,7 @@ class Process(models.Model):
     description=models.TextField(max_length=1000,null=True, blank=True,verbose_name = "مشخصات")
     capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
-    inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
+    inputs = models.ManyToManyField('Rate', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
     location = LocationField(null=True,blank=True)
 
     class MPTTMeta:
