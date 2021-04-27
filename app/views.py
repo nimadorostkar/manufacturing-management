@@ -207,7 +207,7 @@ def ticket(request):
 @login_required()
 def order(request):
     manufactures = models.Manufacture.objects.all()
-    return render(request, 'orders.html', {'manufactures': manufactures})
+    return render(request, 'order.html', {'manufactures': manufactures})
 
 
 

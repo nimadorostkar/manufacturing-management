@@ -23,6 +23,6 @@ urlpatterns = [
     path('stations', views.stations, name='stations'),
     path('stations_detail/<int:id>/',views.stations_detail,name='stations_detail'),
     # manufactures
-    path('orders', views.orders, name='orders'),
+    path('order', views.orders, name='order'),
     path('orders_detail/<int:id>/',views.orders_detail,name='orders_detail'),
 ]
