@@ -157,7 +157,7 @@ class Tree(MPTTModel):
     name = models.ForeignKey(Process, on_delete=models.CASCADE,verbose_name = "نام")
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
     relatedProduct=models.ManyToManyField(Product,verbose_name = "محصول مرتبط")
-    capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت Max فرآیند در این محصول ")
+    capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ماکسیمم فرآیند در این محصول ")
     quantity = models.IntegerField(default='1',verbose_name = "تعداد در یک محصول")
 
     class MPTTMeta:
