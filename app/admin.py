@@ -4,7 +4,7 @@ from django.contrib.admin.models import LogEntry
 from mptt.admin import MPTTModelAdmin
 from mptt.admin import DraggableMPTTAdmin
 from mapbox_location_field.admin import MapAdmin
-from .models import Profile, Tree, Station, Ticket, Manufacture
+from .models import Profile, Tree, Process, Ticket, Order
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin, ImportExportMixin
 
@@ -36,11 +36,20 @@ admin.site.register(models.Profile, ProfileAdmin)
 
 
 #------------------------------------------------------------------------------
-class StationAdmin(ImportExportModelAdmin):
+class ProcessAdmin(ImportExportModelAdmin):
     list_display = ('name','manager','short_description','capacity','position')
     list_filter = ("manager", "position")
 
-admin.site.register(models.Station, StationAdmin)
+admin.site.register(models.Process, ProcessAdmin)
+
+
+'''
+#------------------------------------------------------------------------------
+class RateAdmin(ImportExportModelAdmin):
+    list_display = ('quantity','time')
+
+admin.site.register(models.Rate, RateAdmin)
+'''
 
 
 
@@ -65,7 +74,8 @@ admin.site.register(Tree, DraggableMPTTAdmin,
 
 
 #------------------------------------------------------------------------------
-class ManufactureAdmin(ImportExportModelAdmin):
-    list_display = ('product','description')
+class OrderAdmin(ImportExportModelAdmin):
+    list_display = ('product','code','circulation')
+    list_filter = ("product", "circulation")
 
-admin.site.register(models.Manufacture, ManufactureAdmin)
+admin.site.register(models.Order, OrderAdmin)

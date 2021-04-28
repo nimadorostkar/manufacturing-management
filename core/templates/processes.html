@@ -33,26 +33,26 @@
               </tr>
             </thead>
             <tbody>
-            {% for Station in stations %}
+            {% for Process in processes %}
               <tr>
-                <td><a href="{{ Station.get_absolute_url }}"> {{ Station.name }} </a></td>
-                <td> {{ Station.manager }} </td>
-                <td> {{ Station.description|slice:":80" }}... </td>
+                <td><a href="{{ Process.get_absolute_url }}"> {{ Process.name }} </a></td>
+                <td> {{ Process.manager }} </td>
+                <td> {{ Process.description|slice:":80" }}... </td>
                 <td class="text-center">
                   <div class="photo">
-                  {% if Station.position == "M" %}
+                  {% if Process.position == "M" %}
                   <img src="{% static 'assets/img/m.png' %}" class="img-responsive" />
                   {% endif %}
-                  {% if Station.position == "R" %}
+                  {% if Process.position == "R" %}
                   <img src="{% static 'assets/img/r.png' %}" class="img-responsive" />
                   {% endif %}
-                  {% if Station.position == "T" %}
+                  {% if Process.position == "T" %}
                   <img src="{% static 'assets/img/t.png' %}" class="img-responsive" />
                   {% endif %}
-                  {% if Station.position == "S" %}
+                  {% if Process.position == "S" %}
                   <img src="{% static 'assets/img/s.png' %}" class="img-responsive" />
                   {% endif %}
-                  {% if Station.position == "P" %}
+                  {% if Process.position == "P" %}
                   <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
                   {% endif %}
                   </div>

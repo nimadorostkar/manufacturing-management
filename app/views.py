@@ -7,7 +7,7 @@ from . import models
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Profile, Ticket, Manufacture
+from .models import Profile, Ticket, Order
 from django.utils.translation import ugettext_lazy as _
 from .forms import ProfileForm, UserForm, TicketForm
 from itertools import chain
@@ -64,7 +64,7 @@ def pages(request):
 
 @login_required()
 def maps(request):
-    maps= models.Station.objects.all()
+    maps= models.Process.objects.all()
     mapbox_access_token = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA'
     return render(request, 'ui-maps.html', {'maps': maps,'mapbox_access_token': mapbox_access_token})
 
@@ -79,9 +79,9 @@ def search(request):
     if request.method=="POST":
         search = request.POST['q']
         if search:
-            station = models.Station.objects.filter(Q(name__icontains=search) | Q(description__icontains=search))
+            process = models.Process.objects.filter(Q(name__icontains=search) | Q(description__icontains=search))
             product = models.Product.objects.filter(Q(name__icontains=search) | Q(description__icontains=search))
-            match = chain(station, product)
+            match = chain(process, product)
             if match:
                 return render(request,'search.html', {'sr': match})
             else:
@@ -116,16 +116,16 @@ def products_detail(request, id):
 ################################ stations ####################################
 
 @login_required()
-def stations(request):
-    stations= models.Station.objects.all()
-    return render(request, 'stations.html', {'stations': stations})
+def processes(request):
+    stations= models.Process.objects.all()
+    return render(request, 'processes.html', {'stations': stations})
 
 
 @login_required()
-def stations_detail(request, id):
-    station = get_object_or_404(models.Station, id=id)
-    stations= models.Station.objects.all()
-    return render(request, 'stations_detail.html', {'station': station,'stations': stations})
+def processes_detail(request, id):
+    process = get_object_or_404(models.Process, id=id)
+    processes= models.Process.objects.all()
+    return render(request, 'processes_detail.html', {'process': process,'processes': processes})
 
 
 
@@ -205,9 +205,9 @@ def ticket(request):
 ############################### manufacture ##################################
 
 @login_required()
-def manufactures(request):
-    manufactures = models.Manufacture.objects.all()
-    return render(request, 'manufactures.html', {'manufactures': manufactures})
+def order(request):
+    orders = models.Order.objects.all()
+    return render(request, 'order.html', {'orders': orders})
 
 
 
@@ -215,15 +215,15 @@ def manufactures(request):
 ########################### manufacture_detail ###############################
 
 @login_required()
-def manufactures_detail(request, id):
-    manufacture = get_object_or_404(models.Manufacture, id=id)
-    manufactures = models.Manufacture.objects.all()
+def orders_detail(request, id):
+    order = get_object_or_404(models.Order, id=id)
+    orders = models.Order.objects.all()
     #manu_product = models.Product.objects.filter(name=manufacture.product.name)
-    nodes = models.Tree.objects.filter(relatedProduct=manufacture.product)
+    nodes = models.Tree.objects.filter(relatedProduct=order.product)
 
-    return render(request, 'manufactures_detail.html', {
-    'manufactures': manufactures,
-    'manufacture': manufacture,
+    return render(request, 'orders_detail.html', {
+    'orders': orders,
+    'order': order,
     #'manu_product':manu_product,
     'nodes':nodes
     })
