@@ -125,6 +125,7 @@ def processes(request):
 def processes_detail(request, id):
     process = get_object_or_404(models.Process, id=id)
     processes= models.Process.objects.all()
+    #input = models.Tree.objects.get_next_sibling()
     return render(request, 'processes_detail.html', {'process': process,'processes': processes})
 
 
