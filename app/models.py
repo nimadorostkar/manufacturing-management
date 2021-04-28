@@ -56,10 +56,10 @@ class Process(models.Model):
     CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station'),('P','Product') )
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "وضعیت")
     description=models.TextField(max_length=1000,null=True, blank=True,verbose_name = "مشخصات")
-    capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ")
+    inventory = models.IntegerField(null=True,blank=True, verbose_name = " موجودی ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
-    inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
-    location = LocationField(null=True,blank=True)
+    #inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
+    #location = LocationField(null=True,blank=True)
 
     class MPTTMeta:
         level_attr = 'mptt_level'
