@@ -115,8 +115,8 @@
                           <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
                           {% endif %}
                           <div class="name"> <a class="manager" href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a> </div>
-                          <div class="role"> {{ node.quantity }} </div>
-                          {{ node.name.capacity }}
+                          <div class="role">  موجودی {{ node.name.inventory }}  </div>
+                          {{ node.name.manager }}
                         </div>
                          {% if not node.is_leaf_node %}
                           <ul> {{ children }} </ul>
