@@ -37,7 +37,7 @@ admin.site.register(models.Profile, ProfileAdmin)
 
 #------------------------------------------------------------------------------
 class ProcessAdmin(ImportExportModelAdmin):
-    list_display = ('name','manager','short_description','capacity','position')
+    list_display = ('name','manager','short_description','inventory','position')
     list_filter = ("manager", "position")
 
 admin.site.register(models.Process, ProcessAdmin)
