@@ -78,8 +78,8 @@
   <div class="col-lg-6">
     <div class="card card-chart">
       <div class="card-header">
-        <h5 class="card-category"> ظرفیت ایستگاه </h5>
-        <h3 class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i> {{ process.capacity }} </h3>
+        <h5 class="card-category"> موجودی ایستگاه </h5>
+        <h3 class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i> {{ process.inventory }} </h3>
       </div>
       <div class="card-body">
         <div class="chart-area">
@@ -97,7 +97,7 @@
           // Add data
           chart.data = [
           {
-          "a": "باقی مانده",
+          "a": "{{ process.name }}",
           "b": {{ process.inventory }}//-10
           },
           {
