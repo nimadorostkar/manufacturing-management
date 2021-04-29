@@ -117,16 +117,20 @@ def products_detail(request, id):
 
 @login_required()
 def processes(request):
-    stations= models.Process.objects.all()
-    return render(request, 'processes.html', {'stations': stations})
+    processes= models.Process.objects.all()
+    return render(request, 'processes.html', {'processes': processes})
 
 
 @login_required()
 def processes_detail(request, id):
     process = get_object_or_404(models.Process, id=id)
     processes= models.Process.objects.all()
-    #input = models.Tree.objects.get_next_sibling()
-    return render(request, 'processes_detail.html', {'process': process,'processes': processes})
+    input = models.Tree.objects.filter(name=process)
+    return render(request, 'processes_detail.html', {
+    'process': process,
+    'processes': processes,
+    'input': input
+    })
 
 
 
