@@ -58,22 +58,12 @@
       <p class="card-text"> jjj </p>
       <div class="card-description">
 
-
-
-            <ul>
               {% recursetree nodes %}
-                  <li>
-                    <div class="user">
-                      <div class="name"> {{ node.name }} </div>
-                      <div class="role"> {{ node.quantity }} * 10 </div>
-                    </div>
-                     {% if not node.is_leaf_node %}
-                      <ul> {{ children }} </ul>
-                     {% endif %}
-                  </li>
+                {{ node.name }} - ( {{ node.quantity }} ) <br>
+                 {% if not node.is_leaf_node %}
+                  {{ children }}
+                 {% endif %}
               {% endrecursetree %}
-            </ul>
-
 
       </div>
     </div>
