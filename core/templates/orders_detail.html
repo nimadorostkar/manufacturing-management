@@ -23,18 +23,26 @@
                 نام
               </th>
               <th>
+                تیراژ
+              </th>
+              <th>
+                زمان شروع
+              </th>
+              <th>
                 توضیحات
               </th>
               <th class="text-center">
-                کد
+               کد
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td> {{ order.product }} </td>
-              <td> {{ order.description|slice:":70" }} </td>
-              <td class="text-center"> {{ order.code }}  </td>
+              <td> <a href="{{ Order.get_absolute_url }}"> {{ order.product }} </a> </td>
+              <td> {{ order.circulation }} </td>
+              <td> {{ order.start_time }} </td>
+              <td> {{ order.description|slice:":80" }}... </td>
+              <td class="text-center"> {{ order.code }} </td>
             </tr>
           </tbody>
         </table>
@@ -57,7 +65,7 @@
                   <li>
                     <div class="user">
                       <div class="name"> {{ node.name }} </div>
-                      <div class="role"> {{ node.quantity }} </div>
+                      <div class="role"> {{ node.quantity }} * 10 </div>
                     </div>
                      {% if not node.is_leaf_node %}
                       <ul> {{ children }} </ul>
