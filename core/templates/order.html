@@ -22,6 +22,12 @@
                   نام
                 </th>
                 <th>
+                  تیراژ
+                </th>
+                <th>
+                  زمان شروع
+                </th>
+                <th>
                   توضیحات
                 </th>
                 <th class="text-center">
@@ -33,6 +39,8 @@
             {% for Order in orders %}
               <tr>
                 <td> <a href="{{ Order.get_absolute_url }}"> {{ Order.product }} </a> </td>
+                <td> {{ Order.circulation }} </td>
+                <td> {{ Order.start_time }} </td>
                 <td> {{ Order.description|slice:":80" }}... </td>
                 <td class="text-center"> {{ Order.code }} </td>
               </tr>
