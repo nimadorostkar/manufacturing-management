@@ -47,24 +47,23 @@
           <table class="table">
             <tbody>
 
+
+
+
               {% for Tree in input %}
-              <tr>
-                <td>
-                  <p class="title"> <a href="{{ Tree.get_absolute_url }}"> {{ Tree.name }} </a> </p>
-                </td>
-                <td>
-                  <p class="text-muted"> -- </p>
-                </td>
-                <td class="td-actions">
-                  --
-                </td>
-                <td class="td-actions">
-                  {{ Tree.capacity }}
-                </td>
-                <td class="td-actions text-right">
-                  --
-                </td>
-              </tr>
+               {% for node in Tree.get_children %}
+                  <tr>
+                    <td>
+                      <p class="title"> {{ node.name }} </p>
+                    </td>
+                    <td class="td-actions">
+                      ظرفیت {{ node.capacity }}
+                    </td>
+                    <td class="td-actions text-right">
+                      تعداد  {{ node.quantity }}
+                    </td>
+                  </tr>
+               {% endfor %}
               {% endfor %}
 
             </tbody>
