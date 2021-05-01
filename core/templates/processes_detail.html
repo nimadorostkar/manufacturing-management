@@ -46,7 +46,6 @@
         <div class="table-full-width table-responsive">
           <table class="table">
             <tbody>
-
               {% for Tree in input %}
                {% for node in Tree.get_children %}
                   <tr>
@@ -60,9 +59,8 @@
                       تعداد  {{ node.quantity }}
                     </td>
                   </tr>
+                {% endfor %}
                {% endfor %}
-              {% endfor %}
-
             </tbody>
           </table>
         </div>
@@ -84,26 +82,27 @@
       <div class="card-body">
         <div class="chart-area">
           <!-- Chart code -->
+
+          <script>
+             var input_data = [
+               {% for Tree in input %}
+                {% for node in Tree.get_children %}
+                  { "a": "{{ node.name }}", "b": {{ node.capacity }} },
+                {% endfor %}
+               {% endfor %}
+             ];
+          </script>
+
           <script>
           am4core.ready(function() {
-
           // Themes begin
           am4core.useTheme(am4themes_animated);
           // Themes end
-
           // Create chart instance
           var chart = am4core.create("chartdiv", am4charts.PieChart);
 
           // Add data
-          chart.data = [
-          {
-          "a": "{{ process.name }}",
-          "b": {{ process.inventory }}//-10
-          },
-          {
-          "a": "مصرف شده",
-          "b": 150
-          }];
+          chart.data = input_data;
 
           // Add and configure Series
           var pieSeries = chart.series.push(new am4charts.PieSeries());
@@ -127,6 +126,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="col-md-6">
     <div class="card card-user">
