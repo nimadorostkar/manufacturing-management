@@ -64,9 +64,12 @@ def pages(request):
 
 @login_required()
 def maps(request):
-    maps= models.Process.objects.all()
-    mapbox_access_token = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA'
-    return render(request, 'ui-maps.html', {'maps': maps,'mapbox_access_token': mapbox_access_token})
+    #maps= models.Process.objects.all()
+    #mapbox_access_token = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA'
+    return render(request, 'ui-maps.html', {
+    #'maps': maps,
+    #'mapbox_access_token': mapbox_access_token}
+    )
 
 
 
