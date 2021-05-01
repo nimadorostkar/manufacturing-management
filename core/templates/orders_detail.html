@@ -59,7 +59,7 @@
       <div class="card-description">
 
               {% recursetree nodes %}
-                {{ node.name }} - ( {{ node.quantity }} ) <br>
+                {{ node.name }} - ( {% widthratio node.quantity 1 order.circulation %} ) <br> 
                  {% if not node.is_leaf_node %}
                   {{ children }}
                  {% endif %}

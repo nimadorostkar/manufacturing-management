@@ -225,6 +225,7 @@ def orders_detail(request, id):
     orders = models.Order.objects.all()
     #manu_product = models.Product.objects.filter(name=manufacture.product.name)
     nodes = models.Tree.objects.filter(relatedProduct=order.product)
+    #order_q = sum(product.price for product in cart_list)
 
     return render(request, 'orders_detail.html', {
     'orders': orders,
