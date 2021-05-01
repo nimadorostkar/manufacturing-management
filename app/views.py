@@ -14,6 +14,7 @@ from itertools import chain
 from django.contrib.auth import get_user_model
 from django.db import transaction
 from django.urls import reverse
+from django.views.generic.base import TemplateView
 
 
 
@@ -62,16 +63,20 @@ def pages(request):
 
 ################################## maps ######################################
 
+class MapView(TemplateView):
+    template_name = "ui-maps.html"
+
+'''
 @login_required()
 def maps(request):
-    #maps= models.Process.objects.all()
-    #mapbox_access_token = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA'
+    maps= models.Process.objects.all()
+    mapbox_access_token = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA'
     return render(request, 'ui-maps.html', {
-    #'maps': maps,
-    #'mapbox_access_token': mapbox_access_token}
+    'maps': maps,
+    'mapbox_access_token': mapbox_access_token}
     )
 
-
+'''
 
 
 
