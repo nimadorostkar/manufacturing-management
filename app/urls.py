@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 from app import views
-from .views import MapView
+#from .views import MapView
 
 app_name='app'
 
@@ -13,8 +13,8 @@ urlpatterns = [
     # The home page
     path('', views.index, name='home'),
     # other pages
-    #path('maps', views.maps, name='maps'),
-    path("maps", MapView.as_view()),
+    path('maps', views.maps, name='maps'),
+    #path("maps", MapView.as_view()),
     path('profile', views.profile, name='profile'),
     path('search',views.search,name='search'),
     path('ticket',views.ticket,name='ticket'),

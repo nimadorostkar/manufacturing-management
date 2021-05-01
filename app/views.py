@@ -62,11 +62,11 @@ def pages(request):
 
 
 ################################## maps ######################################
-
+'''
 class MapView(TemplateView):
     template_name = "ui-maps.html"
-
 '''
+
 @login_required()
 def maps(request):
     maps= models.Process.objects.all()
@@ -76,7 +76,7 @@ def maps(request):
     'mapbox_access_token': mapbox_access_token}
     )
 
-'''
+
 
 
 
