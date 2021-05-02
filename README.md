@@ -8,7 +8,6 @@
 [![Software license](https://img.shields.io/pypi/l/django-shop.svg)](https://pypi.python.org/pypi/django-shop)
 [![Twitter Follow](https://img.shields.io/twitter/follow/djangoSHOP.svg?style=social&label=djangoSHOP)](https://twitter.com/djangoSHOP)
 https://shields.io/
-Here you can find the [full documentation for django-SHOP](https://django-shop.readthedocs.io/en/latest/).
 
 
 Production Automation System
