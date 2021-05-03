@@ -15,4 +15,4 @@ django-mapbox-location-field
 django-allauth
 django-bootstrap-form
 django-import-export
-pip install django-admin-shortcuts
+django-admin-shortcuts
