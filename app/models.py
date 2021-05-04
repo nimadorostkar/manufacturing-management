@@ -101,8 +101,8 @@ class Process(models.Model):
     min_inventory = models.IntegerField(null=True,blank=True, verbose_name = " حداقل موجودی ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
     supplier = models.CharField(max_length=300,null=True, blank=True,verbose_name = "تامین کننده")
-    pro_cap_day = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت تولید در روز ")
-    percent_error = models.IntegerField(null=True,blank=True, verbose_name = " درصد خطا ")
+    pro_cap_day = models.IntegerField(default='1', null=True,blank=True, verbose_name = " ظرفیت تولید در روز ")
+    percent_error = models.IntegerField(default='1', null=True,blank=True, verbose_name = " درصد خطا ")
     #location = LocationField(null=True,blank=True)
 
     class MPTTMeta:

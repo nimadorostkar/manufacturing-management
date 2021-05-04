@@ -253,6 +253,34 @@ def orders_detail(request, id):
 
 @login_required()
 def add_material(request):
+    material = models.Process.objects.all()
+    if request.method == 'POST':
+          material_form = MaterialForm(request.POST)
+          if material_form.is_valid():
+              name = user_form.cleaned_data['name']
+              position = M
+              description = material_form.cleaned_data['description']
+              inventory = material_form.cleaned_data['inventory']
+              min_inventory = material_form.cleaned_data['min_inventory']
+              manager = material_form.cleaned_data['manager']
+              supplier = material_form.cleaned_data['supplier']
+              material_form.save()
+              messages.success(request, _('Your material was successfully added!'))
+              context = {'material': material,'material_form': material_form }
+              return render(request, 'page-user.html', context)
+          else:
+              messages.error(request, _('Please correct the error below.'))
+    else:
+        material_form = MaterialForm(request.POST)
+
+    context = {'material': material,'material_form': material_form }
+    return render(request, 'add_material.html', context)
+
+
+
+
+@login_required()
+def add_station(request):
     material = models.Process.objects.filter(user=request.user)
     if request.method == 'POST':
           material_form = MaterialForm(request.POST)

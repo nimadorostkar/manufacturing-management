@@ -40,6 +40,16 @@ class TicketForm(forms.ModelForm):
 
 #------------------------------------------------------------------------------
 class MaterialForm(forms.ModelForm):
+	manager = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.Select(), error_messages={'required': 'این فیلد ضروری است'} )
+
 	class Meta:
 		model = Process
 		fields = ['name','description','inventory','min_inventory','manager','supplier']
+
+
+
+
+
+
+
+# Form End
