@@ -75,6 +75,7 @@ class Process(models.Model):
     position=models.CharField(max_length=1,choices=CHOICES,verbose_name = "وضعیت")
     description=models.TextField(max_length=1000,null=True, blank=True,verbose_name = "مشخصات")
     inventory = models.IntegerField(null=True,blank=True, verbose_name = " موجودی ")
+    min_inventory = models.IntegerField(null=True,blank=True, verbose_name = " حداقل موجودی ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
     #inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
     #location = LocationField(null=True,blank=True)
@@ -175,7 +176,7 @@ class Tree(MPTTModel):
     name = models.ForeignKey(Process, on_delete=models.CASCADE,verbose_name = "نام")
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',verbose_name = "والد")
     relatedProduct=models.ManyToManyField(Product,verbose_name = "محصول مرتبط")
-    capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ماکسیمم فرآیند در این محصول ")
+    #capacity = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت ماکسیمم فرآیند در این محصول ")
     quantity = models.IntegerField(default='1',verbose_name = "تعداد در یک محصول")
 
     class MPTTMeta:
