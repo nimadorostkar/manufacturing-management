@@ -42,4 +42,4 @@ class TicketForm(forms.ModelForm):
 class MaterialForm(forms.ModelForm):
 	class Meta:
 		model = Process
-		fields = ['phone','address','user_photo']
+		fields = ['name','description','inventory','min_inventory','manager','supplier']

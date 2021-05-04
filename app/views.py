@@ -255,8 +255,7 @@ def orders_detail(request, id):
 def add_material(request):
     profile = models.Profile.objects.filter(user=request.user)
     if request.method == 'POST':
-          user_form = UserForm(request.POST, instance=request.user)
-          profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+          material_form = MaterialForm(request.POST)
           if user_form.is_valid() and profile_form.is_valid():
               username = user_form.cleaned_data['username']
               first_name = user_form.cleaned_data['first_name']
