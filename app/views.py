@@ -248,6 +248,49 @@ def orders_detail(request, id):
 
 
 
+# ----------------------------------------------------------------------------
+# add page for material, station, repository, transfer and product ...
+
+@login_required()
+def add_material(request):
+    profile = models.Profile.objects.filter(user=request.user)
+    if request.method == 'POST':
+          user_form = UserForm(request.POST, instance=request.user)
+          profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+          if user_form.is_valid() and profile_form.is_valid():
+              username = user_form.cleaned_data['username']
+              first_name = user_form.cleaned_data['first_name']
+              last_name = user_form.cleaned_data['last_name']
+              email = user_form.cleaned_data['email']
+              password1 = user_form.cleaned_data['password1']
+              password2 = user_form.cleaned_data['password2']
+              phone = profile_form.cleaned_data['phone']
+              address = profile_form.cleaned_data['address']
+              user_photo = profile_form.cleaned_data['user_photo']
+              user_form.save()
+              profile_form.save()
+              messages.success(request, _('Your profile was successfully updated!'))
+              context = {'profile': profile,'user_form': user_form,'profile_form': profile_form }
+              return render(request, 'page-user.html', context)
+          else:
+              messages.error(request, _('Please correct the error below.'))
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+
+    context = {
+    'profile': profile,
+    'user_form': user_form,
+    'profile_form': profile_form }
+    return render(request, 'add_material.html', {'orders': orders})
+
+
+
+
+
+
+
+
 
 
 

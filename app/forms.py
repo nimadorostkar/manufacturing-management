@@ -2,7 +2,7 @@ from django import forms
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
-from .models import Profile, Ticket
+from .models import Profile, Ticket, Process
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 
@@ -32,3 +32,14 @@ class TicketForm(forms.ModelForm):
 	class Meta:
 		model = Ticket
 		fields = ['to','title','descriptions']
+
+
+
+
+
+
+#------------------------------------------------------------------------------
+class MaterialForm(forms.ModelForm):
+	class Meta:
+		model = Process
+		fields = ['phone','address','user_photo']

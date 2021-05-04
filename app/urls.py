@@ -27,4 +27,8 @@ urlpatterns = [
     # orders
     path('order', views.order, name='order'),
     path('orders_detail/<int:id>/',views.orders_detail,name='orders_detail'),
+
+    # add material, station, repository, transfer and product
+    path('add_material', views.add_material, name='add_material'),
+    path('add_station', views.add_station, name='add_station'),
 ]
