@@ -30,6 +30,28 @@ class Map(models.Model):
 
 
 
+#------------------------------------------------------------------------------
+class Supplier(models.Model):
+    name=models.CharField(max_length=200,verbose_name = "نام")
+    description=models.TextField(max_length=800,null=True, blank=True,verbose_name = "توضیحات")
+    phone_number = models.CharField(max_length=50,null=True, blank=True,verbose_name = "شماره تلفن")
+    address=models.CharField(max_length=200,null=True, blank=True,verbose_name = "آدرس")
+    email=models.CharField(max_length=200,null=True, blank=True,verbose_name = "ایمیل")
+    website=models.CharField(max_length=200,null=True, blank=True,verbose_name = "وبسایت")
+
+    class Meta:
+        verbose_name = "تامین کننده"
+        verbose_name_plural = "تامین کنندگان"
+
+
+    def __str__(self):
+        return self.name
+    def get_absolute_url(self):
+        return reverse('App:supplier_detail',args=[self.id])
+
+
+
+
 
 #------------------------------------------------------------------------------
 class Profile(models.Model):
