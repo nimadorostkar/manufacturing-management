@@ -4,7 +4,7 @@ from django.contrib.admin.models import LogEntry
 from mptt.admin import MPTTModelAdmin
 from mptt.admin import DraggableMPTTAdmin
 from mapbox_location_field.admin import MapAdmin
-from .models import Profile, Tree, Process, Ticket, Order
+from .models import Profile, Tree, Process, Ticket, Order, Supplier
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin, ImportExportMixin
 
@@ -16,6 +16,13 @@ admin.site.site_title= "Tavankar"
 
 admin.site.register(LogEntry)
 
+
+
+#------------------------------------------------------------------------------
+class SupplierAdmin(ImportExportModelAdmin):
+    list_display = ('name','phone_number','website')
+
+admin.site.register(models.Supplier, SupplierAdmin)
 
 
 #------------------------------------------------------------------------------
