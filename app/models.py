@@ -46,8 +46,9 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.name
-    def get_absolute_url(self):
-        return reverse('App:supplier_detail',args=[self.id])
+
+    #def get_absolute_url(self):
+        #return reverse('app:supplier_detail',args=[self.id])
 
 
 
@@ -99,7 +100,9 @@ class Process(models.Model):
     inventory = models.IntegerField(null=True,blank=True, verbose_name = " موجودی ")
     min_inventory = models.IntegerField(null=True,blank=True, verbose_name = " حداقل موجودی ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
-    #inputs = models.ManyToManyField('self', symmetrical=False, blank=True, related_name='sub_station',verbose_name = "ورودی ها")
+    supplier = models.CharField(max_length=300,null=True, blank=True,verbose_name = "تامین کننده")
+    pro_cap_day = models.IntegerField(null=True,blank=True, verbose_name = " ظرفیت تولید در روز ")
+    percent_error = models.IntegerField(null=True,blank=True, verbose_name = " درصد خطا ")
     #location = LocationField(null=True,blank=True)
 
     class MPTTMeta:
@@ -250,10 +253,12 @@ class Ticket(models.Model):
 #------------------------------------------------------------------------------
 class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
-    code=models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
+    code = models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
     description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
     circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
+    order_for = models.CharField(max_length=70,null=True, blank=True,verbose_name = "سفارش برای ")
     start_time = models.DateTimeField()
+    confirmed = models.BooleanField(default=True, verbose_name = " تایید شده " )
 
     def get_absolute_url(self):
         return reverse('app:orders_detail',args=[self.id])
