@@ -258,7 +258,7 @@ def add_material(request):
           material_form = MaterialForm(request.POST)
           if material_form.is_valid():
               name = user_form.cleaned_data['name']
-              position = M
+              position = 'Material'
               description = material_form.cleaned_data['description']
               inventory = material_form.cleaned_data['inventory']
               min_inventory = material_form.cleaned_data['min_inventory']
