@@ -111,7 +111,7 @@ ADMIN_SHORTCUTS = [
             {
                 'title': 'Contact forms',
                 'icon': 'columns',
-                'url_name': '{% app:index %}',
+                'url_name': 'admin:index',
                 'count_new': '3',
             },
         ]
