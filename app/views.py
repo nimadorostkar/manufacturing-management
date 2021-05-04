@@ -253,34 +253,26 @@ def orders_detail(request, id):
 
 @login_required()
 def add_material(request):
-    profile = models.Profile.objects.filter(user=request.user)
+    material = models.Process.objects.filter(user=request.user)
     if request.method == 'POST':
           material_form = MaterialForm(request.POST)
-          if user_form.is_valid() and profile_form.is_valid():
-              username = user_form.cleaned_data['username']
-              first_name = user_form.cleaned_data['first_name']
-              last_name = user_form.cleaned_data['last_name']
-              email = user_form.cleaned_data['email']
-              password1 = user_form.cleaned_data['password1']
-              password2 = user_form.cleaned_data['password2']
-              phone = profile_form.cleaned_data['phone']
-              address = profile_form.cleaned_data['address']
-              user_photo = profile_form.cleaned_data['user_photo']
-              user_form.save()
-              profile_form.save()
-              messages.success(request, _('Your profile was successfully updated!'))
-              context = {'profile': profile,'user_form': user_form,'profile_form': profile_form }
+          if material_form.is_valid():
+              name = user_form.cleaned_data['name']
+              description = material_form.cleaned_data['description']
+              inventory = material_form.cleaned_data['inventory']
+              min_inventory = material_form.cleaned_data['min_inventory']
+              manager = material_form.cleaned_data['manager']
+              supplier = material_form.cleaned_data['supplier']
+              material_form.save()
+              messages.success(request, _('Your material was successfully added!'))
+              context = {'material': material,'material_form': material_form }
               return render(request, 'page-user.html', context)
           else:
               messages.error(request, _('Please correct the error below.'))
     else:
-        user_form = UserForm(instance=request.user)
-        profile_form = ProfileForm(instance=request.user.profile)
+        material_form = MaterialForm(request.POST)
 
-    context = {
-    'profile': profile,
-    'user_form': user_form,
-    'profile_form': profile_form }
+    context = {'material': material,'material_form': material_form }
     return render(request, 'add_material.html', {'orders': orders})
 
 
