@@ -36,18 +36,41 @@ class TicketForm(forms.ModelForm):
 
 
 
-
-
 #------------------------------------------------------------------------------
 class MaterialForm(forms.ModelForm):
 	manager = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.Select(), error_messages={'required': 'این فیلد ضروری است'} )
 	#CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station'),('P','Product') )
 	#position = forms.Select(choices=CHOICES,attrs={'class': 'form-control'}),
-
-
 	class Meta:
 		model = Process
 		fields = ['name', 'description','inventory','min_inventory','manager','supplier']
+
+#------------------------------------------------------------------------------
+class StationForm(forms.ModelForm):
+	manager = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.Select(), error_messages={'required': 'این فیلد ضروری است'} )
+
+	class Meta:
+		model = Process
+		fields = ['name', 'description','manager', 'pro_cap_day', 'percent_error']
+
+
+#------------------------------------------------------------------------------
+class RepositoryForm(forms.ModelForm):
+	manager = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.Select(), error_messages={'required': 'این فیلد ضروری است'} )
+
+	class Meta:
+		model = Process
+		fields = ['name', 'description', 'manager']
+
+
+#------------------------------------------------------------------------------
+class TransferForm(forms.ModelForm):
+	manager = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.Select(), error_messages={'required': 'این فیلد ضروری است'} )
+
+	class Meta:
+		model = Process
+		fields = ['name', 'description', 'manager']
+
 
 
 
