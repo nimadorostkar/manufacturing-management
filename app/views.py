@@ -255,7 +255,7 @@ def orders_detail(request, id):
 def add_material(request):
     material = models.Process.objects.all()
     if request.method == 'POST':
-          material_form = MaterialForm(request.POST)
+          material_form = MaterialForm(request.POST, instance=request.user)
           if material_form.is_valid():
               obj = Process() #gets new object
               obj.name = material_form.cleaned_data['name']
@@ -268,7 +268,7 @@ def add_material(request):
               obj.save()
               messages.success(request, _('Your material was successfully added!'))
               context = {'material': material,'material_form': material_form }
-              return render(request, 'page-user.html', context)
+              return render(request, 'add_material.html', context)
           else:
               messages.error(request, _('Please correct the error below.'))
     else:

@@ -16,7 +16,7 @@
         <h5 class="title"> material add </h5>
       </div>
       <div class="card-body">
-         <form action="/ticket" method="post" enctype="multipart/form-data">
+         <form action="/add_material" method="post" enctype="multipart/form-data">
            {% csrf_token %}
            {{ material_form|bootstrap }}
     <!--      <div class="row">
