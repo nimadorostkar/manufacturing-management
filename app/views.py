@@ -307,29 +307,26 @@ def add_station(request):
 
 @login_required()
 def add_repository(request):
-    material = models.Process.objects.all()
+    repository = models.Process.objects.all()
     if request.method == 'POST':
-          material_form = MaterialForm(request.POST, instance=request.user)
-          if material_form.is_valid():
+          repository_form = RepositoryForm(request.POST, instance=request.user)
+          if repository_form.is_valid():
               obj = Process() #gets new object
-              obj.name = material_form.cleaned_data['name']
-              obj.position = 'M'
-              obj.description = material_form.cleaned_data['description']
-              obj.inventory = material_form.cleaned_data['inventory']
-              obj.min_inventory = material_form.cleaned_data['min_inventory']
-              obj.manager = material_form.cleaned_data['manager']
-              obj.supplier = material_form.cleaned_data['supplier']
+              obj.name = repository_form.cleaned_data['name']
+              obj.position = 'R'
+              obj.description = repository_form.cleaned_data['description']
+              obj.manager = repository_form.cleaned_data['manager']
               obj.save()
               messages.success(request, _('Your material was successfully added!'))
-              context = {'material': material,'material_form': material_form }
-              return render(request, 'add_material.html', context)
+              context = {'repository': repository,'repository_form': repository_form }
+              return render(request, 'add_repository.html', context)
           else:
               messages.error(request, _('Please correct the error below.'))
     else:
-        material_form = MaterialForm(request.POST)
+        repository_form = RepositoryForm(request.POST)
 
-    context = {'material': material,'material_form': material_form }
-    return render(request, 'add_material.html', context)
+    context = {'repository': repository,'repository_form': repository_form }
+    return render(request, 'add_repository.html', context)
 
 
 
