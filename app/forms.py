@@ -41,13 +41,13 @@ class TicketForm(forms.ModelForm):
 #------------------------------------------------------------------------------
 class MaterialForm(forms.ModelForm):
 	manager = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.Select(), error_messages={'required': 'این فیلد ضروری است'} )
-	CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station'),('P','Product') )
-	position = forms.Select(choices=CHOICES,attrs={'class': 'form-control'}),
+	#CHOICES = ( ('M','Material'), ('R','Repository'), ('T','Transfer'), ('S','Station'),('P','Product') )
+	#position = forms.Select(choices=CHOICES,attrs={'class': 'form-control'}),
 
 
 	class Meta:
 		model = Process
-		fields = ['name','position', 'description','inventory','min_inventory','manager','supplier']
+		fields = ['name', 'description','inventory','min_inventory','manager','supplier']
 
 
 
