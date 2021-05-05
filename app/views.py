@@ -258,8 +258,8 @@ def add_material(request):
           material_form = MaterialForm(request.POST)
           if material_form.is_valid():
               obj = Process() #gets new object
-              obj.name = user_form.cleaned_data['name']
-              obj.position = 'Material'
+              obj.name = material_form.cleaned_data['name']
+              obj.position = material_form.cleaned_data['position']
               obj.description = material_form.cleaned_data['description']
               obj.inventory = material_form.cleaned_data['inventory']
               obj.min_inventory = material_form.cleaned_data['min_inventory']
