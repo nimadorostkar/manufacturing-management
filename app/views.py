@@ -257,14 +257,15 @@ def add_material(request):
     if request.method == 'POST':
           material_form = MaterialForm(request.POST)
           if material_form.is_valid():
-              name = user_form.cleaned_data['name']
-              position = 'Material'
-              description = material_form.cleaned_data['description']
-              inventory = material_form.cleaned_data['inventory']
-              min_inventory = material_form.cleaned_data['min_inventory']
-              manager = material_form.cleaned_data['manager']
-              supplier = material_form.cleaned_data['supplier']
-              material_form.save()
+              obj = Process() #gets new object
+              obj.name = user_form.cleaned_data['name']
+              obj.position = 'Material'
+              obj.description = material_form.cleaned_data['description']
+              obj.inventory = material_form.cleaned_data['inventory']
+              obj.min_inventory = material_form.cleaned_data['min_inventory']
+              obj.manager = material_form.cleaned_data['manager']
+              obj.supplier = material_form.cleaned_data['supplier']
+              obj.save()
               messages.success(request, _('Your material was successfully added!'))
               context = {'material': material,'material_form': material_form }
               return render(request, 'page-user.html', context)
