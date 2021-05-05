@@ -332,29 +332,26 @@ def add_repository(request):
 
 @login_required()
 def add_transfer(request):
-    material = models.Process.objects.all()
+    transfer = models.Process.objects.all()
     if request.method == 'POST':
-          material_form = MaterialForm(request.POST, instance=request.user)
-          if material_form.is_valid():
+          transfer_form = TransferForm(request.POST, instance=request.user)
+          if transfer_form.is_valid():
               obj = Process() #gets new object
-              obj.name = material_form.cleaned_data['name']
-              obj.position = 'M'
-              obj.description = material_form.cleaned_data['description']
-              obj.inventory = material_form.cleaned_data['inventory']
-              obj.min_inventory = material_form.cleaned_data['min_inventory']
-              obj.manager = material_form.cleaned_data['manager']
-              obj.supplier = material_form.cleaned_data['supplier']
+              obj.name = transfer_form.cleaned_data['name']
+              obj.position = 'T'
+              obj.description = transfer_form.cleaned_data['description']
+              obj.manager = transfer_form.cleaned_data['manager']
               obj.save()
               messages.success(request, _('Your material was successfully added!'))
-              context = {'material': material,'material_form': material_form }
-              return render(request, 'add_material.html', context)
+              context = {'transfer': transfer,'transfer_form': transfer_form }
+              return render(request, 'add_transfer.html', context)
           else:
               messages.error(request, _('Please correct the error below.'))
     else:
-        material_form = MaterialForm(request.POST)
+        transfer_form = TransferForm(request.POST)
 
-    context = {'material': material,'material_form': material_form }
-    return render(request, 'add_material.html', context)
+    context = {'transfer': transfer,'transfer_form': transfer_form }
+    return render(request, 'add_transfer.html', context)
 
 
 
