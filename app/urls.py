@@ -31,6 +31,6 @@ urlpatterns = [
     # add material, station, repository, transfer and product
     path('add_material', views.add_material, name='add_material'),
     path('add_station', views.add_station, name='add_station'),
-    path('add_repository', views.add_repository, name='add_repository'),
-    path('add_transfer', views.add_transfer, name='add_transfer'),
+    #path('add_repository', views.add_repository, name='add_repository'),
+    #path('add_transfer', views.add_transfer, name='add_transfer'),
 ]
