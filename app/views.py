@@ -214,7 +214,6 @@ def ticket(request):
 
 
 
-
 ############################### manufacture ##################################
 
 @login_required()
@@ -241,7 +240,6 @@ def orders_detail(request, id):
     #'manu_product':manu_product,
     'nodes':nodes
     })
-
 
 
 
@@ -362,10 +360,4 @@ def add_transfer(request):
 
 
 
-
-
-    #nodes= models.Product.objects.filter(name__name='سوکت هالوژن')
-    #nodes= models.Product.objects.filter(quantity=2)
-
-
-##############################################################################
+# End
