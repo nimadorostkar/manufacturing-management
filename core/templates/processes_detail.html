@@ -27,10 +27,135 @@
     <div class="card-body">
       <div align="right" dir="rtl" class="card-description">
         <p class="category"> {{ process.description|linebreaks }} </p>
-      </div>
+      </div>  <br>
+      {% if process.position == "M" %}
+        <table class="table">
+          <tbody>
+                <tr>
+                  <td>
+                    <p class="category"> موجودی :  {{ process.inventory }} </p>
+                  </td>
+                  <td>
+                    <p class="category">  حداقل موجودی  :  {{ process.min_inventory }} </p>
+                  </td>
+                  <td>
+                    <p class="category">  تامین کننده :  {{ process.supplier }} </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="category">  محصولات استفاده کننده از این قطعه  :   </p>
+                  </td>
+                </tr>
+          </tbody>
+        </table>
+      {% endif %}
+      {% if process.position == "S" %}
+        <table class="table">
+          <tbody>
+                <tr>
+                  <td>
+                    <p class="category"> ظرفیت تولید در روز :  {{ process.pro_cap_day }} </p>
+                  </td>
+                  <td>
+                    <p class="category">  درصد خطا :  {{ process.pro_cap_day }} </p>
+                  </td>
+                </tr>
+          </tbody>
+        </table>
+      {% endif %}
+      {% if process.position == "R" %}  {% endif %}
+      {% if process.position == "T" %}  {% endif %}
     </div>
   </div>
 </div>
+
+
+
+
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card card-chart">
+      <div class="card-header">
+        <h5 class="card-category"> موجودی ایستگاه </h5>
+        <h3 class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i> {{ process.inventory }} </h3>
+      </div>
+      <div class="card-body">
+        <div class="chart-area">
+          <!-- Chart code -->
+
+          <script>
+             var input_data = [
+               {% for Tree in input %}
+                {% for node in Tree.get_children %}
+                  { "a": "{{ node.name }}", "b": {{ node.capacity }} },
+                {% endfor %}
+               {% endfor %}
+             ];
+          </script>
+
+          <script>
+          am4core.ready(function() {
+          // Themes begin
+          am4core.useTheme(am4themes_animated);
+          // Themes end
+          // Create chart instance
+          var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+          // Add data
+          chart.data = input_data;
+
+          // Add and configure Series
+          var pieSeries = chart.series.push(new am4charts.PieSeries());
+          pieSeries.dataFields.value = "b";
+          pieSeries.dataFields.category = "a";
+          pieSeries.slices.template.stroke = am4core.color("#fff");
+          pieSeries.slices.template.strokeWidth = 2;
+          pieSeries.slices.template.strokeOpacity = 1;
+
+          // This creates initial animation
+          pieSeries.hiddenState.properties.opacity = 1;
+          pieSeries.hiddenState.properties.endAngle = -90;
+          pieSeries.hiddenState.properties.startAngle = -90;
+
+          }); // end am4core.ready()
+          </script>
+
+          <!-- HTML -->
+          <div id="chartdiv"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="card card-user">
+      <div class="card-header">
+        <h5 class="card-category"> مسئول ایستگاه </h5>
+        <h3 class="card-title"><i class="tim-icons icon-single-02 text-primary"></i> {{ process.manager }} </h3>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <div class="author">
+            <a href="javascript:void(0)">
+              <img class="avatar" src="{{ request.user.profile.user_photo.url }}" >
+              <h5 class="title">
+               {{ request.user.first_name }} {{ request.user.last_name }}
+              </h5>
+            </a>
+          </div>
+        </p>
+        <div class="card-description">
+            {{ request.user.profile.email }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 
 
@@ -169,90 +294,6 @@
   </div>
 </div>
 
-
-
-
-<div class="row">
-  <div class="col-lg-6">
-    <div class="card card-chart">
-      <div class="card-header">
-        <h5 class="card-category"> موجودی ایستگاه </h5>
-        <h3 class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i> {{ process.inventory }} </h3>
-      </div>
-      <div class="card-body">
-        <div class="chart-area">
-          <!-- Chart code -->
-
-          <script>
-             var input_data = [
-               {% for Tree in input %}
-                {% for node in Tree.get_children %}
-                  { "a": "{{ node.name }}", "b": {{ node.capacity }} },
-                {% endfor %}
-               {% endfor %}
-             ];
-          </script>
-
-          <script>
-          am4core.ready(function() {
-          // Themes begin
-          am4core.useTheme(am4themes_animated);
-          // Themes end
-          // Create chart instance
-          var chart = am4core.create("chartdiv", am4charts.PieChart);
-
-          // Add data
-          chart.data = input_data;
-
-          // Add and configure Series
-          var pieSeries = chart.series.push(new am4charts.PieSeries());
-          pieSeries.dataFields.value = "b";
-          pieSeries.dataFields.category = "a";
-          pieSeries.slices.template.stroke = am4core.color("#fff");
-          pieSeries.slices.template.strokeWidth = 2;
-          pieSeries.slices.template.strokeOpacity = 1;
-
-          // This creates initial animation
-          pieSeries.hiddenState.properties.opacity = 1;
-          pieSeries.hiddenState.properties.endAngle = -90;
-          pieSeries.hiddenState.properties.startAngle = -90;
-
-          }); // end am4core.ready()
-          </script>
-
-          <!-- HTML -->
-          <div id="chartdiv"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-md-6">
-    <div class="card card-user">
-      <div class="card-header">
-        <h5 class="card-category"> مسئول ایستگاه </h5>
-        <h3 class="card-title"><i class="tim-icons icon-single-02 text-primary"></i> {{ process.manager }} </h3>
-      </div>
-      <div class="card-body">
-        <p class="card-text">
-          <div class="author">
-            <a href="javascript:void(0)">
-              <img class="avatar" src="{{ request.user.profile.user_photo.url }}" >
-              <h5 class="title">
-               {{ request.user.first_name }} {{ request.user.last_name }}
-              </h5>
-            </a>
-          </div>
-        </p>
-        <div class="card-description">
-            {{ request.user.profile.email }}
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 
 
