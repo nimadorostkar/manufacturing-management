@@ -1,4 +1,4 @@
-### Production Automation System
+### Manufacturing Management System
 <br>
 
 [![Build Status](https://travis-ci.org/awesto/django-shop.svg?branch=master)](https://travis-ci.org/awesto/django-shop?branch=master)
@@ -8,6 +8,7 @@
 [![Software license](https://img.shields.io/pypi/l/django-shop.svg)](https://pypi.python.org/pypi/django-shop)
 [![Twitter Follow](https://img.shields.io/twitter/follow/djangoSHOP.svg?style=social&label=djangoSHOP)](https://twitter.com/djangoSHOP)
 https://shields.io/
+
 
 
 Production Automation System
