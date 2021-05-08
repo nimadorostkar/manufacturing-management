@@ -130,38 +130,36 @@
             </thead>
             <tbody>
               {% for Tree in input %}
-               {% for node in Tree.get_children %}
                   <tr>
                     <td>
-                     <p class="title"> {{ node.name }} </p>
+                     <p class="title"> {{ Tree.parent }} </p>
                     </td>
                     <td class="td-actions">
-                      {% for relatedProduct in node.relatedProduct.all %} {{ relatedProduct }} {% endfor %}
+                      {% for relatedProduct in Tree.relatedProduct.all %} {{ relatedProduct }} {% endfor %}
                     </td>
                     <td class="text-center">
-                      {{ node.quantity }}
+                      {{ Tree.quantity }}
                     </td>
                     <td class="text-center">
                       <div class="photo">
-                      {% if node.name.position == "M" %}
+                      {% if Tree.name.position == "M" %}
                       <img src="{% static 'assets/img/m.png' %}" class="img-responsive" />
                       {% endif %}
-                      {% if node.name.position == "R" %}
+                      {% if Tree.name.position == "R" %}
                       <img src="{% static 'assets/img/r.png' %}" class="img-responsive" />
                       {% endif %}
-                      {% if node.name.position == "T" %}
+                      {% if Tree.name.position == "T" %}
                       <img src="{% static 'assets/img/t.png' %}" class="img-responsive" />
                       {% endif %}
-                      {% if node.name.position == "S" %}
+                      {% if Tree.name.position == "S" %}
                       <img src="{% static 'assets/img/s.png' %}" class="img-responsive" />
                       {% endif %}
-                      {% if node.name.position == "P" %}
+                      {% if Tree.name.position == "P" %}
                       <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
                       {% endif %}
                       </div>
                     </td>
                   </tr>
-                {% endfor %}
                {% endfor %}
             </tbody>
           </table>
