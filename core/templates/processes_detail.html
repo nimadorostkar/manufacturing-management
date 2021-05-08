@@ -28,6 +28,7 @@
       <div align="right" dir="rtl" class="card-description">
         <p class="category"> {{ process.description|linebreaks }} </p>
       </div>  <br>
+
       {% if process.position == "M" %}
         <table class="table">
           <tbody>
@@ -42,14 +43,15 @@
                     <p class="category">  تامین کننده :  {{ process.supplier }} </p>
                   </td>
                 </tr>
-                <tr>
-                  <td>
-                    <p class="category">  محصولات استفاده کننده از این قطعه  :   </p>
-                  </td>
-                </tr>
           </tbody>
         </table>
+        <h5>  محصولات استفاده کننده از این قطعه  :
+           {% for Tree in input %}
+             {% for relatedProduct in Tree.relatedProduct.all %}  {{ relatedProduct }}  {% endfor %}
+           {% endfor %}
+        </h5>
       {% endif %}
+
       {% if process.position == "S" %}
         <table class="table">
           <tbody>
@@ -64,6 +66,7 @@
           </tbody>
         </table>
       {% endif %}
+
       {% if process.position == "R" %}  {% endif %}
       {% if process.position == "T" %}  {% endif %}
     </div>
