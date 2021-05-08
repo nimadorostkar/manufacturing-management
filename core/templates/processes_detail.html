@@ -45,18 +45,53 @@
       <div class="card-body" align="right" dir="rtl">
         <div class="table-full-width table-responsive">
           <table class="table">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  نام
+                </th>
+                <th>
+                   محصول مرتبط
+                </th>
+                <th class="text-center">
+                  تعداد
+                </th>
+                <th class="text-center">
+                  وضعیت
+                </th>
+              </tr>
+            </thead>
             <tbody>
               {% for Tree in input %}
                {% for node in Tree.get_children %}
                   <tr>
                     <td>
-                      <p class="title"> {{ node.name }} </p>
+                     <p class="title"> {{ node.name }} </p>
                     </td>
                     <td class="td-actions">
-                      ظرفیت {{ node.capacity }}
+                      {% for relatedProduct in node.relatedProduct.all %} {{ relatedProduct }} {% endfor %}
                     </td>
-                    <td class="td-actions text-right">
-                      تعداد  {{ node.quantity }}
+                    <td class="text-center">
+                      {{ node.quantity }}
+                    </td>
+                    <td class="text-center">
+                      <div class="photo">
+                      {% if node.name.position == "M" %}
+                      <img src="{% static 'assets/img/m.png' %}" class="img-responsive" />
+                      {% endif %}
+                      {% if node.name.position == "R" %}
+                      <img src="{% static 'assets/img/r.png' %}" class="img-responsive" />
+                      {% endif %}
+                      {% if node.name.position == "T" %}
+                      <img src="{% static 'assets/img/t.png' %}" class="img-responsive" />
+                      {% endif %}
+                      {% if node.name.position == "S" %}
+                      <img src="{% static 'assets/img/s.png' %}" class="img-responsive" />
+                      {% endif %}
+                      {% if node.name.position == "P" %}
+                      <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
+                      {% endif %}
+                      </div>
                     </td>
                   </tr>
                 {% endfor %}
@@ -77,18 +112,53 @@
       <div class="card-body" align="right" dir="rtl">
         <div class="table-full-width table-responsive">
           <table class="table">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  نام
+                </th>
+                <th>
+                   محصول مرتبط
+                </th>
+                <th class="text-center">
+                  تعداد
+                </th>
+                <th class="text-center">
+                  وضعیت
+                </th>
+              </tr>
+            </thead>
             <tbody>
               {% for Tree in input %}
                {% for node in Tree.get_children %}
                   <tr>
                     <td>
-                      <p class="title"> {{ node.name }} </p>
+                     <p class="title"> {{ node.name }} </p>
                     </td>
                     <td class="td-actions">
-                      ظرفیت {{ node.capacity }}
+                      {% for relatedProduct in node.relatedProduct.all %} {{ relatedProduct }} {% endfor %}
                     </td>
-                    <td class="td-actions text-right">
-                      تعداد  {{ node.quantity }}
+                    <td class="text-center">
+                      {{ node.quantity }}
+                    </td>
+                    <td class="text-center">
+                      <div class="photo">
+                      {% if node.name.position == "M" %}
+                      <img src="{% static 'assets/img/m.png' %}" class="img-responsive" />
+                      {% endif %}
+                      {% if node.name.position == "R" %}
+                      <img src="{% static 'assets/img/r.png' %}" class="img-responsive" />
+                      {% endif %}
+                      {% if node.name.position == "T" %}
+                      <img src="{% static 'assets/img/t.png' %}" class="img-responsive" />
+                      {% endif %}
+                      {% if node.name.position == "S" %}
+                      <img src="{% static 'assets/img/s.png' %}" class="img-responsive" />
+                      {% endif %}
+                      {% if node.name.position == "P" %}
+                      <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
+                      {% endif %}
+                      </div>
                     </td>
                   </tr>
                 {% endfor %}

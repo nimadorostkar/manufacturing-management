@@ -124,21 +124,6 @@ class Process(models.Model):
         return truncatechars(self.description, 70)
 
 
-'''
-#------------------------------------------------------------------------------
-class Rate(models.Model):
-    quantity=models.IntegerField(null=True, blank=True,verbose_name = " تعداد ")
-    time=models.IntegerField(null=True, blank=True,verbose_name = " زمان ")
-    process=models.ForeignKey(Process, on_delete=models.CASCADE,verbose_name = " فرآیند ")
-
-    def __str__(self):
-        return self.process.name + ' ' + self.quantity
-
-    class Meta:
-        verbose_name = " مقدار در فرایند "
-        verbose_name_plural = " مقدار در فرایندها "
-'''
-
 
 #------------------------------------------------------------------------------
 class Product(models.Model):
