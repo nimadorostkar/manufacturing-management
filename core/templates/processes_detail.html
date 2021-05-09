@@ -76,8 +76,10 @@
 
 
 <hr><hr><br>
-{% recursetree nodes %}
-  {{ node.name }}
+{% recursetree input %}
+   {{ node.name }} <br>
+   {% for relatedProduct in node.relatedProduct.all %} {{ relatedProduct }} {% endfor %} <br>
+   {{ node.quantity }} <br> <hr>
    {% if not node.is_leaf_node %}
     {{ children }}
    {% endif %}
