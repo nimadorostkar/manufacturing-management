@@ -134,10 +134,15 @@ def processes_detail(request, id):
     process = get_object_or_404(models.Process, id=id)
     processes= models.Process.objects.all()
     input = models.Tree.objects.filter(name=process)
+
+    orders = models.Order.objects.all()
+
+
     return render(request, 'processes_detail.html', {
     'process': process,
     'processes': processes,
-    'input': input
+    'input': input,
+    'orders':orders
     })
 
 

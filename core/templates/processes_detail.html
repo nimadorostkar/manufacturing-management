@@ -84,7 +84,16 @@
     {{ children }}
    {% endif %}
 {% endrecursetree %}
+<br><hr><hr><hr><hr><hr><hr>
+
+
+           {% for Order in orders %}
+             {{ Order.code }} ------ {{ Order.product }} ------ {{ Order.product }} <br>
+           {% endfor %}
+
+
 <br><hr><hr>
+
 
 <div class="row">
   <div class="col-lg-6">
