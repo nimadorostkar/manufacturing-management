@@ -121,7 +121,7 @@ def products_detail(request, id):
 
 
 
-################################ stations ####################################
+################################ processes ###################################
 
 @login_required()
 def processes(request):
@@ -134,13 +134,12 @@ def processes_detail(request, id):
     process = get_object_or_404(models.Process, id=id)
     processes= models.Process.objects.all()
     input = models.Tree.objects.filter(name=process)
-    #order = models.Order.objects.filter(name=process)
-    order_nodes = models.Order.objects.filter(product=input.relatedProduct)
+    tree = models.Tree.objects.all()
     return render(request, 'processes_detail.html', {
     'process': process,
     'processes': processes,
     'input': input,
-    'order_nodes':order_nodes
+    'order':order
     })
 
 
@@ -233,14 +232,10 @@ def order(request):
 def orders_detail(request, id):
     order = get_object_or_404(models.Order, id=id)
     orders = models.Order.objects.all()
-    #manu_product = models.Product.objects.filter(name=manufacture.product.name)
     nodes = models.Tree.objects.filter(relatedProduct=order.product)
-    #order_q = sum(product.price for product in cart_list)
-
     return render(request, 'orders_detail.html', {
     'orders': orders,
     'order': order,
-    #'manu_product':manu_product,
     'nodes':nodes
     })
 

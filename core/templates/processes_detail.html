@@ -47,7 +47,7 @@
         </table>
         <h5>  محصولات استفاده کننده از این قطعه  :
            {% for Tree in input %}
-             {% for relatedProduct in Tree.relatedProduct.all %}  {{ relatedProduct }}  {% endfor %}
+             {% for relatedProduct in Tree.relatedProduct.all %} <br> {{ relatedProduct }}  {% endfor %}
            {% endfor %}
         </h5>
       {% endif %}
@@ -75,7 +75,14 @@
 
 
 
-
+<hr><hr><br>
+{% recursetree nodes %}
+  {{ node.name }}
+   {% if not node.is_leaf_node %}
+    {{ children }}
+   {% endif %}
+{% endrecursetree %}
+<br><hr><hr>
 
 <div class="row">
   <div class="col-lg-6">
