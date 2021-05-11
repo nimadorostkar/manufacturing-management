@@ -128,7 +128,7 @@ def processes(request):
     processes= models.Process.objects.all()
     return render(request, 'processes.html', {'processes': processes})
 
-
+'''
 @login_required()
 def processes_detail(request, id):
     process = get_object_or_404(models.Process, id=id)
@@ -144,7 +144,20 @@ def processes_detail(request, id):
     'input': input,
     'orders':orders
     })
+'''
+@login_required()
+def processes_detail(request, id):
+    process = get_object_or_404(models.Process, id=id)
+    processes= models.Process.objects.all()
+    input = models.Tree.objects.filter(name=process)
+    order = models.Order.objects.filter(product_name=input)
 
+    return render(request, 'processes_detail.html', {
+    'process': process,
+    'processes': processes,
+    'input': input,
+    'order':order
+    })
 
 
 ############################# profile ########################################
