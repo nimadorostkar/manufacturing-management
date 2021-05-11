@@ -86,6 +86,10 @@
 {% endrecursetree %}
 -->
 
+{% for Order in order %}
+ {{ Order.product }} -- {{ Order.code }} <br>
+ {% endfor %}
+
 
 <br><hr><hr>
 
