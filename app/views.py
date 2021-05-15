@@ -132,13 +132,11 @@ def processes(request):
 @login_required()
 def processes_detail(request, id):
     process = get_object_or_404(models.Process, id=id)
-    processes= models.Process.objects.all()
     input = models.Tree.objects.filter(name=process)
     order = models.Order.objects.all()
 
     return render(request, 'processes_detail.html', {
     'process': process,
-    'processes': processes,
     'input': input,
     'order':order
     })
