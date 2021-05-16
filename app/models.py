@@ -204,7 +204,6 @@ class Ticket(models.Model):
 
 
 
-
 #------------------------------------------------------------------------------
 class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE,verbose_name = " محصول ")
@@ -227,7 +226,6 @@ class Order(models.Model):
 
     def image(self):
         return  self.product.image
-
 
 
 
