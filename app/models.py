@@ -177,6 +177,7 @@ class Tree(MPTTModel):
         return  self.name.name
 
 
+
 #------------------------------------------------------------------------------
 class Ticket(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "از طرف")
@@ -226,6 +227,7 @@ class Order(models.Model):
 
     def image(self):
         return  self.product.image
+
 
 
 
