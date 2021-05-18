@@ -1,0 +1,154 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% load mptt_tags %}
+
+<div class="col-md-12">
+  <div class="card  card-plain" align="right" dir="rtl">
+    <div class="card-header">
+      <h4 class="card-title"> محصول {{ product.name }} <small> ({{ product.code }}) </small> </h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table tablesorter " id="">
+          <thead class=" text-primary">
+            <tr>
+              <th>
+                نام
+              </th>
+              <th>
+                کد
+              </th>
+              <th>
+                توضیحات
+              </th>
+              <th class="text-center">
+                تصویر
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="{{ Product.get_absolute_url }}"> {{ product.name }} </a></td>
+              <td> {{ product.code }} </td>
+              <td> {{ product.description|slice:":50" }} </td>
+              <td class="text-center">
+                <div class="photo">
+                  <img src="{{ product.image.url }}" alt="Profile Photo">
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+  <div class="card card-user">
+    <div class="card-body">
+      <p class="card-text">
+        <div class="author">
+          <div class="block block-one"></div>
+          <div class="block block-two"></div>
+          <div class="block block-three"></div>
+          <div class="block block-four"></div>
+          <img width="20%" src="{{ product.image.url }}">
+        </div>
+      </p>
+      <div align="right" dir="rtl" class="card-description">
+        <p class="category"> {{ product.description|linebreaks }} </p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-chart">
+
+            <div class="row">
+              <div class="col-lg-8 ml-auto mr-auto">
+                <div class="row">
+                  <div class="col-md-4">
+                    <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='20%'"> Zoom 20% </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='40%'"> Zoom 40% </button>
+                  </div>
+                  <div class="col-md-4">
+                    <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='60%'"> Zoom 60% </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="sampleDiv" style="zoom:40%;" >
+           <div class="pg-orgchart">
+            <div class="org-chart">
+                <ul>
+                  {% recursetree nodes %}
+                      <li>
+                        <div class="user">
+                          {% if node.name.position == "M" %}
+                          <img src="{% static 'assets/img/m.png' %}" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "R" %}
+                          <img src="{% static 'assets/img/r.png' %}" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "T" %}
+                          <img src="{% static 'assets/img/t.png' %}" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "S" %}
+                          <img src="{% static 'assets/img/s.png' %}" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "P" %}
+                          <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
+                          {% endif %}
+                          <div class="name"> <a class="manager" href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a> </div>
+                          <div class="role">  موجودی {{ node.name.inventory }}  </div>
+                          {{ node.name.manager }}
+                        </div>
+                         {% if not node.is_leaf_node %}
+                          <ul> {{ children }} </ul>
+                         {% endif %}
+                      </li>
+                  {% endrecursetree %}
+                </ul>
+           </div>
+         </div>
+       </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+
+
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+    });
+
+
+
+  </script>
+
+{% endblock javascripts %}
