@@ -73,16 +73,7 @@
   </div>
 </div>
 
-<!-- <hr>
-{% recursetree input %}
-   {{ node.name }} <br>
-   {% for relatedProduct in node.relatedProduct.all %} {{ relatedProduct }} {% endfor %} <br>
-   {{ node.quantity }} <br> <hr>
-   {% if not node.is_leaf_node %}
-    {{ children }}
-   {% endif %}
-{% endrecursetree %}
-<hr> -->
+
 
 <div class="row">
   <div class="col-lg-6">
@@ -360,3 +351,24 @@
   </script>
 
 {% endblock javascripts %}
+
+
+
+
+
+
+
+<!--
+
+<hr>
+{% recursetree input %}
+   {{ node.name }} <br>
+   {% for relatedProduct in node.relatedProduct.all %} {{ relatedProduct }} {% endfor %} <br>
+   {{ node.quantity }} <br> <hr>
+   {% if not node.is_leaf_node %}
+    {{ children }}
+   {% endif %}
+{% endrecursetree %}
+<hr>
+
+-->
