@@ -19,6 +19,7 @@ from django.views.generic.base import TemplateView
 
 
 
+
 ################################# index ######################################
 
 @login_required()
