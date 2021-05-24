@@ -244,7 +244,6 @@ def orders_detail(request, id):
 
 
 
-
 # ----------------------------------------------------------------------------
 # add page for material, station, repository, transfer and product ...
 

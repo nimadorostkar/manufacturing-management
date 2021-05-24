@@ -59,7 +59,7 @@
       <div class="card-description">
 
               {% recursetree nodes %}
-                {{ node.name }} - ( {% widthratio node.quantity 1 order.circulation %} ) <br> 
+                {{ node.name }} - ( {% widthratio node.quantity 1 order.circulation %} ) <br>
                  {% if not node.is_leaf_node %}
                   {{ children }}
                  {% endif %}
@@ -70,6 +70,32 @@
   </div>
 </div>
 </div>
+
+
+
+
+<!------------------------------------------------------------------->
+  <div class="row">
+  <div class="col-md-12">
+    <div class="card card-user">
+      <div class="card-body">
+        <p class="card-text"> orders inventory & production </p>
+        <div class="card-description">
+
+                {% recursetree nodes %}
+                  {{ node.name }} - ( {% widthratio node.quantity 1 order.circulation %} ) <br>
+                   {% if not node.is_leaf_node %}
+                    {{ children }}
+                   {% endif %}
+                {% endrecursetree %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+<!------------------------------------------------------------------->
+
 
 
 
