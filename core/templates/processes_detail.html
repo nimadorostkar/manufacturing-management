@@ -75,6 +75,17 @@
 
 <hr>
 
+     {% recursetree nodes %}
+       {{ node.name }}  <br>
+        {% if not node.is_leaf_node %}
+         {{ children }}
+        {% endif %}
+     {% endrecursetree %}
+     <hr>
+     {% for Order in orders %} <br>
+      {{ Order.name }}
+     {% endfor %}
+
 <hr>
 
 <div class="row">
