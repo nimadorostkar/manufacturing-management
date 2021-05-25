@@ -75,15 +75,14 @@
 
 <hr>
 
-     {% recursetree nodes %}
-       {{ node.name }}  <br>
-        {% if not node.is_leaf_node %}
-         {{ children }}
-        {% endif %}
+     {% recursetree input %}
+       {{ node.name }} -  {{ node.quantity }} -  {{ node.relatedProduct.all }} <br>
      {% endrecursetree %}
-     <hr>
+
+<hr>
+
      {% for Order in orders %} <br>
-      {{ Order.name }}
+       {{ Order.product }} - {{ Order.circulation }} - {{ Order.confirmed }}
      {% endfor %}
 
 <hr>
