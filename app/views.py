@@ -132,21 +132,17 @@ def processes(request):
 
 @login_required()
 def processes_detail(request, id):
+    nodes = models.Tree.objects.all()
     process = get_object_or_404(models.Process, id=id)
     processes= models.Process.objects.all()
     input = models.Tree.objects.filter(name=process)
-    relatedProduct = 'سوکت هالوژن'
-
-    orders = models.Order.objects.filter(product__name = relatedProduct )
-
-    nodes = models.Tree.objects.all()
-
+    #orders = models.Order.objects.filter(product__name = 'relatedProduct' )
     return render(request, 'processes_detail.html', {
     'process': process,
     'processes': processes,
-    'orders': orders,
-    'nodes': nodes,
+    #'orders': orders,
     #'relatedProduct': relatedProduct,
+    'nodes': nodes,
     'input': input
     })
 
