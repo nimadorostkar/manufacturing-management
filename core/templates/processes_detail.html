@@ -79,13 +79,11 @@
        {{ node.name }} -  {{ node.quantity }} -  {{ node.relatedProduct.all }} <br>
      {% endrecursetree %}
      <hr>
+     -->
+
      {% for Order in orders %} <br>
        {{ Order.product }} - {{ Order.circulation }} - {{ Order.confirmed }}
      {% endfor %}
-    -->
-
-    xxx
-
 
 
 <hr>
