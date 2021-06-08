@@ -78,7 +78,11 @@
      {% for Order in orders %}
       {% for Tree in input %}
         {% for relatedProduct in Tree.relatedProduct.all %}
-         <br> {{ relatedProduct }}  - {{ Tree.quantity }} -- {{ Order.product }} - {{ Order.circulation }}  
+
+           {% if relatedProduct == Order.product %}
+            <br> {{ relatedProduct }} - {{ Tree.quantity }} - {{ Order.circulation }}
+           {% endif %}
+
         {% endfor %}
       {% endfor %}
      {% endfor %}
