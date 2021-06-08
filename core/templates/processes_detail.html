@@ -75,9 +75,16 @@
 
 <hr>
 
-     {% for Order in orders %} <br>
-       {{ Order.product }} - {{ Order.circulation }} - {{ Order.confirmed }}
+     {% for Order in orders %}
+      {% for Tree in input %}
+        {% for relatedProduct in Tree.relatedProduct.all %}
+         <br> {{ relatedProduct }}  - {{ Tree.quantity }} -- {{ Order.product }} - {{ Order.circulation }}  
+        {% endfor %}
+      {% endfor %}
      {% endfor %}
+
+
+
 
 
 <hr>

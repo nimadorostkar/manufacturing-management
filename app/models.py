@@ -227,6 +227,12 @@ class Order(models.Model):
     def image(self):
         return  self.product.image
 
+'''
+    @property
+    def process_quantity(self):
+        #return self.circulation
+        return self.product
+'''
 
 
 
