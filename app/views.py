@@ -142,11 +142,9 @@ def processes_detail(request, id):
     'process': process,
     'processes': processes,
     'orders': orders,
-    #'relatedProduct': relatedProduct,
     'nodes': nodes,
     'input': input
     })
-
 
 
 
