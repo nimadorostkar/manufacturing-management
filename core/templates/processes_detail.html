@@ -80,14 +80,12 @@
         {% for relatedProduct in Tree.relatedProduct.all %}
 
            {% if relatedProduct == Order.product %}
-            <br> {{ relatedProduct }} - {{ Tree.quantity }} - {{ Order.circulation }}
+            <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
            {% endif %}
 
         {% endfor %}
       {% endfor %}
      {% endfor %}
-
-
 
 
 
