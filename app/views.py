@@ -137,8 +137,7 @@ def processes_detail(request, id):
     processes= models.Process.objects.all()
     input = models.Tree.objects.filter(name=process)
     process_products = models.Tree.objects.filter(name=process).values('relatedProduct__name')
-    print(process_products)
-    orders = models.Order.objects.all()
+    orders = models.Order.objects.filter(product__name__in=process_products)
     return render(request, 'processes_detail.html', {
     'process': process,
     'processes': processes,
