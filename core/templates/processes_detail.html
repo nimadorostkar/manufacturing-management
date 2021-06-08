@@ -30,27 +30,49 @@
       </div>  <br>
 
       {% if process.position == "M" %}
-        <table class="table">
-          <tbody>
-                <tr>
-                  <td>
-                    <p class="category"> موجودی :  {{ process.inventory }} </p>
-                  </td>
-                  <td>
-                    <p class="category">  حداقل موجودی  :  {{ process.min_inventory }} </p>
-                  </td>
-                  <td>
-                    <p class="category">  تامین کننده :  {{ process.supplier }} </p>
-                  </td>
-                </tr>
-          </tbody>
-        </table>
-        <h5>  محصولات استفاده کننده از این قطعه  :
-           {% for Tree in input %}
-             {% for relatedProduct in Tree.relatedProduct.all %} <br> {{ relatedProduct }}  {% endfor %}
-           {% endfor %}
-        </h5>
+           <div class="row">
+              <div class="col-md-4">
+                <div class="card card-user">
+                  <div class="card-header">
+                    <h5 class="card-category"> موجودی </h5>
+                    <h3 class="card-title"><i class="tim-icons icon-chart-bar-32 text-primary"></i> {{ process.inventory }} </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card card-user">
+                  <div class="card-header">
+                    <h5 class="card-category"> حداقل موجودی </h5>
+                    <h3 class="card-title"><i class="tim-icons icon-sound-wave text-primary"></i> {{ process.min_inventory }} </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card card-user">
+                  <div class="card-header">
+                    <h5 class="card-category">  تامین کننده </h5>
+                    <h3 class="card-title"><i class="tim-icons icon-cart text-primary"></i> {{ process.supplier }} </h3>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="row">
+             <div class="col-md-12">
+               <div class="card card-user">
+                 <div class="card-header">
+                   <h5 class="card-category">  محصولات استفاده کننده از این قطعه  : </h5>
+                   <h4 align="center" class="card-title">
+                     {% for Tree in input %}
+                       {% for relatedProduct in Tree.relatedProduct.all %}  <i class="tim-icons icon-tag"></i>  {{ relatedProduct }}  {% endfor %}
+                     {% endfor %}
+                   </h4>
+                 </div>
+               </div>
+             </div>
+         </div>
       {% endif %}
+
 
       {% if process.position == "S" %}
         <table class="table">
@@ -73,26 +95,11 @@
   </div>
 </div>
 
-<hr>
 
-     {% for Order in orders %}
-      {% for Tree in input %}
-        {% for relatedProduct in Tree.relatedProduct.all %}
-
-           {% if relatedProduct == Order.product %}
-            <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
-           {% endif %}
-
-        {% endfor %}
-      {% endfor %}
-     {% endfor %}
-
-
-
-<hr>
 
 <div class="row">
-  <div class="col-lg-6">
+
+  <div class="col-lg-12">
     <div class="card card-chart">
       <div class="card-header">
         <h5 class="card-category"> سفارشات </h5>
@@ -141,39 +148,38 @@
 
           <!-- HTML -->
           <div id="chartdiv"></div>
+
         </div>
       </div>
     </div>
-  </div>
 
-
-  <div class="col-md-6">
-    <div class="card card-user">
+    <div class="col-lg-12">
+      <div class="card card-chart">
       <div class="card-header">
-        <h5 class="card-category"> مسئول ایستگاه </h5>
-        <h3 class="card-title"><i class="tim-icons icon-single-02 text-primary"></i> {{ process.manager }} </h3>
+        <h5 align="right" class="card-category"> توضیحات تکمیلی سفارشات </h5>
       </div>
-      <div class="card-body">
-        <p class="card-text">
-          <div class="author">
-            <a href="javascript:void(0)">
-              <img class="avatar" src="{{ request.user.profile.user_photo.url }}" >
-              <h5 class="title">
-               {{ request.user.first_name }} {{ request.user.last_name }}
+
+              <h5 align="center" class="card-category">
+                {% for Order in orders %}
+                 {% for Tree in input %}
+                   {% for relatedProduct in Tree.relatedProduct.all %}
+
+                      {% if relatedProduct == Order.product %}
+                       <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
+                      {% endif %}
+
+                   {% endfor %}
+                 {% endfor %}
+                {% endfor %}
               </h5>
-            </a>
-          </div>
-        </p>
-        <div class="card-description">
-            {{ request.user.profile.email }}
+
         </div>
       </div>
 
-    </div>
   </div>
+
+
 </div>
-
-
 
 
 <div class="row">
@@ -343,6 +349,32 @@
 
     </div>
   </div>
+
+  <div class="col-md-12">
+    <div class="card card-user">
+      <div class="card-header">
+        <h5 class="card-category"> مسئول ایستگاه </h5>
+        <h3 class="card-title"><i class="tim-icons icon-single-02 text-primary"></i> {{ process.manager }} </h3>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <div class="author">
+            <a href="javascript:void(0)">
+              <img class="avatar" src="{{ request.user.profile.user_photo.url }}" >
+              <h5 class="title">
+               {{ request.user.first_name }} {{ request.user.last_name }}
+              </h5>
+            </a>
+          </div>
+        </p>
+        <div class="card-description">
+            {{ request.user.profile.email }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 
