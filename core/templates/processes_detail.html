@@ -110,13 +110,19 @@
           <!-- Chart code -->
 
           <script>
-             var input_data = [
+
+           var input_data = [
+              {% for Order in orders %}
                {% for Tree in input %}
-                {% for node in Tree.get_children %}
-                  { "a": "{{ node.name }}", "b": {{ node.capacity }} },
-                {% endfor %}
+                 {% for relatedProduct in Tree.relatedProduct.all %}
+                    {% if relatedProduct == Order.product %}
+                    { "a": "{{ relatedProduct }} (code:{{ Order.code }})", "b": {% widthratio Tree.quantity 1 Order.circulation %} },
+                    {% endif %}
+                 {% endfor %}
                {% endfor %}
-             ];
+              {% endfor %}
+            ];
+
           </script>
 
           <script>
