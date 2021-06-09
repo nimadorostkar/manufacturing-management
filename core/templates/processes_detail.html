@@ -31,7 +31,7 @@
 
       {% if process.position == "M" %}
            <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-2">
                 <div class="card card-user">
                   <div class="card-header">
                     <h5 class="card-category"> موجودی </h5>
@@ -39,7 +39,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-2">
                 <div class="card card-user">
                   <div class="card-header">
                     <h5 class="card-category"> حداقل موجودی </h5>
@@ -47,7 +47,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-2">
                 <div class="card card-user">
                   <div class="card-header">
                     <h5 class="card-category">  تامین کننده </h5>
@@ -55,22 +55,20 @@
                   </div>
                 </div>
               </div>
+              <div class="col-md-6">
+                <div class="card card-user">
+                  <div class="card-header">
+                    <h5 class="card-category">  محصولات استفاده کننده از این قطعه  : </h5>
+                    <h4 align="center" class="card-title">
+                      {% for Tree in input %}
+                        {% for relatedProduct in Tree.relatedProduct.all %}  <i class="tim-icons icon-tag"></i>  {{ relatedProduct }}  {% endfor %}
+                      {% endfor %}
+                    </h4>
+                  </div>
+                </div>
+              </div>
           </div>
 
-          <div class="row">
-             <div class="col-md-12">
-               <div class="card card-user">
-                 <div class="card-header">
-                   <h5 class="card-category">  محصولات استفاده کننده از این قطعه  : </h5>
-                   <h4 align="center" class="card-title">
-                     {% for Tree in input %}
-                       {% for relatedProduct in Tree.relatedProduct.all %}  <i class="tim-icons icon-tag"></i>  {{ relatedProduct }}  {% endfor %}
-                     {% endfor %}
-                   </h4>
-                 </div>
-               </div>
-             </div>
-         </div>
       {% endif %}
 
 
