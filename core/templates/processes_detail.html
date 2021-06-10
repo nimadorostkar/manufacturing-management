@@ -95,90 +95,125 @@
 
 
 
+
+<div class="row">
+
+   <div class="col-md-8">
+     <div class="card card-chart">
+       <div class="card-header">
+         <h5 class="card-category"> سفارشات </h5>
+         <h3 class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i> {{ process.inventory }} </h3>
+       </div>
+       <div class="card-body">
+         <div class="chart-area">
+           <!-- Chart code -->
+
+           <script>
+
+            var input_data = [
+               {% for Order in orders %}
+                {% for Tree in input %}
+                  {% for relatedProduct in Tree.relatedProduct.all %}
+                     {% if relatedProduct == Order.product %}
+                     { "a": "{{ relatedProduct }} (code:{{ Order.code }})", "b": {% widthratio Tree.quantity 1 Order.circulation %} },
+                     {% endif %}
+                  {% endfor %}
+                {% endfor %}
+               {% endfor %}
+             ];
+
+           </script>
+
+           <script>
+           am4core.ready(function() {
+           // Themes begin
+           am4core.useTheme(am4themes_animated);
+           // Themes end
+           // Create chart instance
+           var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+           // Add data
+           chart.data = input_data;
+
+           // Add and configure Series
+           var pieSeries = chart.series.push(new am4charts.PieSeries());
+           pieSeries.dataFields.value = "b";
+           pieSeries.dataFields.category = "a";
+           pieSeries.slices.template.stroke = am4core.color("#fff");
+           pieSeries.slices.template.strokeWidth = 2;
+           pieSeries.slices.template.strokeOpacity = 1;
+
+           // This creates initial animation
+           pieSeries.hiddenState.properties.opacity = 1;
+           pieSeries.hiddenState.properties.endAngle = -90;
+           pieSeries.hiddenState.properties.startAngle = -90;
+
+           }); // end am4core.ready()
+           </script>
+
+           <!-- HTML -->
+           <div id="chartdiv"></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+
+   <div class="col-md-4">
+     <div class="card card-user">
+       <div class="card-header">
+         <h5 class="card-category"> مسئول ایستگاه </h5>
+         <h3 class="card-title"><i class="tim-icons icon-single-02 text-primary"></i> {{ process.manager }} </h3>
+       </div>
+       <div class="card-body">
+         <p class="card-text">
+           <div class="author">
+             <a href="javascript:void(0)">
+               <img class="avatar" src="{{ request.user.profile.user_photo.url }}" >
+               <h5 class="title">
+                {{ request.user.first_name }} {{ request.user.last_name }}
+               </h5>
+             </a>
+           </div>
+         </p>
+         <div class="card-description">
+             {{ request.user.profile.email }}
+         </div>
+       </div>
+     </div>
+   </div>
+
+</div>
+
+
+
+
+
 <div class="row">
 
   <div class="col-lg-12">
     <div class="card card-chart">
-      <div class="card-header">
-        <h5 class="card-category"> سفارشات </h5>
-        <h3 class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i> {{ process.inventory }} </h3>
-      </div>
-      <div class="card-body">
-        <div class="chart-area">
-          <!-- Chart code -->
-
-          <script>
-
-           var input_data = [
+    <div class="card-header">
+      <h5 align="right" class="card-category"> توضیحات تکمیلی سفارشات </h5>
+    </div>
+            <h5 align="center" class="card-category">
               {% for Order in orders %}
                {% for Tree in input %}
                  {% for relatedProduct in Tree.relatedProduct.all %}
+
                     {% if relatedProduct == Order.product %}
-                    { "a": "{{ relatedProduct }} (code:{{ Order.code }})", "b": {% widthratio Tree.quantity 1 Order.circulation %} },
+                     <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
                     {% endif %}
+
                  {% endfor %}
                {% endfor %}
               {% endfor %}
-            ];
-
-          </script>
-
-          <script>
-          am4core.ready(function() {
-          // Themes begin
-          am4core.useTheme(am4themes_animated);
-          // Themes end
-          // Create chart instance
-          var chart = am4core.create("chartdiv", am4charts.PieChart);
-
-          // Add data
-          chart.data = input_data;
-
-          // Add and configure Series
-          var pieSeries = chart.series.push(new am4charts.PieSeries());
-          pieSeries.dataFields.value = "b";
-          pieSeries.dataFields.category = "a";
-          pieSeries.slices.template.stroke = am4core.color("#fff");
-          pieSeries.slices.template.strokeWidth = 2;
-          pieSeries.slices.template.strokeOpacity = 1;
-
-          // This creates initial animation
-          pieSeries.hiddenState.properties.opacity = 1;
-          pieSeries.hiddenState.properties.endAngle = -90;
-          pieSeries.hiddenState.properties.startAngle = -90;
-
-          }); // end am4core.ready()
-          </script>
-
-          <!-- HTML -->
-          <div id="chartdiv"></div>
-        </div>
+            </h5>
       </div>
     </div>
 
-    <div class="col-lg-12">
-      <div class="card card-chart">
-      <div class="card-header">
-        <h5 align="right" class="card-category"> توضیحات تکمیلی سفارشات </h5>
-      </div>
-              <h5 align="center" class="card-category">
-                {% for Order in orders %}
-                 {% for Tree in input %}
-                   {% for relatedProduct in Tree.relatedProduct.all %}
-
-                      {% if relatedProduct == Order.product %}
-                       <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
-                      {% endif %}
-
-                   {% endfor %}
-                 {% endfor %}
-                {% endfor %}
-              </h5>
-        </div>
-      </div>
-  </div>
-
 </div>
+
 
 
 <div class="row">
@@ -345,31 +380,6 @@
                 // bearing: 180
                 });
             </script>
-
-    </div>
-  </div>
-
-  <div class="col-md-12">
-    <div class="card card-user">
-      <div class="card-header">
-        <h5 class="card-category"> مسئول ایستگاه </h5>
-        <h3 class="card-title"><i class="tim-icons icon-single-02 text-primary"></i> {{ process.manager }} </h3>
-      </div>
-      <div class="card-body">
-        <p class="card-text">
-          <div class="author">
-            <a href="javascript:void(0)">
-              <img class="avatar" src="{{ request.user.profile.user_photo.url }}" >
-              <h5 class="title">
-               {{ request.user.first_name }} {{ request.user.last_name }}
-              </h5>
-            </a>
-          </div>
-        </p>
-        <div class="card-description">
-            {{ request.user.profile.email }}
-        </div>
-      </div>
 
     </div>
   </div>
