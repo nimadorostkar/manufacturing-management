@@ -213,6 +213,8 @@ class Order(models.Model):
     order_for = models.CharField(max_length=70,null=True, blank=True,verbose_name = "سفارش برای ")
     start_time = models.DateTimeField()
     confirmed = models.BooleanField(default=True, verbose_name = " تایید شده " )
+    #completed = models.BooleanField(default=False, verbose_name = " تکمیل شده " )
+
 
     def get_absolute_url(self):
         return reverse('app:orders_detail',args=[self.id])
@@ -226,14 +228,6 @@ class Order(models.Model):
 
     def image(self):
         return  self.product.image
-
-'''
-    @property
-    def process_quantity(self):
-        #return self.circulation
-        return self.product
-'''
-
 
 
 

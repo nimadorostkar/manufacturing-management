@@ -203,6 +203,14 @@
 
                 {% if relatedProduct == Order.product %}
                  <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
+
+                   <hr> <br>
+                   {% with quantity=Tree.quantity circulation=Order.circulation %}
+                      {{ quantity }} {{ circulation }}
+                   {% endwith %}
+
+                   <br> <hr>
+
                 {% endif %}
 
              {% endfor %}
