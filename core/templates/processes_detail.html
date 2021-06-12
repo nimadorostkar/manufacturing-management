@@ -205,10 +205,29 @@
                  <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
 
                    <hr> <br>
-                   {% with quantity=Tree.quantity circulation=Order.circulation %}
-                      {{ quantity }} {{ circulation }}
-                   {% endwith %}
+                   <script>
 
+                    var data = [
+                       {% for Order in orders %}
+                        {% for Tree in input %}
+                          {% for relatedProduct in Tree.relatedProduct.all %}
+                             {% if relatedProduct == Order.product %}
+                              { "{{ relatedProduct }}": {% widthratio Tree.quantity 1 Order.circulation %} },
+                             {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                       {% endfor %}
+                     ];
+                     var total = 0;
+
+                     for(var i = 0, len = data.length; i < len; i++) {
+                          total += data[i][1]; 
+                      }
+
+                    console.log(data);
+                    console.log(total);
+
+                   </script>
                    <br> <hr>
 
                 {% endif %}
