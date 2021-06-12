@@ -102,7 +102,7 @@
      <div class="card card-chart">
        <div class="card-header">
          <h5 class="card-category"> سفارشات </h5>
-         <h3 class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i> {{ process.inventory }} </h3>
+         <h3 id="total_order" class="card-title"><i class="tim-icons icon-chart-pie-36 text-primary"></i>  </h3>
        </div>
        <div class="card-body">
          <div class="chart-area">
@@ -204,31 +204,24 @@
                 {% if relatedProduct == Order.product %}
                  <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
 
-                   <hr> <br>
+
                    <script>
-
-                    var data = [
-                       {% for Order in orders %}
-                        {% for Tree in input %}
-                          {% for relatedProduct in Tree.relatedProduct.all %}
-                             {% if relatedProduct == Order.product %}
-                              { "{{ relatedProduct }}": {% widthratio Tree.quantity 1 Order.circulation %} },
-                             {% endif %}
+                      var data = [
+                         {% for Order in orders %}
+                          {% for Tree in input %}
+                            {% for relatedProduct in Tree.relatedProduct.all %}
+                               {% if relatedProduct == Order.product %}
+                                 {% widthratio Tree.quantity 1 Order.circulation %},
+                               {% endif %}
+                            {% endfor %}
                           {% endfor %}
-                        {% endfor %}
-                       {% endfor %}
-                     ];
-                     var total = 0;
-
-                     for(var i = 0, len = data.length; i < len; i++) {
-                          total += data[i][1]; 
-                      }
-
-                    console.log(data);
-                    console.log(total);
-
+                         {% endfor %}
+                       ];
+                      var total = 0;
+                      for(var i = 0; i < data.length; i++) { total += data[i];}
+                      document.getElementById("total_order").innerHTML = total;
                    </script>
-                   <br> <hr>
+
 
                 {% endif %}
 
