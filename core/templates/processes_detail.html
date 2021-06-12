@@ -193,22 +193,22 @@
 
   <div class="col-lg-12">
     <div class="card card-chart">
-    <div class="card-header">
-      <h5 align="right" class="card-category"> توضیحات تکمیلی سفارشات </h5>
-    </div>
-            <h5 align="center" class="card-category">
-              {% for Order in orders %}
-               {% for Tree in input %}
-                 {% for relatedProduct in Tree.relatedProduct.all %}
+        <div class="card-header">
+          <h5 align="right" class="card-category"> توضیحات تکمیلی سفارشات </h5>
+        </div>
+        <h5 align="center" class="card-category">
+          {% for Order in orders %}
+           {% for Tree in input %}
+             {% for relatedProduct in Tree.relatedProduct.all %}
 
-                    {% if relatedProduct == Order.product %}
-                     <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
-                    {% endif %}
+                {% if relatedProduct == Order.product %}
+                 <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
+                {% endif %}
 
-                 {% endfor %}
-               {% endfor %}
-              {% endfor %}
-            </h5>
+             {% endfor %}
+           {% endfor %}
+          {% endfor %}
+        </h5>
       </div>
     </div>
 
