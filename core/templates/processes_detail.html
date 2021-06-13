@@ -244,7 +244,7 @@
         <div class="card-body">
 
           <div style="background-color:#52a8fd59; margin-left:10%; margin-right:10%;" class="alert alert-info">
-            <h6  align="center" id="diff" style="color:red;">  </h6>
+            <h6  align="center" id="diff">  </h6>
           </div>
 
           <h5 align="center" class="card-category">
@@ -279,9 +279,11 @@
                         if ( diff<0 ){
                           diff = diff* -1;
                           document.getElementById("diff").innerHTML = " تعداد " + diff + " شفارش بیشتر از موجودی است ";
+                          document.getElementById("diff").style.color = "red";
                         }
                         else{
                           document.getElementById("diff").innerHTML = " موجودی " + diff + " بیشتر از سفارشات است ";
+                          document.getElementById("diff").style.color = "green";
                         }
                       </script>
 
