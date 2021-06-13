@@ -33,10 +33,42 @@
            <div class="row">
               <div class="col-md-2">
                 <div class="card card-user">
-                  <div class="card-header">
-                    <h5 class="card-category"> موجودی </h5>
-                    <h3 class="card-title"><i class="tim-icons icon-chart-bar-32 text-primary"></i> {{ process.inventory }} </h3>
+                  <div class="card-header ">
+                    {% if request.user == process.manager %}
+
+                        <button id="edit_inventory" type="button"> <i class="tim-icons icon-pencil"></i> </button>
+
+                         <!-- The inventory PopUp -->
+                          <div id="add_inventory" class="inventory">
+
+                            <!-- inventory content -->
+                            <div class="inventory-content">
+                              <p>Some text in the Modal..</p>
+                            </div>
+
+                          </div>
+
+                          <script>
+                            var inventory = document.getElementById("add_inventory");
+                            var btn = document.getElementById("edit_inventory");
+                            var span = document.getElementsByClassName("close")[0];
+                            btn.onclick = function() {
+                              inventory.style.display = "block";
+                            }
+                            span.onclick = function() {
+                              inventory.style.display = "none";
+                            }
+                            window.onclick = function(event) {
+                              if (event.target == inventory) {
+                                inventory.style.display = "none";
+                              }
+                            }
+                          </script>
+
+                    {% endif %}
+                    <h5 class="card-category d-inline"> موجودی </h5>
                   </div>
+                    <h3 class="card-title"> <i class="tim-icons icon-chart-bar-32 text-primary"></i> {{ process.inventory }} </h3>
                 </div>
               </div>
               <div class="col-md-2">
