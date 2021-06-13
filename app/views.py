@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Profile, Ticket, Order, Process
 from django.utils.translation import ugettext_lazy as _
-from .forms import ProfileForm, UserForm, TicketForm, MaterialForm, StationForm, RepositoryForm, TransferForm
+from .forms import ProfileForm, UserForm, TicketForm, MaterialForm, StationForm, RepositoryForm, TransferForm, InventoryForm
 from itertools import chain
 from django.contrib.auth import get_user_model
 from django.db import transaction
@@ -138,13 +138,19 @@ def processes_detail(request, id):
     input = models.Tree.objects.filter(name=process)
     process_products = models.Tree.objects.filter(name=process).values('relatedProduct__name')
     orders = models.Order.objects.filter(product__name__in=process_products)
-    return render(request, 'processes_detail.html', {
-    'process': process,
-    'processes': processes,
-    'orders': orders,
-    'nodes': nodes,
-    'input': input
-    })
+
+    if request.method == 'POST':
+          inventory_form = InventoryForm(request.POST)
+          if inventory_form.is_valid():
+              inventory = inventory_form.cleaned_data['inventory']
+              inventory_form.save()
+              context = { 'process': process,'processes': processes, 'orders': orders,'nodes': nodes,'input': input, 'inventory_form':inventory_form }
+              return render(request, 'processes_detail.html', context)
+    else:
+        inventory_form = InventoryForm(request.POST)
+
+    context = { 'process': process,'processes': processes, 'orders': orders,'nodes': nodes,'input': input, 'inventory_form':inventory_form }
+    return render(request, 'processes_detail.html', context)
 
 
 

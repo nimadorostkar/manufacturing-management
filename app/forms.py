@@ -74,6 +74,15 @@ class TransferForm(forms.ModelForm):
 
 
 
+#------------------------------------------------------------------------------
+class InventoryForm(forms.ModelForm):
+	class Meta:
+		model = Process
+		fields = ['inventory']
+
+
+
+
 
 
 
