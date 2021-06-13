@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Dashboard {% endblock %} 
+{% block title %} Dashboard {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -53,6 +53,7 @@
       </div>
 
     </div>
+
     <div class="row">
       <div class="col-lg-4">
         <div class="card card-chart">
@@ -377,6 +378,44 @@
         </div>
       </div>
     </div>
+
+
+
+    <div class="row">
+
+      <div class="col-12">
+        <div class="card card-chart">
+          <div class="card-header ">
+            <div class="row">
+              <div class="col-sm-6 text-left">
+                <h5 class="card-category">Total Shipments</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+
+            {% for Order in orders %}
+             {% for Tree in tree %}
+              {% for relatedProduct in Tree.relatedProduct.all %}
+
+                 {% if relatedProduct == Order.product %}
+                   <hr> {% widthratio Tree.quantity 1 Order.circulation %} ** {{Tree.name}}
+                 {% endif %}
+
+              {% endfor %}
+             {% endfor %}
+            {% endfor %}
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
 
 {% endblock content %}
 

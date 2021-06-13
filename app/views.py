@@ -24,12 +24,11 @@ from django.views.generic.base import TemplateView
 
 @login_required()
 def index(request):
+    tree = models.Tree.objects.all()
+    orders = models.Order.objects.all()
 
-    context = {}
-    context['segment'] = 'index'
-
-    html_template = loader.get_template( 'index.html' )
-    return HttpResponse(html_template.render(context, request))
+    context = {'orders':orders, 'tree':tree}
+    return render(request, 'index.html', context)
 
 
 
