@@ -394,17 +394,21 @@
           </div>
           <div class="card-body">
 
-            {% for Order in orders %}
-             {% for Tree in tree %}
-              {% for relatedProduct in Tree.relatedProduct.all %}
+            <script>
+              var orders = [
+                {% for Order in orders %}
+                 {% for Tree in tree %}
+                  {% for relatedProduct in Tree.relatedProduct.all %}
+                    {% if relatedProduct == Order.product %}
+                      { "{{Tree.name}} (code:{{ Order.code }})": {% widthratio Tree.quantity 1 Order.circulation %} },
+                    {% endif %}
+                  {% endfor %}
+                 {% endfor %}
+                {% endfor %}
+              ];
+              console.log(orders);
 
-                 {% if relatedProduct == Order.product %}
-                   <hr> {% widthratio Tree.quantity 1 Order.circulation %} --- [{{Order.code}}]  {{Tree.name}}
-                 {% endif %}
-
-              {% endfor %}
-             {% endfor %}
-            {% endfor %}
+            </script>
 
 
           </div>
