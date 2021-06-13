@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
@@ -256,7 +256,7 @@ def orders_detail(request, id):
 # ----------------------------------------------------------------------------
 # add page for material, station, repository, transfer and product ...
 
-@login_required()
+@user_passes_test(lambda u: u.is_superuser)
 def add_material(request):
     material = models.Process.objects.all()
     if request.method == 'POST':
@@ -283,7 +283,7 @@ def add_material(request):
     return render(request, 'add_material.html', context)
 
 
-@login_required()
+@user_passes_test(lambda u: u.is_superuser)
 def add_station(request):
     station = models.Process.objects.all()
     if request.method == 'POST':
@@ -310,7 +310,7 @@ def add_station(request):
 
 
 
-@login_required()
+@user_passes_test(lambda u: u.is_superuser)
 def add_repository(request):
     repository = models.Process.objects.all()
     if request.method == 'POST':
@@ -335,7 +335,7 @@ def add_repository(request):
 
 
 
-@login_required()
+@user_passes_test(lambda u: u.is_superuser)
 def add_transfer(request):
     transfer = models.Process.objects.all()
     if request.method == 'POST':
