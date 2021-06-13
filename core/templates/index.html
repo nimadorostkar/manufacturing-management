@@ -399,7 +399,7 @@
               {% for relatedProduct in Tree.relatedProduct.all %}
 
                  {% if relatedProduct == Order.product %}
-                   <hr> {% widthratio Tree.quantity 1 Order.circulation %} ** {{Tree.name}}
+                   <hr> {% widthratio Tree.quantity 1 Order.circulation %} --- [{{Order.code}}]  {{Tree.name}}
                  {% endif %}
 
               {% endfor %}
