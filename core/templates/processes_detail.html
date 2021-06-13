@@ -240,50 +240,59 @@
         <div class="card-header">
           <h5 align="right" class="card-category"> توضیحات تکمیلی سفارشات </h5>
         </div>
-        <h6  align="center" id="diff" style="color:red;">  </h6>
 
-        <h5 align="center" class="card-category">
-          {% for Order in orders %}
-           {% for Tree in input %}
-             {% for relatedProduct in Tree.relatedProduct.all %}
+        <div class="card-body">
 
-                {% if relatedProduct == Order.product %}
-                 <br>  تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }}
+          <div style="background-color:#52a8fd59; margin-left:10%; margin-right:10%;" class="alert alert-info">
+            <h6  align="center" id="diff" style="color:red;">  </h6>
+          </div>
 
+          <h5 align="center" class="card-category">
+            {% for Order in orders %}
+             {% for Tree in input %}
+               {% for relatedProduct in Tree.relatedProduct.all %}
+                  {% if relatedProduct == Order.product %}
+                  <div style="background-color:#52a8fd59; margin-left:10%; margin-right:10%;" class="alert alert-info">
+                    <h6 align="center">    تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }} </h6>
+                  </div>
 
-                   <script>
-                      var inventory = {{ process.inventory }} ;
-                      var data = [
-                         {% for Order in orders %}
-                          {% for Tree in input %}
-                            {% for relatedProduct in Tree.relatedProduct.all %}
-                               {% if relatedProduct == Order.product %}
-                                 {% widthratio Tree.quantity 1 Order.circulation %},
-                               {% endif %}
+                     <script>
+                        var inventory = {{ process.inventory }} ;
+                        var data = [
+                           {% for Order in orders %}
+                            {% for Tree in input %}
+                              {% for relatedProduct in Tree.relatedProduct.all %}
+                                 {% if relatedProduct == Order.product %}
+                                   {% widthratio Tree.quantity 1 Order.circulation %},
+                                 {% endif %}
+                              {% endfor %}
                             {% endfor %}
-                          {% endfor %}
-                         {% endfor %}
-                       ];
-                      var total = 0;
-                      for(var i = 0; i < data.length; i++) { total += data[i];}
-                      document.getElementById("total_order").innerHTML = total;
-                   </script>
+                           {% endfor %}
+                         ];
+                        var total = 0;
+                        for(var i = 0; i < data.length; i++) { total += data[i];}
+                        document.getElementById("total_order").innerHTML = total;
+                     </script>
 
-                    <script>
-                      var diff=inventory-total;
-                      if ( diff<0 ){
-                        diff = diff* -1;
-                        document.getElementById("diff").innerHTML = " تعداد " + diff + " شفارش بیشتر از موجودی است ";
-                      }
-                    </script>
+                      <script>
+                        var diff=inventory-total;
+                        if ( diff<0 ){
+                          diff = diff* -1;
+                          document.getElementById("diff").innerHTML = " تعداد " + diff + " شفارش بیشتر از موجودی است ";
+                        }
+                        else{
+                          document.getElementById("diff").innerHTML = " موجودی " + diff + " بیشتر از سفارشات است ";
+                        }
+                      </script>
 
 
-                {% endif %}
+                  {% endif %}
 
+               {% endfor %}
              {% endfor %}
-           {% endfor %}
-          {% endfor %}
-        </h5>
+            {% endfor %}
+          </h5>
+        </div>
       </div>
     </div>
 
