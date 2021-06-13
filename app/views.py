@@ -142,7 +142,7 @@ def processes_detail(request, id):
     if request.method == 'POST':
           inventory_form = InventoryForm(request.POST)
           if inventory_form.is_valid():
-              inventory = inventory_form.cleaned_data['inventory']
+              #inventory = inventory_form.cleaned_data['inventory']
               inventory_form.save()
               context = { 'process': process,'processes': processes, 'orders': orders,'nodes': nodes,'input': input, 'inventory_form':inventory_form }
               return render(request, 'processes_detail.html', context)

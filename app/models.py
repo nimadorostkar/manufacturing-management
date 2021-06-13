@@ -104,6 +104,15 @@ class Process(models.Model):
     percent_error = models.IntegerField(default='1', null=True,blank=True, verbose_name = " درصد خطا ")
     #location = LocationField(null=True,blank=True)
 
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Process.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.process.save()
+
     class MPTTMeta:
         level_attr = 'mptt_level'
         order_insertion_by=['name']
