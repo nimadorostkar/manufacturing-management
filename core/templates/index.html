@@ -395,18 +395,34 @@
           <div class="card-body">
 
             <script>
-              var orders = [
+              var array = [
                 {% for Order in orders %}
                  {% for Tree in tree %}
                   {% for relatedProduct in Tree.relatedProduct.all %}
                     {% if relatedProduct == Order.product %}
-                      { "{{Tree.name}} (code:{{ Order.code }})": {% widthratio Tree.quantity 1 Order.circulation %} },
+                      { "name":"{{Tree.name}}", "tot":{% widthratio Tree.quantity 1 Order.circulation %} },
                     {% endif %}
                   {% endfor %}
                  {% endfor %}
                 {% endfor %}
               ];
-              console.log(orders);
+
+              var orders = array.reduce(function (agg, obj) {
+                var objForName = agg.filter(function (nameObj) { return nameObj.name === obj.name})[0]
+
+                if (objForName) {
+                  objForName.total += obj.tot;
+                } else {
+                  agg.push({
+                    name: obj.name,
+                    total: obj.tot
+                  })
+                }
+                return agg;
+              }, [])
+
+              console.log(orders)
+
 
             </script>
 
