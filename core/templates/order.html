@@ -66,9 +66,11 @@
         <h4 class="card-title"> فرایند های درگیر </h4>
       </div>
       <div class="card-body">
-        <div class="table-responsive">
 
-        <h6  align="center" id="process_orders">  </h6>
+        <div align="center" id="process_orders"> </div>
+
+
+
 
 
 
@@ -103,7 +105,7 @@
 
             var process = document.getElementById("process_orders");
             for(var i=0; i < orders.length; i++){
-              process.innerHTML += "<p>"+orders[i].name+"  "+orders[i].total+"</p><br>";
+              process.innerHTML += "<h6>"+orders[i].name+"  "+orders[i].total+"</h6><br>";
             }
 
 
@@ -115,7 +117,7 @@
 
 
 
-        </div>
+
       </div>
     </div>
   </div>
