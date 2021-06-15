@@ -26,8 +26,9 @@ from django.views.generic.base import TemplateView
 def index(request):
     tree = models.Tree.objects.all()
     orders = models.Order.objects.all()
+    processes= models.Process.objects.all()
 
-    context = {'orders':orders, 'tree':tree}
+    context = {'processes':processes, 'orders':orders, 'tree':tree}
     return render(request, 'index.html', context)
 
 
