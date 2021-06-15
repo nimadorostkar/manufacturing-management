@@ -11,7 +11,7 @@
   <div class="col-md-12">
     <div class="card" align="right" dir="rtl">
       <div class="card-header">
-        <h4 class="card-title"> تولیدات </h4>
+        <h4 class="card-title"> سفارشات برحسب محصولات </h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -52,6 +52,65 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" align="right" dir="rtl">
+      <div class="card-header">
+        <h4 class="card-title"> سفارشات برحسب محصولات </h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  نام
+                </th>
+                <th>
+                  تیراژ
+                </th>
+                <th>
+                  زمان شروع
+                </th>
+                <th>
+                  توضیحات
+                </th>
+                <th class="text-center">
+                 کد
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for Order in orders %}
+              <tr>
+                <td> <a href="{{ Order.get_absolute_url }}"> {{ Order.product }} </a> </td>
+                <td> {{ Order.circulation }} </td>
+                <td> {{ Order.start_time }} </td>
+                <td> {{ Order.description|slice:":80" }}... </td>
+                <td class="text-center"> {{ Order.code }} </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 {% endblock content %}
 
