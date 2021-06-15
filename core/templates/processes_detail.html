@@ -61,22 +61,7 @@
                           </div>
 
 
-                          <script>
-                            var inventory = document.getElementById("add_inventory");
-                            var btn = document.getElementById("edit_inventory");
-                            var span = document.getElementsByClassName("close")[0];
-                            btn.onclick = function() {
-                              inventory.style.display = "block";
-                            }
-                            span.onclick = function() {
-                              inventory.style.display = "none";
-                            }
-                            window.onclick = function(event) {
-                              if (event.target == inventory) {
-                                inventory.style.display = "none";
-                              }
-                            }
-                          </script>
+
 
                     {% endif %}
                     <h5 class="card-category d-inline"> موجودی </h5>
@@ -480,7 +465,31 @@
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 
-  <script>
+
+<script>
+
+    // js script for edit inventory - popup
+      var inventory = document.getElementById("add_inventory");
+      var btn = document.getElementById("edit_inventory");
+      var span = document.getElementsByClassName("close")[0];
+      btn.onclick = function() {
+        inventory.style.display = "block";
+      }
+      span.onclick = function() {
+        inventory.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == inventory) {
+          inventory.style.display = "none";
+        }
+      }
+
+
+
+
+
+
+
 
 
     $(document).ready(function() {
@@ -489,7 +498,6 @@
     });
 
 
-
-  </script>
+</script>
 
 {% endblock javascripts %}
