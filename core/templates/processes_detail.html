@@ -41,7 +41,6 @@
 
                          <!-- The inventory PopUp -->
                           <div id="add_inventory" class="inventory">
-
                             <!-- inventory content -->
                             <div class="inventory-content">
                               <form action="#" method="post">
@@ -59,8 +58,8 @@
                                </div>
                              </form>
                             </div>
-
                           </div>
+
 
                           <script>
                             var inventory = document.getElementById("add_inventory");
@@ -494,24 +493,3 @@
   </script>
 
 {% endblock javascripts %}
-
-
-
-
-
-
-
-<!--
-
-<hr>
-{% recursetree input %}
-   {{ node.name }} <br>
-   {% for relatedProduct in node.relatedProduct.all %} {{ relatedProduct }} {% endfor %} <br>
-   {{ node.quantity }} <br> <hr>
-   {% if not node.is_leaf_node %}
-    {{ children }}
-   {% endif %}
-{% endrecursetree %}
-<hr>
-
--->
