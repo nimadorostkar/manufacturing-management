@@ -229,8 +229,11 @@ def ticket(request):
 
 @login_required()
 def order(request):
+    tree = models.Tree.objects.all()
     orders = models.Order.objects.all()
-    return render(request, 'order.html', {'orders': orders})
+
+    context = {'orders':orders, 'tree':tree}
+    return render(request, 'order.html', context)
 
 
 
