@@ -7,6 +7,33 @@
 
 {% block content %}
 
+
+
+
+
+<div class="row">
+  <div class="col-lg-12 col-md-12">
+    <div class="card ">
+      <div class="card-header">
+        <h4 class="card-title"> سفارشات مازاد </h4>
+      </div>
+      <div class="card-body">
+
+          <p  dir="rtl" align="right" id="extra_orders">  </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
     <div class="row">
 
       <div class="col-12">
@@ -381,32 +408,6 @@
 
 
 
-    <div class="row">
-
-      <div class="col-12">
-        <div class="card card-chart">
-          <div class="card-header ">
-            <div class="row">
-              <div class="col-sm-6 text-left">
-                <h5 class="card-category">Total Shipments</h5>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-
-
-            <h6  align="center" id="process_orders">  </h6>
-            <hr>
-            <h6  align="center" id="eee">  </h6>
-
-
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-
 
 
 
@@ -417,11 +418,6 @@
 {% block javascripts %}
 
   <script>
-
-
-
-
-
 
     var array = [
       {% for Order in orders %}
@@ -449,12 +445,6 @@
       return agg;
     }, [])
 
-    var process = document.getElementById("process_orders");
-    for(var i=0; i < orders.length; i++){
-      process.innerHTML += "<p>"+orders[i].name+"  "+orders[i].total+"</p><br>";
-    }
-
-
 
 
     var processes_inventory = [
@@ -465,13 +455,7 @@
 
 
 
-
-
-
-    console.log(orders)
-    console.log(processes_inventory)
-
-    var eee = document.getElementById("eee");
+    var extra_orders = document.getElementById("extra_orders");
 
     for(var i=0; i < orders.length; i++){
       for(var j=0; j < processes_inventory.length; j++){
@@ -480,24 +464,12 @@
 
           if ( diff<0 ){
             diff = diff* -1;
-            eee.innerHTML += "<p>"+orders[i].name+":"+orders[i].total+" --- "+processes_inventory[j].name+":"+processes_inventory[j].total+"</p> ("+diff+") <br>";
+            extra_orders.innerHTML += "<p> تعداد  "+diff+" شفارش در فرآیند "+ processes_inventory[j].name +" بیشتر از موجودی است. </p> <br>";
           }
 
         }
       }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
