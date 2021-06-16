@@ -395,50 +395,10 @@
           <div class="card-body">
 
 
-
-
             <h6  align="center" id="process_orders">  </h6>
+            <hr>
+            <h6  align="center" id="eee">  </h6>
 
-            <script>
-              var array = [
-                {% for Order in orders %}
-                 {% for Tree in tree %}
-                  {% for relatedProduct in Tree.relatedProduct.all %}
-                    {% if relatedProduct == Order.product %}
-                      { "name":"{{Tree.name}}", "tot":{% widthratio Tree.quantity 1 Order.circulation %} },
-                    {% endif %}
-                  {% endfor %}
-                 {% endfor %}
-                {% endfor %}
-              ];
-
-              var orders = array.reduce(function (agg, obj) {
-                var objForName = agg.filter(function (nameObj) { return nameObj.name === obj.name})[0]
-
-                if (objForName) {
-                  objForName.total += obj.tot;
-                } else {
-                  agg.push({
-                    name: obj.name,
-                    total: obj.tot
-                  })
-                }
-                return agg;
-              }, [])
-
-              console.log(orders)
-
-
-              var process = document.getElementById("process_orders");
-              for(var i=0; i < orders.length; i++){
-                process.innerHTML += "<p>"+orders[i].name+"  "+orders[i].total+"</p><br>";
-              }
-
-
-
-
-
-            </script>
 
 
           </div>
@@ -457,6 +417,96 @@
 {% block javascripts %}
 
   <script>
+
+
+
+
+
+
+    var array = [
+      {% for Order in orders %}
+       {% for Tree in tree %}
+        {% for relatedProduct in Tree.relatedProduct.all %}
+          {% if relatedProduct == Order.product %}
+            { "name":"{{Tree.name}}", "tot":{% widthratio Tree.quantity 1 Order.circulation %} },
+          {% endif %}
+        {% endfor %}
+       {% endfor %}
+      {% endfor %}
+    ];
+
+    var orders = array.reduce(function (agg, obj) {
+      var objForName = agg.filter(function (nameObj) { return nameObj.name === obj.name})[0]
+
+      if (objForName) {
+        objForName.total += obj.tot;
+      } else {
+        agg.push({
+          name: obj.name,
+          total: obj.tot
+        })
+      }
+      return agg;
+    }, [])
+
+    var process = document.getElementById("process_orders");
+    for(var i=0; i < orders.length; i++){
+      process.innerHTML += "<p>"+orders[i].name+"  "+orders[i].total+"</p><br>";
+    }
+
+
+
+
+    var processes_inventory = [
+       {% for Process in processes %}
+          { "name":"{{Process.name}}", "total":"{{Process.inventory}}" },
+       {% endfor %}
+     ];
+
+
+
+
+
+
+    console.log(orders)
+    console.log(processes_inventory)
+
+    var eee = document.getElementById("eee");
+
+    for(var i=0; i < orders.length; i++){
+      for(var j=0; j < processes_inventory.length; j++){
+        if ( orders[i].name == processes_inventory[j].name ){
+          var diff = processes_inventory[j].total - orders[i].total ;
+
+          if ( diff<0 ){
+            diff = diff* -1;
+            eee.innerHTML += "<p>"+orders[i].name+":"+orders[i].total+" --- "+processes_inventory[j].name+":"+processes_inventory[j].total+"</p> ("+diff+") <br>";
+          }
+
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
