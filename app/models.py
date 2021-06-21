@@ -211,22 +211,51 @@ class Order(models.Model):
     circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
     order_for = models.CharField(max_length=70,null=True, blank=True,verbose_name = "سفارش برای ")
     start_time = models.DateTimeField()
-    confirmed = models.BooleanField(default=True, verbose_name = " تایید شده " )
-    #completed = models.BooleanField(default=False, verbose_name = " تکمیل شده " )
+    confirmed = models.BooleanField(default=False, verbose_name = " تایید شده " )
+    completed = models.BooleanField(default=False, verbose_name = " تکمیل شده " )
 
 
     def get_absolute_url(self):
         return reverse('app:orders_detail',args=[self.id])
 
     class Meta:
-        verbose_name = " سفارش "
-        verbose_name_plural = "سفارشات"
+        verbose_name = " سفارش محصول "
+        verbose_name_plural = "سفارشات محصول"
 
     def __str__(self):
         return str(self.product)
 
     def image(self):
         return  self.product.image
+
+
+
+
+
+#------------------------------------------------------------------------------
+class Process_Order(models.Model):
+    process = models.ForeignKey(Process, on_delete=models.CASCADE,verbose_name = " فرآیند ")
+    code = models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
+    description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
+    circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
+    order_for = models.CharField(max_length=70,null=True, blank=True,verbose_name = "سفارش برای ")
+    start_time = models.DateTimeField()
+    confirmed = models.BooleanField(default=False, verbose_name = " تایید شده " )
+    completed = models.BooleanField(default=False, verbose_name = " تکمیل شده " )
+
+
+    def get_absolute_url(self):
+        return reverse('app:process_detail',args=[self.id])
+
+    class Meta:
+        verbose_name = " سفارش فرآیند  "
+        verbose_name_plural = " سفارشات فرآیند "
+
+    def __str__(self):
+        return str(self.process)
+
+
+
 
 
 
