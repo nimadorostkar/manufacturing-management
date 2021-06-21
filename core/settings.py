@@ -4,6 +4,7 @@ from unipath import Path
 import dj_database_url
 
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = Path(__file__).parent
@@ -19,13 +20,6 @@ DEBUG = config('DEBUG', default=True)
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', config('SERVER', default='127.0.0.1')]
 
 
-
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
 
 
 # Application definition
@@ -51,6 +45,79 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount'
 ]
+
+
+
+
+
+# -------------------------- General Settings ----------------------------------
+
+
+
+WSGI_APPLICATION = 'core.wsgi.application'
+
+
+
+#DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+DEFAULT_AUTO_FIELD='django.db.models.BigAutoField'
+
+
+
+ROOT_URLCONF = 'core.urls'
+#LOGIN_REDIRECT_URL = "home"   # Route defined in app/urls.py
+#LOGOUT_REDIRECT_URL = "home"  # Route defined in app/urls.py
+
+
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+
+
+
+
+
+# jalali date
+JALALI_DATE_DEFAULTS = {
+   'Strftime': {
+        'date': '%y/%m/%d',
+        'datetime': '%H:%M:%S _ %y/%m/%d',
+    },
+    'Static': {
+        'js': [
+            # loading datepicker
+            'admin/js/django_jalali.min.js',
+            # OR
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
+            # 'admin/js/main.js',
+        ],
+        'css': {
+            'all': [
+                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
+            ]
+        }
+    },
+}
+
+
 
 
 ADMIN_SHORTCUTS = [
@@ -127,53 +194,10 @@ ADMIN_SHORTCUTS_SETTINGS = {
 
 
 
-# jalali date
-JALALI_DATE_DEFAULTS = {
-   'Strftime': {
-        'date': '%y/%m/%d',
-        'datetime': '%H:%M:%S _ %y/%m/%d',
-    },
-    'Static': {
-        'js': [
-            # loading datepicker
-            'admin/js/django_jalali.min.js',
-            # OR
-            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
-            # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
-            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
-            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
-            # 'admin/js/main.js',
-        ],
-        'css': {
-            'all': [
-                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
-            ]
-        }
-    },
-}
 
 
 
-
-
-
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-]
-
-ROOT_URLCONF = 'core.urls'
-#LOGIN_REDIRECT_URL = "home"   # Route defined in app/urls.py
-#LOGOUT_REDIRECT_URL = "home"  # Route defined in app/urls.py
 TEMPLATE_DIR = os.path.join(BASE_DIR, "core/templates")  # ROOT dir for templates
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -189,13 +213,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'core.wsgi.application'
-
-
-
-#DEFAULT_AUTO_FIELD='django.db.models.AutoField'
-DEFAULT_AUTO_FIELD='django.db.models.BigAutoField'
 
 
 
@@ -234,36 +251,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-#################
-
-
-MAPBOX_KEY = 'pk.eyJ1IjoiZG9yb3N0a2FyIiwiYSI6ImNrbmVjdzg3djFkb3EycG8wZW5sdjNld3YifQ.AeDSXrxKTXAxPdIEESuPqA'
-
-default_map_attrs = {
- "style": "mapbox://styles/mapbox/streets-v11",
- "zoom": 13,
- "center": [17.031645, 51.106715],
- "cursor_style": 'pointer',
- "marker_color": "red",
- "rotate": False,
- "geocoder": True,
- "fullscreen_button": True,
- "navigation_buttons": True,
- "track_location_button": True,
- "readonly": True,
- "placeholder": "Pick a location on map below", }
-
-
-
-
-#################
-
-
 
 # Required for all-auth
 SITE_ID = 1
-
-
 
 ACCOUNT_FORMS = {
     'login': 'allauth.account.forms.LoginForm',
@@ -276,7 +266,6 @@ ACCOUNT_FORMS = {
     'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
     'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
 }
-
 
 ACCOUNT_AUTHENTICATION_METHOD = ("username")
 ACCOUNT_EMAIL_VERIFICATION = ("none")
@@ -305,7 +294,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 
-###############################################################
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -319,24 +307,28 @@ USE_L10N = True
 
 USE_TZ = True
 
-#############################################################
+
+
+
+
 # SRC: https://devcenter.heroku.com/articles/django-assets
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-
-
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'core/static'),
-)
-
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'core/static'),)
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/'
 
-#############################################################
+
+
+
+
+
+
+
+
+
+# End settings

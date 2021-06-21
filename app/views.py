@@ -7,7 +7,7 @@ from . import models
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Profile, Ticket, Order, Process
+from .models import Profile, Supplier, Ticket, Order, Process_Order, Process, Mother_Station, Notice
 from django.utils.translation import ugettext_lazy as _
 from .forms import ProfileForm, UserForm, TicketForm, MaterialForm, StationForm, RepositoryForm, TransferForm, InventoryForm
 from itertools import chain
@@ -382,8 +382,6 @@ def add_transfer(request):
 
     context = {'transfer': transfer,'transfer_form': transfer_form }
     return render(request, 'add_transfer.html', context)
-
-
 
 
 

@@ -9,13 +9,11 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 
-
 #------------------------------------------------------------------------------
 class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['phone','address','user_photo']
-
 
 
 #------------------------------------------------------------------------------
@@ -32,8 +30,6 @@ class TicketForm(forms.ModelForm):
 	class Meta:
 		model = Ticket
 		fields = ['to','title','descriptions']
-
-
 
 
 #------------------------------------------------------------------------------
@@ -72,13 +68,12 @@ class TransferForm(forms.ModelForm):
 		fields = ['name', 'description', 'manager']
 
 
-
-
 #------------------------------------------------------------------------------
 class InventoryForm(forms.ModelForm):
 	class Meta:
 		model = Process
 		fields = ['inventory']
+
 
 
 
