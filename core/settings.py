@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'mptt',           # https://django-mptt.readthedocs.io/en/latest/index.html
     'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field         https://account.mapbox.com/
     'bootstrapform',  # https://django-bootstrap-form.readthedocs.io/en/latest/
+    'jalali_date',    # https://pypi.org/project/django-jalali-date/
     'allauth',        # Third Party - 1) All Auth
     'allauth.account',
     'allauth.socialaccount'
@@ -126,6 +127,37 @@ ADMIN_SHORTCUTS_SETTINGS = {
 
 
 
+# jalali date
+JALALI_DATE_DEFAULTS = {
+   'Strftime': {
+        'date': '%y/%m/%d',
+        'datetime': '%H:%M:%S _ %y/%m/%d',
+    },
+    'Static': {
+        'js': [
+            # loading datepicker
+            'admin/js/django_jalali.min.js',
+            # OR
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
+            # 'admin/js/main.js',
+        ],
+        'css': {
+            'all': [
+                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
+            ]
+        }
+    },
+}
+
+
+
+
+
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -159,6 +191,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
+
+
+
+#DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+DEFAULT_AUTO_FIELD='django.db.models.BigAutoField'
+
+
+
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -299,10 +340,3 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/'
 
 #############################################################
-
-
-
-
-
-
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
