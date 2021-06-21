@@ -25,7 +25,7 @@ admin.site.register(LogEntry)
 
 #------------------------------------------------------------------------------
 class SupplierAdmin(ImportExportModelAdmin):
-    list_display = ('name','phone_number','website')
+    list_display = ('name', 'link')
 
 admin.site.register(models.Supplier, SupplierAdmin)
 

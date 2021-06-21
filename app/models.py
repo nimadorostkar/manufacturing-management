@@ -34,10 +34,6 @@ class Map(models.Model):
 class Supplier(models.Model):
     name=models.CharField(max_length=200,verbose_name = "نام")
     description=models.TextField(max_length=800,null=True, blank=True,verbose_name = "توضیحات")
-    phone_number = models.CharField(max_length=50,null=True, blank=True,verbose_name = "شماره تلفن")
-    address=models.CharField(max_length=200,null=True, blank=True,verbose_name = "آدرس")
-    email=models.CharField(max_length=200,null=True, blank=True,verbose_name = "ایمیل")
-    website=models.CharField(max_length=200,null=True, blank=True,verbose_name = "وبسایت")
     link = models.URLField(max_length=300, null=True, blank=True)
 
     class Meta:
