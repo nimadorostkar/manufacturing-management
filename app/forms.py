@@ -51,7 +51,7 @@ class StationForm(forms.ModelForm):
 
 	class Meta:
 		model = Process
-		fields = ['name', 'description','manager', 'mother_station', 'pro_cap_day', 'percent_error']
+		fields = ['name', 'description','manager', 'mother_station', 'pro_cap_day', 'percent_error' ,'inventory']
 
 
 #------------------------------------------------------------------------------
