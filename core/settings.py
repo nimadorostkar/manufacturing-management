@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field         https://account.mapbox.com/
     'bootstrapform',  # https://django-bootstrap-form.readthedocs.io/en/latest/
     'jalali_date',    # https://pypi.org/project/django-jalali-date/
+    'extensions',
     'allauth',        # Third Party - 1) All Auth
     'allauth.account',
     'allauth.socialaccount'

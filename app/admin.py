@@ -30,8 +30,8 @@ admin.site.register(models.Supplier, SupplierAdmin)
 
 #------------------------------------------------------------------------------
 class TicketAdmin(ImportExportModelAdmin):
-    list_display = ('user','to','title','created_on')
-    list_filter = ("user", "to", "created_on")
+    list_display = ('user','to','title','j_created_on')
+    list_filter = ("user", "to")
 
 admin.site.register(models.Ticket, TicketAdmin)
 

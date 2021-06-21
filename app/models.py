@@ -9,7 +9,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 import uuid
 from django.template.defaultfilters import truncatechars
-
+from extensions.utils import jalali_converter
 
 
 
@@ -186,7 +186,7 @@ class Tree(MPTTModel):
 class Ticket(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,verbose_name = "از طرف")
     to = models.ForeignKey(User, on_delete=models.CASCADE, related_name="to" ,verbose_name = "ارسال به")
-    ticket_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    #ticket_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=300,null=True, blank=True,verbose_name = " عنوان ")
     descriptions = models.TextField(max_length=800,null=True, blank=True,verbose_name = "توضیحات")
     updated_on = models.DateTimeField(auto_now= True)
@@ -204,6 +204,10 @@ class Ticket(models.Model):
 
     def __str__(self):
         return str(self.created_on)
+
+    def j_created_on(self):
+        return jalali_converter(self.created_on)
+
 
 
 
