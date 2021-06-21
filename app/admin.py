@@ -7,6 +7,9 @@ from mapbox_location_field.admin import MapAdmin
 from .models import Profile, Tree, Process, Ticket, Order, Supplier
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin, ImportExportMixin
+from jalali_date import datetime2jalali, date2jalali
+from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, TabularInlineJalaliMixin
+
 
 
 
@@ -75,18 +78,25 @@ admin.site.register(Tree, DraggableMPTTAdmin,
 
 
 #------------------------------------------------------------------------------
-class OrderAdmin(ImportExportModelAdmin):
-    list_display = ('product','code','circulation')
+class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    list_display = ('product','code','circulation', 'get_created_jalali')
     list_filter = ("product", "circulation")
+
+    def get_created_jalali(self, obj):
+        return datetime2jalali(obj.created).strftime('%y/%m/%d _ %H:%M:%S')
+    get_created_jalali.short_description = " زمان شروع "
 
 admin.site.register(models.Order, OrderAdmin)
 
 
 
 #------------------------------------------------------------------------------
-class Process_OrderAdmin(ImportExportModelAdmin):
-    list_display = ('process','code','circulation')
-    list_filter = ("process", "circulation")
+class Process_OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    list_display = ('process','code','circulation', 'get_created_jalali')
+
+    def get_created_jalali(self, obj):
+        return datetime2jalali(obj.created).strftime('%y/%m/%d _ %H:%M:%S')
+    get_created_jalali.short_description = " زمان شروع "
 
 admin.site.register(models.Process_Order, Process_OrderAdmin)
 
