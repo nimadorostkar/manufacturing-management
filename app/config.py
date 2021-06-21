@@ -1,4 +1,5 @@
 from django.apps import AppConfig
 
-class MyConfig(AppConfig):
-    name = 'cfg'
+class AppConfig(AppConfig):
+    name = 'app'
+    verbose_name= " مدیریت اطلاعات و آمار تولید "

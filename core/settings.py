@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'app.config.AppConfig',
     #"django.contrib.gis",
-    'app',            # Enable the inner app
     'import_export',  # https://django-import-export.readthedocs.io/en/latest/index.html
     'extra_settings', # https://github.com/fabiocaccamo/django-extra-settings
     'mptt',           # https://django-mptt.readthedocs.io/en/latest/index.html

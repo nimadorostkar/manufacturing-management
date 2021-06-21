@@ -14,7 +14,7 @@ from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, T
 
 
 
-admin.site.site_header= "  پنل مدیریت  "
+admin.site.site_header= " توانکار "
 admin.site.site_title= "Tavankar"
 
 admin.site.register(LogEntry)
