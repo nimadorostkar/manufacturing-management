@@ -38,6 +38,7 @@ class Supplier(models.Model):
     address=models.CharField(max_length=200,null=True, blank=True,verbose_name = "آدرس")
     email=models.CharField(max_length=200,null=True, blank=True,verbose_name = "ایمیل")
     website=models.CharField(max_length=200,null=True, blank=True,verbose_name = "وبسایت")
+    link = models.URLField(max_length=300, null=True, blank=True)
 
     class Meta:
         verbose_name = "تامین کننده"
@@ -46,10 +47,6 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.name
-
-    #def get_absolute_url(self):
-        #return reverse('app:supplier_detail',args=[self.id])
-
 
 
 
