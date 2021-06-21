@@ -18,11 +18,14 @@ admin.site.register(LogEntry)
 
 
 
+
+
 #------------------------------------------------------------------------------
 class SupplierAdmin(ImportExportModelAdmin):
     list_display = ('name','phone_number','website')
 
 admin.site.register(models.Supplier, SupplierAdmin)
+
 
 
 #------------------------------------------------------------------------------
@@ -48,15 +51,6 @@ class ProcessAdmin(ImportExportModelAdmin):
     list_filter = ("manager", "position")
 
 admin.site.register(models.Process, ProcessAdmin)
-
-
-'''
-#------------------------------------------------------------------------------
-class RateAdmin(ImportExportModelAdmin):
-    list_display = ('quantity','time')
-
-admin.site.register(models.Rate, RateAdmin)
-'''
 
 
 
@@ -86,3 +80,26 @@ class OrderAdmin(ImportExportModelAdmin):
     list_filter = ("product", "circulation")
 
 admin.site.register(models.Order, OrderAdmin)
+
+
+
+#------------------------------------------------------------------------------
+class Process_OrderAdmin(ImportExportModelAdmin):
+    list_display = ('process','code','circulation')
+    list_filter = ("process", "circulation")
+
+admin.site.register(models.Process_Order, Process_OrderAdmin)
+
+
+
+
+
+
+
+
+
+
+
+
+
+#-------------------------------------------------------- by Nima Dorostkar ---
