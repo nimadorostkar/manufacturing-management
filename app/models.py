@@ -9,7 +9,6 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 import uuid
 from django.template.defaultfilters import truncatechars
-from extensions.utils import jalali_converter
 
 
 
@@ -282,9 +281,6 @@ class Process_Order(models.Model):
         return str(self.process)
 
 
-    def j_start_time(self):
-        return jalali_converter(self.start_time)
-    j_start_time.short_description = ' زمان شروع '
 
 
 
