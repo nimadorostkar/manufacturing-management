@@ -227,7 +227,7 @@ def ticket(request):
 
 
 
-############################### manufacture ##################################
+############################### order ##################################
 
 @login_required()
 def order(request):
@@ -240,7 +240,7 @@ def order(request):
 
 
 
-########################### manufacture_detail ###############################
+########################### orders_detail ###############################
 
 @login_required()
 def orders_detail(request, id):
@@ -252,6 +252,27 @@ def orders_detail(request, id):
     'order': order,
     'nodes':nodes
     })
+
+
+
+
+
+############################### supplier ##################################
+
+@login_required()
+def supplier(request):
+    supplier = models.Supplier.objects.all()
+    return render(request, 'supplier.html', {'supplier': supplier})
+
+
+
+
+########################### supplier_detail ###############################
+
+@login_required()
+def supplier_detail(request, id):
+    suppliers = get_object_or_404(models.Supplier, id=id)
+    return render(request, 'supplier_detail.html', {'suppliers': suppliers})
 
 
 
