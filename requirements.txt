@@ -11,6 +11,7 @@ gunicorn
 whitenoise
 Pillow
 django-mptt
+django-mapbox-location-field
 django-allauth
 django-bootstrap-form
 django-import-export
