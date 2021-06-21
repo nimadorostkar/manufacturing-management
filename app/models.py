@@ -9,6 +9,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 import uuid
 from django.template.defaultfilters import truncatechars
+from extensions.utils import jalali_converter
 
 
 
@@ -236,7 +237,7 @@ class Order(models.Model):
     description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
     circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
     order_for = models.CharField(max_length=70,null=True, blank=True,verbose_name = "سفارش برای ")
-    start_time = models.DateTimeField()
+    start_time = models.DateTimeField(verbose_name = "زمان شروع ")
     confirmed = models.BooleanField(default=False, verbose_name = " تایید شده " )
     completed = models.BooleanField(default=False, verbose_name = " تکمیل شده " )
 
@@ -265,7 +266,7 @@ class Process_Order(models.Model):
     description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
     circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
     order_for = models.CharField(max_length=70,null=True, blank=True,verbose_name = "سفارش برای ")
-    start_time = models.DateTimeField()
+    start_time = models.DateTimeField(verbose_name = "زمان شروع ")
     confirmed = models.BooleanField(default=False, verbose_name = " تایید شده " )
     completed = models.BooleanField(default=False, verbose_name = " تکمیل شده " )
 
@@ -281,6 +282,31 @@ class Process_Order(models.Model):
         return str(self.process)
 
 
+    def j_start_time(self):
+        return jalali_converter(self.start_time)
+    j_start_time.short_description = ' زمان شروع '
+
+
+
+
+
+
+#------------------------------------------------------------------------------
+class Notice(models.Model):
+    title = models.CharField(max_length=200,null=True, blank=True,verbose_name = " عنوان ")
+    content = models.TextField(null=True, blank=True,verbose_name = " متن ")
+    updated_on = models.DateTimeField(auto_now= True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    class Meta:
+        verbose_name = "اعلان"
+        verbose_name_plural = " اعلانات "
+
+    def __str__(self):
+        return self.title
 
 
 

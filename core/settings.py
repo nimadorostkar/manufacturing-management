@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'mptt',           # https://django-mptt.readthedocs.io/en/latest/index.html
     'mapbox_location_field',  # https://github.com/simon-the-shark/django-mapbox-location-field         https://account.mapbox.com/
     'bootstrapform',  # https://django-bootstrap-form.readthedocs.io/en/latest/
+    'extensions',
     'allauth',        # Third Party - 1) All Auth
     'allauth.account',
     'allauth.socialaccount'
@@ -268,9 +269,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa-ir'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 

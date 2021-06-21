@@ -93,6 +93,12 @@ admin.site.register(models.Process_Order, Process_OrderAdmin)
 
 
 
+#------------------------------------------------------------------------------
+class NoticeAdmin(ImportExportModelAdmin):
+    list_display = ('title','content','created_on')
+
+admin.site.register(models.Notice, NoticeAdmin)
+
 
 
 

@@ -389,6 +389,24 @@ def add_transfer(request):
 
 
 
+################################# notices #####################################
+
+@login_required()
+def notices(request):
+    notices = models.Notice.objects.all()
+    context = {'notices':notices}
+    return render(request, 'notices.html', context)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
