@@ -54,6 +54,31 @@ class Supplier(models.Model):
 
 
 #------------------------------------------------------------------------------
+class Mother_Station(models.Model):
+    name = models.CharField(max_length=400,verbose_name = "نام")
+    description=models.TextField(max_length=1000,null=True, blank=True,verbose_name = "مشخصات")
+    manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
+
+
+    class Meta:
+        verbose_name = "ایستگاه مادر"
+        verbose_name_plural = " ایستگاه های مادر  "
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('app:mother_station_detail',args=[self.id])
+
+    @property
+    def short_description(self):
+        return truncatechars(self.description, 70)
+
+
+
+
+
+#------------------------------------------------------------------------------
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE,unique=True,related_name='profile',verbose_name = "کاربر")
   phone = models.CharField(max_length=50,null=True, blank=True,verbose_name = " شماره تماس  ")
@@ -99,6 +124,7 @@ class Process(models.Model):
     min_inventory = models.IntegerField(null=True,blank=True, verbose_name = " حداقل موجودی ")
     manager = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "مسئول")
     supplier = models.ForeignKey(Supplier ,on_delete=models.CASCADE ,null=True, blank=True,verbose_name = "تامین کننده")
+    mother_station = models.ForeignKey(Mother_Station ,on_delete=models.CASCADE ,null=True, blank=True,verbose_name = " ایستگاه مادر ")
     pro_cap_day = models.IntegerField(default='1', null=True,blank=True, verbose_name = " ظرفیت تولید در روز ")
     percent_error = models.IntegerField(default='1', null=True,blank=True, verbose_name = " درصد خطا ")
     #location = LocationField(null=True,blank=True)
