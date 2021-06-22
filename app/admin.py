@@ -80,7 +80,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_filter = ("product", "circulation")
 
     def get_created_jalali(self, obj):
-        return datetime2jalali(obj.created).strftime('%y/%m/%d _ %H:%M:%S')
+        return datetime2jalali(obj.start_time).strftime('%y/%m/%d _ %H:%M:%S')
     get_created_jalali.short_description = " زمان شروع "
 
 admin.site.register(models.Order, OrderAdmin)
@@ -92,7 +92,7 @@ class Process_OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('process','code','circulation', 'get_created_jalali')
 
     def get_created_jalali(self, obj):
-        return datetime2jalali(obj.created).strftime('%y/%m/%d _ %H:%M:%S')
+        return datetime2jalali(obj.start_time).strftime('%y/%m/%d _ %H:%M:%S')
     get_created_jalali.short_description = " زمان شروع "
 
 admin.site.register(models.Process_Order, Process_OrderAdmin)
