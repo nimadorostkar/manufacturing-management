@@ -32,7 +32,7 @@
 
       {% if process.position == "M" %}
            <div class="row">
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <div class="card card-user">
                   <div class="card-header ">
                     {% if request.user == process.manager %}
@@ -66,28 +66,28 @@
                     {% endif %}
                     <h5 class="card-category d-inline"> موجودی </h5>
                   </div>
-                    <h3 class="card-title"> <i class="tim-icons icon-chart-bar-32 text-primary"></i> {{ process.inventory }} </h3>
+                    <h3 align='center' class="card-title"> <i class="tim-icons icon-chart-bar-32 text-primary"></i> <span></span> {{ process.inventory }} </h3>
                 </div>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <div class="card card-user">
                   <div class="card-header">
                     <h5 class="card-category"> حداقل موجودی </h5>
-                    <h3 class="card-title"><i class="tim-icons icon-sound-wave text-primary"></i> {{ process.min_inventory }} </h3>
+                    <h3 align='center' class="card-title"><i class="tim-icons icon-sound-wave text-primary"></i> {{ process.min_inventory }} </h3>
                   </div>
                 </div>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <div class="card card-user">
                   <div class="card-header">
                     <h5 class="card-category">  تامین کننده </h5>
                     <a href="{{process.supplier.link}}">
-                      <h3 class="card-title"><i class="tim-icons icon-cart text-primary"></i> {{ process.supplier }} </h3>
+                      <h3 align='center' class="card-title"><i class="tim-icons icon-cart text-primary"></i> {{ process.supplier }} </h3>
                     </a>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="card card-user">
                   <div class="card-header">
                     <h5 class="card-category">  محصولات استفاده کننده از این قطعه  : </h5>
@@ -470,6 +470,18 @@
 
 
 <script>
+
+
+    // alert min_inventory
+      var total_inventory = {{ process.inventory }} ;
+      var min_inventory = {{ process.min_inventory }} ;
+      if (total_inventory < min_inventory) { alert(" مقدار موجودی از حداقل کمتر است! "); }
+
+
+
+
+
+
 
     // js script for edit inventory - popup
       var inventory = document.getElementById("add_inventory");
