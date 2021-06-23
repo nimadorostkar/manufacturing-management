@@ -115,6 +115,9 @@
                     <p class="category">  درصد خطا :  {{ process.pro_cap_day }} </p>
                   </td>
                   <td>
+                    <p class="category"> موجودی تولید شده :  {{ process.inventory|default_if_none:"نامعلوم" }}  </p>
+                  </td>
+                  <td>
                     <p class="category"> ایستگاه مادر :  <a href="{{ process.mother_station.get_absolute_url }}"> {{ process.mother_station|default_if_none:"ندارد" }}  </a> </p>
                   </td>
                 </tr>
