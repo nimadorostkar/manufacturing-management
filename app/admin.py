@@ -28,6 +28,16 @@ admin.site.register(models.Supplier, SupplierAdmin)
 
 
 
+
+#------------------------------------------------------------------------------
+class Mother_StationAdmin(ImportExportModelAdmin):
+    list_display = ('name', 'manager')
+
+admin.site.register(models.Mother_Station, Mother_StationAdmin)
+
+
+
+
 #------------------------------------------------------------------------------
 class TicketAdmin(ImportExportModelAdmin):
     list_display = ('user','to','title','j_created_on')

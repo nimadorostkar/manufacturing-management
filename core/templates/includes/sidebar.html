@@ -34,7 +34,7 @@
           </li>
           <li class="{% if 'app:products' in segment %} active {% endif %}">
             <a href="{% url 'app:products' %}">
-              <i class="tim-icons icon-bullet-list-67"></i>
+              <i class="tim-icons icon-app"></i>
               <p> محصول </p>
             </a>
           </li>
@@ -66,6 +66,12 @@
             <a href="{% url 'app:supplier' %}">
               <i class="tim-icons icon-cart"></i>
               <p> تامین کننده </p>
+            </a>
+          </li>
+          <li class="{% if 'supplier' in segment %} active {% endif %}">
+            <a href="{% url 'app:mother_station' %}">
+              <i class="tim-icons icon-bullet-list-67"></i>
+              <p> ایستگاه های مادر </p>
             </a>
           </li>
           <li class="{% if 'tables' in segment %} active {% endif %}">
