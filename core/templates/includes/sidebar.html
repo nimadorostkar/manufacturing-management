@@ -47,6 +47,12 @@
           <li class="{% if 'notifications' in segment %} active {% endif %}">
             <a href="/ui-notifications.html">
               <i class="tim-icons icon-bell-55"></i>
+              <p> notifications </p>
+            </a>
+          </li>
+          <li class="{% if 'notices' in segment %} active {% endif %}">
+            <a href="{% url 'app:notices' %}">
+              <i class="tim-icons icon-bell-55"></i>
               <p> اعلانات </p>
             </a>
           </li>
