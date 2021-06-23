@@ -272,7 +272,8 @@ def supplier(request):
 @login_required()
 def supplier_detail(request, id):
     suppliers = get_object_or_404(models.Supplier, id=id)
-    return render(request, 'supplier_detail.html', {'suppliers': suppliers})
+    processes = models.Process.objects.filter(supplier=suppliers)
+    return render(request, 'supplier_detail.html', {'suppliers':suppliers, 'processes':processes })
 
 
 
