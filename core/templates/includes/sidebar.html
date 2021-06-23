@@ -62,6 +62,12 @@
               <p> تیکت </p>
             </a>
           </li>
+          <li class="{% if 'supplier' in segment %} active {% endif %}">
+            <a href="{% url 'app:supplier' %}">
+              <i class="tim-icons icon-cart"></i>
+              <p> تامین کننده </p>
+            </a>
+          </li>
           <li class="{% if 'tables' in segment %} active {% endif %}">
             <a href="/ui-tables.html">
               <i class="tim-icons icon-single-copy-04"></i>
