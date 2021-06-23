@@ -68,8 +68,8 @@ class TreeMPTTModelAdmin(ImportExportMixin, MPTTModelAdmin):
     #mptt_indent_field = "some_node_field"
 
 admin.site.register(Tree, DraggableMPTTAdmin,
-    list_display=('tree_actions','indented_title','position'),
-    #list_editable = ('quantity'),
+    list_display=('tree_actions', 'indented_title', 'position'),
+    #list_editable = ('relatedProduct','relatedProduct'),
     list_display_links=('indented_title',),)
 
 
