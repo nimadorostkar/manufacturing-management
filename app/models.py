@@ -280,6 +280,9 @@ class Notice(models.Model):
     def __str__(self):
         return self.title
 
+    def j_created_on(self):
+        return jalali_converter(self.created_on)
+
 
 
 

@@ -415,7 +415,7 @@ def add_transfer(request):
 
 @login_required()
 def notices(request):
-    notices = models.Notice.objects.all()
+    notices = models.Notice.objects.all().order_by('-created_on')
     context = {'notices':notices}
     return render(request, 'notices.html', context)
 
