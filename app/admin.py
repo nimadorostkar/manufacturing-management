@@ -86,8 +86,8 @@ admin.site.register(Tree, DraggableMPTTAdmin,
 
 #------------------------------------------------------------------------------
 class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ('product','code','circulation', 'get_created_jalali')
-    list_filter = ("product", "circulation")
+    list_display = ('product','code','circulation', 'get_created_jalali', 'confirmed', 'completed')
+    list_filter = ("product", "circulation", "confirmed", "completed")
 
     def get_created_jalali(self, obj):
         return datetime2jalali(obj.start_time).strftime('%y/%m/%d _ %H:%M:%S')

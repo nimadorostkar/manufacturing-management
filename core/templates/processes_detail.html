@@ -200,9 +200,28 @@
              {% for Tree in input %}
                {% for relatedProduct in Tree.relatedProduct.all %}
                   {% if relatedProduct == Order.product %}
-                  <div style="background-color:#52a8fd59; margin-left:10%; margin-right:10%;" class="alert alert-info">
-                    <h6 align="center">    تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }} </h6>
-                  </div>
+                    {% if Order.confirmed %}
+                      <div style="background-color:#52a8fd59; margin-left:10%; margin-right:10%;" class="alert alert-info">
+                        <h6 align="center">    تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }} </h6>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+               {% endfor %}
+             {% endfor %}
+            {% endfor %}
+          </h5>
+          <br><br><hr>
+          <div class="card-header"> <h6 style="color:#9A9A9A;" align="right" class="card-category"> سفارشات تایید نشده </h6> </div>
+          <h5 align="center" class="card-category">
+            {% for Order in orders %}
+             {% for Tree in input %}
+               {% for relatedProduct in Tree.relatedProduct.all %}
+                  {% if relatedProduct == Order.product %}
+                     {% if Order.confirmed %}    {% else %}
+                      <div style="background-color:#ffeb003d; margin-left:10%; margin-right:10%;" class="alert alert-info">
+                        <h6 align="center">    تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }} </h6>
+                      </div>
+                    {% endif %}
                   {% endif %}
                {% endfor %}
              {% endfor %}
@@ -452,7 +471,9 @@
       {% for Tree in input %}
         {% for relatedProduct in Tree.relatedProduct.all %}
            {% if relatedProduct == Order.product %}
+            {% if Order.confirmed %}
               {% widthratio Tree.quantity 1 Order.circulation %},
+            {% endif %}
            {% endif %}
         {% endfor %}
       {% endfor %}
