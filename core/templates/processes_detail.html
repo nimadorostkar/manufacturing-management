@@ -201,9 +201,11 @@
                {% for relatedProduct in Tree.relatedProduct.all %}
                   {% if relatedProduct == Order.product %}
                     {% if Order.confirmed %}
-                      <div style="background-color:#52a8fd59; margin-left:10%; margin-right:10%;" class="alert alert-info">
-                        <h6 align="center">    تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }} </h6>
-                      </div>
+                     {% if Order.completed == False %}
+                          <div style="background-color:#52a8fd59; margin-left:10%; margin-right:10%;" class="alert alert-info">
+                            <h6 align="center">    تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }} </h6>
+                          </div>
+                     {% endif %}
                     {% endif %}
                   {% endif %}
                {% endfor %}
@@ -217,10 +219,12 @@
              {% for Tree in input %}
                {% for relatedProduct in Tree.relatedProduct.all %}
                   {% if relatedProduct == Order.product %}
-                     {% if Order.confirmed %}    {% else %}
-                      <div style="background-color:#ffeb003d; margin-left:10%; margin-right:10%;" class="alert alert-info">
-                        <h6 align="center">    تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }} </h6>
-                      </div>
+                     {% if Order.confirmed == False %}
+                        {% if Order.completed == False %}
+                          <div style="background-color:#ffeb003d; margin-left:10%; margin-right:10%;" class="alert alert-info">
+                            <h6 align="center">    تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }} </h6>
+                          </div>
+                        {% endif %}
                     {% endif %}
                   {% endif %}
                {% endfor %}
@@ -425,7 +429,9 @@
          {% for relatedProduct in Tree.relatedProduct.all %}
             {% if relatedProduct == Order.product %}
              {% if Order.confirmed %}
-               { "a": "{{ relatedProduct }} (code:{{ Order.code }})", "b": {% widthratio Tree.quantity 1 Order.circulation %} },
+              {% if Order.completed == False %}
+                { "a": "{{ relatedProduct }} (code:{{ Order.code }})", "b": {% widthratio Tree.quantity 1 Order.circulation %} },
+              {% endif %}
              {% endif %}
             {% endif %}
          {% endfor %}
@@ -472,7 +478,9 @@
         {% for relatedProduct in Tree.relatedProduct.all %}
            {% if relatedProduct == Order.product %}
             {% if Order.confirmed %}
-              {% widthratio Tree.quantity 1 Order.circulation %},
+              {% if Order.completed == False %}
+                {% widthratio Tree.quantity 1 Order.circulation %},
+              {% endif %}
             {% endif %}
            {% endif %}
         {% endfor %}
