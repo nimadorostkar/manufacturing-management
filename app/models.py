@@ -237,7 +237,7 @@ class Order(models.Model):
     def image(self):
         return  self.product.image
 
-
+'''
 #------------------------------------------------------------------------------
 class Process_Order(models.Model):
     process = models.ForeignKey(Process, on_delete=models.CASCADE,verbose_name = " فرآیند ")
@@ -259,7 +259,7 @@ class Process_Order(models.Model):
 
     def __str__(self):
         return str(self.process)
-
+'''
 
 
 

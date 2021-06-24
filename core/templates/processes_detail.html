@@ -144,50 +144,6 @@
        </div>
        <div class="card-body">
          <div class="chart-area">
-           <!-- Chart code -->
-
-           <script>
-
-            var input_data = [
-               {% for Order in orders %}
-                {% for Tree in input %}
-                  {% for relatedProduct in Tree.relatedProduct.all %}
-                     {% if relatedProduct == Order.product %}
-                     { "a": "{{ relatedProduct }} (code:{{ Order.code }})", "b": {% widthratio Tree.quantity 1 Order.circulation %} },
-                     {% endif %}
-                  {% endfor %}
-                {% endfor %}
-               {% endfor %}
-             ];
-
-           </script>
-
-           <script>
-           am4core.ready(function() {
-           // Themes begin
-           am4core.useTheme(am4themes_animated);
-           // Themes end
-           // Create chart instance
-           var chart = am4core.create("chartdiv", am4charts.PieChart);
-
-           // Add data
-           chart.data = input_data;
-
-           // Add and configure Series
-           var pieSeries = chart.series.push(new am4charts.PieSeries());
-           pieSeries.dataFields.value = "b";
-           pieSeries.dataFields.category = "a";
-           pieSeries.slices.template.stroke = am4core.color("#fff");
-           pieSeries.slices.template.strokeWidth = 2;
-           pieSeries.slices.template.strokeOpacity = 1;
-
-           // This creates initial animation
-           pieSeries.hiddenState.properties.opacity = 1;
-           pieSeries.hiddenState.properties.endAngle = -90;
-           pieSeries.hiddenState.properties.startAngle = -90;
-
-           }); // end am4core.ready()
-           </script>
 
            <!-- HTML -->
            <div id="chartdiv"></div>
@@ -247,41 +203,7 @@
                   <div style="background-color:#52a8fd59; margin-left:10%; margin-right:10%;" class="alert alert-info">
                     <h6 align="center">    تعداد {% widthratio Tree.quantity 1 Order.circulation %} برای سفارش محصول {{ relatedProduct }} با کد سفارش {{ Order.code }} </h6>
                   </div>
-
-                     <script>
-                        var inventory = {{ process.inventory }} ;
-                        var data = [
-                           {% for Order in orders %}
-                            {% for Tree in input %}
-                              {% for relatedProduct in Tree.relatedProduct.all %}
-                                 {% if relatedProduct == Order.product %}
-                                   {% widthratio Tree.quantity 1 Order.circulation %},
-                                 {% endif %}
-                              {% endfor %}
-                            {% endfor %}
-                           {% endfor %}
-                         ];
-                        var total = 0;
-                        for(var i = 0; i < data.length; i++) { total += data[i];}
-                        document.getElementById("total_order").innerHTML = total;
-                     </script>
-
-                      <script>
-                        var diff=inventory-total;
-                        if ( diff<0 ){
-                          diff = diff* -1;
-                          document.getElementById("diff").innerHTML = " تعداد " + diff + " شفارش بیشتر از موجودی است ";
-                          document.getElementById("diff").style.color = "red";
-                        }
-                        else{
-                          document.getElementById("diff").innerHTML = " موجودی " + diff + " بیشتر از سفارشات است ";
-                          document.getElementById("diff").style.color = "green";
-                        }
-                      </script>
-
-
                   {% endif %}
-
                {% endfor %}
              {% endfor %}
             {% endfor %}
@@ -468,7 +390,6 @@
 
 
 
-
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
@@ -477,6 +398,85 @@
 
 <script>
 
+   // Order and Chart code
+
+   var input_data = [
+      {% for Order in orders %}
+       {% for Tree in input %}
+         {% for relatedProduct in Tree.relatedProduct.all %}
+            {% if relatedProduct == Order.product %}
+             {% if Order.confirmed %}
+               { "a": "{{ relatedProduct }} (code:{{ Order.code }})", "b": {% widthratio Tree.quantity 1 Order.circulation %} },
+             {% endif %}
+            {% endif %}
+         {% endfor %}
+       {% endfor %}
+      {% endfor %}
+    ];
+
+
+  am4core.ready(function() {
+  // Themes begin
+  am4core.useTheme(am4themes_animated);
+  // Themes end
+  // Create chart instance
+  var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+  // Add data
+  chart.data = input_data;
+
+  // Add and configure Series
+  var pieSeries = chart.series.push(new am4charts.PieSeries());
+  pieSeries.dataFields.value = "b";
+  pieSeries.dataFields.category = "a";
+  pieSeries.slices.template.stroke = am4core.color("#fff");
+  pieSeries.slices.template.strokeWidth = 2;
+  pieSeries.slices.template.strokeOpacity = 1;
+
+  // This creates initial animation
+  pieSeries.hiddenState.properties.opacity = 1;
+  pieSeries.hiddenState.properties.endAngle = -90;
+  pieSeries.hiddenState.properties.startAngle = -90;
+
+  }); // end am4core.ready()
+
+
+
+//- ------------------------------------------------------------------------- -
+
+  // extra order detail...
+
+  var inventory = {{ process.inventory }} ;
+  var data = [
+     {% for Order in orders %}
+      {% for Tree in input %}
+        {% for relatedProduct in Tree.relatedProduct.all %}
+           {% if relatedProduct == Order.product %}
+              {% widthratio Tree.quantity 1 Order.circulation %},
+           {% endif %}
+        {% endfor %}
+      {% endfor %}
+     {% endfor %}
+   ];
+  var total = 0;
+  for(var i = 0; i < data.length; i++) { total += data[i];}
+  document.getElementById("total_order").innerHTML = total;
+</script>
+
+<script>
+  var diff=inventory-total;
+  if ( diff<0 ){
+    diff = diff* -1;
+    document.getElementById("diff").innerHTML = " تعداد " + diff + " شفارش بیشتر از موجودی است ";
+    document.getElementById("diff").style.color = "red";
+  }
+  else{
+    document.getElementById("diff").innerHTML = " موجودی " + diff + " بیشتر از سفارشات است ";
+    document.getElementById("diff").style.color = "green";
+  }
+
+
+//- ------------------------------------------------------------------------- -
 
     // alert min_inventory
       var total_inventory = {{ process.inventory }} ;
@@ -484,10 +484,7 @@
       if (total_inventory < min_inventory) { alert(" مقدار موجودی از حداقل کمتر است! "); }
 
 
-
-
-
-
+//- ------------------------------------------------------------------------- -
 
     // js script for edit inventory - popup
       var inventory = document.getElementById("add_inventory");
@@ -506,11 +503,7 @@
       }
 
 
-
-
-
-
-
+//- ------------------------------------------------------------------------- -
 
 
     $(document).ready(function() {

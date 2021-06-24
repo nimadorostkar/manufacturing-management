@@ -96,7 +96,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 admin.site.register(models.Order, OrderAdmin)
 
 
-
+'''
 #------------------------------------------------------------------------------
 class Process_OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('process', 'code', 'circulation', 'get_created_jalali')
@@ -106,7 +106,7 @@ class Process_OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     get_created_jalali.short_description = " زمان شروع "
 
 admin.site.register(models.Process_Order, Process_OrderAdmin)
-
+'''
 
 
 
