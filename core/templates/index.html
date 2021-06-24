@@ -418,7 +418,9 @@
         {% for relatedProduct in Tree.relatedProduct.all %}
           {% if relatedProduct == Order.product %}
            {% if Order.confirmed %}
-             { "name":"{{Tree.name}}", "tot":{% widthratio Tree.quantity 1 Order.circulation %} },
+             {% if Order.completed == False %}
+                { "name":"{{Tree.name}}", "tot":{% widthratio Tree.quantity 1 Order.circulation %} },
+             {% endif %}
            {% endif %}
           {% endif %}
         {% endfor %}
