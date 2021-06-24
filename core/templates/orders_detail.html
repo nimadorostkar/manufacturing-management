@@ -31,8 +31,11 @@
               <th>
                 توضیحات
               </th>
+              <th>
+                کد
+              </th>
               <th class="text-center">
-               کد
+               تایید شده
               </th>
             </tr>
           </thead>
@@ -41,8 +44,15 @@
               <td> <a href="{{ Order.get_absolute_url }}"> {{ order.product }} </a> </td>
               <td> {{ order.circulation }} </td>
               <td> {{ order.start_time }} </td>
-              <td> {{ order.description|slice:":80" }}... </td>
-              <td class="text-center"> {{ order.code }} </td>
+              <td> {{ order.description|slice:":60" }}... </td>
+              <td> {{ order.code }} </td>
+              <td class="text-center">
+                {% if order.confirmed %}
+                  <i style="color:green;" class="tim-icons icon-check-2"></i>
+                {% else %}
+                  <i style="color:red;" class="tim-icons icon-simple-remove"></i>
+                {% endif %}
+              </td>
             </tr>
           </tbody>
         </table>
