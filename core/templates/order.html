@@ -69,6 +69,64 @@
 
 
 
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" align="right" dir="rtl">
+      <div class="card-header">
+        <h4 class="card-title"> سفارشات به پایان رسیده </h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  نام
+                </th>
+                <th>
+                  تیراژ
+                </th>
+                <th>
+                  زمان شروع
+                </th>
+                <th>
+                  توضیحات
+                </th>
+                <th class="text-center">
+                  کد
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for Order in orders %}
+             {% if Order.completed %}
+                <tr>
+                  <td> <a href="{{ Order.get_absolute_url }}"> {{ Order.product }} </a> </td>
+                  <td> {{ Order.circulation }} </td>
+                  <td> {{ Order.start_time }} </td>
+                  <td> {{ Order.description|slice:":70" }}... </td>
+                  <td class="text-center"> {{ Order.code }} </td>
+                </tr>
+             {% endif %}
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
 <div class="row">
   <div class="col-md-12">
     <div class="card" align="right" dir="rtl">
@@ -80,17 +138,15 @@
         <div align="center" id="process_orders"> </div>
 
 
-
-
-
-
           <script>
             var array = [
               {% for Order in orders %}
                {% for Tree in tree %}
                 {% for relatedProduct in Tree.relatedProduct.all %}
                   {% if relatedProduct == Order.product %}
-                    { "name":"{{Tree.name}}", "tot":{% widthratio Tree.quantity 1 Order.circulation %} },
+                   {% if Order.confirmed %}
+                     { "name":"{{Tree.name}}", "tot":{% widthratio Tree.quantity 1 Order.circulation %} },
+                   {% endif %}
                   {% endif %}
                 {% endfor %}
                {% endfor %}
@@ -118,20 +174,18 @@
               process.innerHTML += "<h6>"+orders[i].name+"  "+orders[i].total+"</h6><br>";
             }
 
-
-
-
-
-
           </script>
-
-
-
 
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
 
 
 
