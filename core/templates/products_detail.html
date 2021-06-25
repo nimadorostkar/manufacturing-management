@@ -201,7 +201,18 @@
 
 
 
+<hr><br>
 
+{% recursetree nodes %}
+    <li>
+        <div class="name">
+           <a href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a>
+         </div>
+       {% if not node.is_leaf_node %}
+        <ul> {{ children }} </ul>
+       {% endif %}
+    </li>
+{% endrecursetree %}
 
 
 
