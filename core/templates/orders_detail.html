@@ -43,7 +43,7 @@
             <tr>
               <td> <a href="{{ Order.get_absolute_url }}"> {{ order.product }} </a> </td>
               <td> {{ order.circulation }} </td>
-              <td> {{ order.start_time }} </td>
+              <td> {{ order.j_created_on }} </td>
               <td> {{ order.description|slice:":60" }}... </td>
               <td> {{ order.code }} </td>
               <td class="text-center">

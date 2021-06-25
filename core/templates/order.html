@@ -44,7 +44,7 @@
               <tr>
                 <td> <a href="{{ Order.get_absolute_url }}"> {{ Order.product }} </a> </td>
                 <td> {{ Order.circulation }} </td>
-                <td> {{ Order.start_time }} </td>
+                <td> {{ Order.j_created_on }} </td>
                 <td> {{ Order.description|slice:":60" }}... </td>
                 <td> {{ Order.code }} </td>
                 <td class="text-center">
@@ -107,7 +107,7 @@
                 <tr>
                   <td> <a href="{{ Order.get_absolute_url }}"> {{ Order.product }} </a> </td>
                   <td> {{ Order.circulation }} </td>
-                  <td> {{ Order.start_time }} </td>
+                  <td> {{ Order.j_created_on }} </td>
                   <td> {{ Order.description|slice:":70" }}... </td>
                   <td class="text-center"> {{ Order.code }} </td>
                 </tr>
