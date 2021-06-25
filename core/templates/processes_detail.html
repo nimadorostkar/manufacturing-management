@@ -33,39 +33,37 @@
       </div>  <br>
 
 
-      {% if request.user == process.manager %}
-          <button id="edit_inventory" type="button"> <i class="tim-icons icon-pencil"></i> </button>
-           <!-- The inventory PopUp -->
-            <div id="add_inventory" class="inventory">
-              <!-- inventory content -->
-              <div class="inventory-content">
-                <form action="#" method="post">
-                  {% csrf_token %}
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1"> موجودی </label>
-                        <input name="inventory" type="text" class="form-control" value="{{ process.inventory }}">
-                      </div>
-                    </div>
-                  </div>
-                 <div class="card-footer">
-                   <button type="submit" class="btn btn-fill btn-primary"> ذخیره </button>
-                 </div>
-               </form>
-              </div>
-            </div>
-      {% endif %}
-
-
-
-
       {% if process.position == "M" %}
            <div class="row">
               <div class="col-md-4">
                 <div class="card card-user">
                   <div class="card-header ">
                     <h5 class="card-category d-inline"> موجودی </h5>
+
+                    {% if request.user == process.manager %}
+                        <button id="edit_inventory" type="button"> <i class="tim-icons icon-pencil"></i> </button>
+                         <!-- The inventory PopUp -->
+                          <div id="add_inventory" class="inventory">
+                            <!-- inventory content -->
+                            <div class="inventory-content">
+                              <form action="#" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="exampleInputEmail1"> موجودی </label>
+                                      <input name="inventory" type="text" class="form-control" value="{{ process.inventory }}">
+                                    </div>
+                                  </div>
+                                </div>
+                               <div class="card-footer">
+                                 <button type="submit" class="btn btn-fill btn-primary"> ذخیره </button>
+                               </div>
+                             </form>
+                            </div>
+                          </div>
+                    {% endif %}
+
                   </div>
                     <h3 align='center' class="card-title"> <i class="tim-icons icon-chart-bar-32 text-primary"></i> {{ process.inventory }} </h3>
                 </div>
@@ -124,6 +122,23 @@
                 </tr>
           </tbody>
         </table>
+          {% if request.user == process.manager %}
+            <form action="#" method="post">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1"> موجودی </label>
+                    <input name="inventory" type="text" class="form-control" value="{{ process.inventory }}">
+                  </div>
+                </div>
+              </div>
+             <div class="card-footer">
+               <button type="submit" class="btn btn-fill btn-primary"> ذخیره </button>
+             </div>
+           </form>
+         {% endif %}
+
       {% endif %}
 
       {% if process.position == "R" %}  {% endif %}
@@ -132,7 +147,6 @@
   </div>
 </div>
 </div>
-
 
 
 
