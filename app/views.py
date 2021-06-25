@@ -118,7 +118,15 @@ def products_detail(request, id):
     product = get_object_or_404(models.Product, id=id)
     nodes = models.Tree.objects.filter(relatedProduct=product)
     orders = models.Order.objects.filter(product=product)
-    return render(request, 'products_detail.html', {'product': product,'nodes': nodes, 'orders':orders})
+    tree = models.Tree.objects.all()
+    processes= models.Process.objects.all()
+
+    return render(request, 'products_detail.html', {'product': product,
+    'nodes': nodes,
+    'orders':orders,
+    'tree':tree,
+    'processes':processes
+    })
 
 
 
