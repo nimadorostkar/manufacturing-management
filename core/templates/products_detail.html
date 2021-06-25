@@ -138,16 +138,65 @@
 
 
 
-
     <div class="row">
-    <div class="col-md-12">
-      <div class="card card-user">
-        <div class="card-body">
-            <p> hhh hhhh </p>
+      <div class="col-md-12">
+        <div class="card" align="right" dir="rtl">
+          <div class="card-header">
+            <h4 class="card-title"> سفارشات باز {{ product.name }} </h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter " id="">
+                <thead class=" text-primary">
+                  <tr>
+                    <th>
+                      نام
+                    </th>
+                    <th>
+                      تیراژ
+                    </th>
+                    <th>
+                      زمان شروع
+                    </th>
+                    <th>
+                      توضیحات
+                    </th>
+                    <th>
+                      کد
+                    </th>
+                    <th class="text-center">
+                      تایید شده
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for Order in orders %}
+                {% if Order.completed == False %}
+                  <tr>
+                    <td> <a href="{{ Order.get_absolute_url }}"> {{ Order.product }} </a> </td>
+                    <td> {{ Order.circulation }} </td>
+                    <td> {{ Order.j_created_on }} </td>
+                    <td> {{ Order.description|slice:":60" }}... </td>
+                    <td> {{ Order.code }} </td>
+                    <td class="text-center">
+                      {% if Order.confirmed %}
+                        <i style="color:green;" class="tim-icons icon-check-2"></i>
+                      {% else %}
+                        <i style="color:red;" class="tim-icons icon-simple-remove"></i>
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endif %}
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    </div>
+
+
 
 
 
