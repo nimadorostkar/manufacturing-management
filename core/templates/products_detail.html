@@ -200,20 +200,72 @@
 
 
 
-
-<hr><br>
-
-{% recursetree nodes %}
-    <li>
-        <div class="name">
-           <a href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a>
-         </div>
-       {% if not node.is_leaf_node %}
-        <ul> {{ children }} </ul>
-       {% endif %}
-    </li>
-{% endrecursetree %}
-
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card" align="right" dir="rtl">
+          <div class="card-header">
+            <h4 class="card-title"> فرایند های مرتبط با {{ product.name }} </h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter " id="">
+                <thead class=" text-primary">
+                  <tr>
+                    <th>
+                      نام
+                    </th>
+                    <th>
+                      مسئول
+                    </th>
+                    <th>
+                      مشخصات
+                    </th>
+                    <th>
+                      موجودی
+                    </th>
+                    <th class="text-center">
+                      ایستگاه
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                   {% recursetree nodes %}
+                      <tr>
+                        <td><a href="{{ node.name.get_absolute_url }}"> {{ node.name.name }} </a></td>
+                        <td> {{ node.name.manager }} </td>
+                        <td> {{ node.name.description|slice:":60" }}... </td>
+                        <td> {{ node.name.inventory }} </td>
+                        <td class="text-center">
+                          <div class="photo">
+                          {% if node.name.position == "M" %}
+                          <img src="{% static 'assets/img/m.png' %}" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "R" %}
+                          <img src="{% static 'assets/img/r.png' %}" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "T" %}
+                          <img src="{% static 'assets/img/t.png' %}" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "S" %}
+                          <img src="{% static 'assets/img/s.png' %}" class="img-responsive" />
+                          {% endif %}
+                          {% if node.name.position == "P" %}
+                          <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
+                          {% endif %}
+                          </div>
+                        </td>
+                      </tr>
+                      {% if not node.is_leaf_node %}
+                         {{ children }}
+                      {% endif %}
+                  {% endrecursetree %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
