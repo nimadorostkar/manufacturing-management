@@ -40,7 +40,6 @@
         return agg;
       }, [])
 
-      console.log(all_process_orders);
 
 </script>
 
@@ -116,7 +115,7 @@
                 <ul>
                   {% recursetree nodes %}
                       <li>
-                        <div class="user">
+                        <div id="{{ node.name }}div" class="user">
                           {% if node.name.position == "M" %}
                           <img src="{% static 'assets/img/m.png' %}" class="img-responsive" />
                           {% endif %}
@@ -133,11 +132,22 @@
                           <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
                           {% endif %}
                           <div class="name"> <a class="manager" href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a> </div>
-                          <div> <p>  موجودی {{ node.name.inventory }} </p></div>
+                          <div> <p>  موجودی :  {{ node.name.inventory }} </p></div>
                           <div>
+                            <p id="{{ node.name }}"> </p>
 
-
-                            hhhh
+                                <script>
+                                  var node_name = "{{ node.name }}";
+                                  var node_inventory = "{{ node.name.inventory }}";
+                                  for(var i=0; i < all_process_orders.length; i++)
+                                  {
+                                    if ( all_process_orders[i].name == node_name )
+                                    {
+                                      document.getElementById("{{ node.name }}").innerHTML = " سفارشات :  "+all_process_orders[i].total;
+                                      if(all_process_orders[i].total > node_inventory){ document.getElementById("{{ node.name }}div").style.background = "#ff1b1b26"; }
+                                    }
+                                  }
+                                </script>
 
                            </div>
                         </div>
