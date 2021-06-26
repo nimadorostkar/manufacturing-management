@@ -8,6 +8,48 @@
 {% block content %}
 {% load mptt_tags %}
 
+<script>
+
+      var all_process_array = [
+        {% for Order in all_orders %}
+         {% for Tree in tree %}
+          {% for relatedProduct in Tree.relatedProduct.all %}
+            {% if relatedProduct == Order.product %}
+             {% if Order.confirmed %}
+               {% if Order.completed == False %}
+                  { "name":"{{Tree.name}}", "tot":{% widthratio Tree.quantity 1 Order.circulation %} },
+               {% endif %}
+             {% endif %}
+            {% endif %}
+          {% endfor %}
+         {% endfor %}
+        {% endfor %}
+      ];
+
+      var all_process_orders = all_process_array.reduce(function (agg, obj) {
+        var objForName = agg.filter(function (nameObj) { return nameObj.name === obj.name})[0]
+
+        if (objForName) {
+          objForName.total += obj.tot;
+        } else {
+          agg.push({
+            name: obj.name,
+            total: obj.tot
+          })
+        }
+        return agg;
+      }, [])
+
+      console.log(all_process_orders);
+
+</script>
+
+
+
+
+
+
+
 <div class="col-md-12">
   <div class="card  card-plain" align="right" dir="rtl">
     <div class="card-header">
@@ -94,29 +136,8 @@
                           <div> <p>  موجودی {{ node.name.inventory }} </p></div>
                           <div>
 
-                               {% for Order in all_orders %}
-                                {% for Tree in tree %}
-                                  {% for relatedProduct in Tree.relatedProduct.all %}
-                                     {% if relatedProduct == Order.product %}
-                                       {% if Order.confirmed %}
-                                        {% if Order.completed == False %}
 
-                                            {% if Tree.name == node.name %}
-                                                {% widthratio Tree.quantity 1 Order.circulation %}.
-                                                <script>
-                                                  var zzz = {% widthratio Tree.quantity 1 Order.circulation %};
-                                                  var total_zzz = 0;
-                                                  total_zzz = zzz;
-                                                  console.log(total_zzz);
-                                                </script>
-                                            {% endif %}
-
-                                        {% endif %}
-                                       {% endif %}
-                                     {% endif %}
-                                   {% endfor %}
-                                {% endfor %}
-                               {% endfor %}
+                            hhhh
 
                            </div>
                         </div>
@@ -133,6 +154,12 @@
         </div>
       </div>
     </div>
+
+
+
+
+
+
 
 
 
