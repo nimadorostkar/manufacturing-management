@@ -109,8 +109,32 @@
     </div>
 
 
+<hr>
 
 
+{% for Order in all_orders %}
+ {% for Tree in tree %}
+
+   {% for relatedProduct in Tree.relatedProduct.all %}
+      {% if relatedProduct == Order.product %}
+
+        {% if Order.confirmed %}
+         {% if Order.completed == False %}
+
+              <h6 align="center">     {% widthratio Tree.quantity 1 Order.circulation %} -- {{ Tree.name }}   </h6> <br>
+             <p> {{ Order.code }} ** {{ Order.product }} </p>   <hr>
+
+         {% endif %}
+        {% endif %}
+
+      {% endif %}
+    {% endfor %}
+
+ {% endfor %}
+{% endfor %}
+
+
+<hr>
 
 
     <div class="row">

@@ -119,13 +119,15 @@ def products_detail(request, id):
     nodes = models.Tree.objects.filter(relatedProduct=product)
     orders = models.Order.objects.filter(product=product)
     tree = models.Tree.objects.all()
+    all_orders = models.Order.objects.all()
     processes= models.Process.objects.all()
 
     return render(request, 'products_detail.html', {'product': product,
     'nodes': nodes,
     'orders':orders,
     'tree':tree,
-    'processes':processes
+    'processes':processes,
+    'all_orders':all_orders
     })
 
 
