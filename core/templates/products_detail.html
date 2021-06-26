@@ -146,6 +146,7 @@
                                       document.getElementById("{{ node.name }}").innerHTML = " سفارشات :  "+all_process_orders[i].total;
                                       document.getElementById("{{ node.name }}div").style.background = "#e9fdd8";
                                       if(all_process_orders[i].total > node_inventory){ document.getElementById("{{ node.name }}div").style.background = "#ff1b1b26"; }
+                                      else if(node_inventory-all_process_orders[i].total < 10){ document.getElementById("{{ node.name }}div").style.background = "#fffa1b26"; }
                                     }
                                   }
                                 </script>
