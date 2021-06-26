@@ -144,6 +144,7 @@
                                     if ( all_process_orders[i].name == node_name )
                                     {
                                       document.getElementById("{{ node.name }}").innerHTML = " سفارشات :  "+all_process_orders[i].total;
+                                      document.getElementById("{{ node.name }}div").style.background = "#e9fdd8";
                                       if(all_process_orders[i].total > node_inventory){ document.getElementById("{{ node.name }}div").style.background = "#ff1b1b26"; }
                                     }
                                   }
