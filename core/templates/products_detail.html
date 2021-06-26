@@ -91,8 +91,34 @@
                           <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
                           {% endif %}
                           <div class="name"> <a class="manager" href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a> </div>
-                          <div class="role">  موجودی {{ node.name.inventory }}  </div>
-                          {{ node.name.manager }}
+                          <div> <p>  موجودی {{ node.name.inventory }} </p></div>
+                          <div>
+
+                               {% for Order in all_orders %}
+                                {% for Tree in tree %}
+                                  {% for relatedProduct in Tree.relatedProduct.all %}
+                                     {% if relatedProduct == Order.product %}
+                                       {% if Order.confirmed %}
+                                        {% if Order.completed == False %}
+
+                                            {% if Tree.name == node.name %}
+                                                {% widthratio Tree.quantity 1 Order.circulation %}.
+                                                <script>
+                                                  var zzz = {% widthratio Tree.quantity 1 Order.circulation %};
+                                                  var total_zzz = 0;
+                                                  total_zzz = zzz;
+                                                  console.log(total_zzz);
+                                                </script>
+                                            {% endif %}
+
+                                        {% endif %}
+                                       {% endif %}
+                                     {% endif %}
+                                   {% endfor %}
+                                {% endfor %}
+                               {% endfor %}
+
+                           </div>
                         </div>
                          {% if not node.is_leaf_node %}
                           <ul> {{ children }} </ul>
@@ -109,32 +135,6 @@
     </div>
 
 
-<hr>
-
-
-{% for Order in all_orders %}
- {% for Tree in tree %}
-
-   {% for relatedProduct in Tree.relatedProduct.all %}
-      {% if relatedProduct == Order.product %}
-
-        {% if Order.confirmed %}
-         {% if Order.completed == False %}
-
-              <h6 align="center">     {% widthratio Tree.quantity 1 Order.circulation %} -- {{ Tree.name }}   </h6> <br>
-             <p> {{ Order.code }} ** {{ Order.product }} </p>   <hr>
-
-         {% endif %}
-        {% endif %}
-
-      {% endif %}
-    {% endfor %}
-
- {% endfor %}
-{% endfor %}
-
-
-<hr>
 
 
     <div class="row">
