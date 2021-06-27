@@ -257,10 +257,13 @@ def orders_detail(request, id):
     order = get_object_or_404(models.Order, id=id)
     orders = models.Order.objects.all()
     nodes = models.Tree.objects.filter(relatedProduct=order.product)
+    confirmation = models.Confirmation.objects.filter(order=order)
+
     return render(request, 'orders_detail.html', {
     'orders': orders,
     'order': order,
-    'nodes':nodes
+    'nodes': nodes,
+    'confirmation': confirmation
     })
 
 

@@ -234,7 +234,7 @@ class Order(models.Model):
         verbose_name_plural = "سفارشات محصول"
 
     def __str__(self):
-        return str(self.product)
+        return self.product.name + ' (' + self.code + ') '
 
     def image(self):
         return  self.product.image
