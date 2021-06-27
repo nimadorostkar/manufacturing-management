@@ -149,6 +149,7 @@ def processes_detail(request, id):
     input = models.Tree.objects.filter(name=process)
     process_products = models.Tree.objects.filter(name=process).values('relatedProduct__name')
     orders = models.Order.objects.filter(product__name__in=process_products)
+    confirmation_history =  models.Confirmation.objects.filter(process=process, order__confirmed=False, order__completed=False)
     if request.method == 'POST':
           confirmation_form=ConfirmationForm(request.POST)
           if confirmation_form.is_valid():
@@ -169,7 +170,15 @@ def processes_detail(request, id):
         confirmation_form=ConfirmationForm(request.POST)
         inventory_form = InventoryForm(request.POST)
 
-    context = { 'process': process,'processes': processes, 'orders': orders,'nodes': nodes,'input': input, 'inventory_form':inventory_form, 'confirmation_form':confirmation_form }
+    context = { 'process': process,
+    'processes': processes,
+    'orders': orders,
+    'nodes': nodes,
+    'input': input,
+    'inventory_form':inventory_form,
+    'confirmation_form':confirmation_form,
+    'confirmation_history':confirmation_history
+    }
     return render(request, 'processes_detail.html', context)
 
 
