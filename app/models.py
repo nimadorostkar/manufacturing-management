@@ -14,6 +14,8 @@ from extensions.utils import jalali_converter
 
 
 
+
+
 #------------------------------------------------------------------------------
 class Supplier(models.Model):
     name=models.CharField(max_length=200,verbose_name = "نام")
@@ -241,29 +243,21 @@ class Order(models.Model):
         return jalali_converter(self.start_time)
 
 
-'''
+
+
 #------------------------------------------------------------------------------
-class Process_Order(models.Model):
-    process = models.ForeignKey(Process, on_delete=models.CASCADE,verbose_name = " فرآیند ")
-    code = models.CharField(max_length=50,null=True, blank=True,verbose_name = "کد ")
-    description = models.TextField(max_length=900,null=True, blank=True,verbose_name = "توضیحات")
-    circulation = models.IntegerField(default='1',verbose_name = " تیراژ ")
-    order_for = models.CharField(max_length=70,null=True, blank=True,verbose_name = "سفارش برای ")
-    start_time = models.DateTimeField(verbose_name = "زمان شروع ")
+class Confirmation(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "سفارش")
+    process = models.ForeignKey(Process, on_delete=models.CASCADE,null=True, blank=True,verbose_name = "فرآیند")
     confirmed = models.BooleanField(default=False, verbose_name = " تایید شده " )
-    completed = models.BooleanField(default=False, verbose_name = " تکمیل شده " )
-
-
-    def get_absolute_url(self):
-        return reverse('app:process_detail',args=[self.id])
 
     class Meta:
-        verbose_name = " سفارش فرآیند  "
-        verbose_name_plural = " سفارشات فرآیند "
+        verbose_name = " تائیدیه "
+        verbose_name_plural = " تأییدها "
 
     def __str__(self):
-        return str(self.process)
-'''
+        return self.order.code
+
 
 
 
