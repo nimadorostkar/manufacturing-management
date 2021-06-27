@@ -79,7 +79,7 @@ class InventoryForm(forms.ModelForm):
 class ConfirmationForm(forms.ModelForm):
 	class Meta:
 		model = Confirmation
-		fields = ['order','process','confirmed']
+		fields = ['order']
 
 
 
