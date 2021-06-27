@@ -89,80 +89,79 @@
 </div>
 
 
-    <div class="row">
-      <div class="col-12">
-        <div class="card card-chart">
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-chart">
 
-            <div class="row">
-              <div class="col-lg-8 ml-auto mr-auto">
-                <div class="row">
-                  <div class="col-md-12">
-
-                    <input id="input" class="btn btn-primary btn-block" type="range" min="1" max="100" step="1">
-
-                </div>
+          <div class="row">
+            <div class="col-lg-8 ml-auto mr-auto">
+              <div class="row">
+                <div class="col-md-12">
+                  <input id="input" class="btn btn-primary btn-block" type="range" min="1" max="100" step="1" value="20">
               </div>
             </div>
-
+          </div>
 
           <div class="col-md-12">
             <div id="sampleDiv" style="zoom:40%;" >
-           <div class="pg-orgchart">
-            <div class="org-chart">
-                <ul>
-                  {% recursetree nodes %}
-                      <li>
-                        <div id="{{ node.name }}div" class="user">
-                          {% if node.name.position == "M" %}
-                          <img src="{% static 'assets/img/m.png' %}" class="img-responsive" />
-                          {% endif %}
-                          {% if node.name.position == "R" %}
-                          <img src="{% static 'assets/img/r.png' %}" class="img-responsive" />
-                          {% endif %}
-                          {% if node.name.position == "T" %}
-                          <img src="{% static 'assets/img/t.png' %}" class="img-responsive" />
-                          {% endif %}
-                          {% if node.name.position == "S" %}
-                          <img src="{% static 'assets/img/s.png' %}" class="img-responsive" />
-                          {% endif %}
-                          {% if node.name.position == "P" %}
-                          <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
-                          {% endif %}
-                          <div class="name"> <a class="manager" href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a> </div>
-                          <div> <p>  موجودی :  {{ node.name.inventory }} </p></div>
-                          <div>
-                            <p id="{{ node.name }}"> </p>
+              <div class="pg-orgchart">
+                <div class="org-chart">
+                    <ul>
+                      {% recursetree nodes %}
+                          <li>
+                            <div id="{{ node.name }}div" class="user">
+                              {% if node.name.position == "M" %}
+                              <img src="{% static 'assets/img/m.png' %}" class="img-responsive" />
+                              {% endif %}
+                              {% if node.name.position == "R" %}
+                              <img src="{% static 'assets/img/r.png' %}" class="img-responsive" />
+                              {% endif %}
+                              {% if node.name.position == "T" %}
+                              <img src="{% static 'assets/img/t.png' %}" class="img-responsive" />
+                              {% endif %}
+                              {% if node.name.position == "S" %}
+                              <img src="{% static 'assets/img/s.png' %}" class="img-responsive" />
+                              {% endif %}
+                              {% if node.name.position == "P" %}
+                              <img src="{% static 'assets/img/p.png' %}" class="img-responsive" />
+                              {% endif %}
+                              <div class="name"> <a class="manager" href="{{ node.name.get_absolute_url }}"> {{ node.name }} </a> </div>
+                              <div> <p>  موجودی :  {{ node.name.inventory }} </p></div>
+                              <div>
+                                <p id="{{ node.name }}"> </p>
 
-                                <script>
-                                  var node_name = "{{ node.name }}";
-                                  var node_inventory = "{{ node.name.inventory }}";
-                                  for(var i=0; i < all_process_orders.length; i++)
-                                  {
-                                    if ( all_process_orders[i].name == node_name )
-                                    {
-                                      document.getElementById("{{ node.name }}").innerHTML = " سفارشات :  "+all_process_orders[i].total;
-                                      document.getElementById("{{ node.name }}div").style.background = "#e9fdd8";
-                                      if(all_process_orders[i].total > node_inventory){ document.getElementById("{{ node.name }}div").style.background = "#ff1b1b26"; }
-                                      else if(node_inventory-all_process_orders[i].total < 25){ document.getElementById("{{ node.name }}div").style.background = "#fffa1b26"; }
-                                    }
-                                  }
-                                </script>
+                                    <script>
+                                      var node_name = "{{ node.name }}";
+                                      var node_inventory = "{{ node.name.inventory }}";
+                                      for(var i=0; i < all_process_orders.length; i++)
+                                      {
+                                        if ( all_process_orders[i].name == node_name )
+                                        {
+                                          document.getElementById("{{ node.name }}").innerHTML = " سفارشات :  "+all_process_orders[i].total;
+                                          document.getElementById("{{ node.name }}div").style.background = "#e9fdd8";
+                                          if(all_process_orders[i].total > node_inventory){ document.getElementById("{{ node.name }}div").style.background = "#ff1b1b26"; }
+                                          else if(node_inventory-all_process_orders[i].total < 25){ document.getElementById("{{ node.name }}div").style.background = "#fffa1b26"; }
+                                        }
+                                      }
+                                    </script>
 
-                           </div>
-                        </div>
-                         {% if not node.is_leaf_node %}
-                          <ul> {{ children }} </ul>
-                         {% endif %}
-                      </li>
-                  {% endrecursetree %}
-                </ul>
-           </div>
-         </div>
-       </div>
-       </div>
+                               </div>
+                            </div>
+                             {% if not node.is_leaf_node %}
+                              <ul> {{ children }} </ul>
+                             {% endif %}
+                          </li>
+                      {% endrecursetree %}
+                    </ul>
+                </div>
+             </div>
+          </div>
+        </div>
+
         </div>
       </div>
     </div>
+  </div>
 
 
 
