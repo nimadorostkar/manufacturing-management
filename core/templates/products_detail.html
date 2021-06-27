@@ -96,27 +96,16 @@
             <div class="row">
               <div class="col-lg-8 ml-auto mr-auto">
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-12">
 
-                    <input type="range" min="5" max="10" step="1"
-                       oninput="showVal(this.value)" onchange="showVal(this.value)">
+                    <input id="input" class="btn btn-primary btn-block" type="range" min="1" max="100" step="1">
 
-                    <input class="value btn btn-primary btn-block" type="range" min="10" max="100" step="10" onchange="sampleDiv.style.zoom='showVal(this.value)%'">
-
-
-
-                    <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='20%'"> Zoom 20% </button>
-                  </div>
-                  <div class="col-md-4">
-                    <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='40%'"> Zoom 40% </button>
-                  </div>
-                  <div class="col-md-4">
-                    <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='60%'"> Zoom 60% </button>
-                  </div>
                 </div>
               </div>
             </div>
 
+
+          <div class="col-md-12">
             <div id="sampleDiv" style="zoom:40%;" >
            <div class="pg-orgchart">
             <div class="org-chart">
@@ -170,13 +159,10 @@
            </div>
          </div>
        </div>
-
+       </div>
         </div>
       </div>
     </div>
-
-
-
 
 
 
@@ -329,6 +315,22 @@
 {% block javascripts %}
 
   <script>
+
+
+
+    // zoom tree with input renge
+
+    var p = document.getElementById("input"),
+        res = document.getElementById("sampleDiv");
+
+    p.addEventListener("input", function() {
+        res.style.zoom = p.value+'%';
+    }, false);
+
+
+//----------------------------------------------------------------------------
+
+
 
 
     // compare processes order with inventory in tree
