@@ -4,7 +4,7 @@ from django.contrib.admin.models import LogEntry
 from mptt.admin import MPTTModelAdmin
 from mptt.admin import DraggableMPTTAdmin
 from mapbox_location_field.admin import MapAdmin
-from .models import Profile, Tree, Process, Ticket, Order, Supplier
+from .models import Profile, Tree, Process, Ticket, Order, Supplier, Confirmation
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin, ImportExportMixin
 from jalali_date import datetime2jalali, date2jalali
@@ -123,6 +123,11 @@ admin.site.register(models.Notice, NoticeAdmin)
 
 
 
+#------------------------------------------------------------------------------
+class ConfirmationAdmin(admin.ModelAdmin):
+    list_display = ('order','process','confirmed')
+
+admin.site.register(models.Confirmation, ConfirmationAdmin)
 
 
 
