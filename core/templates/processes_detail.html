@@ -258,8 +258,13 @@
 
 
 
-
-hhh hh hh 
+  <form action="#" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ confirmation_form|bootstrap }}
+       <div class="card-footer">
+        <button type="submit" class="btn btn-fill btn-primary"> ارسال </button>
+       </div>
+  </form>
 
 
 <hr>

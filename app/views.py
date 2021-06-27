@@ -7,9 +7,9 @@ from . import models
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Profile, Supplier, Ticket, Order, Process, Mother_Station, Notice
+from .models import Profile, Supplier, Ticket, Order, Process, Mother_Station, Notice, Confirmation
 from django.utils.translation import ugettext_lazy as _
-from .forms import ProfileForm, UserForm, TicketForm, MaterialForm, StationForm, RepositoryForm, TransferForm, InventoryForm
+from .forms import ProfileForm, UserForm, TicketForm, MaterialForm, StationForm, RepositoryForm, TransferForm, InventoryForm, ConfirmationForm
 from itertools import chain
 from django.contrib.auth import get_user_model
 from django.db import transaction
@@ -150,6 +150,15 @@ def processes_detail(request, id):
     process_products = models.Tree.objects.filter(name=process).values('relatedProduct__name')
     orders = models.Order.objects.filter(product__name__in=process_products)
     if request.method == 'POST':
+          confirmation_form=ConfirmationForm(request.POST)
+          if confirmation_form.is_valid():
+              obj = Confirmation() #gets new object
+              obj.order = confirmation_form.cleaned_data['order']
+              obj.process = confirmation_form.cleaned_data['process']
+              obj.confirmed = confirmation_form.cleaned_data['confirmed']
+              obj.save()
+              return redirect(process.get_absolute_url())
+
           inventory_form = InventoryForm(request.POST)
           if inventory_form.is_valid():
               obj = get_object_or_404(models.Process, id=id)
@@ -157,9 +166,10 @@ def processes_detail(request, id):
               obj.save()
               return redirect(obj.get_absolute_url())
     else:
+        confirmation_form=ConfirmationForm(request.POST)
         inventory_form = InventoryForm(request.POST)
 
-    context = { 'process': process,'processes': processes, 'orders': orders,'nodes': nodes,'input': input, 'inventory_form':inventory_form }
+    context = { 'process': process,'processes': processes, 'orders': orders,'nodes': nodes,'input': input, 'inventory_form':inventory_form, 'confirmation_form':confirmation_form }
     return render(request, 'processes_detail.html', context)
 
 
