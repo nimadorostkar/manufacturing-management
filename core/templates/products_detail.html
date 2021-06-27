@@ -97,6 +97,14 @@
               <div class="col-lg-8 ml-auto mr-auto">
                 <div class="row">
                   <div class="col-md-4">
+
+                    <input type="range" min="5" max="10" step="1"
+                       oninput="showVal(this.value)" onchange="showVal(this.value)">
+
+                    <input class="value btn btn-primary btn-block" type="range" min="10" max="100" step="10" onchange="sampleDiv.style.zoom='showVal(this.value)%'">
+
+
+
                     <button class="btn btn-primary btn-block" onclick="sampleDiv.style.zoom='20%'"> Zoom 20% </button>
                   </div>
                   <div class="col-md-4">
