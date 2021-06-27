@@ -2,7 +2,7 @@ from django import forms
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
-from .models import Profile, Ticket, Process, Confirmation
+from .models import Profile, Ticket, Process, Confirmation, Order
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 
@@ -77,6 +77,8 @@ class InventoryForm(forms.ModelForm):
 
 #------------------------------------------------------------------------------
 class ConfirmationForm(forms.ModelForm):
+	order = forms.ModelChoiceField(queryset=Order.objects.filter(confirmed=False, completed=False), widget=forms.Select(), error_messages={'required': 'این فیلد ضروری است'} )
+
 	class Meta:
 		model = Confirmation
 		fields = ['order']

@@ -154,8 +154,8 @@ def processes_detail(request, id):
           if confirmation_form.is_valid():
               obj = Confirmation() #gets new object
               obj.order = confirmation_form.cleaned_data['order']
-              obj.process = confirmation_form.cleaned_data['process']
-              obj.confirmed = confirmation_form.cleaned_data['confirmed']
+              obj.process = process
+              obj.confirmed = True
               obj.save()
               return redirect(process.get_absolute_url())
 
